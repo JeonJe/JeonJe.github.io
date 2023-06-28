@@ -1,0 +1,51 @@
+# This is your sidebar TOC. The sidebar code loops through sections here and provides the appropriate formatting.
+
+entries:
+- title: sidebar
+  product: Categories
+  version: #6.0
+  folders:
+
+  - title: Algorithm
+    output: web, pdf
+    folderitems:
+    - title: BeakJoon 1043. 거짓말
+      url: /BOJ_1043.html
+      output: web, pdf
+    - title: BeakJoon  1072. 게임
+      url: /BOJ_1072.html
+      output: web, pdf
+    - title: BeakJoon 1561. 놀이공원
+      url: /BOJ_1561.html
+      output: web, pdf
+    - title: BeakJoon 4344. 평균은 넘겠지
+      url: /BOJ_4344.html
+      output: web, pdf
+    - title: BeakJoon 4836. 춤
+      url: /BOJ_4836.html
+      output: web, pdf
+    - title: BeakJoon 14620. 꽃길
+      url: /BOJ_14620.html
+      output: web, pdf
+
+
+  - title: Multi-Board Project
+    output: web, pdf
+    folderitems:
+    - title : ERD 설계
+      url : /multi_board_erd.html
+      output: web, pdf
+    
+  - title: API
+    output: web, pdf
+    folderitems:
+      
+          
+  - title: ETC
+    output: web, pdf
+    folderitems:
+      - title: Failed to load command jekyll
+        url: /issue_jekyll.html
+        output: web, pdf
+
+# Copyright 2021 Google LLC
