@@ -8,27 +8,29 @@ folder: API
 last_updated: 2023-06-28
 ---
 
-{% include note.html content='[아래 내용은 이 문서를 참고하여 정리한 내용입니다.](https://learn.microsoft.com/ko-kr/azure/architecture/best-practices/api-design)' %}
+{% include note.html content='[아래 내용은 MS RESTFul 웹 API 디자인 모범사례 문서를 참고한 내용입니다.](https://learn.microsoft.com/ko-kr/azure/architecture/best-practices/api-design)' %}
 
 ## Restful API 
 - 리소스마다 해당 리소스를 고유하게 식별하는 URI인 *식별자*가 존재합니다.
+
 ```http
     https://adventure-works.com/orders/1
   ```
-- 가능하다면 리소스 URI는 동사(리소스에 대한 작업)가 아닌 명사(리소스)를 써야 합니다.
+- 가능하다면 리소스 URI는 동사(리소스에 대한 작업)가 아닌 `명사`(리소스)를 써야 합니다.
 
 ```http
     https://adventure-works.com/orders // Good
     https://adventure-works.com/create-order // Avoid
 ```
-- 리소스가 단일 실제 데이터 항목을 기반으로 할 필요는 없습니다.
+- 리소스가 단일 실제 데이터 항목을 기반일 필요는 없습니다.
 - 단순히 데이터베이스의 내부 구조를 반영하는 API는 좋지 않습니다.
-  - REST의 목적은 엔터티 및 해당 엔터티에서 애플리케이션이 수행할 수 있는 작업을 모델링 하는 것입니다. 클라이언트는 내부 구현에 노출되어서는 안됩니다.
-- 컬렉션 및 항목에 대한 URI를 계층 구조로 구성하는 것이 좋습니다.
-```
+  - REST의 목적은 엔터티 및 해당 엔터티에서 애플리케이션이 수행할 수 있는 작업을 모델링 하는 것입니다. 따라서 단순히 내부 구조를 반영하여 클라이언트가 내부 구현에 노출되어서는 안됩니다.
+- 컬렉션 및 항목에 대한 URI를 `계층 구조`로 구성하는 것이 좋습니다.
+
+```http
 /customers/{id}
 ```
-- 리소스 URI를 컬렉션/항목/컬렉션보다 더 복잡하게 요구하지 않는 것이 좋습니다.
+- 리소스 URI를 `컬렉션/항목/컬렉션`보다 더 복잡하게 요구하지 않는 것이 좋습니다.
 
 <br/>
 
@@ -107,17 +109,17 @@ Content-Length: 57
 204(콘텐츠 없음) 이어야 합니다. `검색 조건에 따른 응답이 빈 경우에도 마찬가지입니다.`
 
 ## 데이터 필터링 및 페이지 매기기
-```
+```http
 /orders?minCost=n
 ```
 위와 같이 API가 쿼리 문자열에 필터 조건을 전달하면 서버쪽에서 필터링된 결과를 반환할 수 있습니다.
 만약, GET 요청이 다수의 항목을 반환할 경우 반환 데이터의 양을 제한하도록 Web API를 디자일 할 수 있습니다.
 다음은 검색할 최대 항목 수와 시작 오프셋을 지정하는 쿼리 문자열입니다.
-```
+```http
 /orders?limit=25&offset=50
 ```
 
 필드이름을 아래와 같이 정렬 매개 변수를 제공하여 데이터를 가져올 때 데이터를 정렬하는 전략을 사용할 수도 있습니다.
-```
+```http
 /orders?sort=ProductID
 ```
