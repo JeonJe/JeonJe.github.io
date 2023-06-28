@@ -39,7 +39,9 @@ entries:
   - title: API
     output: web, pdf
     folderitems:
-      
+      - title: API 디자인
+        url: /API_design.html
+        output: web, pdf
           
   - title: ETC
     output: web, pdf
