@@ -35,6 +35,9 @@ entries:
     - title : ERD 설계
       url : /multi_board_erd.html
       output: web, pdf
+    - title: API 설계
+      url: /multi_board_API_design.html
+      output: web, pdf
     
   - title: API
     output: web, pdf
@@ -42,6 +45,7 @@ entries:
       - title: API 디자인
         url: /API_design.html
         output: web, pdf
+      
           
   - title: ETC
     output: web, pdf
