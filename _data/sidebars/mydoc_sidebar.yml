@@ -9,6 +9,9 @@ entries:
   - title: Algorithm
     output: web, pdf
     folderitems:
+    - title: BeakJoon 20166. 문자열 지옥에 빠진 호석
+      url: /BOJ_20166.html
+      output: web, pdf
     - title: BeakJoon 1043. 거짓말
       url: /BOJ_1043.html
       output: web, pdf
@@ -27,7 +30,7 @@ entries:
     - title: BeakJoon 14620. 꽃길
       url: /BOJ_14620.html
       output: web, pdf
-
+    
 
   - title: Multi-Board Project
     output: web, pdf
