@@ -22,6 +22,7 @@ last_updated: 2023-07-05
 회원가입 화면은 간단하게 아이디, 패스워드, 패스워드 확인, 이름을 작성할 수 있는 `폼`과 중복확인, 회원가입, 취소 `버튼`이 있습니다.
 화면 스타일은 모든 기능 구현을 완료한 뒤 진행하겠습니다.
 
+---
 ### 중복확인 버튼 
 ```javascript
 /**
@@ -54,6 +55,7 @@ const checkDuplicateId = async (userId) => {
 
 위 중복 확인 메소드는 서버의 "/api/auth/check/{userId}" 로 GET 요청합니다.
 
+---
 ### 중복확인 Controller
 ```java
  /**
@@ -185,7 +187,7 @@ public class APIResponse {
 ```
 
 
-
+---
 ### 중복확인 Service
 
 ```java
@@ -201,6 +203,7 @@ public class APIResponse {
 ```
 userService.findUserByUserId는 `Repository`의 `findUserByUserId`을 호출 하도록 작성하였습니다.
 
+---
 ### 중복확인 Repository & Mapper
 ```java
   @Mapper
@@ -241,6 +244,7 @@ userRepository에서는 `Mapper`어노테이션을 사용하여 아래 `Mybatis`
 SQL 쿼리는 `userId와` 일치하는 `user_id` 컬럼을 가진 데이터를 `User` 객체로 맵핑하여 반환할 수 있도록 작성하였습니다.
 만약 userId를 가진 사용자가 없다면, null이 됩니다.
 
+---
 ### 중복확인버튼 실행화면
 ![SCR-20230704-ppzv](https://github.com/JeonJe/Multi_Board/assets/43032391/41dce838-0fbf-4edf-a44b-7b56c1c57d7c)
 <br/>데이터베이스에 이미 존재하는 아이디는 위와 같은 안내메시지가 나타납니다.
@@ -249,7 +253,7 @@ SQL 쿼리는 `userId와` 일치하는 `user_id` 컬럼을 가진 데이터를 `
 <br/>버튼 클릭 시 데이터베이스에 존재하지 않는 아이디는 위와 같은 안내메시지가 나타납니다.
 
 
-
+---
 ### 회원가입 버튼
 
 ```javascript
@@ -281,6 +285,7 @@ const signupUser = async (userData) => {
 
 {% include note.html content="JWT 토큰생성, 검증은 내용이 많아 로그인과 같이 포스팅하겠습니다." %}
 
+---
 ### 회원가입 Controller
 ```java
 /**
@@ -308,6 +313,7 @@ const signupUser = async (userData) => {
   implementation 'org.springframework.boot:spring-boot-starter-validation'
 ```
 
+---
 ### 회원가입 DTO
 ```java
 /**
@@ -373,6 +379,7 @@ public class UserSignupDTO {
 <br/> 
 만약, 더 복잡한 유효성 검증이 필요하면 `ConstraintValidator`의 구현체를 만들어서 사용할 수 있습니다.
 
+---
 ### 회원가입 Service
 ```java
 /**
@@ -471,6 +478,7 @@ public ResponseEntity<APIResponse> handleAppException(AppException e) {
 }
 ```
 
+---
 ### 회원가입 Repository & Mapper
 ```java
     /**
@@ -489,7 +497,9 @@ public ResponseEntity<APIResponse> handleAppException(AppException e) {
     </insert>
 ```
 Repository와 Mapper는 간단하게 작성하였습니다.
-### 결과
+
+---
+### 회원가입 결과
 ![image](https://github.com/JeonJe/Multi_Board/assets/43032391/1493faf3-ce5c-4154-9e6a-f3d14fa54c2b)
 <br/>
 중복 아이디 미존재 + 유효성검증 성공 시 정상적으로 회원가입이 됩니다. data에는 jwt 토큰이 만들어져 담겨옵니다.
@@ -502,7 +512,8 @@ Repository와 Mapper는 간단하게 작성하였습니다.
 <br/>
 만약 유효성 검증에 실패한다면 위와 같은 형태로 에러메시지를 반환합니다.
 
-## 부딪혔던 문제들 
+---
+## 발생한 이슈들
 
 
 ### 스키마 생성 권한 문제 
@@ -527,6 +538,7 @@ grant all privileges on *.* to id@localhost
 mysql.server restart
 ```
 
+---
 ### Vue.js `.env` 사용
 
 ![SCR-20230704-otwr](https://github.com/JeonJe/Multi_Board/assets/43032391/2e04d898-f860-4eef-9322-ca477bc2399a)
@@ -554,7 +566,7 @@ mysql.server restart
         });
     ```
 
-
+---
 ## 참고 
 [스프링부트 / JWT 방식으로 로그인 구현하기](https://ocblog.tistory.com/56)
 [RestControllerAdivce](https://velog.io/@banjjoknim/RestControllerAdvice)       

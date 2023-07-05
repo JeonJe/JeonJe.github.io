@@ -20,5 +20,7 @@ summary:
 ## ETC
 - 다양한 주제 포스팅
 
+## Blog
+- [Oopy Blog](https://premise.oopy.io/)
 
 {% include links.html %}

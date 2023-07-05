@@ -38,11 +38,14 @@ entries:
     - title : ERD 설계
       url : /multi_board_erd.html
       output: web, pdf
-    - title: API 설계
+    - title: API 설계 & 개발순서
       url: /multi_board_API_design.html
       output: web, pdf
     - title: 회원가입
       url: /multi_board_signup.html
+      output: web, pdf
+    - title: 로그인 with JWT
+      url: /multi_board_login.html
       output: web, pdf
 
   - title: API
