@@ -41,7 +41,10 @@ entries:
     - title: API 설계
       url: /multi_board_API_design.html
       output: web, pdf
-    
+    - title: 회원가입
+      url: /multi_board_signup.html
+      output: web, pdf
+
   - title: API
     output: web, pdf
     folderitems:

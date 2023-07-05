@@ -16,6 +16,7 @@ last_updated: 2023-06-29
 ## RESTful API 디자인 가이드
 1. URI는 리소스를 표현합니다.
 2. 자원에 대한 행위는 HTTP Method로 표현합니다.
+
 ```http
 GET  /members/delete/1 (X)
 DELTE /members/1 (O)
@@ -26,24 +27,25 @@ GET /members/1 (O)
 GET /members/INSERT (X)
 POST /members
 ```
----
+
 ## API 설계 주의점
-1. `/` 는 계층 관계를 나타내는데 사용 됩니다.
+- `/` 는 계층 관계를 나타내는데 사용 됩니다.
+
 ```http
-    http://restapi.example.com/houses/apartments
-    http://restapi.example.com/animals/mammals/whales
+http://restapi.example.com/houses/apartments
+http://restapi.example.com/animals/mammals/whales
 ```
-2. URI 마지막 문자에 `슬래시(/)` 는 미포함합니다.
-3. 하이픈(-)은 URI 가독성을 높입니다. 언더바(_)는 사용하지 않습니다.
-4. URI경로에 대문자 사용은 피합니다.
-5. 파일확장자는 URI에 포함시키지 않는다. Accept header를 사용합니다.
-6. 리소스 간에 관계가 있을 수 있습니다. 아래와 같이 표현 될 수 있습니다.
+- URI 마지막 문자에 `슬래시(/)` 는 미포함합니다.
+- 하이픈(-)은 URI 가독성을 높입니다. 언더바(_)는 사용하지 않습니다.
+- URI경로에 대문자 사용은 피합니다.
+- 파일확장자는 URI에 포함시키지 않는다. Accept header를 사용합니다.
+- 리소스 간에 관계가 있을 수 있습니다. 아래와 같이 표현 될 수 있습니다.
 ```http
 리소스명/리소스 ID/관계가 있는 다른 리소스명
 ex)GET : /users/{userid}/devices (일반적으로 소유 ‘has’의 관계를 표현할 때)
 GET : /users/{userid}/likes/devices (관계명이 애매하거나 구체적 표현이 필요할 때)
 ```
-7. 자원을 표현하는 collection과 document
+1. 자원을 표현하는 collection과 document
    1. document는 문서, 객체라고 이해 할 수 있습니다
    2. collection은 문서들의 집합, 객체들의 집합으로 이해할 수 있습니다.
    3. collection, document는 리소스라고 표현될 수 있기 때문에 URI로 표현 가능합니다. collection은 복수로 사용됩니다.
