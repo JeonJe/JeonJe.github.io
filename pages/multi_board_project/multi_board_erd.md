@@ -81,16 +81,26 @@ last_updated: 2023-06-28
 
 ### v3(23.06.30)
 ![v3](https://github.com/JeonJe/Free_Board/assets/43032391/92a41ced-116c-47fd-89a3-628547351477)
-- cateory_board_mapping 테이블을 사용하여 parent_code_value와 board_id 사이 `many to many`관계 설정하였습니다. 이에따라 각 보드에서 child_code_value 컬럼은 삭제되었습니다. board_type은 어떤 보드인지 식별하는 컬럼입니다.
+- ~~cateory_board_mapping 테이블을 사용하여 parent_code_value와 board_id 사이 `many to many`관계 설정하였습니다. 이에따라 각 보드에서 child_code_value 컬럼은 삭제되었습니다. board_type은 어떤 보드인지 식별하는 컬럼입니다.~~
 - 각 테이블의 userId 컬럼 데이터타입을 INT형이 아닌 VARCHAR(255)로 변경하였습니다. 그 이유는 users 테이블 내에서  varchar형 user_id는 유니크하기 때문에 다른 테이블에서 이 컬럼 값으로 데이터가 식별 가능하기 때문입니다.
 - 잘못된 이름 수정하였습니다.
 - now() 위치를 수정하였습니다.
-- BOOLEAN -> TINYINT(1) 로 수정하였습니다.
+- BOOLEAN -> TINYINT(1) 로 수정하였습니다
+
+### v4(23.07.06)
+
+![v4](https://github.com/JeonJe/Multi_Board/assets/43032391/ad1403a1-5124-41b8-af60-38f6e9c12c87)
+- 이름 수정 childe_code -> child_code, notice_table -> notice_board
+- category mapping 구조 변경 
+  각 게시판의 게시글에서 child_code_value를 가지고 있기 때문에 해당 게시판 카테고리의 대분류와 세부카테고리를 알 수 있기 때문에 mapping 테이블이 필요없을 것으로 판단하였습니다. 이 부분은 개발을 진행을 진행하며 더 수정이 필요할 수 있습니다.
+
 
 ### 추가 개선 포인트
 만약 `갤러리 게시판`에서 댓글을 추가할 수 있거나, `문의 게시판`에서 `첨부파일`을 첨부 하도록 요구조건이 변경된다면 이미지, 댓글 테이블 등에 어느 테이블에서 해당 테이블을
 참조하고 있는지 식별할 수 있도록 ERD 구조를 변경해야합니다.
 
 
+## 링크
+[프로젝트 ERD확인](https://www.erdcloud.com/d/Em46o5hy4evaZy4oN)
 
   
