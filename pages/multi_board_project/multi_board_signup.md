@@ -5,7 +5,7 @@ keywords: multi board, signup
 sidebar: mydoc_sidebar
 permalink:  multi_board_signup.html
 folder: multi_board_project
-last_updated: 2023-07-05
+last_updated: 2023-07-06
 ---
 
 ## DB Schema & table 생성

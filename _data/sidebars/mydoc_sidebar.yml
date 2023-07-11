@@ -47,6 +47,10 @@ entries:
     - title: 로그인 with JWT
       url: /multi_board_login.html
       output: web, pdf
+    - title: 공지 게시판
+      url: /multi_board_notice_board.html
+      output: web, pdf
+
 
   - title: API
     output: web, pdf
