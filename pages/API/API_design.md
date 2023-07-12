@@ -1,5 +1,5 @@
 ---
-title: Restful 웹 API Design
+title: RESTFul 웹 API Design
 tags: [API, Design]
 keywords: API
 sidebar: mydoc_sidebar
@@ -10,7 +10,8 @@ last_updated: 2023-06-28
 
 {% include note.html content='[아래 내용은 MS RESTFul 웹 API 디자인 모범사례 문서를 참고한 내용입니다.](https://learn.microsoft.com/ko-kr/azure/architecture/best-practices/api-design)' %}
 
-## Restful API 
+---
+## RESTFul API 
 - 리소스마다 해당 리소스를 고유하게 식별하는 URI인 *식별자*가 존재합니다.
 
 ```http
@@ -32,8 +33,7 @@ last_updated: 2023-06-28
 ```
 - 리소스 URI를 `컬렉션/항목/컬렉션`보다 더 복잡하게 요구하지 않는 것이 좋습니다.
 
-<br/>
-
+---
 ## HTTP 메서드 측면에서 API 작업 정의
 - GET 
   - 지정된 URI에서 리소스의 표현을 검색
@@ -57,8 +57,7 @@ last_updated: 2023-06-28
 |/customers/1|Error|고객 1에 대한 세부 정보 검색|고객 1이 있는 경우 고객 1의 세부 정보 업데이트|고객 1 제거|
 |/customers/1/orders|고객 1에 대한 새 주문 만들기|고객 1에 대한 모든 주문 검색|고객 1의 주문 대량 업데이트|고객 1의 모든 주문 제거|
 
-<br/>
-
+---
 ## HTTP 의미 체계 준수
 ### 미디어 유형
 - HTTP 프로토콜에서 형식은 MIME 유형이라고 하는 *미디어 유형*을 사용하여 지정됩니다.
@@ -99,15 +98,16 @@ Content-Length: 57
 - 삭제 성공 : HTTP 상태코드 204(콘텐츠 없음) 응답
 - 리소스가 없는 경우 : HTTP 상태코드 404(찾을 수 없음) 응답
 
+---
 ## 비동기 작업
 때로 POST, PUT, PATCH, DELETE 작업을 완료하는데 시간이 걸릴 수 있습니다. 이런 경우 요청 처리가 수락되었지만 아직 완료되지 않았음을 나타내는 HTTP 상태코드 202(수락됨)을 반환해야합니다.
 
-<br/>
-
+---
 ## 메시지 본문의 빈 집합
 성공적인 응답의 본문이 비어 있을 때마다 상태코드는 200이 아닌
 204(콘텐츠 없음) 이어야 합니다. `검색 조건에 따른 응답이 빈 경우에도 마찬가지입니다.`
 
+---
 ## 데이터 필터링 및 페이지 매기기
 ```http
 /orders?minCost=n

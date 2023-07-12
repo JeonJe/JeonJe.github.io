@@ -2,7 +2,7 @@
 
 entries:
 - title: sidebar
-  product: Categories
+  product: 목록
   version: #6.0
   folders:
 
@@ -50,21 +50,18 @@ entries:
     - title: 공지 게시판
       url: /multi_board_notice_board.html
       output: web, pdf
-
-
-  - title: API
+          
+  - title: ETC
     output: web, pdf
     folderitems:
       - title: API 디자인
         url: /API_design.html
         output: web, pdf
-      
-          
-  - title: ETC
-    output: web, pdf
-    folderitems:
+
       - title: Failed to load command jekyll
         url: /issue_jekyll.html
         output: web, pdf
+      
+      
 
 # Copyright 2021 Google LLC
