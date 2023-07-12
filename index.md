@@ -1,5 +1,5 @@
 ---
-title: "안녕하세요. 이전제입니다."
+title: ""
 keywords: 
 tags: 
 sidebar: mydoc_sidebar
