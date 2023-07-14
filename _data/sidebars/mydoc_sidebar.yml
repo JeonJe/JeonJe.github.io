@@ -50,7 +50,20 @@ entries:
     - title: 공지 게시판
       url: /multi_board_notice_board.html
       output: web, pdf
-          
+
+  # - title: PintOS Project
+  #   output: web, pdf
+  #   folderitems:
+  #   - title : Project1 Thread 
+  #     url : /pintos_thread.html
+  #     output: web, pdf
+  #   - title: Project2 User Program
+  #     url: /pintos_user_program.html
+  #     output: web, pdf
+  #   - title: Project3 Virtual Memory
+  #     url: /pintos_virtual_memory.html
+  #     output: web, pdf
+
   - title: ETC
     output: web, pdf
     folderitems:
