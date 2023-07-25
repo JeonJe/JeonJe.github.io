@@ -27,6 +27,62 @@ last_updated: 2023-07-24
 
 공지사항 리스트와 다른 부분은 사용자가 로그인을 한 상태라면 화면처럼 우측에 자유게시판에 글을 쓸 수 있는 `글 등록 버튼`이 나타납니다.
 
+```javascript
+/**
+ * views > boards > free > BoardFreeList.vue
+ */
+/**
+ * 자유게시글 목록을 가져오는 비동기 함수
+ */
+async getFreeBoardList() {
+  try {
+    const response = await boardService.getBoardList(
+      "free",
+      this.searchCondition
+    );
+    if (response.status === "success") {
+      if (response === "") {
+        alert("표시 할 자유게시글이 없습니다.");
+      } else {
+        this.searchBoardList = response.data.searchBoards;
+        this.totalPosts = response.data.countSearchBoards;
+        this.totalPages = Math.ceil(
+          this.totalPosts / this.searchCondition.pageSize
+        );
+      }
+    }
+  } catch (error) {
+    console.log(error);
+  }
+},
+
+```
+검색 조건을 입력하는 자식컴포넌트에서 이벤트가 emit되면 getReeBoardList를 호출하고 반환된 데이터로 리스트를 그려줍니다.
+```javascript
+/**
+ * services > board-service.js
+ */
+**
+ * 게시판의 카테고리 목록을 가져오는 함수
+ *
+ * @param {string} boardType - 게시판 종류 ('notice', 'free', 'gallery', 'inquiry' 등)
+ * @returns {Promise} - 게시판의 카테고리 목록을 담은 Promise 객체
+ * @throws {Error} API 요청 중 발생한 오류
+ */
+const getBoardList = async (boardType, searchCondtion) => {
+  try {
+    const apiURL = await getAPIUrlByBoardType(boardType);
+    const response = await api.get(apiURL, {
+      params: searchCondtion,
+    });
+    return response.data;
+  } catch (error) {
+    alert("리스트를 가져오지 못했습니다.");
+    return false;
+  }
+};
+```
+게시판 목록을 호출하는 메소드는 여러 게시판 종류에서 사용 할 수 있도록 구현하였습니다.
 
 ---
 ### Controller

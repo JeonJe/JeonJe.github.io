@@ -59,6 +59,9 @@ entries:
         - title: 자유게시판 리스트 가져오기
           url: multi_board_free_board_list.html
           output: web
+        - title: 자유게시판 리스트 보기
+          url: multi_board_free_board_view.html
+          output: web
 
   # - title: PintOS Project
   #   output: web, pdf
