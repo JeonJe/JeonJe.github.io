@@ -50,6 +50,15 @@ entries:
     - title: 공지 게시판
       url: /multi_board_notice_board.html
       output: web, pdf
+      
+      subfolders:
+      - title: 자유게시판
+        output: web
+        subfolderitems:
+
+        - title: 자유게시판 리스트 가져오기
+          url: multi_board_free_board_list.html
+          output: web
 
   # - title: PintOS Project
   #   output: web, pdf
