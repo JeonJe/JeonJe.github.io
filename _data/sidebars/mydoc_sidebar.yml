@@ -51,20 +51,19 @@ entries:
       url: /multi_board_notice_board.html
       output: web, pdf
       
-      subfolders:
-      - title: 자유게시판
-        output: web
-        subfolderitems:
-
-        - title: 자유게시판 리스트 가져오기
-          url: multi_board_free_board_list.html
-          output: web
-        - title: 자유게시글 보기
-          url: multi_board_free_board_view.html
-          output: web
-        - title: 자유게시글 등록/수정/삭제
-          url: multi_board_free_board_write.html
-          output: web
+      # subfolders:
+      # - title: 자유게시판
+      #   output: web, pdf
+      #   subfolderitems:
+      #   - title: 자유게시판 리스트 가져오기
+      #     url: multi_board_free_board_list.html
+      #     output: web, pdf
+      #   - title: 자유게시글 보기
+      #     url: multi_board_free_board_view.html
+      #     output: web, pdf
+      #   - title: 자유게시글 등록/수정/삭제
+      #     url: multi_board_free_board_write.html
+      #     output: weweb, pdf
 
   # - title: PintOS Project
   #   output: web, pdf
