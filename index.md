@@ -7,7 +7,7 @@ permalink: index.html
 summary: 
 ---
 
-<!-- ## Multi Board Project
+## Multi Board Project
 - [멀티 게시판 포스팅](https://jeonje.github.io/multi_board_erd.html)
 
 ## PintOS Project
@@ -22,4 +22,4 @@ summary:
 ## Blog
 - [Oopy Blog](https://premise.oopy.io/)
 
-{% include links.html %} -->
+{% include links.html %}
