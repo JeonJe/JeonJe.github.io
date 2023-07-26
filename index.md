@@ -10,9 +10,6 @@ summary:
 ## Multi Board Project
 - [멀티 게시판 포스팅](https://jeonje.github.io/multi_board_erd.html)
 
-## PintOS Project
-- [다양한 주제 포스팅](https://jeonje.github.io/pintos_thread.html)
-
 ## Algorithm
 - [oopy blog algorithm 정리 목록](https://premise.oopy.io/12bc812e-d1cb-4412-848d-2a1f05862982)에서 싶은 다루고 싶은 문제 포스팅
 
