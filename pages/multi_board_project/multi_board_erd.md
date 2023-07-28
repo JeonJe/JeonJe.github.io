@@ -76,6 +76,10 @@ last_updated: 2023-06-28
 - category mapping 구조 변경 
   각 게시판의 게시글에서 child_code_value를 가지고 있기 때문에 해당 게시판 카테고리의 대분류와 세부카테고리를 알 수 있기 때문에 mapping 테이블이 필요없을 것으로 판단하였습니다. 이 부분은 개발을 진행을 진행하며 더 수정이 필요할 수 있습니다.
 
+### v5 (23.07.27)
+![multiboard v1](https://github.com/JeonJe/Free_Board/assets/43032391/d9de7fb1-5527-48d2-8b71-bebb3888ab2a)
+
+- [게시글/댓글 작성자 확인시 String userId -> Integer seqId 로 확인하도록 변경](https://github.com/JeonJe/Free_Board/multi_board_midterm_check)
 
 ### 추가 개선 포인트
 만약 `갤러리 게시판`에서 댓글을 추가할 수 있거나, `문의 게시판`에서 `첨부파일`을 첨부 하도록 요구조건이 변경된다면 첨부파일, 댓글이 어느 게시판 테이블에서 사용되고 있는지 식별할 수 있도록 추가적인 맵핑 테이블 또는 컬럼이 필요하게 됩니다. 이번 프로젝트에서는 짧은 기간에 핵심기능을 구현하기 위해 이런 확장성까지는 고려하지 않겠습니다.

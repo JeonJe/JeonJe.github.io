@@ -50,7 +50,6 @@ entries:
     - title: 공지 게시판
       url: /multi_board_notice_board.html
       output: web, pdf
-      
       subfolders:
       - title: 자유게시판
         output: web, pdf
@@ -64,7 +63,10 @@ entries:
         - title: 자유게시글 등록/수정/삭제
           url: multi_board_free_board_write.html
           output: weweb, pdf
-
+    - title: 중간점검
+      url: /multi_board_midterm_check.html
+      output: web, pdf
+      
   # - title: PintOS Project
   #   output: web, pdf
   #   folderitems:
