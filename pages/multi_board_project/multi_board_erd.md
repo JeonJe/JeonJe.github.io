@@ -77,7 +77,8 @@ last_updated: 2023-06-28
   각 게시판의 게시글에서 child_code_value를 가지고 있기 때문에 해당 게시판 카테고리의 대분류와 세부카테고리를 알 수 있기 때문에 mapping 테이블이 필요없을 것으로 판단하였습니다. 이 부분은 개발을 진행을 진행하며 더 수정이 필요할 수 있습니다.
 
 ### v5 (23.07.27)
-![multiboard v1](https://github.com/JeonJe/Free_Board/assets/43032391/d9de7fb1-5527-48d2-8b71-bebb3888ab2a)
+![multiboard v1](https://github.com/JeonJe/Free_Board/assets/43032391/b7b20347-b954-41d2-827e-520ad07c2b8a)
+391/d9de7fb1-5527-48d2-8b71-bebb3888ab2a)
 
 - [게시글/댓글 작성자 확인시 String userId -> Integer seqId 로 확인하도록 변경](https://github.com/JeonJe/Free_Board/multi_board_midterm_check)
 
