@@ -59,7 +59,6 @@ JWT 구조는 세가지 구성요소인 `Header`, `Payload`, `Signature`가 dot(
       ```
     - payload도 header와 마찬가지로 json이 `Base64Url`로 인코딩되고, JWT의 두 번째 부분을 구성합니다. 꼭 알아둬야 할 점은 암호화 된 것이 아니기 때문에 디코딩을 통해 json 내용을 볼 수 있습니다. 즉, header와 payload에는 비밀번호와 같은 `중요한 정보는 넣으면 안됩니다.`
 
-<br/>
 3. 마지막으로 z로 표현된 `Signature`를 살펴보겠습니다.
 - 서명 부분을 만들기 위해서는 인코딩된 헤더, 인코딩된 페이로드, 개인키(secretKey), 헤더에 명시된 알고리즘을 가져와서 서명해야합니다.
 ```javascript
