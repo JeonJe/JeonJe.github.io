@@ -1,5 +1,5 @@
 ---
-title: 자유게시글 보기
+title: 자유 게시글 보기
 tags: [multi board, free board]
 keywords: multi board, free board
 sidebar: mydoc_sidebar

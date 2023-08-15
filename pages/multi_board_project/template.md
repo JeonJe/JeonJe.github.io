@@ -30,26 +30,9 @@ last_updated: 2023-07-00
 
 
 ---
-### 결과
-
 ### Repository & Mapper
 
----
-## 
-### 화면
 
-
----
-### DTO
-
-
-
----
-### Service
-
-
----
-### Repository & Mapper
 
 ---
 ## 어려웠던점

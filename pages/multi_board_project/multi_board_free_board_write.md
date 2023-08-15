@@ -1,5 +1,5 @@
 ---
-title: 자유게시글 등록/수정/삭제
+title: 자유 게시글 등록/수정/삭제
 tags: [multi board, free board]
 keywords: multi board, free board
 sidebar: mydoc_sidebar
@@ -107,7 +107,7 @@ public ResponseEntity<APIResponse> deleteFreeBoard(HttpServletRequest request, @
     return ResponseEntity.status(HttpStatus.OK).body(apiResponse);
 }
 ```
-Controller에서 자유게시글 `save`과 `update` 처리는 구조가 매우 유사합니다.
+Controller에서 자유게시글 `save`과 `update` 구조가 매우 유사합니다.
 `delete`의 경우엔 자유 게시글에 댓글이 남아 있지 않을 경우에만 삭제를 할 수 있습니다.
 
 ---
