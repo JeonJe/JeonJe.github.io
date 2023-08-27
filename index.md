@@ -17,6 +17,6 @@ summary:
 - [다양한 주제 포스팅](https://jeonje.github.io/API_design.html)
 
 ## Blog
-- [Oopy Blog](https://premise.oopy.io/)
+- [Notion Blog](https://noto.li/mrj8Xf)
 
 {% include links.html %}
