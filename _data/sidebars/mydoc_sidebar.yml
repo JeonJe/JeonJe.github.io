@@ -102,15 +102,18 @@ entries:
     - title: 앞으로
       url: /multi_board_next_step.html
       output: web
+
   - title: ETC
     output: web
     folderitems:
       - title: API 디자인
         url: /API_design.html
         output: web
-
       - title: Failed to load command jekyll
         url: /issue_jekyll.html
+        output: web
+      - title: 도커 뽀개기
+        url: /wanted_backend_docker.html
         output: web
       
       

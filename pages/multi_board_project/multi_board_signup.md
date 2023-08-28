@@ -568,6 +568,6 @@ mysql.server restart
 
 ---
 ## 참고 
-[스프링부트 / JWT 방식으로 로그인 구현하기](https://ocblog.tistory.com/56)
-[RestControllerAdivce](https://velog.io/@banjjoknim/RestControllerAdvice)       
-[PathVariables 유효성검사](https://recordsoflife.tistory.com/369)
+- [스프링부트 / JWT 방식으로 로그인 구현하기](https://ocblog.tistory.com/56)
+- [RestControllerAdivce](https://velog.io/@banjjoknim/RestControllerAdvice)       
+- [PathVariables 유효성검사](https://recordsoflife.tistory.com/369)
