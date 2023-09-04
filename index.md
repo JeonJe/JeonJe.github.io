@@ -9,16 +9,15 @@ summary:
 
 
 ## Algorithm
-- [oopy blog algorithm 목록](https://noto.li/B59kRT)에서 공유하고 싶은 문제 포스팅
+- [풀었던 Algorithm 목록](https://noto.li/B59kRT)에서 공유하면 좋을 문제 포스팅
 
 ## Projects
-- 멀티 게시판 포스팅
-
-## API
-- API 관련 학습 내용 포스팅
+- [멀티 게시판 개발일지](https://jeonje.github.io/multi_board_erd.html)
   
 ## ETC
-- 다양한 주제 포스팅
+  - [API Design](https://jeonje.github.io/API_design.html)
+  - [도커 뽀개기](https://jeonje.github.io/wanted_backend_docker.html)
+  - [소주톤 후기](https://jeonje.github.io/sojuton.html)
 
 
 {% include links.html %}
