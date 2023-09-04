@@ -110,6 +110,10 @@ entries:
         output: web
       - title: Failed to load command jekyll
         url: /issue_jekyll.html
+        output: issue_jekyll.html
+        output: web
+      - title: 도커 뽀개기
+        url: /wanted_backend_docker.html
         output: webkend_docker.html
         output: web
       
