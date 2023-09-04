@@ -1,5 +1,4 @@
 # This is your sidebar TOC. The sidebar code loops through sections here and provides the appropriate formatting.
-
 entries:
 - title: sidebar
   product: 목록
@@ -116,6 +115,4 @@ entries:
         url: /wanted_backend_docker.html
         output: web
       
-      
-
 # Copyright 2021 Google LLC

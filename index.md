@@ -7,16 +7,18 @@ permalink: index.html
 summary: 
 ---
 
-## Multi Board Project
-- [멀티 게시판 포스팅](https://jeonje.github.io/multi_board_erd.html)
 
 ## Algorithm
-- [oopy blog algorithm 정리 목록](https://premise.oopy.io/12bc812e-d1cb-4412-848d-2a1f05862982)에서 싶은 다루고 싶은 문제 포스팅
+- [oopy blog algorithm 목록](https://noto.li/B59kRT)에서 공유하고 싶은 문제 포스팅
 
+## Projects
+- 멀티 게시판 포스팅
+
+## API
+- API 관련 학습 내용 포스팅
+  
 ## ETC
-- [다양한 주제 포스팅](https://jeonje.github.io/API_design.html)
+- 다양한 주제 포스팅
 
-## Blog
-- [Notion Blog](https://noto.li/mrj8Xf)
 
 {% include links.html %}
