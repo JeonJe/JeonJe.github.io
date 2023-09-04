@@ -1,53 +1,116 @@
 # This is your sidebar TOC. The sidebar code loops through sections here and provides the appropriate formatting.
 entries:
 - title: sidebar
-  product: Categories
+  product: 목록
   version: #6.0
-  folders:
+  type: frontmatter
 
+  folders:
   - title: Algorithm
-    output: web, pdf
+    output: web
     folderitems:
+    - title: BeakJoon 20166. 문자열 지옥에 빠진 호석
+      url: /BOJ_20166.html
+      output: web
     - title: BeakJoon 1043. 거짓말
       url: /BOJ_1043.html
-      output: web, pdf
+      output: web
     - title: BeakJoon  1072. 게임
       url: /BOJ_1072.html
-      output: web, pdf
+      output: web
     - title: BeakJoon 1561. 놀이공원
       url: /BOJ_1561.html
-      output: web, pdf
+      output: web
     - title: BeakJoon 4344. 평균은 넘겠지
       url: /BOJ_4344.html
-      output: web, pdf
+      output: web
     - title: BeakJoon 4836. 춤
       url: /BOJ_4836.html
-      output: web, pdf
+      output: web
     - title: BeakJoon 14620. 꽃길
       url: /BOJ_14620.html
-      output: web, pdf
-
+      output: web
 
   - title: Multi-Board Project
-    output: web, pdf
+    output: web
     folderitems:
+
     - title : ERD 설계
       url : /multi_board_erd.html
-      output: web, pdf
-    
-  - title: API
-    output: web, pdf
-    folderitems:
-      
-          
+      output: web
+    - title: API 설계 & 개발순서
+      url: /multi_board_API_design.html
+      output: web
+    - title: 회원가입
+      url: /multi_board_signup.html
+      output: web
+    - title: 로그인 with JWT
+      url: /multi_board_login.html
+      output: web
+    - title: 공지 게시판
+      url: /multi_board_notice_board.html
+      output: web
+
+      subfolders:
+      - title: 자유게시판
+        output: web
+
+        subfolderitems:
+        - title: 자유게시판 리스트 가져오기
+          url: /multi_board_free_board_list.html
+          output: web
+        - title: 자유게시글 보기
+          url: /multi_board_free_board_view.html
+          output: web
+        - title: 자유게시글 등록/수정/삭제
+          url: /multi_board_free_board_write.html
+          output: web
+
+    - title: 중간점검
+      url: /multi_board_midterm_check.html
+      output: web
+
+      subfolders:
+      - title: 갤러리게시판
+        output: web
+        subfolderitems:
+
+        - title: 갤러리게시판 가져오기
+          url: /multi_board_gallery_board_list.html
+          output: web
+        - title: 갤러리게시글 보기
+          url: /multi_board_gallery_board_view.html
+          output: web
+        - title: 갤러리게시글 등록/수정/삭제
+          url: /multi_board_gallery_board_write.html
+          output: web
+
+      - title: 문의게시판
+        output: web
+        subfolderitems:
+        - title: 문의게시판 가져오기
+          url: /multi_board_inquiry_board_list.html
+          output: web
+        - title: 문의게시글 보기
+          url: /multi_board_inquiry_board_view.html
+          output: web
+        - title: 문의게시글 등록/수정/삭제
+          url: /multi_board_inquiry_board_write.html
+          output: web
+
+    - title: 앞으로
+      url: /multi_board_next_step.html
+      output: web
+
   - title: ETC
-    output: web, pdf
+    output: web
     folderitems:
+      - title: API 디자인
+        url: /API_design.html
+        output: web
       - title: Failed to load command jekyll
         url: /issue_jekyll.html
-        output: web
-      - title: 도커 뽀개기
-        url: /wanted_backend_docker.html
+        output: webkend_docker.html
         output: web
       
 # Copyright 2021 Google LLC
