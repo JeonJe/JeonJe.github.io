@@ -78,7 +78,7 @@ last_updated: 2023-06-28
 
 ### v5 (23.07.27)
 ![multiboard v1](https://github.com/JeonJe/Free_Board/assets/43032391/b7b20347-b954-41d2-827e-520ad07c2b8a)
-391/d9de7fb1-5527-48d2-8b71-bebb3888ab2a)
+
 
 - [게시글/댓글 작성자 확인시 String userId -> Integer seqId 로 확인하도록 변경](https://github.com/JeonJe/Free_Board/multi_board_midterm_check)
 
