@@ -18,7 +18,7 @@ last_updated: 2023-06-28
 ---
 ## 개발환경
 
-- 프론트엔드 : @vue/cli 5.0.8(사용자), JSP(관리자)
+- 프론트엔드 : @vue/cli 5.0.8(사용자)
 - 백엔드 : SpringBoot v3.1.0, JDK17, Mybatis3 
 - 데이터베이스 : MariaDB 10.11.3
 - 서버 : Mac OS(Local), Linux Ubuntu 18.04(Server)
@@ -46,24 +46,6 @@ last_updated: 2023-06-28
     - 관리자 답변 여부에따른 미답변/답변완료 처리
 
 
-### 관리자 
-  - GNB(Global Na vigation Bar)
-  - 로그인
-    - 회원가입 없이 ID/PW는 DB에서 생성
-    - 세션 만료 30분
-    - 모든 관리자 페이지는 인증 사용자만 접근(세션 확인)
-  - 공지사항 관리
-    - 알림글로 설정된 공지글은 모든 페이지 제일 상단에 위치
-  - 자유게시판 관리
-    - 자유게시판 모든 내용 변경 가능(댓글 삭제 포함)
-  - 갤러리게시판 관리
-    - 갤러리게시판 모든 내용 변경 가능
-  - 문의게시판 관리
-    - 문의 답변 등록 
-  - 코드 관리(카테고리)
-      - 상위 코드 필수 입력
-      - 하위 코드번호는 추가 시 자동생성
-      - 하위 코드를 통한 각 게시판 카테고리 관리 
 
 ---
 ## ERD 설계
@@ -79,10 +61,32 @@ last_updated: 2023-06-28
 - `댓글`과 `답변`은 사용 목적이 명확하게 다르기 때문에 별도의 테이블로 분리하였습니다.
 - `유저` 테이블에서 `관리자`를 분리하여 보안적으로 더 안전하게 변경하였습니다.
 
+### v3(23.06.30)
+![v3](https://github.com/JeonJe/Free_Board/assets/43032391/92a41ced-116c-47fd-89a3-628547351477)
+- ~~cateory_board_mapping 테이블을 사용하여 parent_code_value와 board_id 사이 `many to many`관계 설정하였습니다. 이에따라 각 보드에서 child_code_value 컬럼은 삭제되었습니다. board_type은 어떤 보드인지 식별하는 컬럼입니다.~~
+- 각 테이블의 userId 컬럼 데이터타입을 INT형이 아닌 VARCHAR(255)로 변경하였습니다. 그 이유는 users 테이블 내에서  varchar형 user_id는 유니크하기 때문에 다른 테이블에서 이 컬럼 값으로 데이터가 식별 가능하기 때문입니다.
+- 잘못된 이름 수정하였습니다.
+- now() 위치를 수정하였습니다.
+- BOOLEAN -> TINYINT(1) 로 수정하였습니다
+
+### v4(23.07.06)
+
+![v4](https://github.com/JeonJe/Multi_Board/assets/43032391/ad1403a1-5124-41b8-af60-38f6e9c12c87)
+- 이름 수정 childe_code -> child_code, notice_table -> notice_board
+- category mapping 구조 변경 
+  각 게시판의 게시글에서 child_code_value를 가지고 있기 때문에 해당 게시판 카테고리의 대분류와 세부카테고리를 알 수 있기 때문에 mapping 테이블이 필요없을 것으로 판단하였습니다. 이 부분은 개발을 진행을 진행하며 더 수정이 필요할 수 있습니다.
+
+### v5 (23.07.27)
+![multiboard v1](https://github.com/JeonJe/Free_Board/assets/43032391/b7b20347-b954-41d2-827e-520ad07c2b8a)
+391/d9de7fb1-5527-48d2-8b71-bebb3888ab2a)
+
+- [게시글/댓글 작성자 확인시 String userId -> Integer seqId 로 확인하도록 변경](https://github.com/JeonJe/Free_Board/multi_board_midterm_check)
+
 ### 추가 개선 포인트
-만약 `갤러리 게시판`에서 댓글을 추가할 수 있거나, `문의 게시판`에서 `첨부파일`을 첨부 하도록 요구조건이 변경된다면 이미지, 댓글 테이블 등에 어느 테이블에서 해당 테이블을
-참조하고 있는지 식별할 수 있도록 ERD 구조를 변경해야합니다.
+만약 `갤러리 게시판`에서 댓글을 추가할 수 있거나, `문의 게시판`에서 `첨부파일`을 첨부 하도록 요구조건이 변경된다면 첨부파일, 댓글이 어느 게시판 테이블에서 사용되고 있는지 식별할 수 있도록 추가적인 맵핑 테이블 또는 컬럼이 필요하게 됩니다. 이번 프로젝트에서는 짧은 기간에 핵심기능을 구현하기 위해 이런 확장성까지는 고려하지 않겠습니다.
 
 
+## 링크
+[프로젝트 ERD확인](https://www.erdcloud.com/d/Em46o5hy4evaZy4oN)
 
   
