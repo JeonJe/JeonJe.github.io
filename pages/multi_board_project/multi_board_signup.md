@@ -12,7 +12,7 @@ last_updated: 2023-07-06
 
 
 이제 지난번에 설계한 ERD을 토대로 테이블을 생성하고 기능 구현을 진행해보겠습니다.
-![v3](https://github.com/JeonJe/Free_Board/assets/43032391/92a41ced-116c-47fd-89a3-628547351477)
+![multiboard v1](https://github.com/JeonJe/Free_Board/assets/43032391/b7b20347-b954-41d2-827e-520ad07c2b8a)
 
 
 ## 회웝가입 

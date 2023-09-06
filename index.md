@@ -18,7 +18,7 @@ summary:
   - [API Design](https://jeonje.github.io/API_design.html)
   - [도커 뽀개기](https://jeonje.github.io/wanted_backend_docker.html)
   - [소주톤 후기](https://jeonje.github.io/sojuton.html)
-  - [스프링부트 뽀개기](https://jeonje.github.io/springboot.html)
+  <!-- - [스프링부트 뽀개기](https://jeonje.github.io/springboot.html) -->
 
 
 {% include links.html %}
