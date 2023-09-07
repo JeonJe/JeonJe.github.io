@@ -101,6 +101,13 @@ entries:
     - title: 앞으로
       url: /multi_board_next_step.html
       output: web
+  - title: JAVA & SPRING
+    output: web
+    folderitems:
+      - title: filter, dispatcher servlet, interceptor
+        url: /filter_dispatcher_interceptor.html
+        output: web
+    
 
   - title: ETC
     output: web
@@ -117,7 +124,7 @@ entries:
       - title: 소주톤 얼레벌레 바캉스 후기 
         url: /sojuton.html
         output: web
-      # - title: 스프링부트 뽀개기
-      #   url: /springboot.html
-      #   output: web
+      - title: 변경에 유연한 코드 설계
+        url: /wanted_backend_cleancode.html
+        output: web
 # Copyright 2021 Google LLC
