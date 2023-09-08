@@ -15,7 +15,7 @@ summary:
 - [멀티 게시판 개발일지](https://jeonje.github.io/multi_board_erd.html)
   
 ## JAVA & SPRING
-- [변경에 유연한 코드 설계 : 클린코드와 SOLID까지](https://jeonje.github.io/filter_dispatcher_interceptor.html)
+- [Filter, Dispatcher Servlet, Interceptor](https://jeonje.github.io/filter_dispatcher_interceptor.html)
 
 ## ETC
   - [API Design](https://jeonje.github.io/API_design.html)
