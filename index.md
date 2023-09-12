@@ -7,7 +7,6 @@ permalink: index.html
 summary: 
 ---
 
-
 ## Algorithm
 - [풀었던 Algorithm 목록](https://noto.li/B59kRT)에서 공유하면 좋을 문제 포스팅
 
@@ -17,6 +16,8 @@ summary:
 ## JAVA & SPRING
 - [Filter, Dispatcher Servlet, Interceptor](https://jeonje.github.io/filter_dispatcher_interceptor.html)
 
+## Database
+<!-- - [모의면접으로 학습하는 데이터베이스 스터디](https://jeonje.github.io/db_stduy_1.html) -->
 ## ETC
   - [API Design](https://jeonje.github.io/API_design.html)
   - [도커 뽀개기](https://jeonje.github.io/wanted_backend_docker.html)

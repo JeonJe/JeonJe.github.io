@@ -107,7 +107,13 @@ entries:
       - title: filter, dispatcher servlet, interceptor
         url: /filter_dispatcher_interceptor.html
         output: web
-    
+  
+  - title: Database
+    output: web
+    folderitems:
+      # - title: 모의면접으로 학습하는 데이터베이스 스터디 (1/4)
+      #   url: /db_study_1.html
+      #   output: web
 
   - title: ETC
     output: web
@@ -126,5 +132,8 @@ entries:
         output: web
       - title: 변경에 유연한 코드 설계
         url: /wanted_backend_cleancode.html
+        output: web
+      - title: 타입스크립트
+        url: /typescript.html
         output: web
 # Copyright 2021 Google LLC
