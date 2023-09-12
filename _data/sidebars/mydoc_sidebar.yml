@@ -111,9 +111,9 @@ entries:
   - title: Database
     output: web
     folderitems:
-      # - title: 모의면접으로 학습하는 데이터베이스 스터디 (1/4)
-      #   url: /db_study_1.html
-      #   output: web
+      - title: 모의면접으로 학습하는 데이터베이스 스터디 (1/4)
+        url: /db_study_1.html
+        output: web
 
   - title: ETC
     output: web
