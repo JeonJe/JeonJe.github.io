@@ -17,7 +17,7 @@ summary:
 - [Filter, Dispatcher Servlet, Interceptor](https://jeonje.github.io/filter_dispatcher_interceptor.html)
 
 ## Database
-- [모의면접으로 학습하는 데이터베이스 스터디](https://jeonje.github.io/filesystem_database.html)
+- [파일시스템과 데이터베이스](https://jeonje.github.io/filesystem_database.html)
 
 ## ETC
   - [API Design](https://jeonje.github.io/API_design.html)
