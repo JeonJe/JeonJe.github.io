@@ -111,8 +111,8 @@ entries:
   - title: Database
     output: web
     folderitems:
-      - title: 모의면접으로 학습하는 데이터베이스 스터디 (1/4)
-        url: /db_study_1.html
+      - title: 파일시스템과 데이터베이스
+        url: /filesystem_database.html
         output: web
 
   - title: ETC

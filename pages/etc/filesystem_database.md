@@ -1,9 +1,9 @@
 ---
-title: "모의면접으로 학습하는 데이터베이스 스터디 (1/4)"
+title: "파일시스템과 데이터베이스"
 tags: [Database]
 keywords: Database
 sidebar: mydoc_sidebar
-permalink: db_study_1.html
+permalink: filesystem_database.html
 folder: etc
 last_updated: 2023-09-11
 ---
