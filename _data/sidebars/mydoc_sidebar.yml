@@ -136,4 +136,7 @@ entries:
       - title: 타입스크립트
         url: /typescript.html
         output: web
+      - title: Composition API
+        url: /composition_API.html
+        output: web
 # Copyright 2021 Google LLC
