@@ -14,7 +14,7 @@ last_updated: 2023-09-14
 최근 Vue2로 작성된 사내 서비스를 Vue3 Composition API + Nuxt + TypeScript 형태로 
 전환을 진행 중에 있습니다. 
 
-Composition API의 장점은 Options API와 달리 분산되어 있는 코드들을 그룹핑하기 때문에 관련 코드들을 좀 더 쉽게 파악할 수 있고, Composables을 활용하여 재상용성을 개선할 수 있습니다. 또한, 타입스크립트의 최적화와 타입 추론 성능 개선에서도 이점이 있습니다.
+Composition API의 장점은 Options API와 달리 분산되어 있는 코드들을 그룹핑하기 때문에 관련 코드들을 좀 더 쉽게 파악할 수 있고, Composables을 활용하여 재사용성을 개선할 수 있습니다. 또한, 타입스크립트의 최적화와 타입 추론 성능 개선에서도 이점이 있습니다.
 
 
 ## 컴포넌트 Props의 타이핑
