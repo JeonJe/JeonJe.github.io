@@ -25,7 +25,7 @@ summary:
   - [소주톤 후기](https://jeonje.github.io/sojuton.html)
   - [변경에 유연한 코드 설계 : 클린코드와 SOLID까지](https://jeonje.github.io/wanted_backend_cleancode.html)
   - [타입스크립트](https://jeonje.github.io/typescript.html)
-  - [Composition API](https://jeonje.github.io/composition_api.html)
+  - [Composition API](https://jeonje.github.io/composition_API.html)
   <!-- - [스프링부트 뽀개기](https://jeonje.github.io/springboot.html) -->
 
 
