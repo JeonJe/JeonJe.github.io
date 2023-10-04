@@ -95,7 +95,7 @@ function deleteUser(user: User) {
 }
 ```
 
-자바스크립트에서 사용할 수 있는 boolean, bigint, null, number, string, symbol, object, undeinfed 는 인터페이스에 추가할 수 있습니다. 그 외에도 몇가지 타입을 사용할 수 있습니다.
+자바스크립트에서 사용할 수 있는 boolean, bigint, null, number, string, symbol, object, undefined 는 인터페이스에 추가할 수 있습니다. 그 외에도 몇가지 타입을 사용할 수 있습니다.
 
 - any : 무엇이든 허용
 - unknown : 모른다. any타입과 동일하게 모든 값을 허용은 하지만, 어떤 타입이 될지 모르기 때문에 함부로 프로퍼티나 연산을 할 수 있다. 조건문으로 타입검사를 하는 경우 정상 동작 
