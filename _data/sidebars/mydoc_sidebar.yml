@@ -142,4 +142,7 @@ entries:
       - title: Optional Chaining
         url: /optional_chaining.html
         output: web
+      - title: git
+        url: /git.html
+        output: web
 # Copyright 2021 Google LLC
