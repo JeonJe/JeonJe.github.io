@@ -144,5 +144,18 @@ entries:
         output: web
       - title: git
         url: /git.html
-        output: web
+        output: web;
+        subfolders:
+        - title: 백엔드 시스템 아키텍쳐
+          output: web
+          subfolderitems:
+          - title: 사전과제
+            url: /wanted_backend_architecture.html
+            output: web
+          - title: 사용자 수에 따른 규모를 확장하는 방법(1/2)
+            url: /wanted_backend_architecture2.html
+            output: web
+          - title: 사용자 수에 따른 규모를 확장하는 방법(2/2)
+            url: /wanted_backend_architecture3.html
+            output: web
 # Copyright 2021 Google LLC
