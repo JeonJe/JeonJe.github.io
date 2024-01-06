@@ -110,7 +110,9 @@ entries:
       - title: 실전 자바 - 기본편
         url: /java_basic.html
         output: web
-        
+      - title: 스프링 로컬 캐시 사용하기
+        url: /spring_local_cache.html
+        output: web
   - title: Database
     output: web
     folderitems:
