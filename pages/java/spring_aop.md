@@ -15,7 +15,7 @@ last_updated: 2024-01-14
 
 여러 클래스에서 반복하는 코드는 모듈화하여 공통 관심사로 분리하여 Aspect로 정의하고, 정의한 Aspect를 적용할 메소드나 클래스에 적용하여 핵심 관심사와 공통 관심사를 분리 시킬 수 있다.
 
-## Spring AOP 주요 용어
+### Spring AOP 주요 용어
 ![](https://i.imgur.com/aq5WiHQ.png)
 - Aspect : 공통적인 기능을 모듈화 한 것
 - Advice : Aspect의 기능을 정의한 것, 메소드 실행 전/후/ 예외 처리 발생 시 실행되는 코드를 의미
@@ -30,7 +30,7 @@ last_updated: 2024-01-14
 - `AfterReturning` : 타겟 메소드가 정상적으로 실행되고 반환된 후에 Advice 실행
 - `AfterThrowing` : 타겟 메소드에서 예외 발생 시 Advice 실행
 
-## 동작 원리 
+### 동작 원리 
 우선 스프링 AOP를 이해하기 위해 프록시 팩토리와 빈 후처리기에 대해 알아본다.
 
 ### 프록시 팩토리 
@@ -43,7 +43,8 @@ JDK 동적 프록시는 인터페이스 기반이고, CGLIB는 구체 클래스 
 ### Advice 도입
 
 ![](https://i.imgur.com/aM2JClg.png)
-Advice 개념으로 개발자는 Advice만 구현하면 되고, 구혆을 위해 MethodInterceptor 인터페이스를 구현한다.
+
+Advice 개념으로 개발자는 Advice만 구현하면 되고, 구현을 위해 MethodInterceptor 인터페이스를 구현한다.
 ```java
 package org.aopalliance.intercept;
 public interface MethodInterceptor extends Interceptor {
@@ -70,10 +71,11 @@ public interface MethodInterceptor extends Interceptor {
 
 ### 빈 후처리기 
 ![](https://i.imgur.com/jOHPB1B.png)
+
 스프링이 빈 저장소에 등록하기 위해 생성한 객체를 등록하기 직전에 조작할 때 사용한다.
 
 
-**동작과정**
+### **동작과정**
 - @Bean 어노테이션으로 빈 대상이 되는 객체를 생성한다.
 - 생성된 객체는 빈 저장소에 등록하기 직전에 빈 후처리기에 전달된다.
 - 빈 후처리기는 이 빈 객체를 조작하거나 다른 객체로 바꿔칠 수 있다.
@@ -86,6 +88,7 @@ public interface MethodInterceptor extends Interceptor {
 
 빈 후처리기의 동작과정은 아래와 같다.
 ![](https://i.imgur.com/JqLSg1c.png)
+
 1. `@Bean` 어노테이션으로 스프링 빈 객체를 생성한다.
 2. 생성된 객체는 빈 저장소에 등록되기 전에 빈 후처리기에 전달된다.
 3. 모든 Advisor 빈을 조회하고, Pointcut을 통해 클래스와 메서드 정보를 매칭하며 프록시에 적용할 타겟인지 체크한다.
@@ -134,13 +137,9 @@ public interface MethodInterceptor extends Interceptor {
 > @Bean으로 등록하거나, @Component로 컴포넌트 스캔을 사용하거나 @Import를 사용한다.
 
 
-
-
 # 어떻게 활용할 수 있을까?
 
-개발 환경에서 서비스 테스트 시 비지니스 로직에 포함된 문자를 받고싶지 않을 때 문자 발송 관련 메소드에 AOP를 적용하여 문자 발송 ON/OFF 기능을 추가한다.
-
-
+개발 환경에서 서비스 테스트 시 비지니스 로직에 포함된 문자를 받고싶지 않을 때 문자 발송 관련 메소드에 AOP를 적용하여 문자 발송 ON/OFF 기능을 추가해보았다. 
 
 ```java
 // Common > aop 
