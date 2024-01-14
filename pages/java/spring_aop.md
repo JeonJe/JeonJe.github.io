@@ -22,6 +22,8 @@ last_updated: 2024-01-14
 - Target : Aspect 적용 대상 (메소드, 클래스 등)
 - Joint Point : Aspecet가 적용될 수 있는 시점(메소드 실행 전, 후 등)
 - Point Cut : Advice를 적용할 메소드의 범위를 지정
+
+
 ### 주요 어노테이션
 - `@Aspect` : 해당 클래스를 Apect로 사용 
 - `Around` : 타겟 메소드 실행 전 / 후 / 예외 발생 시 Advice 실행 
@@ -52,12 +54,12 @@ public interface MethodInterceptor extends Interceptor {
 }
 ```
 
-- MethodInterceptor
+- **MethodInterceptor**
 	- CGLIB의 프록시 기능을 정의 할 때 사용하는 이름과 동일하지만 패키지가 다르다.
 	- MethodInterceptor는 Interceptor를 상속하고, Interceptor는 Advice를 상속한다.
-- MethodInvocation invocation
+- **MethodInvocation** invocation
 	- 다음 메서드를 호출하는 방법, 현재 프록시 객체 인스턴스, 메소드 정보 등이 포함되어 있다.
-- invocation.proceed()
+- **invocation.proceed()**
 	- 타겟 클래스의 대상 메소드를 호출하고 결과를 반환받는다.
 	- JDK 동적 프록시와 CGLIB를 사용할 때는 인자로 target 과 args를 전달해야 했지만, 프록시 팩토리를 사용하면 프록시를 생성하는 단계에서 target과 args를 전달하기 때문에 invocation이 이미 가지고 있다.
 
@@ -119,7 +121,7 @@ public interface MethodInterceptor extends Interceptor {
 - `(String, ..) : 메서드의 첫 번째 파라미터는 String 타입으로 시작해야 하고, 나머지 파라미터 수와 무관하게 모든 파라미터, 모든 타입을 허용한다. ( Ex:// (String) , (String, xxx) , (String, xxx, xxx) 허용 )`
 
 
-# ASPECT 
+## ASPECT 
 
 `@Aspect` 어노테이션을 사용하면 Advisor를 쉽게 사용할 수 있다.
 동작과정은 아래와 같다.
@@ -137,7 +139,7 @@ public interface MethodInterceptor extends Interceptor {
 > @Bean으로 등록하거나, @Component로 컴포넌트 스캔을 사용하거나 @Import를 사용한다.
 
 
-# 어떻게 활용할 수 있을까?
+## AOP를 어떻게 활용할 수 있을까?
 
 개발 환경에서 서비스 테스트 시 비지니스 로직에 포함된 문자를 받고싶지 않을 때 문자 발송 관련 메소드에 AOP를 적용하여 문자 발송 ON/OFF 기능을 추가해보았다. 
 
@@ -221,11 +223,11 @@ public class SmsController {
 ```
 
 
-# 개선 포인트 
+## 개선 포인트 
 현재는 특정 서버에 curl 요청을 보내 sms을 on/off 하고 있다. 이 구조는 sms을 on/off 해야하는 대상 서버가 많아지면 번거로워질 수 있다. 편의성을 위해 MQ을 통해 on/off 메시지를 다른 서버로 전파하고, 젠킨스에 버튼 형식으로 스크립트를 등록하여 쉽게 on/off 할 수 있도록 구성을 해볼 예정이다.
 
 
-# 참고 
+## 참고 
 - [[Java] Spring Boot AOP(Aspect-Oriented Programming) 이해하고 설정하기](https://adjh54.tistory.com/133#:~:text=%2D%20Spring%20AOP%EB%8A%94%20%EC%8A%A4%ED%94%84%EB%A7%81%20%ED%94%84%EB%A0%88%EC%9E%84,%ED%96%A5%EC%83%81%ED%95%98%EB%8A%94%EB%8D%B0%20%EB%8F%84%EC%9B%80%EC%9D%84%20%EC%A4%8D%EB%8B%88%EB%8B%A4.)
 - [Spring-AOP 총 정리 ](https://velog.io/@backtony/Spring-AOP-%EC%B4%9D%EC%A0%95%EB%A6%AC)
 - [# Spring - 프록시 팩토리와 빈 후처리기](https://velog.io/@backtony/Spring-%ED%94%84%EB%A1%9D%EC%8B%9C-%ED%8C%A9%ED%86%A0%EB%A6%AC%EC%99%80-%EB%B9%88-%ED%9B%84%EC%B2%98%EB%A6%AC%EA%B8%B0)
