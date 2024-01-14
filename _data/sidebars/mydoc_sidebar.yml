@@ -113,6 +113,9 @@ entries:
       - title: 스프링 로컬 캐시 사용하기
         url: /spring_local_cache.html
         output: web
+      - title: 스프링 AOP
+        url: /spring_aop.html
+        output: web
   - title: Database
     output: web
     folderitems:
