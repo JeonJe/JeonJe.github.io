@@ -226,6 +226,13 @@ public class SmsController {
 ## 개선 포인트 
 현재는 특정 서버에 curl 요청을 보내 sms을 on/off 하고 있다. 이 구조는 sms을 on/off 해야하는 대상 서버가 많아지면 번거로워질 수 있다. 편의성을 위해 MQ을 통해 on/off 메시지를 다른 서버로 전파하고, 젠킨스에 버튼 형식으로 스크립트를 등록하여 쉽게 on/off 할 수 있도록 구성을 해볼 예정이다.
 
+→ MQ를 사용하여 on/off를 다른 서버에 전파하지 않고 데이터베이스 의 특정 컬럼을 기준으로 on/off 상태를 저장할 수 있도록 변경하였다. 이렇게 변경함으로써 여러 서버에 요청을 보내지 않고도 SMS을 on/off할 수 있게 되었다. 
+
+또한, 젠킨스 버튼이 아닌 관리자 페이지의 토글로 on/off를 직관적으로 표현하였다. off 시엔 confirm alert을 발생 시킴으로써 한번 더 사용자에게 휴먼 에러를 낮출 수 있다.
+
+![](https://i.imgur.com/fCKOXRq.png)
+
+위 방식의 단점은 서버마다 SMS 발송을 컨트롤 할 수 없는 것이다. 또한, SMS 발송 여부를 확인하기 위해 DB 조회가 1회 추가 되었다. 만약 이 DB 조회로 인해 성능 저하가 있다고 판단된다면, 캐시 도입을 고려해볼 것이다.
 
 ## 참고 
 - [[Java] Spring Boot AOP(Aspect-Oriented Programming) 이해하고 설정하기](https://adjh54.tistory.com/133#:~:text=%2D%20Spring%20AOP%EB%8A%94%20%EC%8A%A4%ED%94%84%EB%A7%81%20%ED%94%84%EB%A0%88%EC%9E%84,%ED%96%A5%EC%83%81%ED%95%98%EB%8A%94%EB%8D%B0%20%EB%8F%84%EC%9B%80%EC%9D%84%20%EC%A4%8D%EB%8B%88%EB%8B%A4.)
