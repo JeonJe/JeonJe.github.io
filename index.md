@@ -43,6 +43,7 @@ summary:
 - [실전 자바 - 기본편](/java_basic.html)
 - [스프링 로컬 캐시 사용하기](/spring_local_cache.html)
 - [스프링 AOP](/spring_aop.html)
+- [스프링 테스트 코드](/spring_test_code.html)
 
 ## 데이터베이스
 - [파일시스템과 데이터베이스](/filesystem_database.html)
@@ -57,6 +58,7 @@ summary:
 - [Composition API](/composition_API.html)
 - [Optional Chaining](/optional_chaining.html)
 - [git](/git.html)
+- [리팩토링](/refactoring_1.html)
 - 백엔드 시스템 아키텍쳐
   - [사전과제](/wanted_backend_architecture.html)
   - [사용자 수에 따른 규모를 확장하는 방법(1/2)](/wanted_backend_architecture2.html)

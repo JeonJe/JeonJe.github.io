@@ -153,6 +153,9 @@ entries:
       - title: Optional Chaining
         url: /optional_chaining.html
         output: web
+      - title: 리팩토링1
+        url: /refactoring_1.html
+        output: web
       - title: git
         url: /git.html
         output: web;
