@@ -109,7 +109,7 @@ public static class Detail extends MappingVO {
 				param7,
 		);  
 	} else if ("Y".equals(detail.getUpdateYn())) {  
-		emrDoctorMappingService.updateEmrDoctorMapping(new MappingVO.Update(  
+		mappingService.updateMapping(new MappingVO.Update(  
 				param1,
 				param2,
 				param3,
@@ -149,7 +149,6 @@ public boolean hasChanges(MappingVO other) {
     if (other == null) return true;  
   
     return this.seq != other.seq  
-            || this.doctorSeq != other.doctorSeq  
             || !Objects.equals(this.Name, other.Name)  
             || this.Id != other.Id  
             ....
@@ -170,7 +169,7 @@ public boolean hasChanges(MappingVO other) {
      
             List<String> externalNames = externalInfos
                     .stream()
-                    .map(ResponseVO.Info::getDoctorName)
+                    .map(ResponseVO.Info::getName)
                     .collect(Collectors.toList());
                     
             List<InternalInfo> InternalInfos = mappingService.findInternalInfoByExternalNamesAndSeq(externalNames, mapping.Seq());
