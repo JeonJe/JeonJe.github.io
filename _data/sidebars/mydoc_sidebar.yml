@@ -119,6 +119,9 @@ entries:
       - title: 스프링 테스트 코드
         url: /spring_test_code.html
         output: web
+      - title: 스프링 MVC 1
+        url: /spring_mvc_1.html
+        output: web
   - title: Database
     output: web
     folderitems:
