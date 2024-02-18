@@ -1,10 +1,10 @@
 ---
 title: "파일시스템과 데이터베이스"
 tags: [Database]
-keywords: Database
+keywords: 파일시스템, 데이터베이스
 sidebar: mydoc_sidebar
 permalink: filesystem_database.html
-folder: etc
+folder: database
 last_updated: 2023-09-11
 ---
 ## 파일시스템과 데이터베이스의 차이점

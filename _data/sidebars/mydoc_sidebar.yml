@@ -6,7 +6,7 @@ entries:
   type: frontmatter
 
   folders:
-  - title: Algorithm
+  - title: 알고리즘
     output: web
     folderitems:
     - title: BeakJoon 20166. 문자열 지옥에 빠진 호석
@@ -31,7 +31,7 @@ entries:
       url: /BOJ_14620.html
       output: web
 
-  - title: Multi-Board Project
+  - title: 멀티 게시판 프로젝트
     output: web
     folderitems:
 
@@ -101,7 +101,7 @@ entries:
     - title: 앞으로
       url: /multi_board_next_step.html
       output: web
-  - title: JAVA & SPRING
+  - title: 자바와 스프링
     output: web
     folderitems:
       - title: filter, dispatcher servlet, interceptor
@@ -122,11 +122,14 @@ entries:
       - title: 스프링 MVC 1
         url: /spring_mvc_1.html
         output: web
-  - title: Database
+  - title: 데이터베이스
     output: web
     folderitems:
       - title: 파일시스템과 데이터베이스
         url: /filesystem_database.html
+        output: web
+      - title: 트랜잭션
+        url: /real_my_sql_8_transaction.html
         output: web
 
   - title: ETC

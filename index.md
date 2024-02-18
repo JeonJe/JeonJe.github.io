@@ -7,8 +7,8 @@ permalink: index.html
 summary: 
 ---
 
-## Algorithm
-- [풀었던 Algorithm 목록](https://noto.li/B59kRT)에서 공유하면 좋을 문제 포스팅
+## 알고리즘
+- [Solved Algorithm list](https://noto.li/B59kRT)
 - [BeakJoon 20166. 문자열 지옥에 빠진 호석](/BOJ_20166.html)
 - [BeakJoon 1043. 거짓말](/BOJ_1043.html)
 - [BeakJoon 1072. 게임](/BOJ_1072.html)
@@ -38,7 +38,7 @@ summary:
 - [중간점검](/multi_board_midterm_check.html)
 - [앞으로](/multi_board_next_step.html)
 
-## JAVA & SPRING
+## 자바와 스프링
 - [filter, dispatcher servlet, interceptor](/filter_dispatcher_interceptor.html)
 - [실전 자바 - 기본편](/java_basic.html)
 - [스프링 로컬 캐시 사용하기](/spring_local_cache.html)
@@ -47,6 +47,7 @@ summary:
 
 ## 데이터베이스
 - [파일시스템과 데이터베이스](/filesystem_database.html)
+- [Real MySQL 8 트랜잭션](/real_my_sql_8_transaction.html)
 
 ## ETC
 - [API 디자인](/API_design.html)
