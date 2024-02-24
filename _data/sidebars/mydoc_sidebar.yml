@@ -135,6 +135,9 @@ entries:
   - title: ETC
     output: web
     folderitems:
+      - title: 2023년 회고(/w 크래프톤 정글)
+        url: /retrospective_of_2023.html
+        output: web
       - title: API 디자인
         url: /API_design.html
         output: web

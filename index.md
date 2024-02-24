@@ -50,6 +50,7 @@ summary:
 - [Real MySQL 8 트랜잭션](/real_my_sql_8_transaction.html)
 
 ## ETC
+- [2023년 회고 (/w 크래프톤 정글)](/retrospective_of_2023.html)
 - [API 디자인](/API_design.html)
 - [Failed to load command jekyll](/issue_jekyll.html)
 - [도커 뽀개기](/wanted_backend_docker.html)
