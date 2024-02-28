@@ -51,6 +51,7 @@ summary:
 
 ## ETC
 - [2023년 회고 (/w 크래프톤 정글)](/retrospective_of_2023.html)
+- [크래프톤 정글 후기](/retrospective_of_krafton_jungle.html)
 - [API 디자인](/API_design.html)
 - [Failed to load command jekyll](/issue_jekyll.html)
 - [도커 뽀개기](/wanted_backend_docker.html)
