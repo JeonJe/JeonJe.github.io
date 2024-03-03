@@ -47,16 +47,16 @@ Given a string array `words`, return _an array of all characters that show up 
 ```java
 class Solution {
     public List<String> commonChars(String[] words) {
-          int numOfAlphabet = 26;
+        int numOfAlphabet = 26;
         int[] freqCharInWords = new int[numOfAlphabet];
         Arrays.fill(freqCharInWords, Integer.MAX_VALUE);
 
         for(int i = 0; i < words.length; i++){
             int[] freqCharInAlpha = new int[numOfAlphabet];
-            Arrays.fill(freqCharInAlpha, 0);
+            //Arrays.fill(freqCharInAlpha, 0);
 
             for(char c : words[i].toCharArray()){
-                int charToInt = (int)(c -'a');
+                int charToInt = (int)(c -'a'); // 타입캐스팅 생략 가능
                 freqCharInAlpha[charToInt]++;
             }
 
@@ -66,13 +66,10 @@ class Solution {
         }
         List<String> answer = new ArrayList<>();
         for(int i = 0 ; i < numOfAlphabet; i++ ){
-            if(freqCharInWords[i] > 0) {
                 while(freqCharInWords[i] > 0){
                     answer.add( Character.toString (i + 'a'));
                     freqCharInWords[i]--;
                 }
-
-            }
         }
         return answer;
     }
