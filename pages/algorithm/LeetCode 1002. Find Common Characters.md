@@ -88,6 +88,6 @@ class Solution {
 
 다시 숫자를 문자로 바꾸기 위해서는 int 타입 숫자에 알파벳 기준 `a`을 더해 character 타입으로 타입 캐스팅 한 뒤, Character의 `toString`을 사용하여 String형태로 변환한다.
 
-> Character toString은 내부적으로 String.valueOf 메소드를 호출한다.
+> Character `toString`은 내부적에서 `String.valueOf` 메소드를 호출한다.
 
-> valueOf 메소드는 String 생성자를 호출한다 `return new String(data)`
+> `valueOf` 메소드는 내부에서 String 생성자를 호출한다 `return new String(data)`
