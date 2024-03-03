@@ -3,7 +3,7 @@ title: LeetCode 1002. Find Common Characters
 tags: [leetcode, array, string]
 keywords: LeetCode 1002. Find Common Characters
 sidebar: mydoc_sidebar
-permalink: LeetCode 1002. Find Common Characters.html
+permalink: find-common-characters.html
 folder: algorithm
 last_updated: 2024-03-03
 ---

@@ -16,7 +16,7 @@ summary:
 - [BeakJoon 4344. 평균은 넘겠지](/BOJ_4344.html)
 - [BeakJoon 4836. 춤](/BOJ_4836.html)
 - [BeakJoon 14620. 꽃길](/BOJ_14620.html)
-- [LeetCode 1002. Find Common Characters](/LeetCode 1002. Find Common Characters.html)
+- [LeetCode 1002. Find Common Characters](/find-common-characters.html)
 
 ## 멀티보드 프로젝트
 - [ERD 설계](/multi_board_erd.html)
