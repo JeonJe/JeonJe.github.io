@@ -8,10 +8,13 @@ folder: algorithm
 last_updated: 2024-03-03
 ---
 
-- URL : https://leetcode.com/problems/find-common-characters/submissions/
-- Tags : 배열, String
-- created: 2024-03-03 21:49
-- last-updated: 2024-03-03 21:49
+URL : https://leetcode.com/problems/find-common-characters
+
+Tags : Array, String 
+
+created: 2024-03-03 21:49 
+
+last-updated: 2024-03-03 21:49
 
 ## 문제
 Given a string array `words`, return _an array of all characters that show up in all strings within the_ `words` _(including duplicates)_. You may return the answer in **any order**.
@@ -81,7 +84,7 @@ class Solution {
 
 자바에서 `char`타입을 `int`타입으로 변환할 때는 타입캐스팅을 활용한다. 이번 문제에서 `a`를 숫자 0, `b`를 숫자 1 ... `z` 를 숫자 25로 치환이 필요하여 `(int)(char c - ‘a’)` 로 변환 했다. 
 
-타입캐스팅 시 명시적 타입캐스팅 사용하였는데 묵시적 타입캐스팅으로 (int)를 생략하여 코드를 작성할 수 있다.
+타입캐스팅 시 명시적 타입캐스팅 사용하였는데 묵시적 타입캐스팅으로 `(int)`를 생략하여 코드를 작성할 수 있다.
 
 다시 숫자를 문자로 바꾸기 위해서는 int 타입 숫자에 알파벳 기준 `a`을 더해 character 타입으로 타입 캐스팅 한 뒤, Character의 `toString`을 사용하여 String형태로 변환한다.
 
