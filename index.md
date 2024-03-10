@@ -17,6 +17,7 @@ summary:
 - [BeakJoon 4836. 춤](/BOJ_4836.html)
 - [BeakJoon 14620. 꽃길](/BOJ_14620.html)
 - [LeetCode 1002. Find Common Characters](/find-common-characters.html)
+- [LeetCode 56. Merge Intervals](/merge-intervals.html)
 
 ## 멀티보드 프로젝트
 - [ERD 설계](/multi_board_erd.html)
