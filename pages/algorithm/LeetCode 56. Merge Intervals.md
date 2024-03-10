@@ -42,12 +42,12 @@ Explanation: Intervals [1,4] and [4,5] are considered overlapping.
 - `0 <= starti<= endi<= 10^4`
 
 ## 접근 방법
-- 겹치는 부분을 확인을 하려면 각 인터벌의 `start` 값을 기준으로 오름차순 정렬이 필요하다.
+- 겹치는 부분을 확인 하려면 각 인터벌의 `start` 값 기준으로 오름차순 정렬이 필요하다.
 - 현재 인터벌 값과 이전 인터벌 값을 비교한다.
-    - 만약 이전 인터벌의 끝(`end`)보다 현재 인터벌 시작(`start`)이 크다면 이전 인터벌 값은 `non-overlapping` 인터벌이 된다.즉, Ouput에 이전 인터벌 정보가 추가된다.
-    - 이전 인터벌의 끝(`end`)보다 현재 인터벌의 시작(`start`)이 같거나 작다면 `overlapping` 된 인터벌이다.
+    - 만약 이전 인터벌의 끝(`end`)보다 현재 인터벌 시작(`start`)이 크다면 이전 인터벌 값은 `non-overlapping` 인터벌이 된다.즉, 리턴으로 전달해야하는 인터벌이다.
+    - 이전 인터벌의 끝(`end`)보다 현재 인터벌의 시작(`start`)이 같거나 작다면 `overlapping` 된 인터벌이다. 리턴에는 포함시키지 않는다.
         - 만약 이전 인터벌 끝(`end`) 현재 인터벌 끝(`end`)보다 더 크다면 현재 확인 중인 인터벌의 끝(`end`)을 이전 인터벌의 끝(`overlapping`된 인터벌의 끝)으로 업데이트 한다.
-- 마지막 인터벌 값도 빼놓지 않고 비교한다.
+- 마지막 비교도 빼놓지 않고 리턴 되는 인터벌 목록에 추가 한다.
 
 ## 풀이
 
@@ -83,13 +83,13 @@ public int[][] merge(int[][] intervals) {
     }
 ```
 ## 생각
-`comparingInt` 메소드를 활용하여 첫 번째 인덱스를 기준으로 정렬 할 수 있다.
+`Comparator.comparingInt` 메소드를 활용하여 이차원 배열을 선언할 때 첫 번째 원소(int)를 기준으로 오름차순 정렬 할 수 있다.
 
 ```java
    Arrays.sort(intervals, Comparator.comparingInt(a -> a[0]));
 ```
 
-`List<int[]>` 을 `int[][]` 타입으로 변환하고 싶으면 이차원 배열 선언 시 첫번째 인덱스 부분에 List의 size 크기로 선언한다.
+`List<int[]>` -> `int[][]` 타입으로 변환하여 반환 할 떄는 이차원 배열을 아래와 같은 크기로 선언 하고, List의 int[]을 int배열을 옮겨 담는다.
 
 ```java
    int[][] resultArray = new int[nonOverLappingList.size()][];
