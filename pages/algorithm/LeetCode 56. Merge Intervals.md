@@ -1,7 +1,7 @@
 ---
 title: LeetCode 56. Merge Intervals.md
 tags: [leetcode, sorting]
-keywords: LeetCode 56. Merge Intervals.md
+keywords: LeetCode 56. Merge Intervals
 sidebar: mydoc_sidebar
 permalink: merge-intervals.html
 folder: algorithm
