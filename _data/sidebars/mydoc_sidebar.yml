@@ -30,11 +30,16 @@ entries:
     - title: BeakJoon 14620. 꽃길
       url: /BOJ_14620.html
       output: web
+    - title: LeetCode 1002. Find Common Characters
+      url: /find-common-characters.html
+      output: web
+    - title: LeetCode 56. Merge Intervals
+      url: /merge-intervals.html
+      output: web
 
   - title: 멀티 게시판 프로젝트
     output: web
     folderitems:
-
     - title : ERD 설계
       url : /multi_board_erd.html
       output: web
@@ -54,7 +59,6 @@ entries:
       subfolders:
       - title: 자유게시판
         output: web
-
         subfolderitems:
         - title: 자유게시판 리스트 가져오기
           url: /multi_board_free_board_list.html
@@ -69,12 +73,10 @@ entries:
     - title: 중간점검
       url: /multi_board_midterm_check.html
       output: web
-
       subfolders:
       - title: 갤러리게시판
         output: web
         subfolderitems:
-
         - title: 갤러리게시판 가져오기
           url: /multi_board_gallery_board_list.html
           output: web
@@ -84,7 +86,6 @@ entries:
         - title: 갤러리게시글 등록/수정/삭제
           url: /multi_board_gallery_board_write.html
           output: web
-
       - title: 문의게시판
         output: web
         subfolderitems:
@@ -97,7 +98,6 @@ entries:
         - title: 문의게시글 등록/수정/삭제
           url: /multi_board_inquiry_board_write.html
           output: web
-
     - title: 앞으로
       url: /multi_board_next_step.html
       output: web
@@ -107,7 +107,7 @@ entries:
       - title: filter, dispatcher servlet, interceptor
         url: /filter_dispatcher_interceptor.html
         output: web
-      - title: 실전 자바 - 기본편
+      - title: 실전 자바 - 기본편(1)
         url: /java_basic.html
         output: web
       - title: 스프링 로컬 캐시 사용하기
@@ -122,6 +122,12 @@ entries:
       - title: 스프링 MVC 1
         url: /spring_mvc_1.html
         output: web
+  - title: JPA
+    output: web
+    folderitems:
+    - title: 자바 ORM 표준 JPA 프로그래밍 기본편
+      url: /jpa_basic_1.html
+      output: web
   - title: 데이터베이스
     output: web
     folderitems:
@@ -131,7 +137,6 @@ entries:
       - title: 트랜잭션
         url: /real_my_sql_8_transaction.html
         output: web
-
   - title: ETC
     output: web
     folderitems:

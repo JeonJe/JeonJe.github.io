@@ -47,6 +47,9 @@ summary:
 - [스프링 AOP](/spring_aop.html)
 - [스프링 테스트 코드](/spring_test_code.html)
 
+## JPA
+- [자바 ORM 표준 JPA 프로그래밍 - 기본편1](/jpa_basic_1.html)
+
 ## 데이터베이스
 - [파일시스템과 데이터베이스](/filesystem_database.html)
 - [Real MySQL 8 트랜잭션](/real_my_sql_8_transaction.html)
