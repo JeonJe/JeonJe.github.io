@@ -9,7 +9,7 @@ last_updated: 2024-03-24
 ---
 
 
-> [상위 1% 언지니어의 7가지 간단한 습관](https://news.hada.io/topic?id=11362)을 참고한 내용입니다.
+> [상위 1% 엔지니어의 7가지 간단한 습관](https://news.hada.io/topic?id=11362)을 참고한 내용입니다.
 
 
 ##  코더가 아닌 엔지니어가 될 것 (Be an engineer, not a coder)
