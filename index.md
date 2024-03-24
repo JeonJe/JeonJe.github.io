@@ -71,7 +71,7 @@ summary:
   - [사전과제](/wanted_backend_architecture.html)
   - [사용자 수에 따른 규모를 확장하는 방법(1/2)](/wanted_backend_architecture2.html)
   - [사용자 수에 따른 규모를 확장하는 방법(2/2)](/wanted_backend_architecture3.html)
-
+- [상위 1% 엔지니어의 7가지 간단한 습관](/seven_simple_habits_of_the_top_of_engineers.html)
 
 
 {% include links.html %}

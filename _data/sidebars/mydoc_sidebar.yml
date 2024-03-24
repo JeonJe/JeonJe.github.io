@@ -189,4 +189,8 @@ entries:
           - title: 사용자 수에 따른 규모를 확장하는 방법(2/2)
             url: /wanted_backend_architecture3.html
             output: web
+      - title: 상위 1% 엔지니어의 7가지 간단한 습관
+        url: /seven_simple_habits_of_the_top_of_engineers.html
+        output: web
+
 # Copyright 2021 Google LLC
