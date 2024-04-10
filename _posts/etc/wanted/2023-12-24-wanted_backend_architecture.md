@@ -39,9 +39,9 @@ COMMIT;
 
 ## 웹 브라우저에 네이버 를 검색하고 화면에 네이버 화면이 출력이 될 때 까지 내부적으로 어떤 동작들이 수행이 되는지 설명해주세요.
 
-1. **URL 입력**: 사용자가 웹 브라우저의 주소 표시줄에 "[www.naver.com](http://www.naver.com/)" 또는 "네이버"와 같은 검색어를 입력합니다.
+1. **URL 입력**: 사용자가 웹 브라우저의 주소 표시줄에 "[www.naver.com](https://www.naver.com/)" 또는 "네이버"와 같은 검색어를 입력합니다.
    
-2. **DNS 조회 (Domain Name System)**: 브라우저는 입력한 도메인 이름 "[www.naver.com"을](http://www.naver.xn--com%22-8040a/) IP 주소로 변환해야 합니다. 이를 위해 DNS 서버에 쿼리를 보내 IP 주소를 검색합니다.
+2. **DNS 조회 (Domain Name System)**: 브라우저는 입력한 도메인 이름 "[www.naver.com"을](https://www.naver.xn--com%22-8040a/) IP 주소로 변환해야 합니다. 이를 위해 DNS 서버에 쿼리를 보내 IP 주소를 검색합니다.
    
 3. **TCP 연결 설정**: 브라우저는 검색 결과로 얻은 네이버 서버의 IP 주소로 TCP/IP 연결을 설정합니다. 이것은 네이버 서버와의 통신을 위한 연결을 의미합니다.
    

@@ -172,14 +172,10 @@ tags: [database transaction]
 ## 참고 
 [Notion SQLD 정리](https://whssodi.notion.site/SQLD-c3f39d4cad5c46dc814fdec0d2d8de78?pvs=4)
 
-[데지덤](http://jidum.com/jidums/view.do?jidumId=84#:~:text=%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%9D%98%20%EB%85%BC%EB%A6%AC%EC%A0%81%20%EA%B5%AC%EC%A1%B0%EB%82%98,%EC%98%81%ED%96%A5%EC%9D%84%20%EB%B0%9B%EC%A7%80%20%EC%95%8A%EB%8A%94%20%EA%B2%83)
-
-[데이터베이스개론](https://terms.naver.com/list.naver?cid=58430&categoryId=58430)
+https://terms.naver.com/list.naver?cid=58430&categoryId=58430)
 
 [데이터베이스](https://ko.wikipedia.org/wiki/%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B2%A0%EC%9D%B4%EC%8A%A4)
 
 [데이터 베이스 개념 특징](https://freedata.tistory.com/47)
 
 [데이터베이스 관리 시스템(DBMS)이란?](https://developer-yeony.tistory.com/18)
-
-[릴레이션](http://wiki.hash.kr/index.php/%EB%A6%B4%EB%A0%88%EC%9D%B4%EC%85%98#:~:text=%EB%A6%B4%EB%A0%88%EC%9D%B4%EC%85%98%20%EC%9D%B8%EC%8A%A4%ED%84%B4%EC%8A%A4%EB%8A%94%20%EB%A6%B4%EB%A0%88%EC%9D%B4%EC%85%98%20%EC%8A%A4%ED%82%A4%EB%A7%88,%EA%B0%81%EA%B0%81%EC%9D%98%20%ED%96%89%EC%9D%84%20%EB%82%98%ED%83%80%EB%82%B8%EB%8B%A4.)
