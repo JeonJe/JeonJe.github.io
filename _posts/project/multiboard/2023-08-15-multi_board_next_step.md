@@ -1,6 +1,6 @@
 ---
 title: 앞으로
-categoreis: project multiboard
+categories: project multiboard
 tags: [multiboard, todo]
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: 자유 게시글 보기
-categoreis: project multiboard
+categories: project multiboard
 tags: [multiboard freeboard]
 
 ---

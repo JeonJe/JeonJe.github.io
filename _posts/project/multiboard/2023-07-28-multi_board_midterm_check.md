@@ -1,6 +1,6 @@
 ---
 title: 중간점검
-categoreis: project multiboard
+categories: project multiboard
 tags: [multiboard midtermcheck]
 
 ---

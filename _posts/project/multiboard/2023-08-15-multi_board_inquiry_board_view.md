@@ -1,6 +1,6 @@
 ---
 title: 문의 게시판 보기
-categoreis: project multiboard
+categories: project multiboard
 tags: [multiboard inquiryboard]
 ---
 

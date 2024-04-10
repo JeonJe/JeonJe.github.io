@@ -1,6 +1,6 @@
 ---
 title: 회원가입 구현
-categoreis: project multiboard
+categories: project multiboard
 tags: [multiboard, signup]
 
 ---

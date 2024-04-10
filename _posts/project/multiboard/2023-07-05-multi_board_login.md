@@ -1,6 +1,6 @@
 ---
 title: 로그인 구현 with JWT
-categoreis: project multiboard
+categories: project multiboard
 tags: [multiboard login jwt]
 
 ---

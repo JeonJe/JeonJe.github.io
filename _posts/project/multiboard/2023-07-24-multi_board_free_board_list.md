@@ -1,6 +1,6 @@
 ---
 title: 자유게시판 가져오기
-categoreis: project multiboard
+categories: project multiboard
 tags: [multiboard freeboard]
 
 ---

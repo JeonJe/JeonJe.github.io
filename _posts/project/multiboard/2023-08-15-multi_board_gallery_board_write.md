@@ -1,6 +1,6 @@
 ---
 title: 갤러리 게시글 등록/수정/삭제
-categoreis: project multiboard
+categories: project multiboard
 tags: [multiboard galleryboard]
 
 ---

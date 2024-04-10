@@ -1,6 +1,6 @@
 ---
 title: 문의 게시판 등록/수정/삭제
-categoreis: project multiboard
+categories: project multiboard
 tags: [multiboard inquiryboard]
 
 ---

@@ -1,6 +1,6 @@
 ---
 title: RESTful API 설계 & 개발 순서
-categoreis: project multiboard
+categories: project multiboard
 tags: [multiboard API]
 
 ---

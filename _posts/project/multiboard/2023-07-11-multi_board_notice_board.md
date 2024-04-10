@@ -1,6 +1,6 @@
 ---
 title: 공지사항 구현
-categoreis: project multiboard
+categories: project multiboard
 tags: [multiboard noticeboard]
 
 ---

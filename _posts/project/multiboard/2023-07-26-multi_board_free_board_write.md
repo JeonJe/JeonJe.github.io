@@ -1,12 +1,8 @@
 ---
 title: 자유 게시글 등록/수정/삭제
-categoreis: project multiboard
+categories: project multiboard
 tags: [multi board, free board]
-keywords: multi board, free board
-sidebar: mydoc_sidebar
-permalink:  multi_board_free_board_write.html
-folder: multi_board_project
-last_updated: 2023-07-26
+
 ---
 
 

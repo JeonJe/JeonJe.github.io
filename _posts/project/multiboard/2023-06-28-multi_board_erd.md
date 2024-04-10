@@ -1,6 +1,6 @@
 ---
 title: ERD 설계
-categoreis: project multiboard
+categories: project multiboard
 tags: [multiboard ERD]
 ---
 
