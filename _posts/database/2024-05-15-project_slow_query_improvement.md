@@ -1,8 +1,8 @@
 ---
 title: 프로젝트 슬로우 쿼리 개선기
-categories: database  
-tags: [database slowquery]
-
+categories: database
+tags:
+  - database slowquery
 ---
 
 # 슬로우 쿼리 개선
@@ -94,11 +94,9 @@ AND (
 
 기존에 사용하던 복합 인덱스는 일부만 인덱스를 탔기 때문에 다른 컬럼(`request_dtm`, `accept_dtm`, `reservation_dtm`, `cancel_dtm`, `end_dtm`)에도 인덱스를 추가해주었습니다.
 
-인덱스를 5개를 추가하였기 때문에 1건의 레코드가 추가 될 때 인덱스를 추가하기 전보다 대략 1.5*5 비용이 더 들게 됩니다. 하지만 가장 빈번하게 호출되는 쿼리이고,
+인덱스 비용을 계산해 보면 인덱스를 5개를 추가하였기 때문에 1건의 레코드가 추가 될 때 인덱스를 추가하기 전보다 대략 1.5*5 비용이 더 들게 됩니다. 하지만 가장 빈번하게 호출되는 쿼리이면서
 
-`request_dtm`, `reservation_dtm`은 데이터 입력 시점에만 들어오고, `accept_dtm`, `cancel_dtm`,`end_dtm`은 단계별로 한 번씩만 업데이트 컬럼이기 때문에 변경 비용이 생각보다 크지 않다고 판단하였습니다. 즉, 인덱스를 추가해주는 것이 더 이득이라고 판단하였고,
-
-이후 다른 쿼리에서도 이번에 추가 한 인덱스를 활용이 가능하였습니다.
+`request_dtm`, `reservation_dtm`은 데이터 입력 시점에만 들어오고, `accept_dtm`, `cancel_dtm`,`end_dtm`은 단계별로 한 번씩만 업데이트 컬럼이기 때문에 변경으로 인한 인덱스 업데이트 비용이 조회가 느린 비용 보다 크지 않다고 판단하였습니다. 또한 인덱스 설정은 다른 쿼리에서도 활용이 가능하였습니다.
 
 <aside>
 💡 쿼리 내에 OR 조건이 있기 때문에 아래와 같이 복합 인덱스를 사용하면 개선 전 결과와 동일하게 인덱스 적용이 제대로 되지 않았습니다.
@@ -109,7 +107,7 @@ create index test_idxon consult_v2 (hospital_seq, status, request_dtm, reservati
 
 BETWEEN으로 변경하고 인덱스를 추가한 뒤 실행 계획을 확인한 결과
 
-예측 레코드 건수가 **51,212** → **1,405**로 **97.26%** 감소하였습니다.
+예측 레코드 건수가 **51,212**건에서 **1,405**건으로 **97.26%** 감소하였습니다.
 
 | id | select\_type | table | partitions | type | possible\_keys | key | key\_len | ref | rows | filtered | Extra |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -227,9 +225,9 @@ hp.name like '%검색어%'
 ```
 
 ![Untitled 2.png](/assets/img/2024-05-15-project_slow_query_improvement/Untitled2.png)
-옵티마이저 예측 레코드 건수는 159,954에서 1으로 줄일 수 있었습니다.
+옵티마이저 예측 레코드 건수는 `159,954`건에서 `1`건으로 줄일 수 있었습니다.
 
-그러나 사용자가 원하는 검색어가 문자열 위치에 관계없이 검색이 되어야 하는 필요성이 있어서 실제 적용하지 못한 개선입니다.
+그러나 사용자가 원하는 검색어가 문자열 위치에 관계없이 검색이 되어야 하는 필요성이 있어 적용은 하지 못하였습니다.
 
 # 세 번째 슬로우 쿼리
 
@@ -298,9 +296,9 @@ ORDER BY MAX(fa.update_dtm) DESC;
 
 ![Untitled 5.png](/assets/img/2024-05-15-project_slow_query_improvement/Untitled5.png)
 
-select_type이 derived에서 simple 로 변경되었습니다.
+`select_type`이 `derived`에서 `simple` 로 변경되었습니다.
 
-옵티마이저 예측 레코드 건수를 **11,242** 이상에서 대략 **400 건** 정도로 줄일 수 있었습니다.
+옵티마이저 예측 레코드 건수를 `11,242`건 이상에서 대략 `400 건`으로 줄일 수 있었습니다.
 
 # 느낀 점
 
