@@ -142,7 +142,7 @@ OR 조건을 분리하여 조회하고 서버에서 합치는 방식으로 시�
 
 슬로우 쿼리1 개선 이후 평균 `1,000ms`가 넘어가는 지연시간이 `100ms`로 낮아졌습니다.
 
-![Untitled.png](..%2F..%2F..%2FDownloads%2F061adb8e-69b1-43cc-bb0d-daea4e2f2c61_Export-f8c19f39-7ad9-4d07-91eb-7e2e5ce2e624%2F%EC%8A%AC%EB%A1%9C%EC%9A%B0%20%EC%BF%BC%EB%A6%AC%20%EA%B0%9C%EC%84%A0%2058cffad8d4f143828b420f434bae4e07%2FUntitled.png)
+![Untitled.png](/assets/img/2024-05-15-project_slow_query_improvement/Untitled.png)
 
 # 두 번째 슬로우 쿼리
 
@@ -219,14 +219,14 @@ SELECT DISTINCT hp.seq, hp.name, hp.hp_no, hp.patient_account_seq
 hp.name like '%검색어%'
 ```
 
-![Untitled 1.png](..%2F..%2F..%2FDownloads%2F061adb8e-69b1-43cc-bb0d-daea4e2f2c61_Export-f8c19f39-7ad9-4d07-91eb-7e2e5ce2e624%2F%EC%8A%AC%EB%A1%9C%EC%9A%B0%20%EC%BF%BC%EB%A6%AC%20%EA%B0%9C%EC%84%A0%2058cffad8d4f143828b420f434bae4e07%2FUntitled%201.png)
+![Untitled 1.png](/assets/img/2024-05-15-project_slow_query_improvement/Untitled1.png)
 ### **개선 후 실행 계획**
 
 ```sql
  hp.name LIKE  '검색어%'
 ```
 
-![Untitled 2.png](..%2F..%2F..%2FDownloads%2F061adb8e-69b1-43cc-bb0d-daea4e2f2c61_Export-f8c19f39-7ad9-4d07-91eb-7e2e5ce2e624%2F%EC%8A%AC%EB%A1%9C%EC%9A%B0%20%EC%BF%BC%EB%A6%AC%20%EA%B0%9C%EC%84%A0%2058cffad8d4f143828b420f434bae4e07%2FUntitled%202.png)
+![Untitled 2.png](/assets/img/2024-05-15-project_slow_query_improvement/Untitled2.png)
 옵티마이저 예측 레코드 건수는 159,954에서 1으로 줄일 수 있었습니다.
 
 그러나 사용자가 원하는 검색어가 문자열 위치에 관계없이 검색이 되어야 하는 필요성이 있어서 실제 적용하지 못한 개선입니다.
@@ -261,7 +261,7 @@ ORDER BY favorite_update_dtm DESC;
 
 개선 전 쿼리의 실행 계획을 확인했을 때 `select_type`이 `DERIVED`로 나타났습니다.
 
-![Untitled 3.png](..%2F..%2F..%2FDownloads%2F061adb8e-69b1-43cc-bb0d-daea4e2f2c61_Export-f8c19f39-7ad9-4d07-91eb-7e2e5ce2e624%2F%EC%8A%AC%EB%A1%9C%EC%9A%B0%20%EC%BF%BC%EB%A6%AC%20%EA%B0%9C%EC%84%A0%2058cffad8d4f143828b420f434bae4e07%2FUntitled%203.png)
+![Untitled 3.png](/assets/img/2024-05-15-project_slow_query_improvement/Untitled3.png)
 `DERIVED`는 단위 select 쿼리의 실행 결과로 메모리 또는 디스크에 임시 테이블을 생성하는 것을 뜻합니다.
 
 MySQL 서버는 조인 쿼리에 대해 최적화가 이루어졌고, 가능하면 derived 형태는 join으로 변경하는 것이 성능상 이점이 있습니다(참고 : RealMySQL 8.0)
@@ -292,11 +292,11 @@ ORDER BY MAX(fa.update_dtm) DESC;
 
 ### **개선 전 실행 계획**
 
-![Untitled 4.png](..%2F..%2F..%2FDownloads%2F061adb8e-69b1-43cc-bb0d-daea4e2f2c61_Export-f8c19f39-7ad9-4d07-91eb-7e2e5ce2e624%2F%EC%8A%AC%EB%A1%9C%EC%9A%B0%20%EC%BF%BC%EB%A6%AC%20%EA%B0%9C%EC%84%A0%2058cffad8d4f143828b420f434bae4e07%2FUntitled%204.png)
+![Untitled 4.png](/assets/img/2024-05-15-project_slow_query_improvement/Untitled4.png)
 
 ### **개선 후 실행 계획**
 
-![Untitled 5.png](..%2F..%2F..%2FDownloads%2F061adb8e-69b1-43cc-bb0d-daea4e2f2c61_Export-f8c19f39-7ad9-4d07-91eb-7e2e5ce2e624%2F%EC%8A%AC%EB%A1%9C%EC%9A%B0%20%EC%BF%BC%EB%A6%AC%20%EA%B0%9C%EC%84%A0%2058cffad8d4f143828b420f434bae4e07%2FUntitled%205.png)
+![Untitled 5.png](/assets/img/2024-05-15-project_slow_query_improvement/Untitled5.png)
 
 select_type이 derived에서 simple 로 변경되었습니다.
 
