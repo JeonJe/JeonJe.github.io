@@ -1,8 +1,8 @@
 ---
 
 title: 2023년 회고( /w 크래프톤 정글 1기)
-categories: 회고
-tags: [회고 2023년]
+categories: retrospection
+tags: [retrospection 2023]
 ---
 
 
