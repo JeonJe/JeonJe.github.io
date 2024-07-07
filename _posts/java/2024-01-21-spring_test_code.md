@@ -5,6 +5,7 @@ tags:
   - spring testcode
 ---
 
+
 > 스프링 테스트 코드를 작성하면서 테스트 관련 어노테이션이 너무 다양하고, 무엇을 위해 쓰는 지 몰라서 원하는 대로 테스트 코드를 작성하기가 어려웠다. 
 > 테스트 코드 관련 내용을 차근히 정리할 필요성을 절실히 느끼게 되었다.
 
@@ -112,7 +113,7 @@ class UserControllerTest {
 
 	@Mock
 	private UserService userService;
-   
+  
 	private MockMvc mockMvc;
   	@BeforeEach
 	public void init() {
