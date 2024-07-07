@@ -210,10 +210,9 @@ db에 값이 없으면 insert한다라는 조건이 있을 때 `verfiy`에 메�
 
 
 ```java
-assertThat(res)  
-.usingRecursiveComparison()  
+assertThat(res)
+.usingRecursiveComparison()
 .isEqualTo(expected);
-
 ```
 
 추가로, `usingRecursiveComparison`메소드로 객체 간 `deep comparison`을 수행하여 객체의 필드와 하위 필드까지 재귀적으로 비교해 볼 수 있다.
