@@ -1,7 +1,8 @@
 ---
 title: Spring Test code
 categories: spring testcode
-tags: [spring testcode]
+tags:
+  - spring testcode
 ---
 
 > 스프링 테스트 코드를 작성하면서 테스트 관련 어노테이션이 너무 다양하고, 무엇을 위해 쓰는 지 몰라서 원하는 대로 테스트 코드를 작성하기가 어려웠다. 
@@ -54,10 +55,10 @@ MockMvc mvc;
 @BeforeEach
 public void setup() {
 
-    this.mvc = MockMvcBuilders.webAppContextSetup(context)
-        .addFilter(new CharacterEncodingFilter("UTF-8", true))
-        .alwaysDo(print())
-        .build();
+	this.mvc = MockMvcBuilders.webAppContextSetup(context)
+		.addFilter(new CharacterEncodingFilter("UTF-8", true))
+		.alwaysDo(print())
+		.build();
 }
 
 ```
@@ -106,24 +107,19 @@ public void setup() {
 @ExtendWith(MockitoExtension.class)
 class UserControllerTest {
 
-   @InjectMocks
-   private UserController userController;
+	@InjectMocks
+	private UserController userController;
 
-   @Mock
-   private UserService userService;
+	@Mock
+	private UserService userService;
    
-   private MockMvc mockMvc;
-
-  
-
-   @BeforeEach
-   public void init() {
-       mockMvc = MockMvcBuilders.standaloneSetup(userController).build();
-
-  }
-  ... 
-
-} 
+	private MockMvc mockMvc;
+  	@BeforeEach
+	public void init() {
+		mockMvc = MockMvcBuilders.standaloneSetup(userController).build();
+	}
+	...
+  } 
 
 ```
 
