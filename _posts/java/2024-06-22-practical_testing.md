@@ -169,9 +169,283 @@ Data Access의 역할을한다. 비지니스 가공 로직이 포함되어서는
 
 비지니스 로직을 구현하는 역할을한다. **`트랜잭션`**을 보장하며 Persistence Layer와의 상호작용을 통해 비지니스 로직을 실행한다
 
+### 주의점
+
+서비스 테스트 클래스 상단에 @Transactional을 달아주면 서비스에 트랜잭션이 달리지 않아도 테스트 상에서 변경감지를 하여 업데이트 쿼리가 나가기 때문에 실패해야할 테스트가 성공할 수 있다. 이런 부작용을 잘 알고 @Transactional을 사용 해야한다.
+
 ## 이넘 값 자체 비교
 
 이넘 값 자체 비교는 `isEqualByComparingTo` 를 사용하여 테스트할 수 있다.
+
+# [실습] Presentation Layer 테스트
+
+- 외부 세계의 요청을 가장 먼저 받는 계층으로 파라미터에 대한 최소한의 검증을 수행한다
+- persistenceLayer와 BusinessLayer는 Mocking으로 처리한다
+
+## Transactional(read=only)
+
+명령과 쿼리를 나누는 것이 중요하다. (CQRS)
+
+성능 향상
+
+- jpa에서는 스냅샷 저장, 변경 감지 X
+- 읽기 전용 db, 읽기 쓰기 db로 구분이 가능
+
+서비스 메소드 상단에 readonly = true 트랜잭션을 추가하고, CUD 메소드엔 트랜잭션을 추가로 명시해준다.
+
+## MockMvc
+
+Mock 객체를 사용해 스프링 MVC 동작을 재현할 수 있는 테스트 프레임워크
+
+```java
+
+@WebMvcTest(controllers = ProductController.class)
+```
+
+### MockBean
+
+컨테이너에 Mock으로 만든 빈을 넣어주는 어노테이션
+
+```java
+@WebMvcTest(controllers = ProductController.class)
+class ProductControllerTest {
+
+    @Autowired
+    private MockMvc mockMvc;
+
+    @Autowired
+    private ObjectMapper objectMapper; //Object <-> Json 직렬화, 역직렬화
+
+    @MockBean
+    private ProductService productService;
+
+    @DisplayName("신규 상품을 등록한다.")
+    @Test
+    void createProduct() throws Exception {
+    	// given
+        ProductCreateRequest request = ProductCreateRequest.builder()
+                .type(ProductType.HANDMADE)
+                .sellingStatus(ProductSellingStatus.SELLING)
+                .name("아메리카노")
+                .price(4000)
+                .build();
+
+        //when & then
+        mockMvc.perform(MockMvcRequestBuilders.post("/api/v1/products/new")
+                        .content(objectMapper.writeValueAsString(request))
+                        .contentType(MediaType.APPLICATION_JSON)
+                )
+                .andDo(MockMvcResultHandlers.print())
+                .andExpect(MockMvcResultMatchers.status().isOk());
+    }
+```
+
+직렬화된 값을 역직렬화 할때 (ProductCreateRequest 에 맵핑) ObjectMapper가 기본 생성자를 사용하기 때문에 ProductCreateRequest에 @NoArgsConstructor가 필요하다.
+
+```java
+@NoArgsConstructor
+public class ProductCreateRequest {
+```
+
+### start-validation
+
+Enum일경우 @NotNuull
+
+String은 @NotBlank
+
+Integer는 @Positive
+
+등으로 체크 가능하다.
+
+```java
+@Getter
+@NoArgsConstructor
+public class ProductCreateRequest {
+
+    @NotNull(message = "상품 타입은 필수입니다.")
+    private ProductType type;
+
+    @NotNull(message = "상품 판매상태는 필수입니다.")
+    private ProductSellingStatus sellingStatus;
+
+    @NotBlank(message = "상품 이름은 필수입니다.")
+    private String name;
+
+    @Positive(message = "상품 가격은 양수여야 합니다.")
+    private int price;
+```
+
+오브젝트 앞에 @Valid 를 추가해줘야 한다.
+
+```java
+    public ProductResponse createProduct(@**Valid** @RequestBody ProductCreateRequest request) {
+```
+
+### Response의 형식
+
+```java
+    @PostMapping("/api/v1/products/new")
+    public ApiResponse<ProductResponse> createProduct(@Valid @RequestBody ProductCreateRequest request) {
+        return ApiResponse.ok(productService.createProduct(request));
+    }
+```
+
+response data를 제네릭타입으로 받고 제네릭 메소드를 사용하여 http request의 응답과 데이터를 반환하도록한다.
+
+```java
+
+@Getter 
+public class ApiResponse<T> {
+
+    private int code;
+    private HttpStatus status;
+    private String message;
+    private T data;
+
+    public ApiResponse(HttpStatus status, String message, T data) {
+        this.code = status.value();
+        this.status = status;
+        this.message = message;
+        this.data = data;
+    }
+
+    public static <T> ApiResponse<T> of(HttpStatus httpStatus, String message, T data) {
+        return new ApiResponse<>(httpStatus, message, data);
+    }
+
+    public static <T> ApiResponse<T> of(HttpStatus httpStatus, T data) {
+        return of(httpStatus, httpStatus.name(), data);
+    }
+
+    public static <T> ApiResponse<T> ok(T data) {
+        return of(HttpStatus.OK, data);
+    }
+}
+
+```
+
+테스트에서 jsonPath를 사용하려면 Getter가 있어야한다
+
+### validation 예외
+
+```java
+@RestControllerAdvice
+public class ApiControllerAdvice {
+
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ExceptionHandler(BindException.class)
+    public ApiResponse<Object> bindException(BindException e) {
+        return ApiResponse.of(
+                HttpStatus.BAD_REQUEST,
+                e.getBindingResult().getAllErrors().get(0).getDefaultMessage(),
+                null
+        );
+    }
+}
+
+```
+
+여러가지 바인딩 에러중 첫번째 에러 메시지를 400에러로 반환하도록 작성한다.
+
+```java
+    @DisplayName("신규 상품을 등록할 때 상품 타입은 필수값이다")
+    @Test
+    void createProductWithoutType() throws Exception {
+        // given
+        ProductCreateRequest request = ProductCreateRequest.builder()
+                .sellingStatus(ProductSellingStatus.SELLING)
+                .name("아메리카노")
+                .price(4000)
+                .build();
+
+        //when & then
+        mockMvc.perform(post("/api/v1/products/new")
+                        .content(objectMapper.writeValueAsString(request))
+                        .contentType(MediaType.APPLICATION_JSON)
+                )
+                .andDo(print())
+                .andExpect(status().isBadRequest())
+                .andExpect(jsonPath("$.code").value(400))
+                .andExpect(jsonPath("$.status").value("BAD_REQUEST"))
+                .andExpect(jsonPath("$.message").value("상품 타입은 필수입니다."))
+                .andExpect(jsonPath("$.data").isEmpty());
+    }
+```
+
+만약 상품이름이 20자로 제한된다. 같은 제한 세세한 도메인 정책은 컨트롤러보다는 서비스 레이어나 도메인 객체(생성자)에서 하는 것이 적절하다.
+
+## Controller의 DTO를 Service에서 파라미터로 받을 경우 두 계층 간 의존관계가 생겨버린다.
+
+controller에서 OrderCreateRequest를 service의 메소드에 전달 할 경우 두 계층간 의존이 생긴다. 따라서 서비스용 request DTO를 만들어주는 것을 권장한다.
+
+```java
+    @PostMapping("/api/v1/orders/new")
+    public ApiResponse<OrderResponse>  createOrder(@Valid @RequestBody OrderCreateRequest request) {
+        LocalDateTime registeredDateTime = LocalDateTime.now();
+        return ApiResponse.ok(orderService.createOrder(request.toServiceRequest(), registeredDateTime));
+    }
+```
+
+```java
+@Getter
+@NoArgsConstructor
+public class OrderCreateRequest {
+
+    @NotEmpty(message = "상품 번호 리스트는 필수입니다")
+    private List<String> productNumbers;
+
+    @Builder
+    private OrderCreateRequest(List<String> productNumbers) {
+        this.productNumbers = productNumbers;
+    }
+
+    public OrderCreateServiceRequest toServiceRequest() {
+        return OrderCreateServiceRequest.builder()
+                .productNumbers(productNumbers)
+                .build();
+    }
+}
+```
+
+이렇게 구분을 해주면 특정 컨트롤러의 DTO에 의존하고 있지 않기 때문에 다른 컨트롤러에서 해당 서비스를 사용 할 때 쉽게 사용이 가능하다.
+
+# Mock을 마주하는 자세
+
+## Mockito로 Stubbing하기
+
+```java
+when(mailSendClient.sendMail(any(String.class), any(String.class),any(String.class),any(String.class))
+.thenReturn(true);
+```
+
+네트워크 작업 등이 필요한 서비스에는 서비스 단에 트랜잭션을 걸지 않는 것이 좋다.
+
+## Test Double
+
+Dummy : 아무것도 하지 않는 깡통 객체
+
+Fake : 단순한 형태로 동일한 기능을 수행하나, 프로덕션에서 쓰기는 부족한 객체 (FakeRepository)
+
+Stub : 테스트에서 요청한 것에 대해 미리 준비한 결과를 제공하는 개체
+
+Spy : Stub이면서 호출된 내용을 기록하여 보여줄 수 있는 객체, 일부는 실제 객체처럼 동작시키고 일부만 Stubbing할 수 있다
+
+Mock : 행위에 대한 기대를 명세하고, 그에 따라 동작하도록 만들어진 객체
+
+- stub은 상태를 검증하고 Mock은 행위를 검증하는 것(예로 1번 메소드가 호출되었다)이 큰 차이점이다.
+- @Spy는 doReturn 으로 시작하는 문법을 사용한다.
+
+## BddMockito
+
+given에서 mocktio의 when 을 셋팅하는게 이상해 보여서 탄생하였다
+
+```java
+BDDMockito.given(  ~~~ )
+```
+
+BDDMockito는 내부에 Mockito를 상속하고 있기 때문에 동작은 동일하다.
+
+
 
 # 더 나은 테스트를 작성하기 위한 구체적 조언
 
