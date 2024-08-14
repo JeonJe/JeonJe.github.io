@@ -219,10 +219,10 @@ public APIResponse changeSomething(@PathVariable("seq") int seq,
 
 - 테스트 코드 학습
   - ~~강의 - [https://www.inflearn.com/course/자바-스프링-테스트-개발자-오답노트/dashboard](https://www.inflearn.com/course/%EC%9E%90%EB%B0%94-%EC%8A%A4%ED%94%84%EB%A7%81-%ED%85%8C%EC%8A%A4%ED%8A%B8-%EA%B0%9C%EB%B0%9C%EC%9E%90-%EC%98%A4%EB%8B%B5%EB%85%B8%ED%8A%B8/dashboard)~~
-  - 강의 - [https://www.inflearn.com/course/practical-testing-실용적인-테스트-가이드/dashboard](https://www.inflearn.com/course/practical-testing-%EC%8B%A4%EC%9A%A9%EC%A0%81%EC%9D%B8-%ED%85%8C%EC%8A%A4%ED%8A%B8-%EA%B0%80%EC%9D%B4%EB%93%9C/dashboard)
+  - ~~강의 - [https://www.inflearn.com/course/practical-testing-실용적인-테스트-가이드/dashboard](https://www.inflearn.com/course/practical-testing-%EC%8B%A4%EC%9A%A9%EC%A0%81%EC%9D%B8-%ED%85%8C%EC%8A%A4%ED%8A%B8-%EA%B0%80%EC%9D%B4%EB%93%9C/dashboard)~~
   - 강의 - https://www.inflearn.com/course/the-java-application-test#reviews
-  - 도서 - 유닛 테스트
+  - 도서 - 유닛 테스트(진행 중 ~24.08.14)
 - 테스트 코드 적용
-  - EMR 연동 프로젝트
+  - ~~EMR 연동 프로젝트~~
   - ~~사이드 프로젝트~~
-  - 모비닥
+  - 모비닥 (진행중 ~24.08..14)
