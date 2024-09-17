@@ -1,5 +1,5 @@
 ---
-title: Object Chapter 10장 
+title: Object Chapter 10장 상속과 코드 재사용
 categories: Object 
 tags: [Object 상속]
 ---

@@ -1,5 +1,5 @@
 ---
-title: Object Chapter 12장
+title: Object Chapter 12장 다형성
 categories: Object
 tags: [Object 다형성]
 ---

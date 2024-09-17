@@ -1,5 +1,5 @@
 ---
-title: Object Chapter 11장
+title: Object Chapter 11장 합성과 유연한 설계
 categories: Object
 tags: [Object 합성]
 ---
