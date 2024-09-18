@@ -5,22 +5,14 @@ order: 4
 
 > 
 
-
-# 프로젝트 
-### 진료 프로세스 개선(2024.02 ~ 2024.04)
-- 진료 프로세스 기준 변경(그룹->개별)에 따른 모비닥 통합 클라이언트 변경 및 개선
-- 진료 조회, 접수, 종료, 취소 등 30개 이상 API, SQL,  Frontend 수정
-
-
-### EMR 연동(2023.10 ~ 현재)
-- EMR(Electronic Health Record) 시스템과 진료 접수 연동
-- 병원,의사,환자,진료 연동 ERD과 프로세스 설계 및 개발
-
-
 # 경력
 
 ### 플라잉 닥터(2023.09 ~ 현재)
 - 백엔드 개발자
+  -  모비닥 통합 클라이언트 개발 & 유지보수
+  - 진료 프로세스 개선 프로젝트
+  - 계정 통합 프로젝트
+  - 모비닥 & EMR 진료(접수) 연동 프로젝트
 
 
 ### 현대 오토에버(2021.09 ~ 2022.10)
@@ -43,8 +35,8 @@ order: 4
 
 # 기술 스택
 - Backend : Java, SpringBoot, Mybatis, Mysql
-- Devops : Jenkins, ElasticSearch
-- Frontend : Vue.js Nuxt.js
+- Devops : Jenkins, kibana
+- Frontend : Vue.js, Nuxt.js
   
 
 # 교육
