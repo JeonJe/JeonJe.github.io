@@ -2,14 +2,11 @@
 icon: fas fa-info-circle
 order: 4
 ---
-
-> 
-
 # 경력
 
 ### 플라잉 닥터(2023.09 ~ 현재)
 - 백엔드 개발자
-  -  모비닥 통합 클라이언트 개발 & 유지보수
+  - 모비닥 통합 클라이언트 개발 & 유지보수
   - 진료 프로세스 개선 프로젝트
   - 계정 통합 프로젝트
   - 모비닥 & EMR 진료(접수) 연동 프로젝트
@@ -37,7 +34,9 @@ order: 4
 - Backend : Java, SpringBoot, Mybatis, Mysql
 - Devops : Jenkins, kibana
 - Frontend : Vue.js, Nuxt.js
-  
+
+# 대외활동
+- 글또 10기 (2024.09.29 ~ )
 
 # 교육
 ### 크래프톤 정글 1기(2022.10 ~ 2022.03)
