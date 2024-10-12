@@ -1,5 +1,5 @@
 ---
-title: 삶의 지도
+title: 글또 10기 신청 - 삶의 지도
 categories: 글또 
 tags: [글또]
 
