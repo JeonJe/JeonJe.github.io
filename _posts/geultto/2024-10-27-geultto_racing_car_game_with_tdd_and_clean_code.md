@@ -2,7 +2,6 @@
 title: 자동차 경주 게임, 근데 이제 TDD랑 클린코드를 곁들인
 categories: 글또
 tags: [글또]
-image: /assets/img/2024-10-27-geultto_racing_car_game_with_tdd_and_clean_code/image.png
 ---
 
 
