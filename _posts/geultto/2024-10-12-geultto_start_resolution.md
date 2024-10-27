@@ -1,8 +1,7 @@
 ---
 title: 글또 10기 1회차 - 다짐
 categories: 글또
-tags:
-  - 글또
+tags: [글또]
 ---
 
 
