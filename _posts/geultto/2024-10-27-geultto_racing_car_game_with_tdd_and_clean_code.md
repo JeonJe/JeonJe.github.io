@@ -10,6 +10,7 @@ tags:
 
 - Next-step의 ”TDD, 클린 코드 with Java ” 과정 중 자동차 경주 미션을 통해 TDD와 클린코드에 대해 학습한 내용입니다.  
 
+---
 ## 이 글의 목적
 
 객체지향 프로그래밍과 클린 코드에 관심이 생긴 2년 차 개발자로서, 제 코드가 어떻게 변화하는지 다루고자 합니다.
@@ -29,6 +30,7 @@ tags:
 - [인프런 강의 Readable Code: 읽기좋은 코드를 작성하는 사고법](https://www.inflearn.com/course/readable-code-%EC%9D%BD%EA%B8%B0%EC%A2%8B%EC%9D%80%EC%BD%94%EB%93%9C-%EC%9E%91%EC%84%B1%EC%82%AC%EA%B3%A0%EB%B2%95) 수강
 - 도서 [오브젝트](https://product.kyobobook.co.kr/detail/S000001766367)  1~5장, 10장~15장을 학습
 
+---
 ## 미션을 시작하기 전에
 
 객체 지향 프로그래밍… 어렴풋이 알 것 같으면서도 잘 모르겠습니다.
@@ -86,6 +88,7 @@ tags:
 
 가능한 한 원칙을 최대한 지키려는 노력이 중요하다고 생각합니다.
 
+---
 ## 자동차 경주 시작
 
 ### 1) 미션 요구사항 개발
@@ -206,6 +209,7 @@ void moveCar(int randomNumber) {
 
 ### 2) 개선하기
 
+<br/>
 **1. 테스트의 목적을 생각해보자.**
 
 4 이상의 랜덤 값으로 자동차 이동을 시키는 기능을 테스트하기 위해 `RandomNumberGenerator` 인터페이스와 `TestRandomNumberGenerator` 구현체를 만들어 사용하였습니다.
@@ -233,6 +237,7 @@ public class StopStrategy implements MoveStrategy {
 }
 ```
 
+<br/>
 **2. 잘못된 방식의 랜덤 값 테스트**
 
 아래 코드는 생성된 랜덤값을 테스트하는 테스트 코드입니다.
@@ -265,6 +270,7 @@ void gerRandomNumber() {
 
 테스트는 항상 일관된 결과를 보장해야 합니다. 따라서 확률에 기반한 테스트는 의미가 없다고 판단해 제거했습니다.
 
+<br/>
 **3. CarController 객체의 역할이 애매하다.**
 
 랜덤 값 조건에 따라 차를 움직일지 말지 결정하는 CarController 객체의 이름과 역할에 관한 피드백이 있었습니다.
@@ -293,9 +299,7 @@ CarController의 이름과 역할을 다시 생각해 보니 그제야 MVC의 �
       - 경주는 차들을 움직입니다.
       - 경주는 우승자를 결정할 수 있습니다.
 
-
-
-
+---
 ## 자동차 경주 우승자 찾기
 
 ### 1) 미션 요구사항 개발
@@ -351,6 +355,7 @@ private void startRace(int numberOfRounds, Race race) {
 
 ### 2) 피드백을 통해 어떻게 개선될 수 있는지 파악
 
+<br/>
 **1. ResultView**
 
 앞서 ResultView의 위치를 Race 내부로 옮기고자 했던 이유는, 경주 상태를 출력하기 위해 Race 내부의 데이터가 필요했기 때문입니다.
@@ -372,6 +377,7 @@ resultView.showCars(records);
 Car movedCar = car.move(number);
 ```
 
+<br/>
 **2. 자동차 경주 우승자 이름 출력**
 
 아래는  우승자의 이름을 조회하는 메소드입니다.
@@ -414,6 +420,7 @@ public List<String> getWinners() {
 
 (+ `toUnmodifiableList`는 원본 객체의 변경에 영향을 받으니 새로운 리스트로 복제를 해서 불변 리스트로 만들어야 합니다. [https://colabear754.tistory.com/185](https://colabear754.tistory.com/185)  )
 
+<br/>
 **3.반환타입은 배열보다 컬렉션을 사용하자**
 
 컬렉션으로 반환하면 stream(), sort(), filter()와 같은 고차 함수와 스트림 API를 사용할 수 있는 장점이 생깁니다. 반면에 배열을 반환활 경우, 공변성 문제에 직면할 수 있습니다.
@@ -439,6 +446,7 @@ List<Object> objects = new ArrayList<String>();  // 컴파일 오류 발생
 
 이처럼 List<String>과 List<Object>는 호환되지 않기 때문에, 자바 컴파일러는 타입 안전성을 보장할 수 있습니다. 이러한 이유로 컬렉션을 사용하면 배열보다 더 안전하게 타입을 관리할 수 있습니다.
 
+<br/>
 **4. 테스트에서도 getter를 쓸 필요가 없다.**
 
 테스트에서 객체에 값을 꺼내서 비교하지 않고 `hashCode`와 `equals`를 오버라이딩하여 동등성 비교로 값을 검증할 수 있습니다.
@@ -456,6 +464,7 @@ assertThat(car).isEqualTo(new Car("green", 1)); //자동차의 이름과 위치�
 
 따라서, 객체가 가지고 있는 모든 값이 중요한 경우에는 extracting이나 getter를 사용하여 객체의 개별 필드 값을 추출해 예상한 값과 일치하는지 검증하는 것이 더 안전하다고 느꼈습니다.
 
+<br/>
 **5. public / private 메소드 순서**
 
 public / private 메소드 순서에 대한 리뷰어님의 의견이 궁금했습니다.
@@ -599,6 +608,7 @@ public class Position {
     }
 ```
 
+---
 ## 자동차 경주 미션이 끝난 후 느낀 점
 
 ### 1. 코드 개선 전후를 비교해 보니, 개선된 코드에서 “**버그가 덜 발생할 것 같다**”는 느낌을 받았습니다.
@@ -649,6 +659,7 @@ public class Position {
 
 이번 미션을 통해 부족한 점을 많이 느꼈습니다. 피드백을 계속 생각하며 연습해야겠다는 다짐을 하게 되었습니다.
 
+---
 ## 글 쓰는데 걸린 시간
 초안작성  : 8시간
 
