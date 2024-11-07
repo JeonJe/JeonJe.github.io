@@ -1,7 +1,8 @@
 ---
 title: 로또 게임 with TDD & Clean Code
 categories: 글또
-tags: [글또]
+tags:
+  - 글또
 ---
 
 
@@ -472,7 +473,7 @@ lottoTickets.addAll(lottoMachine.generateLottoTicket());
 ![image.png](/assets/img/2024-11-05-geultto_lotto_game_with_tdd_and_clean_code/image 3.png)
 
 예를 들어 파일 끝에 개행을 추가하는 것은 POSIX 표준 중 하나로, 파일의 끝에 개행을 하지 않고 `Pull Request`를 보내면, 버전 관리 시스템에서 파일 끝에 개행이 없다는 경고를 표시합니다.
-준을 지키지 않으면 해당 기준을 따르는 개발자들과 불필요한 코드 충돌이 발생할 수 있습니다.
+만약, 표준을 지키지 않으면 해당 기준을 따르는 개발자들과 불필요한 코드 충돌이 발생할 수 있습니다.
 
 이 피드백 덕분에 이런 표준과 설정이 있다는 사실을 새롭게 알게 되었고, 즉시 IntelliJ에서 파일 저장 시 마지막에 개행이 자동으로 추가되도록 설정했습니다. (이후 사내에 해당 정보를 공유하기도 했습니다.)
 
