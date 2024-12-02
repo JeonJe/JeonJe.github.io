@@ -7,7 +7,7 @@ tags:
 
 # 슬로우 쿼리 개선
 
-서비스 개선 프로젝트 후 모니터링 과정에서 쿼리 실행 시간이 1초 이상 소요되는 쿼리를 발견하였고 이를 개선해보았습니다.
+[사내 서비스 개선 프로젝트](https://jeonje.github.io/posts/retrospection_of_process_improvement_project/) 후 모니터링 과정에서 쿼리 실행 시간이 1초 이상 소요되는 쿼리를 발견하였고 이를 개선해보았습니다.
 
 # 첫 번째 슬로우 쿼리
 
@@ -307,13 +307,8 @@ ORDER BY MAX(fa.update_dtm) DESC;
 아직 개선이 필요한 쿼리들이 많기 때문에 데이터베이스의 옵티마이저, 인덱스, 실행 계획에 대해 더 깊이 공부 하면서 사용자가 더 쾌적하게 서비스를 이용할 수 있도록 개선해 나갈 예정입니다.
 
 # 참고
-
-Index를 타지 않는 쿼리 - [https://hckcksrl.medium.com/index를-타지않는-쿼리-41f0417bfe03](https://hckcksrl.medium.com/index%EB%A5%BC-%ED%83%80%EC%A7%80%EC%95%8A%EB%8A%94-%EC%BF%BC%EB%A6%AC-41f0417bfe03)
-
-[SQL] 인덱스만 잘타도 조회속도가 빨라진다. - [https://codingmoonkwa.tistory.com/m/219](https://codingmoonkwa.tistory.com/m/219)
-
-인덱스를 안타는 쿼리들 - [https://dkswnkk.tistory.com/694](https://dkswnkk.tistory.com/694)
-
-MySQL LIKE % 위치에 따른 인덱스 사용 여부 - [https://k3068.tistory.com/106](https://k3068.tistory.com/106)
-
-이름 검색을 위한 like 쿼리 DB Index 적용하기 (NGrinder로 성능 개선 확인3) - [https://velog.io/@cmsskkk/like-DB-Index-NGrinder3](https://velog.io/@cmsskkk/like-DB-Index-NGrinder3)
+- [Index를 타지 않는 쿼리](https://hckcksrl.medium.com/index%EB%A5%BC-%ED%83%80%EC%A7%80%EC%95%8A%EB%8A%94-%EC%BF%BC%EB%A6%AC-41f0417bfe03)
+- [[SQL] 인덱스만 잘타도 조회속도가 빨라진다.](https://codingmoonkwa.tistory.com/m/219)
+- [인덱스를 안타는 쿼리들](https://dkswnkk.tistory.com/694)
+- [MySQL LIKE % 위치에 따른 인덱스 사용 여부](https://k3068.tistory.com/106)
+- [이름 검색을 위한 LIKE 쿼리 DB Index 적용하기 (NGrinder로 성능 개선 확인3)](https://velog.io/@cmsskkk/like-DB-Index-NGrinder3)
