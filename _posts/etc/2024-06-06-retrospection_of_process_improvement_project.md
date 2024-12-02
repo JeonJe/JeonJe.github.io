@@ -209,20 +209,18 @@ public APIResponse changeSomething(@PathVariable("seq") int seq,
 아직 서비스에 대해 모르는 부분이 많다는 것을 느꼈습니다. 프로젝트에서 담당한 부분은 문서화를 하고, 담당하지 않는 부분은 틈틈히 정리하며 문제가 생겼을 땐 먼저 대응함으로써 서비스 이해도를 높혀 나가고자 합니다.
 
 - 문서화
-  - ~~원격진료 프로세스~~
-  - ~~환자 클라이언트 진료 접수~~
-  - ~~통합클라이언트 결제 프로세스 정리~~
+  - [x] 원격진료 프로세스
+  - [x] 환자 클라이언트 진료 접수
+  - [x] 통합클라이언트 결제 프로세스 정리
 
 ### 테스트 코드 작성을 연습하자
 
 이번 프로젝트를 통해 테스트 코드의 중요성을 많이 느끼게 되었습니다. 테스트 코드를 깊게 공부하고 앞으로의 프로젝트에 적용하여 안정적인 서비스를 개발하는 것이 목표입니다.
 
 - 테스트 코드 학습
-  - ~~강의 - [https://www.inflearn.com/course/자바-스프링-테스트-개발자-오답노트/dashboard](https://www.inflearn.com/course/%EC%9E%90%EB%B0%94-%EC%8A%A4%ED%94%84%EB%A7%81-%ED%85%8C%EC%8A%A4%ED%8A%B8-%EA%B0%9C%EB%B0%9C%EC%9E%90-%EC%98%A4%EB%8B%B5%EB%85%B8%ED%8A%B8/dashboard)~~
-  - ~~강의 - [https://www.inflearn.com/course/practical-testing-실용적인-테스트-가이드/dashboard](https://www.inflearn.com/course/practical-testing-%EC%8B%A4%EC%9A%A9%EC%A0%81%EC%9D%B8-%ED%85%8C%EC%8A%A4%ED%8A%B8-%EA%B0%80%EC%9D%B4%EB%93%9C/dashboard)~~
-  - 강의 - https://www.inflearn.com/course/the-java-application-test#reviews
-  - 도서 - 유닛 테스트(진행 중 ~24.08.14)
+  - [x] [자바 스프링 테스트 개발자 오답노트 강의](https://www.inflearn.com/course/%EC%9E%90%EB%B0%94-%EC%8A%A4%ED%94%84%EB%A7%81-%ED%85%8C%EC%8A%A4%ED%8A%B8-%EA%B0%9C%EB%B0%9C%EC%9E%90-%EC%98%A4%EB%8B%B5%EB%85%B8%ED%8A%B8/dashboard)
+  - [x] [실용적인 테스트 가이드 강의](https://www.inflearn.com/course/practical-testing-%EC%8B%A4%EC%9A%A9%EC%A0%81%EC%9D%B8-%ED%85%8C%EC%8A%A4%ED%8A%B8-%EA%B0%80%EC%9D%B4%EB%93%9C/dashboard)
 - 테스트 코드 적용
-  - ~~EMR 연동 프로젝트~~
-  - ~~사이드 프로젝트~~
-  - 모비닥 (진행중 ~24.08..14)
+  - [x] EMR 연동 프로젝트
+  - [x] 개인 사이드 프로젝트
+  - [x] 모비닥 통합 클라이언트 
