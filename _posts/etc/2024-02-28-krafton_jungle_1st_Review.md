@@ -1,7 +1,7 @@
 ---
 title: 크래프톤 정글 후기
-categories: retrospection
-tags: [retrospection jungle]
+categories: review
+tags: [review jungle]
 ---
 
 > 늦게나마 2022.10 ~ 2023.03 크래프톤 정글 1기 5개월에 관한 간략한 후기를 작성한다.

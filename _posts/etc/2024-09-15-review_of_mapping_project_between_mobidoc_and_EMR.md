@@ -1,7 +1,7 @@
 ---
 title: EMR 접수 연동 프로젝트 회고
-categories: retrospection
-tags: [retrospection project]
+categories: review
+tags: [review project]
 
 ---
 

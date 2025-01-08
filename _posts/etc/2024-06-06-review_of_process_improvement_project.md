@@ -1,7 +1,7 @@
 ---
 title: 진료 프로세스 개선 회고
-categories: retrospection
-tags: [retrospection project]
+categories: review
+tags: [review project]
 
 ---
 
