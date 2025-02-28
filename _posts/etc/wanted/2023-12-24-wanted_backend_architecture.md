@@ -1,7 +1,8 @@
 ---
-title: 원티드 백엔드 아키텍쳐 설계
+title: "백엔드 아키텍처 설계 기초: 동시성 제어와 네트워크 프로토콜"
+description: "동시에 같은 DB 테이블 로우를 업데이트하는 상황 방어 방법, TCP와 UDP 차이점, 웹 브라우저 동작 원리, 자바 설계적 결함, HashMap 내부 동작 원리 분석"
 categories: architecture
-tags: [wanted architecture]
+tags: [wanted, architecture, 동시성제어, 트랜잭션, 락, TCP, UDP, 네트워크, 웹브라우저, 자료구조, HashMap]
 
 ---
 

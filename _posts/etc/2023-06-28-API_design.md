@@ -1,7 +1,8 @@
 ---
-title: RESTFul 웹 API Design
+title: "RESTful API 설계: 리소스 구조화와 HTTP 메서드 활용"
+description: "웹 API 설계 원칙, 리소스 URI 구성 방법, HTTP 메서드별 사용법, 상태 코드 활용, 비동기 작업 처리, 데이터 필터링과 페이지네이션 구현 방법"
 categories: API
-tags: [API RESTFul]
+tags: [API, RESTful, HTTP, 웹개발, 백엔드, URI설계, 상태코드, 페이지네이션, 필터링, 마이크로소프트]
 
 ---
 

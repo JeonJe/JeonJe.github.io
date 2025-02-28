@@ -1,7 +1,8 @@
 ---
-title: Optional chaining
-categories: optional chaning
-tags: [optional chaning]
+title: "JavaScript 옵셔널 체이닝(?.) 완벽 가이드: 안전한 객체 속성 접근법"
+description: "JavaScript의 옵셔널 체이닝 연산자(?.)를 활용한 중첩 객체 안전 접근 방법, 단락 평가 원리, 함수 호출 및 배열 접근 시 활용 패턴 소개"
+categories: etc frontend
+tags: [javascript, optional-chaining, 널체크, 객체접근, 에러방지, 단락평가, 안전한코딩, 프론트엔드, 웹개발]
 
 ---
 # 옵셔널 체이닝이 필요한 이유 
@@ -75,18 +76,18 @@ alert( user1?.[key]?.something?.not?.existing); // undefined
 
 # 요약
 
-옵셔널 체이닝 문법 `?.`은 세 가지 형태로 사용할 수 있습니다.
+옵셔널 체이닝 문법 `?.`은 세 가지 형태로 사용할 수 있습니다.
 
-1. `obj?.prop` – `obj`가 존재하면 `obj.prop`을 반환하고, 그렇지 않으면 `undefined`를 반환함
-2. `obj?.[prop]` – `obj`가 존재하면 `obj[prop]`을 반환하고, 그렇지 않으면 `undefined`를 반환함
-3. `obj?.method()` – `obj`가 존재하면 `obj.method()`를 호출하고, 그렇지 않으면 `undefined`를 반환함
+1. `obj?.prop` – `obj`가 존재하면 `obj.prop`을 반환하고, 그렇지 않으면 `undefined`를 반환함
+2. `obj?.[prop]` – `obj`가 존재하면 `obj[prop]`을 반환하고, 그렇지 않으면 `undefined`를 반환함
+3. `obj?.method()` – `obj`가 존재하면 `obj.method()`를 호출하고, 그렇지 않으면 `undefined`를 반환함
 
 
 `?.`를 계속 연결해서 체인을 만들면 중첩 프로퍼티들에 안전하게 접근할 수 있습니다.
 
-`?.`은 `?.`왼쪽 평가대상이 없어도 괜찮은 경우에만 선택적으로 사용해야 합니다.
+`?.`은 `?.`왼쪽 평가대상이 없어도 괜찮은 경우에만 선택적으로 사용해야 합니다.
 
-꼭 있어야 하는 값인데 없는 경우에 `?.`을 사용하면 프로그래밍 에러를 쉽게 찾을 수 없으므로 이런 상황을 만들지 않도록 합니다.
+꼭 있어야 하는 값인데 없는 경우에 `?.`을 사용하면 프로그래밍 에러를 쉽게 찾을 수 없으므로 이런 상황을 만들지 않도록 합니다.
 
 
 # 참고 

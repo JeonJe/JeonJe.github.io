@@ -1,7 +1,8 @@
 ---
-title: 실전 자바 기본편 
-categories: java
-tags: [java]
+title: "자바 기본 개념 정리: 객체지향, 상속, 다형성, 추상화 이해"
+description: "김영한의 실전 자바 기본편 강의에서 배운 자바 핵심 개념 - 참조형과 기본형, 객체지향 프로그래밍, 상속, 다형성, 추상 클래스, 인터페이스 정리"
+categories: java 객체지향
+tags: [java, 객체지향, 상속, 다형성, 추상클래스, 인터페이스, 자바기초, 참조형, 기본형, OCP]
 ---
 
 >   [김영한의 실전 자바 기본편](https://www.inflearn.com/course/%EA%B9%80%EC%98%81%ED%95%9C%EC%9D%98-%EC%8B%A4%EC%A0%84-%EC%9E%90%EB%B0%94-%EA%B8%B0%EB%B3%B8%ED%8E%B8?gad_source=1&gclid=EAIaIQobChMIrJmmgZu5gwMV6-oWBR0Y3QHAEAAYASAAEgJYX_D_BwE)에서 학습한 내용을 정리한 글입니다.

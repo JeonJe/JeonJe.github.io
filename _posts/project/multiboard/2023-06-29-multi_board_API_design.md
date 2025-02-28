@@ -1,7 +1,8 @@
 ---
-title: RESTful API 설계 & 개발 순서
+title: "멀티보드 RESTful API 설계: 명세서 작성 및 개발 순서 계획"
+description: "다중 게시판 프로젝트의 RESTful API 설계 원칙, GitBook을 활용한 API 명세서 작성 방법, 효율적인 개발 순서 계획"
 categories: project multiboard
-tags: [multiboard API]
+tags: [multiboard, API, RESTful, API설계, 개발순서, GitBook, HTTP메서드, URI설계]
 
 ---
 
@@ -41,7 +42,7 @@ http://restapi.example.com/animals/mammals/whales
 - 리소스 간에 관계가 있을 수 있습니다. 아래와 같이 표현 될 수 있습니다.
 ```http
 리소스명/리소스 ID/관계가 있는 다른 리소스명
-ex)GET : /users/{userid}/devices (일반적으로 소유 ‘has’의 관계를 표현할 때)
+ex)GET : /users/{userid}/devices (일반적으로 소유 'has'의 관계를 표현할 때)
 GET : /users/{userid}/likes/devices (관계명이 애매하거나 구체적 표현이 필요할 때)
 ```
 1. 자원을 표현하는 collection과 document

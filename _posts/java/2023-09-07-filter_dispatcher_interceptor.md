@@ -1,7 +1,8 @@
 ---
-title: "Filter, Dispatcher Servlet, Interceptor"
+title: "Spring MVC 요청 처리 과정: Filter, Dispatcher Servlet, Interceptor 이해"
+description: "Spring MVC 요청 생명주기에서 Filter, Dispatcher Servlet, Interceptor의 역할과 차이점, 구현 방법 및 활용 방식 정리"
 categories: java spring
-tags: [spring filter dispatcher_servlet interceptor]
+tags: [spring, filter, dispatcher_servlet, interceptor, spring_mvc, 요청처리, 웹개발, 스프링구조, 미들웨어]
 
 ---
 
@@ -127,7 +128,7 @@ public interface HandlerInterceptor {
 `View` 렌더링을 포함한 모든 작업이 완료된 후에 실행됩니다.
 요청을 처리하면서 사용한 리소스를 반환하는 경우 호출될 수 있습니다.
 
-인터셉터를 사용하는 대신, 컨트롤러에 적용할려는 부가 기능을 어드바이스 형태로 만들어 AOP 적용을 할 수도 있을 것입니다.
+인터셉터를 사용하는 대신, 컨트롤러에 적용할려는 부가 기능들을 어드바이스 형태로 만들어 AOP 적용을 할 수도 있을 것입니다.
 하지만, 타입이 일정하지 않고 호출 패턴도 딱히 정해져 있지 않다면 컨트롤러에 AOP를 적용하기 번거로울 수 있으니
 컨트롤러 호출 전/후 부가 기능들은 인터셉터를 사용하는 편이 낫습니다.
 

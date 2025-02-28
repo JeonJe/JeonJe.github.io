@@ -1,7 +1,8 @@
 ---
-title: Composition API with TypeScript
-categories: composition API
-tags: [composition API]
+title: "Vue 3 Composition API와 TypeScript 통합 가이드"
+description: "Vue 3 Composition API에서 TypeScript를 활용한 타입 안전한 컴포넌트 개발 방법, Props, 이벤트, ref, computed 속성의 타입 정의 및 템플릿 참조 활용 기법"
+categories: etc frontend
+tags: [vue3, typescript, composition-api, ref, computed, defineProps, defineEmits, 타입안전성, 컴포넌트개발, 프론트엔드]
 
 ---
 

@@ -1,7 +1,8 @@
 ---
-title: 중간점검
+title: "멀티보드 프로젝트 중간점검: 코드 개선과 리팩토링"
+description: "사용자 식별 방식 개선과 카테고리 코드 관리를 위한 Enum 활용, 보안 강화 및 코드 유지보수성 향상 방법"
 categories: project multiboard
-tags: [multiboard midtermcheck]
+tags: [multiboard, 리팩토링, 코드개선, Enum, 사용자식별, 보안강화, 유지보수, 설계패턴]
 
 ---
 

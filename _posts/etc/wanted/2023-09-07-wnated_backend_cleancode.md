@@ -1,7 +1,8 @@
 ---
-title: 변경에 유연한 코드 설계 - 클린코드와 SOLID까지
+title: "클린코드와 SOLID 원칙: 변경에 유연한 객체지향 설계 방법"
+description: "의미 있는 이름 짓기, 함수 설계, 객체와 자료구조 분리, 단일 책임 원칙(SRP), 개방 폐쇄 원칙(OCP), 리스코프 치환 원칙(LSP) 등 객체지향 설계 원칙 정리"
 categories: cleancode
-tags: [wanted cleancode]
+tags: [wanted, cleancode, 객체지향, SOLID, 단일책임원칙, 개방폐쇄원칙, 리스코프치환원칙, 코드품질, 리팩토링]
 
 ---
 

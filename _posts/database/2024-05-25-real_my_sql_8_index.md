@@ -1,7 +1,8 @@
 ---
-title: Real MySQL 8 인덱스
-categories: database 
-tags: [database index]
+title: "MySQL 인덱스의 원리와 구조 이해하기"
+description: "Real MySQL 8.0 학습 내용 - B-Tree 인덱스의 작동 원리, 다양한 인덱스 유형과 특성, 인덱스 스캔 방식까지 MySQL 인덱스의 핵심 개념 총정리"
+categories: database
+tags: [database, MySQL, 인덱스, B-Tree, 클러스터링인덱스, 세컨더리인덱스, 유니크인덱스]
 ---
 
 > Real MySQL 8.0 8장 "인덱스"를 학습한 내용입니다.
@@ -51,7 +52,7 @@ B-tree의 키 변경은 키를 삭제한 후 다시 새로운 키 값을 추가�
 
 **가장 중요한 점은 인덱스의 키 값에 변형이 가해지고 비교하는 경우 절대 B-Tree의 빠른 검색 기능을 사용할 수 없다.**
 
-InnoDB에서는 인덱스가 더 특별한 의미를 가지고 있는데 InnoDB  테이블에서 지원하는 레코드 잠금ㅇ이나 넥스트 키락(갭락)이 검색을 수행한 인덱스를 잠근 후 테이블의 레코드를 잠그는 방식으로 구현되어 있다. 즉, update나 delete문장이 실행 될 때 테이블에 적절히 사용할 인덱스가 없으면 불필요하게 많은 레코드를 잠근다.
+InnoDB에서는 인덱스가 더 특별한 의미를 가지고 있는데 InnoDB  테이블에서 지원하는 레코드 잠금이나 넥스트 키락(갭락)이 검색을 수행한 인덱스를 잠근 후 테이블의 레코드를 잠그는 방식으로 구현되어 있다. 즉, update나 delete문장이 실행 될 때 테이블에 적절히 사용할 인덱스가 없으면 불필요하게 많은 레코드를 잠근다.
 
 ## **B-Tree 인덱스 사용에 영향을 미치는 요소**
 
@@ -185,7 +186,7 @@ InnoDB에서 인덱스 역순 스캔이 인덱스 정순 스캔에 비해 느리
 
 B-Tree 인덱스의 특징은 왼쪽 값에 기준해서 오른쪽 값이 정렬돼 있다는 것이고, 다중 컬럼 인덱스의 컬럼에 대해서도 적용된다.
 
-즉, 저장된 값의 왼쪽부터 한 글자씩 비교하며 레코드를 찾아야하는데 왼쪽 부분이 고정되어 있지 않는 `LIKE ‘%키워드’` 는 B-Tree에서는 인덱스 효과를 얻을 수 없다.
+즉, 저장된 값의 왼쪽부터 한 글자씩 비교하며 레코드를 찾아야하는데 왼쪽 부분이 고정되어 있지 않는 `LIKE '키워드'` 는 B-Tree에서는 인덱스 효과를 얻을 수 없다.
 
 ### **가용성과 효율성 판단**
 
@@ -193,15 +194,15 @@ B-Tree 인덱스의 특징은 왼쪽 값에 기준해서 오른쪽 값이 정렬
 
 - NOT-EQUAL로 비교
   - <>, NOT IN, NOT BETWEEN, IS NOT NULL
-  - WHERE  column <> ‘N’
+  - WHERE  column <> 'N'
   - WHERE  column NOT IN (10,11,12)
   - WHERE  column IS NOT NULL
-- LIKE ‘%키워드’ 형태로 문자열 패턴이 비교
-  - WHERE  column like ‘%keyword’
-  - WHERE  column like '_keyword’
-  - WHERE  column like '%keyword%’
+- LIKE '키워드' 형태로 문자열 패턴이 비교
+  - WHERE  column like 'keyword'
+  - WHERE  column like '_keyword'
+  - WHERE  column like '%keyword%'
 - 스토어드 함수나 다른 연산자로 인덱스 컬럼이 변형된 경우
-  - WHERE  SUBSTRING(column, 1, ,1 ) = ‘x’
+  - WHERE  SUBSTRING(column, 1, ,1 ) = 'x'
   - WHERE  DAYOFMONTH(column) = 1
 - NOT-DETERMINISTIC 속성의 스토어드 함수가 비교 조건에 사용
   - WHERE  column = deterministic_function()

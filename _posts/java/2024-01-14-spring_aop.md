@@ -1,7 +1,8 @@
 ---
-title: Spring AOP
-categories: spring aop
-tags: [spring aop]
+title: "Spring AOP 완벽 이해: 개념부터 실전 활용까지"
+description: "Spring AOP의 핵심 개념, 프록시 기반 동작 원리, 포인트컷 표현식, 어드바이스 유형 및 실무 활용 사례 정리"
+categories: java spring
+tags: [spring, aop, 관점지향프로그래밍, 프록시, 포인트컷, 어드바이스, 조인포인트, 애스펙트, 트랜잭션관리, 로깅]
 ---
 
 ## Spring AOP
@@ -109,10 +110,10 @@ public interface MethodInterceptor extends Interceptor {
 ![](https://i.imgur.com/exPcAcX.png)
 
 파라미터 매칭 규칙 
-- `(String) : 메서드의 파라미터가 정확하게 String 타입의 파라미터이어야  포인트컷 대상`
+- `(String) : 메서드의 파라미터가 정확하게 String 타입의 파라미터이어야  포인트컷 대상`
 - `() : 메서드의 파라미터가 없어야 포인트컷 대상`
 - `(*) : 메서드의 파라미터 타입은 모든 타입을 허용하지만, 정확히 하나의 파라미터를 가진 메서드가 포인트컷 대상`
-- `(*, *) : 메서드의 파라미터 타입은 모든 타입을 허용하지만, 정확히 두 개의 파라미터를 가진 메서드가 포인트컷 대상`
+- `(*, *) : 메서드의 파라미터 타입은 모든 타입을 허용하지만, 정확히 두 개의 파라미터를 가진 메서드가 포인트컷 대상`
 - `(..) : 메서드의 파라미터 수와 무관하게 모든 파라미터, 모든 타입을 허용한다. ( 파라미터가 없어도 된다. )`
 - `(String, ..) : 메서드의 첫 번째 파라미터는 String 타입으로 시작해야 하고, 나머지 파라미터 수와 무관하게 모든 파라미터, 모든 타입을 허용한다. ( Ex:// (String) , (String, xxx) , (String, xxx, xxx) 허용 )`
 

@@ -1,7 +1,8 @@
 ---
-title: bundler failed to load command jekyll
+title: "Jekyll 블로그 오류 해결: bundler failed to load command jekyll"
+description: "Ruby 3.0에서 발생하는 Jekyll 실행 오류 해결 방법, webrick 설치를 통한 GitHub Pages 블로그 문제 해결 과정"
 categories: blog jekyll
-tags: [jekyll]
+tags: [jekyll, github-pages, ruby, webrick, 오류해결, 블로그, 트러블슈팅]
 
 ---
 

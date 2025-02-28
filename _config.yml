@@ -18,7 +18,7 @@ title: 내가 그린 # the main title
 
 tagline: 쓰고 보자 # it will display as the sub-title
 
-description:
+description: "자바, 스프링, 데이터베이스, 객체지향, 테스트 코드, 리팩토링 등에 대해 배우고, 고민한 것들을 기록하였습니다."
 
 # Fill in the protocol & hostname for your site.
 # e.g. 'https://username.github.io', note that it does not end with a '/'.

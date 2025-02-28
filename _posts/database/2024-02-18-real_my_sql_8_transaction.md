@@ -1,7 +1,8 @@
 ---
-title: Real MySQL 8 트랜잭션
-categories: database 
-tags: [database transaction]
+title: "MySQL 트랜잭션과 잠금 메커니즘 완벽 이해하기"
+description: "Real MySQL 8.0 학습 내용 - 트랜잭션의 개념부터 다양한 잠금 유형(글로벌, 테이블, 네임드, 메타데이터 락)과 격리 수준까지 상세 정리"
+categories: database
+tags: [database, MySQL, transaction, InnoDB, 트랜잭션, 잠금, 격리수준, ACID]
 
 ---
 
@@ -140,7 +141,7 @@ MySQL 5.1 부터는 레코드 잠금과 잠금 대기에 대한 조회 쿼리를
     - DIRTY READ라고도 한다. 일반적인 데이터베이스에서 거의 사용하지 않는다.
     - NON-REPEATABLE READ 발생
     - PHANTOM READ 발생
-- **READ COMMITED**
+- **READ COMMITTED**
     - NON-REPEATABLE READ 발생
     - PHANTOM READ 발생
 - **REPEATABLE READ**

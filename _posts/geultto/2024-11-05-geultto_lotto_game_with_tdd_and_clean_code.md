@@ -1,14 +1,15 @@
 ---
-title: 로또 게임 with TDD & Clean Code
-categories: 글또
-tags:
-  - 글또
+title: "EnumMap으로 성능 개선하기: 로또 게임 TDD 리팩토링 여정"
+description: "로또 게임 구현 과정에서 EnumMap 활용, 원시값 포장, 전략 패턴 적용을 통한 코드 품질 향상과 성능 최적화 경험 공유"
+categories: 글또 성능최적화
+tags: [TDD, 클린 코드, java, 리팩토링, 객체지향, EnumMap, 전략 패턴, 원시값 포장, 성능 최적화]
 ---
+
 
 
 ## 요약
 
-- Next-step의 ”TDD, 클린 코드 with Java ” 과정 중 로또 게임 미션을 통해 TDD와 클린코드에 대해 학습한 내용입니다.
+- Next-step의 "TDD, 클린 코드 with Java " 과정 중 로또 게임 미션을 통해 TDD와 클린코드에 대해 학습한 내용입니다.
 
 ---
 
@@ -467,9 +468,9 @@ lottoTickets.addAll(lottoMachine.generateLottoTicket());
 
 이번 미션에서 가장 기억에 남는 부분은 로또 당첨 등수별 당첨 금액을 enum을 활용해 관리하도록 개선한 점입니다.
 
-이 과정에서 “아, 여기서 enum을 사용해야겠구나”라는 생각을 미처 떠올리지 못한 아쉬움이 있었고, `EnumMap` 자료구조도 새롭게 알게 되면서 아직 공부할 게 많다고 느꼈습니다.
+이 과정에서 "아, 여기서 enum을 사용해야겠구나"라는 생각을 미처 떠올리지 못한 아쉬움이 있었고, `EnumMap` 자료구조도 새롭게 알게 되면서 아직 공부할 게 많다고 느꼈습니다.
 
-그리고, 피드백을 통해 “다양한 개발자분들과 협업 해 보는 경험이 있으면 좋겠다” 는 생각이 들었습니다.
+그리고, 피드백을 통해 "다양한 개발자분들과 협업 해 보는 경험이 있으면 좋겠다" 는 생각이 들었습니다.
 ![image.png](/assets/img/2024-11-05-geultto_lotto_game_with_tdd_and_clean_code/image 3.png)
 
 예를 들어 파일 끝에 개행을 추가하는 것은 POSIX 표준 중 하나로, 파일의 끝에 개행을 하지 않고 `Pull Request`를 보내면, 버전 관리 시스템에서 파일 끝에 개행이 없다는 경고를 표시합니다.

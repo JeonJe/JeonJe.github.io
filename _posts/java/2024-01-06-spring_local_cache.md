@@ -1,7 +1,8 @@
 ---
-tags: [Spring Local Cache]
-categories: java cache
-tags: [java spring cache]
+title: "Spring Local Cache 구현: 성능 최적화와 메모리 관리"
+description: "Spring 애플리케이션에서 로컬 캐시를 구현하여 반복적인 데이터베이스 조회를 줄이고 성능을 최적화하는 방법과 메모리 관리 전략"
+categories: java spring
+tags: [spring, cache, 로컬캐시, 성능최적화, 메모리관리, ConcurrentHashMap, 캐시전략, TTL, 캐시무효화]
 ---
 
 # 캐시의 필요성
@@ -205,12 +206,12 @@ verify(memberRepository, times((1))).findMemberByNickname("TEST");
 # 주의점
 
 - `@cacheable` 을 이용해 설정한 메소드는 정상적으로 종료되어야 캐쉬가 저장된다.
-- 해당 메소드 안에서 `throw new Exception()` 이 발생하면 캐쉬는 저장되지 않는다
+- 해당 메소드 안에서 `throw new Exception()` 이 발생하면 캐쉬는 저장되지 않는다
 - 만약, null로 반환되는 데이터를 cache하고 싶은 경우는 ==unless== 키워드를 사용한다.
 - **하나의 Service 안에 메소드를 내부에서 call(동일 클래스 내 호출)하게 되면(self-invocation) proxy interceptor를 타지 않고,  바로 메소드를 호출하기 때문에 캐싱되지 않는다**
- - cache될 데이터가 직렬화(Serializable)가 가능해야 한다. 만약 직렬화(serializalbe)이 되지 않는다면, 캐시가 되지 않는다. 혹시 캐시가 되지 않는다면 데이터의 `implement Serializalbe`를 이용하자.
+ - cache될 데이터가 직렬화(Serializable)가 가능해야 한다. 만약 직렬화(serializalbe)이 되지 않는다면, 캐시가 되지 않는다. 혹시 캐시가 되지 않는다면 데이터의 `implement Serializalbe`를 이용하자.
 - Cache TTL time 을 활용한 `cache eviction` 기능을 활용 하는것을 추천한다.
-- Cache Element 개수는 수치상으로 메모리가 충분하다는 가정하에 max 5000개 이하로 설정하는 것이 효율적이다. 단, One Thread / One instnace 환경 테스트에서는 entry 개수가 1000개 이하는 CPU usage가 큰 의미가 없다.
+- Cache Element 개수는 수치상으로 메모리가 충분하다는 가정하에 max 5000개 이하로 설정하는 것이 효율적이다. 단, One Thread / One instnace 환경 테스트에서는 entry 개수가 1000개 이하는 CPU usage가 큰 의미가 없다.
 
 
 # 참고 

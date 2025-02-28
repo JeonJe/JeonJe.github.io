@@ -1,7 +1,8 @@
 ---
-title: 앞으로
+title: "멀티보드 프로젝트 완료 및 향후 개선 계획"
+description: "멀티보드 프로젝트 대시보드 구현 결과와 향후 개선 계획, 코드 리팩토링, 서버 배포, 동시성 문제 해결, 테스트 코드 작성 방향"
 categories: project multiboard
-tags: [multiboard, todo]
+tags: [multiboard, 프로젝트완료, 대시보드, 개선계획, 리팩토링, 서버배포, 동시성문제, 테스트코드, 부하테스트]
 ---
 
 ## 대시보드 

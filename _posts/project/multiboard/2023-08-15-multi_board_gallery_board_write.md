@@ -1,7 +1,8 @@
 ---
-title: 갤러리 게시글 등록/수정/삭제
+title: "멀티보드 갤러리게시판 CRUD 구현: 이미지 업로드와 썸네일 생성"
+description: "Spring Boot와 Vue.js를 활용한 갤러리게시판 게시글 작성, 수정, 삭제 기능과 이미지 우선순위 관리, 썸네일 자동 생성 구현 방법"
 categories: project multiboard
-tags: [multiboard galleryboard]
+tags: [multiboard, 갤러리게시판, CRUD, 이미지업로드, 썸네일생성, spring, Vue, Thumbnailator, 이미지우선순위]
 
 ---
 

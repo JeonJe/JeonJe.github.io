@@ -1,7 +1,8 @@
 ---
-title: 원티드 백엔드 아키텍쳐 설계2 - 사용자 수에 따른 규모를 확장하는 방법(1/2)
+title: "대규모 서비스를 위한 백엔드 확장 전략 (1): DB 다중화와 캐싱"
+description: "사용자 수 증가에 따른 백엔드 확장 방법, 데이터베이스 다중화 구현, 로컬/글로벌 캐시 활용, CDN 최적화, 트랜잭션 격리 수준과 락 전략"
 categories: architecture
-tags: [wanted architecture]
+tags: [wanted, architecture, 확장성, DB다중화, 마스터슬레이브, 캐시, CDN, 트랜잭션, 낙관적락, 비관적락, 분산락]
 ---
 
 > 원티드 프리온보딩 백엔드 챌린지 아키텍쳐 설계을 정리한 내용입니다.

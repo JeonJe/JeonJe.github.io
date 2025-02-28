@@ -1,7 +1,8 @@
 ---
-title: 동시성이슈 해결방법
-categories: concurrency issue
-tags: [concurrency synchronized pessimistic_lock optimistic_lock, redis]
+title: "재고 시스템으로 배우는 동시성 이슈 해결 전략: Synchronized, DB Lock, Redis 비교 분석"
+description: "Java 멀티스레드 환경에서 발생하는 동시성 문제를 해결하기 위한 다양한 방법 - Synchronized, Pessimistic Lock, Optimistic Lock, Named Lock, Redis의 Lettuce와 Redisson을 활용한 분산 락 구현 및 성능 비교"
+categories: concurrency
+tags: [concurrency, synchronized, pessimistic_lock, optimistic_lock, redis, 동시성이슈, 분산락, 재고시스템, 성능최적화]
 ---
 
 >   [최상용님의 재고시스템으로 알아보는 동시성이슈 해결 방법](https://www.inflearn.com/course/%EB%8F%99%EC%8B%9C%EC%84%B1%EC%9D%B4%EC%8A%88-%EC%9E%AC%EA%B3%A0%EC%8B%9C%EC%8A%A4%ED%85%9C)에서 학습한 내용을 정리한 글입니다.

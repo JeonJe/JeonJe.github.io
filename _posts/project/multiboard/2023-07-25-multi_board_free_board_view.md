@@ -1,7 +1,8 @@
 ---
-title: 자유 게시글 보기
+title: "멀티보드 자유게시판 상세 보기: 첨부파일 및 댓글 기능 구현"
+description: "Spring Boot와 Vue.js를 활용한 자유게시판 상세 보기 기능, 첨부파일 업로드/다운로드, 댓글 작성/삭제 구현 방법"
 categories: project multiboard
-tags: [multiboard freeboard]
+tags: [multiboard, 자유게시판, 첨부파일, 댓글기능, spring, Vue, 파일업로드, 권한관리, 예외처리]
 
 ---
 
@@ -625,8 +626,7 @@ public static ResponseEntity<Resource> fileDownload(AttachmentDTO attachment, St
 
 `fileDownload`에서는 파일이 존재하는지 확인 후 다운로드 할 파일 `resource`를 만들어 반환합니다.
 
-```
-## 댓글 
+### 댓글 
 다음으로 댓글 기능을 살펴보겠습니다.
 ### 댓글 리스트
 댓글 목록은 위에서 살펴본 게시글 정보를 가져오는 `getFreeBoardDetail` 호출 시점에서 서버로부터 `List<CommentDTO>` 형태로 게시글 정보와 같이 반환됩니다. 따라서 화면에서는 이 댓글 목록을 화면에 적절하게 나타내주기만 하면됩니다.

@@ -1,7 +1,8 @@
 ---
-title: 로그인 구현 with JWT
+title: "JWT를 활용한 멀티보드 로그인 기능 구현"
+description: "JWT 토큰 기반 인증 시스템의 원리와 구조, Spring Boot와 Vue.js를 활용한 로그인 기능 구현 방법"
 categories: project multiboard
-tags: [multiboard login jwt]
+tags: [multiboard, login, jwt, 인증, 토큰기반인증, spring, Vue, 보안, 로그인구현]
 
 ---
 

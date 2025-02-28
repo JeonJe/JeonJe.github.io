@@ -1,7 +1,8 @@
 ---
-title: ERD 설계
+title: "멀티보드 프로젝트: ERD 설계 및 데이터베이스 모델링"
+description: "다중 게시판 프로젝트의 ERD 설계 과정과 테이블 구조 변경 이력, 사용자/게시판/파일 관리를 위한 데이터베이스 모델링 방법"
 categories: project multiboard
-tags: [multiboard ERD]
+tags: [multiboard, ERD, 데이터베이스설계, MariaDB, 테이블설계, 다중게시판, 프로젝트설계]
 ---
 
 

@@ -1,7 +1,8 @@
 ---
-title: 파일시스템과 데이터베이스
-categories: database 
-tags: [database transaction]
+title: "파일시스템과 데이터베이스: 차이점과 핵심 개념 정리"
+description: "파일시스템의 한계와 데이터베이스의 장점, DBMS의 특징, 3계층 스키마, 데이터 독립성 등 데이터 관리 시스템의 기본 개념 총정리"
+categories: database
+tags: [database, filesystem, DBMS, RDBMS, 데이터독립성, 스키마, 무결성]
 
 ---
 ## 파일시스템과 데이터베이스의 차이점

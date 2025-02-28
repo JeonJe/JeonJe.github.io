@@ -1,7 +1,8 @@
 ---
-title: 갤러리 게시판 가져오기
+title: "멀티보드 갤러리게시판 목록 구현: 썸네일 이미지 처리"
+description: "Spring Boot와 Vue.js를 활용한 갤러리게시판 목록 구현, 썸네일 이미지 처리 및 리소스 맵핑 설정 방법"
 categories: project multiboard
-tags: [multiboard galleryboard]
+tags: [multiboard, 갤러리게시판, 썸네일, spring, Vue, 이미지처리, 리소스맵핑, WebMvcConfig]
 
 ---
 

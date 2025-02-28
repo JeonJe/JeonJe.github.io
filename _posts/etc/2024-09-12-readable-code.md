@@ -1,7 +1,8 @@
 ---
-title: Readable Code - 읽기 좋은 코드를 작성하는 사고법
-categories: Readable code
-tags: [cleancode]
+title: "읽기 좋은 코드 작성법: 추상화, 논리적 사고, 객체지향 원칙 실전 적용기"
+description: "박우빈님의 'Readable Code' 강의에서 배운 추상화 레벨 통일, 사고의 흐름 개선, 객체지향 패러다임 적용, 코드 가독성 향상 기법의 실용적 정리"
+categories: cleancode
+tags: [cleancode, 코드품질, 추상화, 객체지향, SOLID원칙, 리팩토링, 가독성, 코드작성법, 개발자역량]
 ---
 
 >   [박우빈님의 Readable Code: 읽기 좋은 코드를 작성하는 사고법](https://www.inflearn.com/course/readable-code-%EC%9D%BD%EA%B8%B0%EC%A2%8B%EC%9D%80%EC%BD%94%EB%93%9C-%EC%9E%91%EC%84%B1%EC%82%AC%EA%B3%A0%EB%B2%95)에서 학습한 내용을 정리한 글입니다.
