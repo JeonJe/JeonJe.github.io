@@ -286,7 +286,7 @@ public static LottoPrize getPrize(int matchedLottoNumbers, boolean matchBonus) {
 
 이전 미션에서 객체를 적절하게 분리해둔 덕분에, 이번 요 구 사항을 쉽게 만족할 수 있었습니다. 😁
 
-![image.png](/assets/img/2024-11-05-geultto_lotto_game_with_tdd_and_clean_code/image.png)
+![image.png](/assets/img/2024-11-05-geultto-lotto-game-with-tdd-and-clean-code/image 1.png)
 (소소한 자랑으로 리뷰어님께서 남겨준 칭찬 피드백 남겨봅니다.)
 ### 2) 개선하기
 
@@ -367,13 +367,13 @@ public EnumMap(Class<K> keyType) {
 
 수동 로또 번호 생성을 구현하는 과정에서, 아래와 같이 총 당첨 금액이 int형 자료형이 표현할 수 있는 범위를 넘어가 **수익률이 음수로 계산되는 경우를 발견했습니다.**
 
-![image.png](/assets/img/2024-11-05-geultto_lotto_game_with_tdd_and_clean_code/image 1.png)
+![image.png](/assets/img/2024-11-05-geultto-lotto-game-with-tdd-and-clean-code/image 1.png)
 
 당첨 금액을 합산할 때 사용 중인 int형 변수를 `long`형으로 변경했습니다.
 
 또한, 사용자가 수동으로 로또 번호를 입력받아 출력하는 과정에서 정렬이 되지 않는 버그도 발견되었습니다.
 
-![image.png](/assets/img/2024-11-05-geultto_lotto_game_with_tdd_and_clean_code/image 2.png)
+![image.png](/assets/img/2024-11-05-geultto-lotto-game-with-tdd-and-clean-code/image 2.png)
 
 LottoBalls는 로또 번호 6개를 저장하기 위해 Set 자료형을 사용했으나, 중복을 허용하지 않는 대신 정렬되지 않은 상태로 번호를 저장하는 문제가 있었습니다. 중복 검증이 필요할 때만 Set을 사용하고, 로또 번호 6개를 담기 위해 List 자료형으로 변경하여 번호를 순서대로 저장할 수 있도록 개선했습니다.
 
@@ -471,7 +471,7 @@ lottoTickets.addAll(lottoMachine.generateLottoTicket());
 이 과정에서 "아, 여기서 enum을 사용해야겠구나"라는 생각을 미처 떠올리지 못한 아쉬움이 있었고, `EnumMap` 자료구조도 새롭게 알게 되면서 아직 공부할 게 많다고 느꼈습니다.
 
 그리고, 피드백을 통해 "다양한 개발자분들과 협업 해 보는 경험이 있으면 좋겠다" 는 생각이 들었습니다.
-![image.png](/assets/img/2024-11-05-geultto_lotto_game_with_tdd_and_clean_code/image 3.png)
+![image.png](/assets/img/2024-11-05-geultto-lotto-game-with-tdd-and-clean-code/image 3.png)
 
 예를 들어 파일 끝에 개행을 추가하는 것은 POSIX 표준 중 하나로, 파일의 끝에 개행을 하지 않고 `Pull Request`를 보내면, 버전 관리 시스템에서 파일 끝에 개행이 없다는 경고를 표시합니다.
 만약, 표준을 지키지 않으면 해당 기준을 따르는 개발자들과 불필요한 코드 충돌이 발생할 수 있습니다.

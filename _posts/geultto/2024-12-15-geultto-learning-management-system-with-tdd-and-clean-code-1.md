@@ -252,7 +252,7 @@ public void delete(NsUser user) throws CannotDeleteException {
 
 1. 객체의 책임이 불명확해집니다
   - 테이블 중심 설계는 데이터를 담는 역할에만 집중하게 됩니다
-  - 객체가 해야 할 행동이 서비스 계층으로 흩어지게 됩니다
+  - 객체가 해야 할 행동이 서비스 계층에 구현하게 됩니다
 
    예를 들어, 수강신청 시스템에서 `Session` 객체를 테이블 중심으로 설계할 때 두 가지 방식이 있습니다
 
@@ -303,7 +303,7 @@ public void delete(NsUser user) throws CannotDeleteException {
 
 객체의 책임을 적절히 분리하고 응집도를 높이기 위해 인스턴스 변수를 최소화하여 도메인을 설계했습니다. 그 결과 아래와 같은 클래스 다이어그램 구조가 되었습니다.
 
-![객체 다이어그램](/assets/img/2024-12-15-geultto_learning_management_system_with_tdd_and_clean_code_1/mermaid-diagram-2024-12-15-161526.png)
+![객체 다이어그램](/assets/img/2024-12-15-geultto-learning-management-system-with-tdd-and-clean-code-1/mermaid-diagram-2024-12-15-161526.png)
 1. Course (과정)
   - CourseMetadata: 과정의 식별자와 기본 정보를 캡슐화
     - id: 과정 식별자
@@ -506,7 +506,7 @@ public class PaidSession extends DefaultSession {
 ```
 ### 3) 개선 전/후 비교
 
-템플릿 메소드 패턴을 활용하여 강의 유형별로 필요한 검증 로직을 강제하였습니다. 무료 강의와 유료 강의는 각각 다른 검증이 필요한데, 무료 강의는 상태 검증만 하면 되지만 유료 강의는 수강 인원과 결제 금액까지 검증해야 합니다. 이러한 차이를 각 타입별 `validate()` 메소드에서 명확하게 구현하도록 함으로써, 각 강의 유형에 맞는 필수 검증을 누락 없이 수행할 수 있게 되었습니다.
+템플릿 메소드 패턴을 활용하여 강의 유형별로 필요한 검증 로직을 강제하였습니다. 무료 강의와 유료 강의는 각각 다른 검증이 필요한데, 무료 강의는 상태 검증만 하면 되지만 유료 강의는 수강 인원과 결제 금액을 검증해야 합니다. 이러한 차이를 각 타입별 `validate()` 메소드에서 명확하게 구현하도록 함으로써, 각 강의 유형에 맞는 필수 검증을 누락 없이 수행할 수 있게 되었습니다.
 
 
 ## 느낀 점

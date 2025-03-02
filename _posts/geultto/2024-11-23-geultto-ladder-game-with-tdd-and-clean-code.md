@@ -532,7 +532,7 @@ public Position move(Position position) {
 - 객체지향 설계 원칙인 `OCP`, `DIP`, `SRP` 위반한 코드를 고쳐나가면서, 객체지향을 적용했을 때 **변경 영향도가 낮아지고**과 **유지보수성이 높아진다**는 것을 느낄 수 있었습니다.
 - 객체들의 **역할 분리**와 **책임 단일화**통해 각 객체의 역할이 더욱 명확해졌습니다.
 
-![image.png](/assets/img/2024-11-23-geultto_ladder_game_with_tdd_and_clean_code/image.png)
+![image.png](/assets/img/2024-11-23-geultto-ladder-game-with-tdd-and-clean-code/image.png)
 
 -  개발을 통해 도메인 지식을 발견하고, 이를 더 명확히 표현하는 것이 리팩토링이라는 것을 느꼈습니다.
   - 객체의 이름을 `lines`에서 `ladder`로 변경하여, 객체의 역할을 더욱 명확하게 나타내고자 했습니다.

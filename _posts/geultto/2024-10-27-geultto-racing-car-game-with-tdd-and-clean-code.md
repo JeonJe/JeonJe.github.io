@@ -65,7 +65,7 @@ tags: [TDD, 클린 코드, java, 리팩토링, 객체지향, 자동차 경주 �
 
 생활 체조 원칙을 포스트잇에 적어 두고, 미션을 진행하면서 최대한 지키려고 노력했습니다. (/w 지렁이🪱 글씨)
 
-![image.png](/assets/img/2024-10-27-geultto_racing_car_game_with_tdd_and_clean_code/image.png)
+![image.png](/assets/img/2024-10-27-geultto-racing-car-game-with-tdd-and-clean-code/image.png)
 
 일부 규칙들은 함께 적용될 때 더욱 큰 효과를 발휘합니다
 

@@ -14,7 +14,7 @@ tags: [주니어개발자, 개발자성장, 커리어여정, 실무경험, 기�
 
 최근 카카오톡에서 초,중,고 학교생활기록부를 확인할 수 있다는 것을 알게 되었다. 초등학교 6학년 때 작성된 진로 희망은 컴퓨터 프로그래머이다.
 
-![image.png](/assets/img/2024-09-16-my_journey_so_far/my_dream.png)
+![image.png](/assets/img/2024-09-16-my-journey-so-far/my-dream.png)
 
 컴퓨터 프로그래머라고 작성한 이유는 간단했다.
 
