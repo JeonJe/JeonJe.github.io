@@ -15,7 +15,7 @@ tags: [spring, 객체지향, 리팩토링, TDD, 스트랭글러 패턴, 레거�
 ---
 
 ## 들어가며
-이전 글 [수강신청 관리시스템 리팩토링 (thin service와 template method pattern의 적용)](https://jeonje.github.io/posts/geultto_learning_management_system_with_tdd_and_clean_code_1/) 에서는 ThinServiceLayer와 템플릿 메소드 패턴을 집중적으로 알아보았습니다. 이번 수강 신청 관리 시스템 3단계, 4단계 미션에서는 아래와 같은 내용을 중점적으로 배우고 경험하였습니다.
+이전 글 [수강신청 관리시스템 리팩토링 (thin service와 template method pattern의 적용)](https://jeonje.github.io/posts/geultto-learning-management-system-with-tdd-and-clean-code-1/) 에서는 ThinServiceLayer와 템플릿 메소드 패턴을 집중적으로 알아보았습니다. 이번 수강 신청 관리 시스템 3단계, 4단계 미션에서는 아래와 같은 내용을 중점적으로 배우고 경험하였습니다.
 
 - 3단계 미션: 도메인 모델을 DB 테이블과 맵핑
 - 4단계 미션: 기능 요구사항이 바뀌거나 문제가 생겼을 때, 코드를 점진적으로 리팩토링하는 방법
