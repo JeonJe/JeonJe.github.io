@@ -1,6 +1,6 @@
 ---
 title: "MySQL 데드락 발생 프로시저 개선기"
-description: "MySQL InnoDB 데드락 발생 원인과 해결 방법: 저장 프로시저의 GROUP BY 문제 분석부터 어플리케이션 로직 전환으로 성능 85% 개선한 실제 사례"
+description: "MySQL InnoDB 데드락 발생 원인과 해결 방법: 저장 프로시저의 GROUP BY 문제 분석부터 어플리케이션 로직 전환으로 성능 85% 개선한 경험 공유"
 categories: 
   - 데이터베이스
   - 트러블슈팅

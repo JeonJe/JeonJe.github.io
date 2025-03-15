@@ -21,7 +21,7 @@ image: /assets/img/thumnail/algorithm-codetree-challenge.png
 
 8주간의 코드트리 X 글또 챌린지가 종료되었다. 생각보다 8주라는 시간이 너무 금방 지나갔다. 이번 챌린지에서는 코딩테스트의 부담감을 내려놓고, 내 실력에 맞는 적절한 난이도의 문제를 풀어나가며 알고리즘 학습을 재미있게 할 수 있었다.
 
-이번 글은 [첫 코드트리 리뷰](https://jeonje.github.io/posts/geultto-review-code-tree/)에 이어 글또 X 코드트리 챌린지의 마무리 리뷰를 해보려 한다. 8주 동안 어떤 변화가 있었는지, 그리고 이 경험을 통해 무엇을 배웠는지 공유하고자 한다.
+이번 글은 [첫 코드트리 리뷰](https://jeonje.github.io/posts/geultto-review 
 
 # 무엇이 달라졌을까?
 
