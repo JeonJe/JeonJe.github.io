@@ -56,17 +56,28 @@ image: /assets/img/thumnail/geultto-review.png
 아래는 내가 제출한 글 목록이다:
 
 1회차 : [글또 10기 시작: 글쓰기를 통한 성장과 지식 공유의 여정](https://jeonje.github.io/posts/geultto-start-resolution/)
+
 2회차 : [자동차 경주 게임으로 배우는 TDD와 객체지향 설계 원칙](https://jeonje.github.io/posts/geultto-racing-car-game-with-tdd-and-clean-code/)
+
 3회차 : [EnumMap으로 성능 개선하기: 로또 게임 TDD 리팩토링 여정](https://jeonje.github.io/posts/geultto-lotto-game-with-tdd-and-clean-code/)
+
 4회차 : [Point 객체 도입으로 가독성 높이기: 사다리 게임 리팩토링 사례](https://jeonje.github.io/posts/geultto-ladder-game-with-tdd-and-clean-code/)
+
 5회차 : [서비스 계층 다이어트: Thin Service와 템플릿 패턴으로 수강신청 시스템 개선하기](https://jeonje.github.io/posts/geultto-learning-management-system-with-tdd-and-clean-code-1/)
+
 6회차 : [2024년 회고: 개발자로서의 성장과 도전, 그리고 새로운 목표](https://jeonje.github.io/posts/geultto-review-in-2024/)
+
 7회차 : Pass
+
 8회차 : [코드트리 알고리즘 문제 풀이 경험 공유: 효율적인 학습 전략과 성장 과정](https://jeonje.github.io/posts/geultto-review-code-tree/)
+
 9회차 : [스트랭글러 패턴으로 레거시 코드 점진적 개선하기: 수강신청 시스템 미션과 실무적용](https://jeonje.github.io/posts/geultto-learning-management-system-with-tdd-and-clean-code-2/)
+
 10회차 : [글또 X 코드트리 알고리즘 챌린지 8주 완주 후기](https://jeonje.github.io/posts/geultto-codetree-challenge/)
+
 11회차 : [MySQL 데드락 발생 프로시저 개선기](https://jeonje.github.io/posts/geultto-mysql-deadlock-improvement/)
-12회차 : 본 회고 글
+
+12회차 : [글또 10기 제가 직접 한번 해보겠습니다.](https://jeonje.github.io/posts/geultto-review/)
 
 ## 3. 달라진 점은?
 ### 글쓰기에 대한 인식 변화
