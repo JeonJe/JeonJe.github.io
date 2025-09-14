@@ -15,7 +15,7 @@ tags:
   - 성능개선
 toc: true
 toc_sticky: true
-image: /assets/img/thumnail/room-domain-and-refactoring-review.png
+image: /assets/img/thumbnail/room-domain-and-refactoring-review.png
 ---
 
 ## 들어가며

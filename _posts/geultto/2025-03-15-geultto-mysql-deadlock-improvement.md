@@ -14,7 +14,7 @@ tags:
   - 데이터베이스
 toc: true
 toc_sticky: true
-image: /assets/img/thumnail/mysql-deadlock-improvement.png
+image: /assets/img/thumbnail/mysql-deadlock-improvement.png
 ---
 
 ## 들어가며

@@ -16,7 +16,7 @@ tags:
   - 주니어 개발자
 toc: true
 toc_sticky: true
-image: /assets/img/thumnail/jungle-mentoring-review.png
+image: /assets/img/thumbnail/jungle-mentoring-review.png
 ---
 
 ## 들어가며

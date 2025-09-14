@@ -12,7 +12,7 @@ tags:
   - 회고록
 toc: true
 toc_sticky: true
-image: /assets/img/thumnail/geultto-review.png
+image: /assets/img/thumbnail/geultto-review.png
 ---
 ## 1. 들어가며 
 

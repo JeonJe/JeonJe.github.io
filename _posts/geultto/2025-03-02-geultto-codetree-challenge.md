@@ -14,7 +14,7 @@ tags:
   - 자바알고리즘
 toc: true
 toc_sticky: true
-image: /assets/img/thumnail/algorithm-codetree-challenge.png
+image: /assets/img/thumbnail/algorithm-codetree-challenge.png
 ---
 
 # 들어가며

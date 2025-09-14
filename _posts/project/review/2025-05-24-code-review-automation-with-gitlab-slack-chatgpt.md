@@ -15,7 +15,7 @@ tags:
   - 개발 생산성
 toc: true
 toc_sticky: true
-image: /assets/img/thumnail/code-review-automation.png
+image: /assets/img/thumbnail/code-review-automation.png
 ---
 ## 1. 들어가며
 코드 리뷰는 중요하다. 리뷰를 통해 중요한 버그를 사전에 예방할 수 있을 뿐만 아니라, 코드가 예측 가능하고 읽기 쉽게 작성되었는지도 점검할 수 있다.
