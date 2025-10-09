@@ -49,7 +49,7 @@ image: /assets/img/thumbnail/hospital-statistics-refactoring.png
 
 간단하게 신규환자 로직이 어떻게 개선되었는지를 살펴보자.
 
-### AS-IS — 쿼리 중심(단일 쿼리로 모든 통계 계산)
+#### 개선 전 — 쿼리 중심(단일 쿼리로 모든 통계 계산)
 
 기존에는 하나의 복합 쿼리에서 신규/이탈/노쇼 등 모든 지표를 집계한다.
 아래 첫 메서드는 **일별 통계를 한 번에 계산**, 두 번째는 **신규 환자 CASE WHEN** 예시다.
@@ -79,7 +79,7 @@ private NumberExpression<Long> countNewPatients() {
 
 - 문제: **로직이 SQL 내부에 강결합**, 변경/테스트/가독성 모두 불리
 
-#### TO-BE — 서비스/도메인 중심(관심사 분리)
+#### 개선 후 — 서비스/도메인 중심(관심사 분리)
 
 신규환자 서비스에서는 단계별로 데이터를
 
@@ -225,3 +225,4 @@ List<NewPatientVisitSummary> newPatients = newPatientService.findNewPatientVisit
 **DRY**를 적용하니 판단·테스트·운영이 단순해졌고, 응답 크기는 조금 늘었지만 **데이터 신뢰도는 확실히 높아졌다.**
 
 비슷한 로직이 여러 곳에 흩어져 있다면, 이번처럼 **‘한 번 계산하고 재사용’**하는 구조로 바꾸는 것을 권한다.
+
