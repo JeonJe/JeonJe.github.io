@@ -14,6 +14,7 @@ toc: true
 toc_sticky: true
 image: /assets/img/thumbnail/hospital-statistics-ai-improvement.png
 ---
+
 ## 들어가며
 
 병원 통계 기능은 데이터와 그래프를 함께 보여주어 사용자에게 의미 있는 정보를 전달하려는 목적을 가진다. 하지만 처음 이 기능을 접하는 사람에게는 여전히 복잡하고 어렵게 느껴질 때가 있었다.  
