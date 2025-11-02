@@ -1,5 +1,5 @@
 ---
-title: "루퍼스 1주차 WIL — CS 공부, 추상화된 개념 공부, 그리고 지치지 않는 마인드셋"
+title: "루퍼스 1주차 WIL — CS의 중요성, 추상화된 개념 학습, 그리고 마인드셋"
 description: "루퍼스 1주차를 통해서 배우고, 가장 의미있는 내용들을 정리했습니다."
 categories:
   - 루퍼스
@@ -14,6 +14,7 @@ tags:
   - Spring
 toc: true
 toc_sticky: true
+image: /assets/img/thumbnail/loopers-week1-WIL.png
 ---
 
 # 📚 루퍼스 1주차 WIL
