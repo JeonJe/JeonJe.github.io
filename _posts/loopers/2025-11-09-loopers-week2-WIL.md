@@ -136,7 +136,7 @@ class OrderItem {
 #### 주문-결제 API 설계 시 선택지
 
 **핵심**: 정답은 없다. 요구사항에 따라 선택하고, 근거를 설명할 수 있어야 한다.
-![주문결제_API설계_비교.png](주문결제_API설계_비교.png)
+![주문결제 API 설계 비교](/assets/img/2025-11-09-loopers-week2-WIL/order-payment-api-design-comparison.png)
 
 **설계 선택지**
 
@@ -268,7 +268,7 @@ public ResponseEntity<Void> likeProduct(@PathVariable Long id, @UserId String us
 - 목록 10개 → 10번의 집계 쿼리
 - 페이지 로딩마다 반복
 
-![읽기쓰기_트레이드오프_성능비교.png](/assets/img/2025-11-09-loopers-week2-WIL/읽기쓰기_트레이드오프_성능비교.png)
+![읽기쓰기 트레이드오프 성능비교](/assets/img/2025-11-09-loopers-week2-WIL/read-write-tradeoff-performance.png)
 
 
 **해결: 비정규화 (좋아요 수 별도 저장)**
