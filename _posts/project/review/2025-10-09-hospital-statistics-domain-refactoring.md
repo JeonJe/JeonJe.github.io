@@ -9,6 +9,8 @@ tags:
   - 리팩토링
   - 데이터일관성
   - 책임분리
+series: work-improvement
+series_order: 9
 toc: true
 toc_sticky: true
 image: /assets/img/thumbnail/hospital-statistics-refactoring.png

@@ -3,6 +3,10 @@ title: "크래프톤 정글 1기 - 5개월 집중 개발 교육 후기"
 description: "2022년 크래프톤 정글 1기 부트캠프 5개월 과정의 TIL, 미니 프로젝트, 자료구조/알고리즘, C언어 프로젝트, PintOS, 팀 프로젝트 경험과 실질적 성장 포인트 공유"
 categories: review
 tags: [review, jungle, 크래프톤정글, 부트캠프, 개발자교육, 코딩부트캠프, PintOS, 알고리즘, C언어]
+series: retrospective
+series_order: 0
+toc: true
+toc_sticky: true
 ---
 
 > 늦게나마 2022.10 ~ 2023.03 크래프톤 정글 1기 5개월에 관한 간략한 후기를 작성한다.

@@ -10,9 +10,11 @@ tags:
   - GitLab CI/CD
   - Slack Webhook
   - n8n workflow
-  - ChatGPT 
+  - ChatGPT
   - 프롬프트 엔지니어링
   - 개발 생산성
+series: work-improvement
+series_order: 6
 toc: true
 toc_sticky: true
 image: /assets/img/thumbnail/code-review-automation.png

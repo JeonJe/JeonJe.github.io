@@ -3,7 +3,10 @@ title: "모비닥-EMR 연동 프로젝트 개발 경험: 외부 시스템 연동
 description: "병원 EMR 시스템과 모비닥 진료 시스템 간 자동 연동 구현 과정에서 얻은 테이블 설계, 캐시 관리, 예외 처리, 테스트 코드 작성의 중요성과 실무 적용 경험"
 categories: review
 tags: [review, project, 시스템연동, EMR, 외부시스템, 테스트코드, 캐시관리, 예외처리, 프로젝트회고]
-
+series: work-improvement
+series_order: 3
+toc: true
+toc_sticky: true
 ---
 
 

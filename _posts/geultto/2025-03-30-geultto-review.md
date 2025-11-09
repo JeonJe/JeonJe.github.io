@@ -10,6 +10,8 @@ tags:
   - 개발자성장
   - 글쓰기습관
   - 회고록
+series: retrospective
+series_order: 5
 toc: true
 toc_sticky: true
 image: /assets/img/thumbnail/geultto-review.png

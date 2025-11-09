@@ -1,177 +1,114 @@
-/* Series Navigation Styles */
+/* Series Navigation - Compact Design */
 .series-navigation {
-  background: #f8f9fa;
-  border: 1px solid #e9ecef;
-  border-radius: 8px;
-  padding: 1.5rem;
-  margin: 2rem 0;
+  background: var(--card-bg);
+  border: 1px solid var(--main-border-color);
+  border-radius: .5rem;
+  padding: 0.75rem;
+  margin: 1rem 0;
+  box-shadow: var(--card-shadow);
 }
 
 .series-header h3 {
   margin: 0 0 0.5rem 0;
-  color: #2c3e50;
-  font-size: 1.25rem;
-}
-
-.series-description {
-  color: #6c757d;
-  font-size: 0.9rem;
-  margin: 0 0 1rem 0;
+  color: var(--heading-color);
+  font-size: 0.95rem;
+  font-weight: 600;
+  font-family: Lato, "Microsoft Yahei", sans-serif;
 }
 
 .series-list {
   list-style: none;
   padding: 0;
-  margin: 1rem 0;
+  margin: 0;
 }
 
 .series-item {
   display: flex;
-  align-items: center;
-  padding: 0.75rem;
-  margin: 0.5rem 0;
-  background: white;
-  border-radius: 4px;
-  transition: all 0.2s;
+  align-items: flex-start;
+  padding: 0.35rem 0.5rem;
+  margin: 0.15rem 0;
+  background: transparent;
+  border-radius: .375rem;
+  transition: background 0.2s ease;
+  gap: 0.5rem;
 }
 
 .series-item:hover {
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  background: var(--card-hovor-bg);
 }
 
 .series-item.active {
-  background: #e7f3ff;
-  border-left: 3px solid #007bff;
+  background: var(--sidebar-hover-bg);
+  border-left: 2px solid var(--link-color);
+  padding-left: calc(0.5rem - 2px);
 }
 
 .series-number {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 24px;
-  height: 24px;
-  background: #007bff;
-  color: white;
+  min-width: 1.25rem;
+  height: 1.25rem;
+  background: var(--tag-bg, var(--btn-border-color));
+  color: var(--text-muted-color);
   border-radius: 50%;
-  font-size: 0.8rem;
-  font-weight: bold;
-  margin-right: 0.75rem;
+  font-size: 0.65rem;
+  font-weight: 600;
   flex-shrink: 0;
+  margin-top: 0.1rem;
 }
 
 .series-item.active .series-number {
-  background: #0056b3;
+  background: var(--link-color);
+  color: white;
+}
+
+.series-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  min-width: 0;
+}
+
+.series-date {
+  color: var(--text-muted-color);
+  font-size: 0.65rem;
+  white-space: nowrap;
+  font-weight: 500;
 }
 
 .series-title {
-  flex: 1;
-  color: #495057;
+  color: var(--text-color);
   text-decoration: none;
-  font-size: 0.95rem;
+  font-size: 0.75rem;
+  line-height: 1.3;
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .series-title:hover {
-  color: #007bff;
+  color: var(--link-color);
+  border-bottom: none;
 }
 
 .series-title.current {
-  font-weight: bold;
-  color: #0056b3;
+  font-weight: 600;
+  color: var(--link-color);
 }
 
-.series-navigation-buttons {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 1.5rem;
-  gap: 1rem;
-}
-
-.series-nav-btn {
-  flex: 1;
-  padding: 0.75rem 1rem;
-  background: white;
-  border: 1px solid #dee2e6;
-  border-radius: 4px;
-  text-decoration: none;
-  color: #495057;
-  font-size: 0.9rem;
-  transition: all 0.2s;
-  text-align: center;
-}
-
-.series-nav-btn:hover {
-  background: #007bff;
-  color: white;
-  border-color: #007bff;
-}
-
-.series-nav-btn.prev {
-  text-align: left;
-}
-
-.series-nav-btn.next {
-  text-align: right;
-}
-
-/* Dark mode support */
-@media (prefers-color-scheme: dark) {
-  .series-navigation {
-    background: #2d3748;
-    border-color: #4a5568;
-  }
-
-  .series-header h3 {
-    color: #e2e8f0;
-  }
-
-  .series-description {
-    color: #a0aec0;
-  }
-
-  .series-item {
-    background: #1a202c;
-  }
-
-  .series-item.active {
-    background: #2c5282;
-    border-left-color: #4299e1;
-  }
-
-  .series-title {
-    color: #e2e8f0;
-  }
-
-  .series-title:hover {
-    color: #4299e1;
-  }
-
-  .series-title.current {
-    color: #90cdf4;
-  }
-
-  .series-nav-btn {
-    background: #1a202c;
-    border-color: #4a5568;
-    color: #e2e8f0;
-  }
-
-  .series-nav-btn:hover {
-    background: #4299e1;
-    border-color: #4299e1;
-  }
+/* Hide Recently Updated and Trending Tags when series exists */
+body:has(.series-navigation) .access {
+  display: none;
 }
 
 /* Responsive design */
 @media (max-width: 768px) {
   .series-navigation {
-    padding: 1rem;
-  }
-
-  .series-navigation-buttons {
-    flex-direction: column;
-  }
-
-  .series-nav-btn {
-    text-align: center;
+    padding: 0.75rem;
+    margin: 0.75rem -0.5rem;
+    border-radius: 0;
   }
 }

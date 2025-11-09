@@ -3,7 +3,15 @@
     "allow": [
       "Bash(lsof:*)",
       "Bash(xargs kill:*)",
-      "Bash(bundle exec jekyll clean:*)"
+      "Bash(bundle exec jekyll clean:*)",
+      "mcp__serena__find_file",
+      "mcp__serena__search_for_pattern",
+      "Bash(gem list:*)",
+      "Bash(bundle exec jekyll build:*)",
+      "mcp__serena__list_dir",
+      "Bash(bundle info:*)",
+      "mcp__serena__get_symbols_overview",
+      "Bash(find:*)"
     ],
     "deny": [],
     "ask": []

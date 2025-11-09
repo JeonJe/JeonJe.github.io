@@ -6,7 +6,6 @@
   <div class="series-navigation">
     <div class="series-header">
       <h3>📚 {{ series_data.name }}</h3>
-      <p class="series-description">{{ series_data.description }}</p>
     </div>
 
     <div class="series-list">
@@ -14,12 +13,12 @@
         <div class="series-item {% if post.url == page.url %}active{% endif %}">
           <span class="series-number">{{ post.series_order }}</span>
           <div class="series-content">
+            <span class="series-date">{{ post.date | date: "%y.%m.%d" }}</span>
             {% if post.url == page.url %}
               <span class="series-title current">{{ post.title }}</span>
             {% else %}
               <a href="{{ post.url }}" class="series-title">{{ post.title }}</a>
             {% endif %}
-            <span class="series-date">{{ post.date | date: "%Y.%m.%d" }}</span>
           </div>
         </div>
       {% endfor %}

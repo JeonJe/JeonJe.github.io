@@ -11,6 +11,8 @@ tags:
   - Gradle
   - 빌드 최적화
   - CI/CD
+series: work-improvement
+series_order: 7
 toc: true
 toc_sticky: true
 image: /assets/img/thumbnail/docker-layer-caching-optimization.png

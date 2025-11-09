@@ -14,6 +14,8 @@ tags:
   - 업무 개선
   - 개발 문화
   - 멘토링 경험
+series: retrospective
+series_order: 3
 toc: true
 toc_sticky: true
 ---

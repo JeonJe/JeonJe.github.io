@@ -2,16 +2,21 @@
 # 시리즈별 메타데이터 정의
 
 loopers-wil:
-  name: "루퍼스 WIL"
-  description: "루퍼스 스터디에서 매주 배운 내용과 인사이트를 정리한 시리즈"
+  name: "루퍼스 WIL 시리즈"
+  description: "루퍼스 백엔드과정에서 배운 내용과 실무 설계 인사이트"
   category: "루퍼스"
 
-geultto-tdd:
-  name: "글또 TDD 챌린지"
-  description: "TDD와 클린 코드로 게임 구현하기 - 자동차 경주, 로또, 사다리, 학습 관리 시스템"
+nextstep-tdd:
+  name: "Next-Step TDD 과정"
+  description: "Next-Step TDD 과정에서 배운 객체지향과 클린 코드 실천 경험"
   category: "글또"
 
-geultto-review:
-  name: "글또 활동 회고"
-  description: "글또 활동을 통해 얻은 경험과 성장 기록"
-  category: "글또"
+retrospective:
+  name: "개발자 회고 시리즈"
+  description: "매년 돌아보는 성장과 배움의 기록"
+  category: "회고"
+
+work-improvement:
+  name: "실무 개선 프로젝트 시리즈"
+  description: "실무에서 마주한 문제를 해결하고 시스템을 개선한 경험"
+  category: "프로젝트"

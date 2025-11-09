@@ -3,7 +3,10 @@ title: "모비닥 진료 프로세스 개선 프로젝트 회고: 코드 품질�
 description: "모비닥 진료 프로세스 개선 프로젝트에서 경험한 테이블 구조 변경, 객체 분리, Facade 패턴 적용, 쿼리 최적화를 통한 성능 개선과 테스트 코드 부재로 인한 어려움 극복 경험"
 categories: review
 tags: [review, project, 프로젝트회고, 성능최적화, 리팩토링, 코드품질, FacadePattern, 쿼리최적화, 테스트코드]
-
+series: work-improvement
+series_order: 2
+toc: true
+toc_sticky: true
 ---
 
 모비닥은 환자 본인 뿐만 아니라 가족 구성원과 함께 병원 진료 신청 할 수 있는 "함께 진료" 기능이 있습니다. 하지만 이 "함께 진료" 는 여러 환자를 하나의 그룹으로 묶어 처리하기 때문에 몇 가지 문제점이 있었습니다.

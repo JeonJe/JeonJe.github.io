@@ -12,6 +12,8 @@ tags:
   - 저장프로시저
   - 성능최적화
   - 데이터베이스
+series: work-improvement
+series_order: 4
 toc: true
 toc_sticky: true
 image: /assets/img/thumbnail/mysql-deadlock-improvement.png

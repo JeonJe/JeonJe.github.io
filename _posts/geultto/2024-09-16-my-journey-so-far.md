@@ -3,6 +3,10 @@ title: "주니어 개발자 1년 차 성장기"
 description: "주니어 개발자로서 1년간의 실무 경험, 기술적 도전과 성장, 팀 협업에서 배운 교훈, 그리고 앞으로의 커리어 방향성에 대한 이야기"
 categories: 글또 개발자성장
 tags: [주니어개발자, 개발자성장, 커리어여정, 실무경험, 기술역량, 팀협업, 자기계발, 개발자회고]
+series: retrospective
+series_order: 6
+toc: true
+toc_sticky: true
 ---
 
 

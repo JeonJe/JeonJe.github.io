@@ -13,7 +13,9 @@ tags:
   - AI 코드리뷰
   - 크래프톤 정글
   - 글또
-  - Learner’s High
+  - Learner's High
+series: retrospective
+series_order: 4
 toc: true
 toc_sticky: true
 image: /assets/img/thumbnail/second-year-developer-retrospective.png

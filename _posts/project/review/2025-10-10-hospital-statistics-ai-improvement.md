@@ -10,6 +10,8 @@ tags:
   - 프롬프트엔지니어링
   - UX개선
   - 성능개선
+series: work-improvement
+series_order: 10
 toc: true
 toc_sticky: true
 image: /assets/img/thumbnail/hospital-statistics-ai-improvement.png

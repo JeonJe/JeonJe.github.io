@@ -13,6 +13,8 @@ tags:
   - 도메인설계
   - 테스트코드
   - 성능개선
+series: work-improvement
+series_order: 5
 toc: true
 toc_sticky: true
 image: /assets/img/thumbnail/room-domain-and-refactoring-review.png

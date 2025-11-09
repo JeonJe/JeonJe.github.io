@@ -3,6 +3,10 @@ title: "프로젝트에서 발견한 슬로우 쿼리 개선기"
 description: "실무 프로젝트에서 1초 이상 소요되던 쿼리를 인덱스 최적화와 함수 사용 개선으로 100ms까지 단축한 경험 공유"
 categories: database
 tags: [database, 성능최적화, MySQL, 인덱스, 쿼리튜닝, 슬로우쿼리, LIKE]
+series: work-improvement
+series_order: 1
+toc: true
+toc_sticky: true
 ---
 
 # 슬로우 쿼리 개선

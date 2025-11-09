@@ -14,6 +14,8 @@ tags:
   - Race Condition
   - 비관적락
   - 낙관적락
+series: work-improvement
+series_order: 8
 toc: true
 toc_sticky: true
 image: /assets/img/thumbnail/redis-distributed-lock-concurrency-control.png

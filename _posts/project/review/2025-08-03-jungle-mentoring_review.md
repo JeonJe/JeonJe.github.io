@@ -14,6 +14,8 @@ tags:
   - AI 활용법
   - 팀 프로젝트
   - 주니어 개발자
+series: retrospective
+series_order: 7
 toc: true
 toc_sticky: true
 image: /assets/img/thumbnail/jungle-mentoring-review.png
