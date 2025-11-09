@@ -39,16 +39,16 @@ social:
     # The first element serves as the copyright owner's link
     #- https://twitter.com/username # change to your twitter homepage
     - https://github.com/JeonJe # change to your github homepage
+    - https://www.linkedin.com/in/jeonje/ # LinkedIn profile
     # Uncomment below to add more social links
     # - https://www.facebook.com/username
-    # - https://www.linkedin.com/in/username
 
 google_site_verification: "mYQujdqAUJzL1ZVkZZL7NP933Mb-d7wAI_2_rv8mCos"
 # ↑ --------------------------
 # The end of `jekyll-seo-tag` settings
 
 google_analytics:
-  id: # fill in your Google Analytics ID
+  id: G-XPT0BQYSHJ
 
 goatcounter:
   id: # fill in your Goatcounter ID
@@ -172,6 +172,9 @@ defaults:
 
 sass:
   style: compressed
+  quiet_deps: true
+  silence_deprecations:
+    - import  # Silence @import deprecation warnings
 
 compress_html:
   clippings: all

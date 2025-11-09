@@ -3,6 +3,10 @@ title: "서비스 계층 다이어트: Thin Service와 템플릿 패턴으로 �
 description: "비대한 서비스 계층을 도메인 객체에 책임 위임하고 템플릿 메서드 패턴을 적용해 코드 품질과 테스트 용이성을 높인 실전 리팩토링 경험"
 categories: 글또 객체지향설계
 tags: [TDD, 객체지향, 리팩토링, spring, 도메인 설계, Thin Service, 템플릿 메서드 패턴, 책임 분리, 테스트 용이성]
+series: geultto-tdd
+series_order: 4
+toc: true
+toc_sticky: true
 ---
 
 ## 요약

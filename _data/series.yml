@@ -1,0 +1,17 @@
+# Series Configuration
+# 시리즈별 메타데이터 정의
+
+loopers-wil:
+  name: "루퍼스 WIL"
+  description: "루퍼스 스터디에서 매주 배운 내용과 인사이트를 정리한 시리즈"
+  category: "루퍼스"
+
+geultto-tdd:
+  name: "글또 TDD 챌린지"
+  description: "TDD와 클린 코드로 게임 구현하기 - 자동차 경주, 로또, 사다리, 학습 관리 시스템"
+  category: "글또"
+
+geultto-review:
+  name: "글또 활동 회고"
+  description: "글또 활동을 통해 얻은 경험과 성장 기록"
+  category: "글또"

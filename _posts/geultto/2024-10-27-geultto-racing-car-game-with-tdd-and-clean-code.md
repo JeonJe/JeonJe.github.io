@@ -3,6 +3,10 @@ title: "자동차 경주 게임으로 배우는 TDD와 객체지향 설계 원�
 description: "자동차 경주 게임 구현 과정에서 TDD 방법론, 객체지향 생활체조 원칙을 적용하며 경험한 코드 개선과 리팩토링을 경험한 내용을 기록하였습니다."
 categories: 글또 테스트기법
 tags: [TDD, 클린 코드, java, 리팩토링, 객체지향, 자동차 경주 게임, 단위 테스트]
+series: geultto-tdd
+series_order: 1
+toc: true
+toc_sticky: true
 ---
 
 

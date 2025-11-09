@@ -3,6 +3,10 @@ title: "스트랭글러 패턴으로 레거시 코드 점진적 개선하기: �
 description: "실무에서 발생한 CPU 100% 문제 해결을 위해 스트랭글러 패턴을 적용한 경험, 점진적 리팩토링 방법, 테스트 코드 활용 사례"
 categories: 글또 리팩토링
 tags: [spring, 객체지향, 리팩토링, TDD, 스트랭글러 패턴, 레거시 코드, 점진적 개선, 성능 최적화, java]
+series: geultto-tdd
+series_order: 5
+toc: true
+toc_sticky: true
 ---
 
 ## 요약

@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(lsof:*)",
+      "Bash(xargs kill:*)",
+      "Bash(bundle exec jekyll clean:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

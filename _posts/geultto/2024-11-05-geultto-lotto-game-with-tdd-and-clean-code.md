@@ -3,6 +3,10 @@ title: "EnumMap으로 성능 개선하기: 로또 게임 TDD 리팩토링 여정
 description: "로또 게임 구현 과정에서 EnumMap 활용, 원시값 포장, 전략 패턴 적용을 통한 코드 품질 향상과 성능 최적화 경험 공유"
 categories: 글또 성능최적화
 tags: [TDD, 클린 코드, java, 리팩토링, 객체지향, EnumMap, 전략 패턴, 원시값 포장, 성능 최적화]
+series: geultto-tdd
+series_order: 2
+toc: true
+toc_sticky: true
 ---
 
 
