@@ -138,7 +138,6 @@ class OrderItem {
 #### 주문-결제 API 설계 시 선택지
 
 **핵심**: 정답은 없다. 요구사항에 따라 선택하고, 근거를 설명할 수 있어야 한다.
-![주문결제 API 설계 비교](/assets/img/2025-11-09-loopers-week2-WIL/order-payment-api-design-comparison.png)
 
 **설계 선택지**
 
