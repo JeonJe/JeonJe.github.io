@@ -216,7 +216,7 @@ public record ProductDetail(
 Application 레이어 `ProductFacade`에서는 이제 이렇게 조합한다.
 
 ```java
-// application.product.ProductFacade (중요 부분 발췌)
+// application.product.ProductFacade 
 
 public Page<ProductDetail> searchProductDetails(Long brandId, Long userId, Pageable pageable) {
   Page<Product> productPage = productService.findProducts(brandId, pageable);
