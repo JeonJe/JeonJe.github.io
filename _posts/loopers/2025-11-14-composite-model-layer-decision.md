@@ -11,8 +11,11 @@ tags:
   - 조합모델
   - 레이어설계
   - 도메인주도설계
+series: loopers-ecommerce
+series_order: 4
 toc: true
 toc_sticky: true
+image: /assets/img/thumbnail/composite-model-layer-decision.png
 ---
 
 ## TL;DR

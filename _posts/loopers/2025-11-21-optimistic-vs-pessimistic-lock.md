@@ -10,6 +10,8 @@ tags:
   - JPA
   - MySQL
   - InnoDB
+series: loopers-ecommerce
+series_order: 5
 toc: true
 toc_sticky: true
 image: /assets/img/thumbnail/optimistic-vs-pessimistic-lock.png

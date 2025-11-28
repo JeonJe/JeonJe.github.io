@@ -10,6 +10,8 @@ tags:
   - DomainDriven
   - OrderItem
   - 도메인설계
+series: loopers-ecommerce
+series_order: 2
 toc: true
 toc_sticky: true
 image: /assets/img/thumbnail/orderitem-vo-or-entity.png
