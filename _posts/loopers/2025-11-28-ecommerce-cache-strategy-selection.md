@@ -1,6 +1,6 @@
 ---
 title: "이커머스에서 상품 조회 캐시 전략 선택하기 — 키 설계부터 읽기/쓰기/무효화 전략까지"
-description: "상품 목록, 상품 상세, 브랜드 조회에 각각 다른 캐시 전략을 적용한 과정. 데이터 특성을 고려한 캐시를 적용해 p99 300ms 달성률 57%에서 93%로, RPS 103에서 117로 13% 향상한 경험을 담았습니다."
+description: "상품 목록, 상품 상세, 브랜드 조회에 각각 다른 캐시 전략을 적용한 과정. 인덱스 방향 최적화와 캐시를 적용해 p99 1.08s에서 74ms로 93% 개선, RPS 113에서 153으로 35% 향상한 경험을 담았습니다."
 categories:
   - 루퍼스
 tags:
@@ -18,7 +18,7 @@ image: /assets/img/thumbnail/ecommerce-cache-strategy-selection.jpg
 ## TL;DR
 
 - 데이터 특성(변경 빈도, 무효화 복잡도)에 따라 TTL과 무효화 전략을 다르게 가져갔다.
-- 캐시 적용 API는 p99 300ms 달성률 57% → 93%, 전체 RPS 103 → 117(13%) 향상.
+- 인덱스 방향 최적화 + 캐시 적용으로 p99 1.08s → 74ms(93% 개선), RPS 113 → 153(35% 향상).
 
 ---
 
@@ -133,11 +133,12 @@ image: /assets/img/thumbnail/ecommerce-cache-strategy-selection.jpg
 
 - **읽기 (Cache-Aside)**: 캐시 miss 시 DB 조회 후 캐시에 저장한다.
 - **무효화 (TTL Only)**: Evict 대신 TTL Only를 선택했다. 상품 하나가 변경되면 상품 상세, 브랜드 목록, 전체 목록 등 여러 캐시를 삭제해야 하는데, 재고 변경이 빈번하면 히트율이 급락한다. 그래서 명시적 무효화 없이 1분 TTL로 자연 갱신되게 했다.
-- **키**: `product:list:v1:{brandId}`
+- **키**: `product:list:v1:{sortType}:{brandId}`
   - `product:list`: 네임스페이스. 역할별로 분리해서 충돌 방지.
   - `v1`: 버전. 스키마 변경 시 과거 캐시와 강제 분리.
+  - `{sortType}`: 정렬 타입 (`latest`, `likes_desc`).
   - `{brandId}`: 브랜드 필터가 있으면 해당 값, 없으면 null.
-  - 조건 조합이 많아서 전부 캐시하면 무효화가 복잡해지므로, 비회원 + 최신순 + 1페이지만 캐시한다.
+  - 조건 조합이 많아서 전부 캐시하면 무효화가 복잡해지므로, **비회원 + 첫 페이지 + 최신순/인기순**만 캐시한다.
 - **캐시 레이어**: Facade에서 캐싱한다. 목록은 여러 조건이 조합된 결과이므로 Repository보다 상위 레이어에서 처리한다.
 
 ### 적용된 캐시 전략 요약
@@ -146,7 +147,7 @@ image: /assets/img/thumbnail/ecommerce-cache-strategy-selection.jpg
 |------|------|------|--------|-----|-----|-------------|
 | 브랜드 | Cache-Aside | Write-Around | Evict | 1일 | `brand:v1:{id}` | Repository |
 | 상품 단건 | Cache-Aside | Write-Around | Evict | 5분 | `product:v1:{id}` | Repository |
-| 상품 목록 | Cache-Aside | - | TTL Only | 1분 | `product:list:v1:{brandId}` | Facade |
+| 상품 목록 | Cache-Aside | - | TTL Only | 1분 | `product:list:v1:{sortType}:{brandId}` | Facade |
 
 ### 고려했지만 적용하지 않은 것
 
@@ -154,33 +155,94 @@ TTL Only를 쓰면 캐시 스탬피드 문제가 생길 수 있다. 만료 시�
 
 ---
 
+## 인덱스 최적화 시행착오
+
+캐시 적용 전에 인덱스 최적화를 먼저 시도했다.
+
+### 인덱스를 적용했더니 오히려 p99가 느려졌다.
+
+| 단계           | p99 | avg | RPS |
+|--------------|-----|-----|-----|
+| 미적용          | 1.32s | 463ms | 103 |
+| 인덱스 적용 (ASC) | 1.41s | 362ms | 111 |
+
+avg는 22% 개선됐지만, p99는 7% 악화됐다.
+
+정확한 원인은 단정짓기 어렵지만, **처리량 증가로 인한 리소스 경합**으로 추정했다. 쿼리가 빨라지면서 RPS가 8% 올랐고, 동시 요청이 늘어나 DB 커넥션 경합이 증가했을 가능성이 있다.
+
+### 인덱스 방향 변경
+
+EXPLAIN을 확인해보니 `Backward index scan`이 발생하고 있었다. 쿼리는 `ORDER BY like_count DESC`인데 인덱스는 ASC로 생성되어 있었다.
+
+```java
+// 기존 (ASC)
+@Index(name = "idx_product_like_count", columnList = "like_count")
+
+// 변경 (DESC)
+@Index(name = "idx_product_like_count", columnList = "like_count DESC")
+```
+
+Backward index scan의 오버헤드가 얼마 쿼리 정렬 방향과 인덱스 방향을 일치시켜봤다.
+
+### 인덱스 방향 변경 결과
+
+| 지표 | ASC | DESC | 개선율 |
+|------|-----|------|--------|
+| p99 | 1.08s | 586ms | **-46%** |
+| avg | 342ms | 173ms | **-49%** |
+| RPS | 113 | 131 | **+16%** |
+
+p99가 46% 개선됐다.
+
+| API | ASC | DESC | 변화 |
+|-----|-----|------|------|
+| 브랜드필터 | 57% | **99%** | +42%p |
+| 가격순 | 75% | **99%** | +24%p |
+| 좋아요목록 | 83% | **99%** | +16%p |
+| 주문목록 | 83% | **99%** | +16%p |
+| 최신순 | 39% | 60% | +21%p |
+| 인기순 | 38% | 59% | +21%p |
+
+브랜드필터, 가격순, 좋아요목록, 주문목록은 99% 성공률을 달성했다. 하지만 최신순과 인기순은 60% 수준에 머물렀다.
+
+### 인덱스만으로는 한계가 있었다
+
+인덱스 방향 최적화로 상당한 개선이 있었지만, 전체 목록 정렬(최신순/인기순)은 여전히 SLO를 달성하지 못했다.
+
+인덱스로 개별 쿼리 속도는 빨라졌지만, RPS가 늘면서 대기하는 요청도 늘어났다. 결국 DB 조회 자체를 줄이는 캐시 적용이 필요했다.
+
+---
+
 ## 성능 개선 결과
 
-### 캐시 적용 API (p99 300ms 달성률)
-
-캐시가 적용된 API만 따로 보면 효과가 명확하다.
-
-| API | 미적용 | 적용 후 | 개선 |
-|-----|--------|---------|------|
-| 주문 목록 | 57% | **93%** | +36%p |
-| 좋아요 목록 | 58% | **90%** | +32%p |
-| 브랜드 필터 | 39% | **63%** | +24%p |
-
-캐시가 적용된 구간에서는 **90% 이상의 요청이 300ms 이내**에 응답한다.
-
-### 전체 시나리오
-
-캐시가 적용되지 않은 API(인기순, 가격순 등)도 포함한 전체 응답 속도다. 캐시 미적용 API가 느려서 전체 수치는 덜 좋아 보인다.
+### 전체 비교
 
 | 단계 | p99 | avg | RPS |
 |------|-----|-----|-----|
-| 미적용 | 1.32s | 463ms | 103 |
-| 인덱스만 | 1.41s | 362ms | 111 |
-| 인덱스 + 캐시 | 951ms | 305ms | 117 |
+| 인덱스 (ASC) | 1.08s | 342ms | 113 |
+| 인덱스 (DESC) | 586ms | 173ms | 131 |
+| **인덱스 (DESC) + 캐시** | **74ms** | **10ms** | **153** |
 
-- **p99**: 인덱스만으로는 개선되지 않고, 캐시를 추가해야 28% 개선된다.
-- **avg**: 인덱스로 22%, 캐시 추가로 총 34% 개선.
-- **RPS**: 인덱스로 8%, 캐시 추가로 총 13% 향상.
+### 단계별 개선율
+
+| 비교 | p99 | avg | RPS |
+|------|-----|-----|-----|
+| ASC → DESC | -46% | -49% | +16% |
+| DESC → DESC + 캐시 | -87% | -94% | +17% |
+| **ASC → DESC + 캐시** | **-93%** | **-97%** | **+35%** |
+
+### API별 성공률 (p99 < 300ms)
+
+| API | 인덱스만 (DESC) | 캐시 적용 후 |
+|-----|----------------|-------------|
+| 최신순 | 60% | **99%** |
+| 인기순 | 59% | **100%** |
+| 브랜드필터 | 99% | **100%** |
+| 가격순 | 99% | **100%** |
+| 좋아요목록 | 99% | **100%** |
+| 주문목록 | 99% | **100%** |
+
+인덱스 방향 최적화만으로 일부 API는 99%를 달성했지만, 최신순/인기순은 60% 수준이었다. 캐시를 추가하자 전체 API가 99% 이상을 달성했다.
 
 ---
 
@@ -188,5 +250,85 @@ TTL Only를 쓰면 캐시 스탬피드 문제가 생길 수 있다. 만료 시�
 
 캐시 전략에는 정답이 없어서, 나만의 기준을 찾는 게 어려웠다. 이번에 데이터 특성에 따라 읽기, 쓰기, 무효화 전략의 트레이드오프를 비교하는 연습을 해봤다.
 
+이번에 캐시 전략을 선택하면서 세 가지 기준을 세웠다.
+
+**첫 번째, 읽기/쓰기 비율을 봤다.** 자주 읽히고 덜 업데이트되는 데이터가 캐싱하기 좋다. 브랜드, 상품, 목록 모두 읽기가 압도적으로 많아서 캐싱 대상으로 적합하다고 판단했다.
+
+**두 번째, 무효화 복잡도를 봤다.** 단건 조회는 데이터가 바뀌면 해당 키 하나만 삭제하면 된다. 반면 목록은 상품 하나가 바뀌면 전체 목록, 정렬별 목록 등 여러 캐시를 삭제해야 한다. 단건은 무효화가 단순하니 Evict로 즉시 삭제했다. 목록은 무효화가 복잡하고, 최신성보다 빠른 조회가 더 중요하다고 판단해서 명시적 무효화 없이 짧은 TTL로 자연 갱신되게 했다.
+
+**세 번째, 트래픽 집중도를 봤다.** 목록의 경우 모든 정렬/필터 조합을 캐시하면 메모리 낭비고 히트율도 낮다. 가장 많이 호출되는 조합(최신순, 인기순)만 선별해서 캐시했다.
+
+| 대상 | 읽기 | 쓰기 | 무효화 복잡도 | 읽기 전략 | 쓰기 전략 | 무효화 전략 | 비고 |
+|------|------|------|---------------|-----------|-----------|-------------|------|
+| 브랜드 | ↑ | ↓ | 단순 | Cache-Aside | Write-Around | Evict + TTL 1일 | 변경 거의 없음 |
+| 상품 단건 | ↑ | ↓ | 단순 | Cache-Aside | Write-Around | Evict + TTL 5분 | 재고/가격 변경 있음 |
+| 상품 목록 | ↑ | ↓ | 복잡 | Cache-Aside | - | TTL Only 1분 | 최신순/인기순만 캐시 |
+
 실무에서도 병원 통계 AI 분석 결과, 혈압 분석 결과 등 캐싱할 데이터가 늘어나고 있다. 이번 고민을 바탕으로 기존 캐시 전략도 점검하고, 새로운 대상에도 적절한 전략을 세워봐야겠다.
+
+---
+
+## 부록: 캐시 구현 구조
+
+### 아키텍처
+
+![cache-dip-architecture](/assets/img/2025-11-28-ecommerce-cache-strategy-selection/cache-dip-architecture.png)
+
+Application 계층은 `CacheTemplate` 인터페이스에만 의존한다. 프로덕션에서는 `RedisCacheTemplate`, 테스트에서는 동작 없는 `NoOpCacheTemplate`을 주입한다.
+
+```java
+public interface CacheTemplate {
+    <T> Optional<T> get(CacheKey<T> cacheKey);
+    <T> void put(CacheKey<T> cacheKey, T value);
+    void evict(CacheKey<?> cacheKey);
+    <T> T getOrLoad(CacheKey<T> cacheKey, Supplier<T> loader);
+}
+```
+
+### getOrLoad 패턴
+
+캐시 조회의 핵심은 `getOrLoad()` 메서드다. 캐시에 있으면 바로 반환하고, 없으면 `Supplier`를 실행해서 DB에서 조회한 뒤 캐시에 저장한다.
+
+```java
+public <T> T getOrLoad(CacheKey<T> cacheKey, Supplier<T> loader) {
+    Optional<T> cached = get(cacheKey);
+    if (cached.isPresent()) {
+        return cached.get();
+    }
+
+    T value = loader.get();
+    if (value != null) {
+        put(cacheKey, value);
+    }
+    return value;
+}
+```
+
+`Supplier<T>`를 사용해서 캐시 미스 시에만 DB 조회가 실행된다.
+
+### CachePolicy로 TTL/키 중앙 관리
+
+TTL과 키 생성 규칙이 코드 곳곳에 흩어지면 관리가 어렵다. `CachePolicy` enum으로 중앙 관리했다.
+
+```java
+public enum CachePolicy {
+    PRODUCT("product", Duration.ofMinutes(5)),
+    BRAND("brand", Duration.ofHours(6)),
+    PRODUCT_LIST("product:list", Duration.ofMinutes(1));
+
+    public String buildKey(Long id) {
+        return prefix + ":" + VERSION + ":" + id;
+        // → "product:v1:123"
+    }
+}
+```
+
+### 캐시 구현 포인트 정리
+
+| 포인트 | 적용 내용 |
+|--------|----------|
+| DIP | CacheTemplate 인터페이스로 Redis 의존성 역전 |
+| Supplier | 캐시 미스 시에만 DB 조회 (지연 실행) |
+| CachePolicy | TTL/키 전략을 Enum으로 중앙 관리 |
+| 테스트 격리 | NoOpCacheTemplate으로 캐시 없이 테스트 |
 
