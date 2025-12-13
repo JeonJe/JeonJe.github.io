@@ -1,6 +1,6 @@
 ---
-title: "처음뵙겠습니다 이벤트입니다 — 결제·쿠폰 후속 처리를 분리하며 느낀 장점과 단점, 그리고 시행착오"
-description: "Spring 이벤트로 핵심 로직과 후속 로직을 분리하면서 배운 것들. BEFORE_COMMIT과 AFTER_COMMIT의 차이, REQUIRES_NEW가 필요한 이유, 그리고 이벤트 기반 설계의 트레이드오프를 정리했습니다."
+title: "처음뵙겠습니다 이벤트입니다 — 이벤트 사용의 장단점과 시행착오"
+description: "이벤트로 후속 로직을 분리하면서 배운 트레이드오프와 이벤트 테스트 및 AFTER_COMMIT + @Transactional 사용 시행착오 정리하였습니다."
 categories:
   - 루퍼스
 tags:
@@ -17,10 +17,8 @@ toc_sticky: true
 ## TL;DR
 
 - **Command vs Event**: Command는 "너 이거 해", Event는 "나 이런 일 있었어"
-- **분리 기준**: 롤백 필요성, 처리량, 장애 격리, 도메인 경계를 고려
-- **레이어 배치**: 이벤트는 도메인, 핸들러는 애플리케이션, 퍼블리셔 구현체는 인프라
-- **주의사항**: AFTER_COMMIT 핸들러에서 트랜잭션이 필요하면 `REQUIRES_NEW` 사용
-- **테스트**: 단위 테스트는 이벤트 발행 검증, 통합 테스트는 Awaitility로 비동기 대기
+- **트레이드오프**: 결합도와 확장성을 얻는 대신, 추적과 정합성 관리가 어려워진다
+- **주의**: AFTER_COMMIT + @Transactional 조합 시 `REQUIRES_NEW` 필수
 
 ---
 
@@ -28,13 +26,20 @@ toc_sticky: true
 
 쿠폰 서비스가 느려지면 주문도 느려져야 할까? 데이터 플랫폼 전송이 실패하면 주문도 롤백해야 할까?
 
-진행중인 이커머스 프로젝트의 주문 트랜잭션이 점점 커지고 있었다. 처음엔 단순한 주문 트랜잭션에 쿠폰 사용, 로깅 등 여러 요구사항이 추가가 되면서 어느새 하나의 트랜잭션에서 너무 많은 일을 하고 있었다.
+진행 중인 이커머스 프로젝트의 주문 트랜잭션이 점점 커지고 있었다. 처음엔 단순한 주문 트랜잭션에 쿠폰 사용, 로깅 등 여러 요구사항이 추가되면서 어느새 하나의 트랜잭션에서 너무 많은 일을 하고 있었다.
 
 이번 글에서는 Spring ApplicationEvent를 활용해 핵심 로직과 후속 로직을 분리한 과정을 정리했다. 이벤트를 처음으로 사용하여 느슨한 결합을 시도해본 경험을 공유하고자 한다.
 
 ---
 
 ## 이벤트란? 왜 써야 할까?
+
+| 구분 | Command | Event |
+|------|---------|-------|
+| 방향 | "너 이거 해" (수신자 지정) | "나 이런 일 있었어" (발산) |
+| 결합도 | 높음 (호출자가 수신자를 앎) | 낮음 (발행자는 구독자를 모름) |
+| 확장성 | 호출자 수정 필요 | 핸들러만 추가 |
+| 제어 | 순서/롤백 쉬움 | 유실/중복/정합성 고민 필요 |
 
 기존 주문 코드를 돌아보니, 전형적인 **Command 방식**이었다.
 
@@ -48,13 +53,12 @@ public Order createOrder(...) {
 }
 ```
 
-Command는 "누가 무엇을 해야 하는지" 정확히 알고 지시한다. 순서 제어와 실패 시 롤백이 쉽지만, **OrderFacde에서 모든 후속 작업을 알아야 한다**.
-새 요구사항이 추가될 때마다 점점 역할이 많아진다.
+Command는 "누가 무엇을 해야 하는지" 정확히 알고 지시한다. 순서 제어와 실패 시 롤백이 쉽지만, **OrderFacade에서 모든 후속 작업을 알아야 한다**. 새 요구사항이 추가될 때마다 점점 역할이 많아진다.
 
 반면 **Event는 "나 이런 일 있었어"라는 과거의 상태만 알린다**.
 
 ```java
-// Event 방식: 주문은 자기 할 일만 하고 주문이 생성 됐다는 이벤트 발행
+// Event 방식: 주문은 자기 할 일만 하고 주문이 생성됐다는 이벤트 발행
 public Order createOrder(...) {
     Order order = orderService.create(...);
     eventPublisher.publish(OrderCreatedEvent.of(order));  // 주문 생성됐어!
@@ -64,12 +68,6 @@ public Order createOrder(...) {
 
 주문은 쿠폰이 어떻게 처리되는지, 로그가 어디로 가는지 모른다. 관심사가 분리되고, 새 요구사항은 새 핸들러만 추가하면 된다.
 
-| 구분 | Command | Event |
-|------|---------|-------|
-| 방향 | "너 이거 해" (수신자 지정) | "나 이런 일 있었어" (발산) |
-| 결합도 | 높음 (호출자가 수신자를 앎) | 낮음 (발행자는 구독자를 모름) |
-| 확장성 | 호출자 수정 필요 | 핸들러만 추가 |
-| 제어 | 순서/롤백 쉬움 | 유실/중복/정합성 고민 필요 |
 
 ### 핵심 로직 vs 후속 로직
 
@@ -100,7 +98,7 @@ public Order createOrder(...) {
 - 트랜잭션 경계 분리: 후속 로직 실패가 핵심 로직에 영향 없음
 
 **단점**
-- 추적 어려움: "이 이벤트 누가 처리하지?" 한 눈에 파악이 어려움
+- 추적 어려움: "이 이벤트 누가 처리하지?" 한눈에 파악이 어려움
 - 정합성 고민: Eventual Consistency 수용 필요
 - 복구 전략 필요: 서버 장애 등으로 이벤트 유실 시 어떻게 복구할지 고민 필요
 - 트랜잭션 복잡도: 분리된 트랜잭션 간 타이밍, 전파 레벨 등 추가 고려 필요
@@ -240,7 +238,7 @@ public void handleCouponUsage(OrderCreatedEvent event) {
 }
 ```
 
-쿠폰 사용이 실패해도 주문은 이미 커밋되어 있다. 쿠폰 실패는 별도로 복구하면 된다.
+쿠폰 사용이 실패해도 주문은 이미 커밋되어 있다. 쿠폰 실패는 별도로 복구하면 한다.
 
 ### 결제 → 주문 완료 분리
 
@@ -254,7 +252,7 @@ public void completePayment(Long paymentId) {
 }
 ```
 
-이벤트로 분리하면 결제는 자기 일만 한다.
+이벤트로 분리하면 결제는 결제 일만 한다.
 
 ```java
 // After: 결제 도메인에서 이벤트 발행
@@ -315,11 +313,11 @@ public class LikeEventHandler {
 
 ## 시행착오와 배운 점
 
-### 테스트가 깨지다
+### 비동기 이벤트 테스트 전략
 
-이벤트 기반으로 바꾸니 기존 테스트가 다 깨졌다. 테스트 전략을 두 가지로 나눴다.
+기존에 하나의 트랜잭션으로 묶여 있던 로직을 이벤트 기반으로 분리하면서 비동기 처리가 필요해졌고, 기존 테스트가 깨지는 문제가 발생했다. 테스트 전략을 두 가지로 나눴다.
 
-**단위 테스트**: 이벤트 발행 여부만 검증
+**단위 테스트**: `verify()`로 이벤트가 발행됐는지 확인
 
 ```java
 @Test
@@ -331,7 +329,7 @@ void 결제_완료시_이벤트_발행() {
 }
 ```
 
-**통합 테스트**: 이벤트 핸들러까지 포함한 전체 플로우 검증
+**통합 테스트**: 실제 상태 변경을 확인하기 위해 `Awaitility` 사용
 
 비동기 처리가 끝날 때까지 기다려야 하므로 `Awaitility`를 사용했다.
 
@@ -340,23 +338,28 @@ void 결제_완료시_이벤트_발행() {
 void 결제_완료시_주문_상태_변경() {
     paymentService.complete(paymentId);
 
-    await().atMost(5, SECONDS).untilAsserted(() -> {
+    await().atMost(10, SECONDS).untilAsserted(() -> {
         Order order = orderRepository.findById(orderId);
         assertThat(order.getStatus()).isEqualTo(COMPLETED);
     });
 }
 ```
 
+Awaitility를 적용하고 보니, 시간 기반 대기에 따라 테스트가 성공할 수도 있고 실패할 수도 있지 않을까 하는 고민이 들었다.
+
+현재는 Coderabbit의 코드 리뷰 피드백을 반영하여 10초로 늘려놓은 상태다.
+
 ### AFTER_COMMIT + @Transactional = 에러?
 
-`@TransactionalEventListener(phase = AFTER_COMMIT)` 핸들러에 `@Transactional`을 붙이면 에러가 발생했다.
+`@TransactionalEventListener(phase = AFTER_COMMIT)` 핸들러에 `@Transactional`을 붙이면 아래와 같은 에러가 발생한다.
 
 ```java
 // 이렇게 하면 에러!
+@Async
 @TransactionalEventListener(phase = AFTER_COMMIT)
-@Transactional
-public void handleCouponUsage(OrderCreatedEvent event) {
-    couponService.useCoupon(event.couponId());
+@Transactional  // ← 기본값 REQUIRED
+public void handlePaymentSucceeded(PaymentSucceededEvent event) {
+    // ...
 }
 ```
 
@@ -365,30 +368,51 @@ IllegalStateException: @TransactionalEventListener method must not be annotated
 with @Transactional unless when declared as REQUIRES_NEW or NOT_SUPPORTED
 ```
 
-Spring이 명시적으로 막아둔 조합이다. AFTER_COMMIT 시점에서는 이미 트랜잭션이 끝난 상태인데, `@Transactional`은 기존 트랜잭션에 참여하려 한다. 참여할 트랜잭션이 없으니 문제가 된다.
+스프링은 AFTER_COMMIT 리스너를 "트랜잭션의 연장"이 아니라, **트랜잭션 이후의 명시적 후처리 단계**로 취급한다. 이 단계에서 `@Transactional(REQUIRED)`로 트랜잭션을 다시 여는 건 설계 의도가 불분명한 코드로 간주된다.
 
-해결책은 `REQUIRES_NEW`로 새 트랜잭션을 시작하는 것이다.
+즉, 기술적 제약이 아니라 **트랜잭션 경계에 대한 의도를 명확히 강제**하기 위함이다.
+
+그래서 스프링은 선택지를 두 개로 제한한다:
+- **REQUIRES_NEW**: 새 트랜잭션을 확실히 열겠다
+- **NOT_SUPPORTED**: 트랜잭션 없이 실행하겠다
+
+#### 해결책 1: 서비스에 위임 (단순 호출)
+
+서비스 메서드 하나만 호출하는 경우, 핸들러에 `@Transactional`을 붙일 필요가 없다.
 
 ```java
-@TransactionalEventListener(phase = TransactionPhase.AFTER_COMMIT)
-@Transactional(propagation = Propagation.REQUIRES_NEW)
-public void handle(PaymentCompletedEvent event) {
-    orderService.complete(event.getOrderId());  // 새 트랜잭션에서 실행
+@Async
+@TransactionalEventListener(phase = AFTER_COMMIT)
+public void handleCouponUsage(OrderCreatedEvent event) {
+    couponService.useCoupon(event.couponId());  // 서비스가 트랜잭션 관리
 }
 ```
 
-`@Async`를 사용하면 별도 스레드에서 실행되어 `@Transactional`만으로도 새 트랜잭션이 생긴다. 하지만 동기 핸들러에서는 반드시 `REQUIRES_NEW`가 필요하다.
+서비스의 `@Transactional`이 새 트랜잭션을 시작한다. 핸들러는 "언제 실행할지"만 담당하고, 트랜잭션 경계는 서비스가 담당하는 구조다.
+
+#### 해결책 2: REQUIRES_NEW (복합 로직)
+
+여러 서비스를 조합해서 하나의 트랜잭션으로 묶어야 하는 경우엔 `REQUIRES_NEW`가 필요하다.
+
+```java
+@Async
+@TransactionalEventListener(phase = AFTER_COMMIT)
+@Transactional(propagation = Propagation.REQUIRES_NEW)
+public void handlePaymentSucceeded(PaymentSucceededEvent event) {
+    // 재고 확인 → 주문 완료 → 재고 차감 (하나의 트랜잭션)
+    orderService.completeOrder(event.orderId());
+    productService.decreaseStocks(event.orderId());
+}
+```
+결제 후, 주문 완료 처리 → 재고 차감이 **하나의 트랜잭션**으로 묶여 있다.
+이때는 `REQUIRES_NEW`로 명시적으로 새 트랜잭션을 열어야 한다.
 
 ---
 
 ## 끝으로
 
-이벤트 기반 설계를 처음 적용하면서 느낀 점은, **모든 것을 이벤트로 바꿀 필요는 없다**는 것이다.
+실무에서나 사이드 프로젝트에서는 거의 혼자 개발하고, 트래픽도 적기 때문에 이벤트의 필요성을 크게 체감하지 못했다.
 
-롤백이 필요한 핵심 로직은 동기로, 실패해도 괜찮은 후속 로직은 이벤트로. 이 기준만 명확하면 이벤트는 좋은 도구가 된다.
+이벤트의 필요성을 더 직접적으로 느끼려면 성능 테스트를 해본다든지, 아예 도메인을 분리해서 이벤트 방식의 장점을 체감해보는 것도 방법일 것 같다.
 
-다만 트레이드오프는 분명하다. 코드 흐름이 눈에 보이지 않고, 테스트가 복잡해지고, 트랜잭션 경계를 신경 써야 한다. 그래도 결합도가 낮아지고 확장성이 좋아지는 건 확실한 장점이다.
-
-다음엔 이벤트 유실 시 복구 전략과 Outbox 패턴을 적용해보고 싶다.
-
-
+시간이 허락한다면 직접 해보면서 왜 다들 이벤트 방식을 사용하는지 조금 더 알아봐야겠다.
