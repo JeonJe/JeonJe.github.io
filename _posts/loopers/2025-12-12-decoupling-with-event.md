@@ -12,6 +12,7 @@ series: loopers-ecommerce
 series_order: 8
 toc: true
 toc_sticky: true
+image: /assets/img/thumbnail/decoupling-with-event.jpg
 ---
 
 ## TL;DR

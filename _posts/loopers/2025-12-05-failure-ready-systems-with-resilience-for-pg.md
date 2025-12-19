@@ -14,7 +14,7 @@ series: loopers-ecommerce
 series_order: 7
 toc: true
 toc_sticky: true
-#image: /assets/img/thumbnail/resilience-design.jpg
+image: /assets/img/thumbnail/failure-ready-systems-with-resilience-for-pg.jpeg
 ---
 
 ## TL;DR
