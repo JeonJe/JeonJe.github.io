@@ -80,13 +80,16 @@ flowchart LR
 
 ### 기본 개념
 
-**Push vs Pull**
+#### Push vs Pull
+
 Producer는 Kafka에 메시지를 Push하고, Consumer는 Kafka에서 Pull한다. Pull 방식이라 Consumer가 자기 속도로 처리할 수 있다. 처리가 끝나면 offset을 커밋해서 "여기까지 읽었다"를 기록하는데, 장애 시 커밋하지 않으면 offset이 그대로 남아있어서 같은 지점부터 다시 읽을 수 있다.
 
-**Topic과 Partition**
+#### Topic과 Partition
+
 Topic은 메시지의 논리적 채널이고, Partition은 Topic을 물리적으로 나눈 단위다. 같은 Partition Key를 가진 메시지는 같은 Partition으로 들어가서 순서가 보장된다.
 
-**Consumer Group**
+#### Consumer Group
+
 Topic의 Partition들을 같은 Group의 Consumer들이 나눠서 읽는다. 한 Partition은 한 Consumer만 담당하므로, Consumer를 늘려도 Partition 수 이상으로는 병렬 처리가 안 된다.
 
 예를 들어:
@@ -100,7 +103,7 @@ Topic의 Partition들을 같은 Group의 Consumer들이 나눠서 읽는다. 한
 ### Kafka 설정
 Kafka에서 메시지를 안정적으로 처리하기 위해 몇 가지 설정을 알아두면 좋다.
 
-**`acks`** (응답 대기 수준, 기본값 1)
+#### `acks` (응답 대기 수준, 기본값 1)
 
 Producer가 메시지 전송 후 몇 개의 replica 응답을 기다릴지 설정한다. `all`로 변경하면 leader와 모든 ISR(In-Sync Replicas)이 기록을 확인한 뒤 응답하므로, 장애 시에도 유실되지 않는다. 단, 응답이 느려진다.
 
@@ -112,11 +115,11 @@ Producer가 메시지 전송 후 몇 개의 replica 응답을 기다릴지 설�
 
 기본값은 `1`이다. 이번 프로젝트에서는 이벤트 유실을 막기 위해 `all`을 선택했다.
 
-**`enable.idempotence`** (멱등성 보장, 기본값 true)
+#### `enable.idempotence` (멱등성 보장, 기본값 true)
 
-Producer → Kafka 구간에서 재시도 시 중복 메시지 발행을 방지한다. 단, Kafka → Consumer 구간은 보장하지 못한다. Consumer가 메시지 처리 후 offset 커밋 전에 리밸런싱이나 죽어 버리면, 재시작 시 같은 메시지를 다시 받을 수 있다.
+Producer → Kafka 구간에서 재시도 시 중복 메시지 발행을 방지한다. 단, Kafka → Consumer 구간은 보장하지 못한다. Consumer가 메시지 처리 후 offset 커밋 전에 리밸런싱이나 죽어버리면, 재시작 시 같은 메시지를 다시 받을 수 있다.
 
-**`auto.offset.reset`** (시작 위치, 기본값 latest)
+#### `auto.offset.reset` (시작 위치, 기본값 latest)
 
 Consumer가 처음 시작하거나 offset이 없을 때 어디서부터 읽을지 결정한다. earliest면 처음부터 재처리(중복 가능), latest면 유실 가능. 이번 프로젝트에서는 유실 방지를 우선해서 earliest를 선택했고, 중복은 멱등하게 처리한다.
 
@@ -166,8 +169,6 @@ stateDiagram-v2
 | SENT | 발행 완료 | 끝 |
 | DEAD | 재시도 한계 초과 | 수동 조치, 알림 |
 
-SENDING 상태에서 `next_retry_at`이 지나도록 ack가 없으면 다른 Relay가 가져갈 수 있도록 lease 방식으로 구현했다.
-
 ### 이벤트 발행 흐름
 
 ```mermaid
@@ -213,7 +214,7 @@ try {
 존재 여부를 먼저 체크하지 않고 바로 INSERT 후 예외를 catch한다. PK 제약이 원자적으로 중복을 막아주고, 대부분 첫 처리라 한 번의 DB 호출로 끝난다.
 
 ### 최신 이벤트만 반영
-이벤트가 순서대로 도착하지 않을 수 있다. 그래서 집계 테이블에 Producer 발행 시각(occurredAt, epoch ms)을 updated_at으로 저장하고, `GREATEST(updated_at, :occurredAt)`으로 더 최신인 이벤트만 반영한다.
+이벤트가 순서대로 도착하지 않을 수 있다. 그래서 집계 테이블에 Producer 발행 시각(occurredAt, epoch ms 단위 사용)을 updated_at으로 저장하고, `GREATEST(updated_at, :occurredAt)`으로 더 최신인 이벤트만 반영한다.
 
 ```mermaid
 sequenceDiagram
@@ -244,8 +245,9 @@ if (processed) {
 
 ## 마무리
 
-이번 주차의 핵심은 Kafka인 줄 알았는데, 과제를 진행해보니 "메시지 발행이 실패했을 때 어떻게 할 것인가"가 핵심이라고 느꼈다.
-분산 시스템에서는 네트워크 장애, 서버 다운, 타임아웃 등 실패가 일상이다. 그래서 "실패해도 복구할 수 있는 구조"가 중요하고, 이번에 구현한 Outbox 패턴, Kafka, 멱등 Consumer로 해결할 수 있었다.
+이번 주차의 핵심은 Kafka 사용법인가 싶었는데, 진행해보니 "메시지 발행이 실패했을 때 어떻게 다시 처리할 것인가"를 생각해보라는 주차로 느껴졌다.
+모험가의 여정처럼 이벤트의 여정도 험난하다. 네트워크 장애, 서버 다운, 타임아웃 등 온갖 풍파를 만난다.
+메시지 혹은 시스템도 "실패해도 다시 시도할 수 있게" 만들어 주는 것이 중요하다고 느끼는 요즘이다.
 
 | 실패 시나리오 | 복구 방법 |
 |--------------|----------|
@@ -253,4 +255,4 @@ if (processed) {
 | Consumer 처리 중 죽음 | offset 미커밋 → 재전달 |
 | 중복 메시지 | event_handled PK로 스킵 |
 
-이렇게 대용량 트래픽를 처리할 때 거의 필수로 사용되는 카프카의 아주 일부분을 살짝 맛 보았다. 어렵다 어려워!
+이렇게 대용량 트래픽을 처리할 때 거의 필수로 사용되는 카프카의 아주 일부분을 살짝 맛보았다. 어렵다 어려워!
