@@ -14,7 +14,6 @@ series: loopers-ecommerce
 series_order: 10
 toc: true
 toc_sticky: true
-#image: /assets/img/thumbnail/loopers-week2-WIL.png
 ---
 
 
