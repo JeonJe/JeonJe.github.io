@@ -11,7 +11,7 @@ tags:
   - 멱등성
   - 이벤트 기반 아키텍처
 series: loopers-ecommerce
-series_order: 10
+series_order: 11
 toc: true
 toc_sticky: true
 ---
