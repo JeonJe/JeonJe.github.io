@@ -213,21 +213,42 @@ try {
 
 존재 여부를 먼저 체크하지 않고 바로 INSERT 후 예외를 catch한다. PK 제약이 원자적으로 중복을 막아주고, 대부분 첫 처리라 한 번의 DB 호출로 끝난다.
 
-### 최신 이벤트만 반영
-이벤트가 순서대로 도착하지 않을 수 있다. 그래서 집계 테이블에 Producer 발행 시각(occurredAt, epoch ms 단위 사용)을 updated_at으로 저장하고, `GREATEST(updated_at, :occurredAt)`으로 더 최신인 이벤트만 반영한다.
+### 이벤트 처리 전략: 상태 동기화 vs 이벤트 집계
 
-```mermaid
-sequenceDiagram
-    participant C as Consumer
-    participant DB as 집계 테이블
+이벤트 처리 방식은 **비즈니스 요구사항**에 따라 달라진다.
 
-    Note over C,DB: eventA (occurredAt=100) 먼저 도착
-    C->>DB: updated_at = 100
+#### 상태 동기화 (State Sync)
+"현재 상태"만 중요한 경우다. 예를 들어 상품 정보 변경, 사용자 프로필 업데이트 등이 해당한다.
+이벤트가 순서대로 도착하지 않을 수 있으므로, Producer 발행 시각(occurredAt)을 비교해서 더 최신인 이벤트만 반영한다.
 
-    Note over C,DB: eventB (occurredAt=50) 나중 도착
-    C->>DB: GREATEST(100, 50) = 100
-    Note over DB: 무시됨 (과거 이벤트)
+```sql
+UPDATE product_cache
+SET name = :name, updated_at = GREATEST(updated_at, :occurredAt)
+WHERE id = :id AND updated_at < :occurredAt
 ```
+
+#### 이벤트 집계 (Event Aggregation)
+"모든 이벤트의 누적"이 중요한 경우다. 좋아요 수, 조회수, 재고 차감 등이 해당한다.
+
+좋아요를 예로 들면, 사용자가 좋아요 → 취소 → 다시 좋아요를 했을 때:
+- 상태 동기화 방식: 마지막 상태(좋아요)만 반영 → 이미 +1인 상태에서 또 +1 → **오류**
+- 이벤트 집계 방식: +1, -1, +1 순서대로 처리 → **정확한 집계**
+
+```java
+switch (event.getType()) {
+    case LIKED -> count.incrementAndGet();
+    case UNLIKED -> count.updateAndGet(c -> Math.max(0, c - 1)); // 음수 방지
+}
+```
+
+> 이벤트 집계에서도 순서 역전은 발생할 수 있다. UNLIKED가 먼저 도착하면 음수가 될 수 있으므로, 비즈니스 로직으로 방어해야 한다.
+
+| 구분 | 상태 동기화 | 이벤트 집계 |
+|------|------------|------------|
+| 관심사 | 최종 상태 | 모든 변화량 |
+| 예시 | 상품 정보 변경 | 좋아요 수, 재고 |
+| 순서 역전 | occurredAt 비교로 무시 | 비즈니스 로직으로 방어 |
+| 멱등성 | 자연스럽게 보장됨 | event_id 중복 방지 필수 |
 
 ### Manual Ack
 Consumer는 메시지를 어디까지 읽었는지 `offset`으로 기록한다. `auto commit`이 켜져 있으면 메시지를 받자마자 `offset`이 커밋된다.
