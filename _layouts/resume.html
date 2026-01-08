@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ page.title | default: "이력서" }} | {{ site.title }}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ========== 데이터 기반 이력서 스타일 ========== */
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background: #f5f5f5;
+      font-family: "Roboto", "Helvetica Neue", Arial, sans-serif;
+    }
+
+    .resume {
+      --resume-screen-width: 1100px;
+      --resume-print-width: 210mm;
+      --resume-page-padding: 14mm;
+      --details-width: 250px;
+      color: #333;
+      line-height: 1.6;
+      text-align: left;
+      max-width: min(var(--resume-screen-width), 100%);
+      margin: 2rem auto;
+      padding: clamp(1.25rem, 2.2vw, 2.2rem);
+      background: #fff;
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    }
+
+    .resume a {
+      color: #477dca;
+      text-decoration: none;
+      transition: color 150ms ease;
+    }
+
+    .resume a:hover,
+    .resume a:focus {
+      color: #355e98;
+    }
+
+    .resume h1,
+    .resume h2,
+    .resume h3,
+    .resume h4 {
+      font-weight: 300;
+      margin: 0 0 0.6rem;
+    }
+
+    .resume h1 {
+      font-size: 2.8rem;
+      font-weight: 500;
+    }
+
+    .resume h2 {
+      font-size: 1.5rem;
+    }
+
+    .resume h3.section-title {
+      font-size: 1.6rem;
+      text-align: center;
+      border-bottom: 2px dashed #ccc;
+      padding-bottom: 0.6rem;
+      margin: 2.6rem 0 2rem;
+    }
+
+    .resume h4 {
+      font-size: 1.2rem;
+      font-weight: 500;
+    }
+
+    .resume p,
+    .resume ul {
+      font-size: 1rem;
+      margin: 0 0 0.9rem;
+    }
+
+    .resume ul {
+      padding-left: 1.2rem;
+    }
+
+    .resume mark {
+      padding: 2px 4px;
+      font-size: 0.95em;
+      color: #fff;
+      background-color: #333;
+      border-radius: 3px;
+    }
+
+    .resume-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 2rem;
+      margin-top: 1.4rem;
+      margin-bottom: 2.2rem;
+    }
+
+    .header-left {
+      flex: 1;
+    }
+
+    .header-right {
+      text-align: right;
+      font-size: 0.95rem;
+    }
+
+    .header-right p {
+      margin-bottom: 0.3rem;
+    }
+
+    .header-links {
+      display: flex;
+      justify-content: flex-end;
+      gap: 0.5rem;
+      margin-top: 0.5rem;
+    }
+
+    .icon-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 30px;
+      height: 30px;
+      border: 1px solid rgba(0, 0, 0, 0.12);
+      border-radius: 8px;
+      background: #fff;
+      color: #333;
+    }
+
+    .icon-link:hover {
+      border-color: rgba(0, 0, 0, 0.22);
+      background: #fafafa;
+    }
+
+    .icon-link svg {
+      width: 18px;
+      height: 18px;
+      display: block;
+      fill: currentColor;
+    }
+
+    .icon-link img {
+      width: 18px;
+      height: 18px;
+      display: block;
+      object-fit: cover;
+      border-radius: 4px;
+    }
+
+    .layout {
+      display: flex;
+      gap: 1.6rem;
+      margin-bottom: 2rem;
+    }
+
+    .details {
+      flex: 0 0 var(--details-width);
+      text-align: left;
+      overflow-wrap: anywhere;
+    }
+
+    .details p {
+      margin-bottom: 0.35rem;
+      font-weight: 300;
+      font-size: 0.95rem;
+      line-height: 1.45;
+    }
+
+    .content {
+      flex: 1;
+      min-width: 0;
+    }
+
+    /* 프로젝트 섹션 내 소제목(프로젝트 개요/역할 등)만 살짝 강조 */
+    .content p strong {
+      font-size: 1.05em;
+      font-weight: 500;
+    }
+
+    .profile-img {
+      width: 140px;
+      height: 180px;
+      margin: 0 auto;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      border-radius: 4px;
+      border: 1px solid #ddd;
+      background-color: #f0f0f0;
+    }
+
+    .project-media {
+      margin-top: 0.8rem;
+    }
+
+    .project-media img {
+      width: 100%;
+      max-width: 350px;
+      display: block;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+    }
+
+    .project-media figcaption {
+      font-size: 0.85rem;
+      color: #666;
+      margin-top: 0.35rem;
+    }
+
+    .section-note {
+      font-size: 0.95rem;
+      color: #666;
+      font-style: italic;
+    }
+
+    @media (max-width: 768px) {
+      .resume-header {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .header-right {
+        text-align: center;
+      }
+
+      .layout {
+        flex-direction: column;
+      }
+
+      .details {
+        text-align: center;
+      }
+    }
+
+    @media print {
+      @page {
+        size: A4;
+        margin: 10mm 12mm;
+      }
+
+      html,
+      body {
+        background: #fff !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+
+      body {
+        margin: 0 !important;
+        padding: 0 !important;
+      }
+
+      .resume {
+        --details-width: 60mm;
+        max-width: 100% !important;
+        padding: 0 !important;
+        border: none !important;
+        border-radius: 0 !important;
+        box-shadow: none !important;
+        margin: 0 !important;
+      }
+
+      /* 폰트 크기 축소 */
+      .resume h1 {
+        font-size: 2rem;
+        margin-bottom: 0.3rem;
+      }
+
+      .resume h2 {
+        font-size: 1.1rem;
+        margin-bottom: 0.4rem;
+      }
+
+      .resume h3.section-title {
+        font-size: 1.2rem;
+        margin: 1.2rem 0 0.8rem;
+        padding-bottom: 0.3rem;
+      }
+
+      .resume h4 {
+        font-size: 0.95rem;
+        margin-bottom: 0.25rem;
+      }
+
+      .resume p,
+      .resume ul {
+        font-size: 0.85rem;
+        margin: 0 0 0.4rem;
+        line-height: 1.4;
+      }
+
+      .resume ul {
+        padding-left: 1rem;
+      }
+
+      .resume mark {
+        padding: 1px 3px;
+        font-size: 0.9em;
+      }
+
+      /* 헤더 간격 축소 */
+      .resume-header {
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: space-between !important;
+        margin-top: 0;
+        margin-bottom: 1rem;
+        gap: 1rem;
+        text-align: left !important;
+      }
+
+      .header-left {
+        flex: 1;
+        text-align: left !important;
+      }
+
+      .header-right {
+        font-size: 0.8rem;
+        text-align: right !important;
+      }
+
+      .header-right p {
+        margin-bottom: 0.15rem;
+      }
+
+      /* 레이아웃 간격 축소 */
+      .layout {
+        display: flex !important;
+        flex-direction: row !important;
+        gap: 1rem;
+        margin-bottom: 0.8rem;
+        page-break-inside: avoid;
+      }
+
+      .details {
+        flex: 0 0 60mm !important;
+        text-align: left !important;
+      }
+
+      .details p {
+        font-size: 0.8rem;
+        margin-bottom: 0.2rem;
+        line-height: 1.3;
+      }
+
+      .content {
+        flex: 1 !important;
+      }
+
+      /* 프로필 이미지 축소 */
+      .profile-img {
+        width: 100px;
+        height: 130px;
+      }
+
+      /* 프로젝트 이미지 */
+      .project-media {
+        margin-top: 0.4rem;
+      }
+
+      .project-media img {
+        max-width: 100mm;
+        page-break-inside: avoid;
+      }
+
+      .project-media figcaption {
+        font-size: 0.75rem;
+        margin-top: 0.2rem;
+      }
+
+      /* 섹션 간 간격 최소화 */
+      section {
+        page-break-inside: avoid;
+      }
+
+      /* 링크 URL 출력 제거 (간결하게) */
+      .resume a[href]::after {
+        content: none !important;
+      }
+
+      /* 불필요한 여백 제거 */
+      .section-note {
+        font-size: 0.8rem;
+      }
+
+      /* 페이지 나누기 방지 강화 */
+      .resume-header,
+      .layout,
+      section > div {
+        page-break-inside: avoid;
+        break-inside: avoid;
+      }
+    }
+  </style>
+</head>
+<body>
+
+{{ content }}
+
+</body>
+</html>
