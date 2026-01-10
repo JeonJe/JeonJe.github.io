@@ -10,7 +10,7 @@ tags:
   - I/O 멀티플렉싱
   - 캐시
 series: loopers-ecommerce
-series_order: 12
+series_order: 9
 toc: true
 toc_sticky: true
 mermaid: true

@@ -6,8 +6,8 @@ categories:
   - WIL
 tags:
   - 루퍼스
-series: loopers-ecommerce
-series_order: 13
+series: loopers-wil
+series_order: 5
 toc: true
 toc_sticky: true
 ---

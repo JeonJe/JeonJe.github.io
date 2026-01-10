@@ -10,8 +10,8 @@ tags:
   - Entity
   - 멱등성
   - 문서화전략
-series: loopers-ecommerce
-series_order: 9
+series: loopers-wil
+series_order: 3
 toc: true
 toc_sticky: true
 #image: /assets/img/thumbnail/loopers-week2-WIL.png

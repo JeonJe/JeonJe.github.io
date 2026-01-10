@@ -11,7 +11,7 @@ tags:
   - PG연동
   - 이커머스
 series: loopers-ecommerce
-series_order: 7
+series_order: 6
 toc: true
 toc_sticky: true
 image: /assets/img/thumbnail/failure-ready-systems-with-resilience-for-pg.jpeg

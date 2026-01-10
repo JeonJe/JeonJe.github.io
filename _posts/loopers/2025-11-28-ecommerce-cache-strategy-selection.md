@@ -9,7 +9,7 @@ tags:
   - 성능개선
   - 이커머스
 series: loopers-ecommerce
-series_order: 6
+series_order: 5
 toc: true
 toc_sticky: true
 image: /assets/img/thumbnail/ecommerce-cache-strategy-selection.jpg

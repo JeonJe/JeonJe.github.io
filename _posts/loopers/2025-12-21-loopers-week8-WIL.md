@@ -10,8 +10,8 @@ tags:
   - Transactional Outbox
   - 멱등성
   - 이벤트 기반 아키텍처
-series: loopers-ecommerce
-series_order: 11
+series: loopers-wil
+series_order: 4
 toc: true
 toc_sticky: true
 ---

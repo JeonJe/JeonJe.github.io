@@ -1,9 +1,14 @@
 # Series Configuration
 # 시리즈별 메타데이터 정의
 
+loopers-ecommerce:
+  name: "루퍼스 이커머스 프로젝트"
+  description: "루퍼스 백엔드 과정에서 진행한 이커머스 시스템 설계 및 개발 기록"
+  category: "루퍼스"
+
 loopers-wil:
   name: "루퍼스 WIL 시리즈"
-  description: "루퍼스 백엔드과정에서 배운 내용과 실무 설계 인사이트"
+  description: "루퍼스 과정 주차별 학습 회고 (Weekly I Learned)"
   category: "루퍼스"
 
 nextstep-tdd:

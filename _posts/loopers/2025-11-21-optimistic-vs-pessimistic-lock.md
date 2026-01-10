@@ -11,7 +11,7 @@ tags:
   - MySQL
   - InnoDB
 series: loopers-ecommerce
-series_order: 5
+series_order: 4
 toc: true
 toc_sticky: true
 image: /assets/img/thumbnail/optimistic-vs-pessimistic-lock.png

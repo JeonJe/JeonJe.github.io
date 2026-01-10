@@ -10,7 +10,7 @@ tags:
   - At-least-once
   - 분산 시스템
 series: loopers-ecommerce
-series_order: 10
+series_order: 8
 toc: true
 toc_sticky: true
 mermaid: true

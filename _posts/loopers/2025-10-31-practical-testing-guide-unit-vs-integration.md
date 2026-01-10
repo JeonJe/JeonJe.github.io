@@ -2,6 +2,7 @@
 title: "실무에서 배운 테스트 코드 — 단위 테스트와 통합 테스트 정확히 이해하기"
 description: "테스트 없이 개발하던 환경에서 1년간 단위 테스트와 통합 테스트를 배우고 적용하며 얻은 인사이트. 좋은 테스트 4대 요소, 단위/통합 테스트의 차이, 테스트 더블 활용법까지 실무 경험을 담았습니다."
 categories:
+  - 루퍼스
   - 테스트
   - 개발방법론
 tags:
@@ -10,6 +11,8 @@ tags:
   - 통합테스트
   - TDD
   - 클린코드
+series: loopers-ecommerce
+series_order: 1
 toc: true
 toc_sticky: true
 image: /assets/img/thumbnail/practical-testing-guide-unit-vs-integration.png

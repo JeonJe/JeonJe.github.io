@@ -10,7 +10,7 @@ tags:
   - chunk
   - 배치
 series: loopers-ecommerce
-series_order: 14
+series_order: 10
 toc: true
 toc_sticky: true
 mermaid: true

@@ -12,7 +12,7 @@ tags:
   - 테스트코드
   - 운영체제
   - Spring
-series: loopers-ecommerce
+series: loopers-wil
 series_order: 1
 toc: true
 toc_sticky: true

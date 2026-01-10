@@ -9,7 +9,7 @@ tags:
   - Transaction
   - 이커머스
 series: loopers-ecommerce
-series_order: 8
+series_order: 7
 toc: true
 toc_sticky: true
 image: /assets/img/thumbnail/decoupling-with-event.jpg
