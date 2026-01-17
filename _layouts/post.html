@@ -12,9 +12,11 @@ script_includes:
 
 {% include lang.html %}
 
+{% include toc-status.html %}
+
 <link rel="stylesheet" href="{{ '/assets/css/series.css' | relative_url }}">
 
-<article class="px-1">
+<article class="px-1" data-toc="{{ enable_toc }}">
   <header>
     <h1 data-toc-skip>{{ page.title }}</h1>
 
