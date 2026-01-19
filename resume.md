@@ -1,8 +1,7 @@
 ---
 layout: resume
-icon: fas fa-file-alt
-order: 5
 title: Resume
+permalink: /resume/
 ---
 
 <section class="resume" id="resume-content">

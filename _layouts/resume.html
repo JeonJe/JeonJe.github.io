@@ -224,6 +224,36 @@
       font-style: italic;
     }
 
+    .about-tools {
+      position: fixed;
+      right: 1rem;
+      bottom: 1rem;
+      z-index: 1050;
+      display: flex;
+      gap: 0.6rem;
+      align-items: center;
+    }
+
+    .print-btn {
+      appearance: none;
+      border: 1px solid #ddd;
+      background: #fff;
+      color: #333;
+      border-radius: 999px;
+      padding: 0.65rem 1.2rem;
+      font-size: 0.9rem;
+      line-height: 1;
+      cursor: pointer;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+      transition: all 150ms ease;
+    }
+
+    .print-btn:hover,
+    .print-btn:focus {
+      box-shadow: 0 10px 22px rgba(0, 0, 0, 0.15);
+      transform: translateY(-1px);
+    }
+
     @media (max-width: 768px) {
       .resume-header {
         flex-direction: column;
