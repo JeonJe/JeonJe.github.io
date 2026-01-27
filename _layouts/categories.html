@@ -125,15 +125,10 @@ layout: page
 
 <style>
 .stats-summary {
-  background: #f8fafc;
+  background: var(--card-bg);
   border-radius: 0.75rem;
   padding: 0.75rem;
-  border: 1px solid #e0e0e0;
-}
-
-html[data-mode="dark"] .stats-summary {
-  background: var(--card-bg);
-  border-color: var(--card-border-color);
+  border: 1px solid var(--card-border-color);
 }
 .stat-item {
   display: flex;
@@ -150,20 +145,15 @@ html[data-mode="dark"] .stats-summary {
   margin-top: 0.25rem;
 }
 #word-cloud {
-  background: #f8fafc;
+  background: var(--card-bg);
   border-radius: 0.75rem;
   padding: 1rem;
-  border: 1px solid #e0e0e0;
+  border: 1px solid var(--card-border-color);
   min-height: 300px;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
-}
-
-html[data-mode="dark"] #word-cloud {
-  background: var(--card-bg);
-  border-color: var(--card-border-color);
 }
 #word-cloud svg {
   display: block;
