@@ -1,81 +1,125 @@
-.highlight table td { padding: 5px; }
-.highlight table pre { margin: 0; }
-.highlight, .highlight .w {
-  color: #d0d0d0;
-  background-color: #151515;
+/* One Dark Theme Override */
+
+/* Block Background & Text - Force Dark */
+div[class^=language-],
+.highlight,
+.highlight .w,
+.highlight table,
+.highlight table td,
+.highlight table pre {
+  background-color: #282c34 !important;
+  color: #abb2bf !important;
+  border-radius: 10px; /* Ensure rounded corners */
 }
+
+/* Remove borders from inner elements if any */
+.highlight table td {
+  padding: 5px;
+  border: none !important;
+}
+.highlight table pre {
+  margin: 0;
+  border: none !important;
+}
+
+/* Header Adjustments to match One Dark */
+.code-header {
+  background-color: #21252b !important; /* Slightly darker than code block */
+  color: #abb2bf !important;
+  border-bottom: 1px solid #181a1f !important;
+}
+
+/* Line Numbers */
+.highlight .lineno {
+  color: #495162 !important;
+  background-color: #282c34 !important;
+  border-right: 1px solid #282c34 !important;
+}
+
+/* Error */
 .highlight .err {
-  color: #151515;
-  background-color: #ac4142;
+  color: #e06c75 !important;
+  background-color: transparent !important;
 }
+
+/* Comments */
 .highlight .c, .highlight .ch, .highlight .cd, .highlight .cm, .highlight .cpf, .highlight .c1, .highlight .cs {
-  color: #505050;
+  color: #5c6370 !important;
+  font-style: italic !important;
 }
-.highlight .cp {
-  color: #f4bf75;
+
+/* Keywords (Purple) */
+.highlight .cp, .highlight .k, .highlight .kn, .highlight .kp, .highlight .kr, .highlight .kv {
+  color: #c678dd !important;
 }
-.highlight .nt {
-  color: #f4bf75;
+
+/* Keyword Constant / Type (Orange/Yellow) */
+.highlight .kc, .highlight .kt, .highlight .kd {
+  color: #e5c07b !important;
 }
-.highlight .o, .highlight .ow {
-  color: #d0d0d0;
+
+/* Operators, Punctuation (Cyan/Text) */
+.highlight .o, .highlight .ow, .highlight .p, .highlight .pi {
+  color: #56b6c2 !important;
 }
-.highlight .p, .highlight .pi {
-  color: #d0d0d0;
+
+/* Name/Function (Blue), Class (Yellow) */
+.highlight .nf, .highlight .na, .highlight .nb {
+  color: #61afef !important;
 }
-.highlight .gi {
-  color: #90a959;
+.highlight .nc, .highlight .nn, .highlight .no {
+  color: #e5c07b !important;
+}
+
+/* Attributes/Tags (Red) */
+.highlight .nv {
+  color: #e06c75 !important;
+}
+
+/* Mac Traffic Lights (Red, Yellow, Green) */
+div[class^=language-] .code-header::before {
+  background-color: #ff5f56 !important; /* Red */
+  box-shadow: 1.25rem 0 0 #ffbd2e, 2.5rem 0 0 #27c93f !important; /* Yellow, Green */
+}
+
+/* Strings (Green) */
+.highlight .s, .highlight .sb, .highlight .sc, .highlight .dl, .highlight .sd, .highlight .s2, .highlight .sh, .highlight .sx, .highlight .s1, .highlight .sr, .highlight .ss {
+  color: #98c379 !important;
+}
+
+/* Numbers (Orange) */
+.highlight .m, .highlight .mb, .highlight .mf, .highlight .mh, .highlight .mi, .highlight .il, .highlight .mo, .highlight .mx {
+  color: #d19a66 !important;
+}
+
+/* Interpolation (Red/Orange) */
+.highlight .si, .highlight .se {
+  color: #be5046 !important;
+}
+
+/* Diff */
+.highlight .gh {
+  color: #61afef !important;
+  font-weight: bold !important;
 }
 .highlight .gd {
-  color: #ac4142;
+  color: #e06c75 !important;
+  background-color: #292020 !important;
 }
-.highlight .gh {
-  color: #6a9fb5;
-  background-color: #151515;
-  font-weight: bold;
+.highlight .gi {
+  color: #98c379 !important;
+  background-color: #202920 !important;
 }
-.highlight .k, .highlight .kn, .highlight .kp, .highlight .kr, .highlight .kv {
-  color: #aa759f;
+
+/* Tag Cloud & Tags Adjustment */
+.tag {
+  line-height: 1.8rem !important; /* Reduce vertical spacing between tags */
+  padding: 4px 8px !important;    /* Adjust padding for a tighter fit */
+  margin-bottom: 0.5rem !important;
 }
-.highlight .kc {
-  color: #d28445;
-}
-.highlight .kt {
-  color: #d28445;
-}
-.highlight .kd {
-  color: #d28445;
-}
-.highlight .s, .highlight .sb, .highlight .sc, .highlight .dl, .highlight .sd, .highlight .s2, .highlight .sh, .highlight .sx, .highlight .s1 {
-  color: #90a959;
-}
-.highlight .sa {
-  color: #aa759f;
-}
-.highlight .sr {
-  color: #75b5aa;
-}
-.highlight .si {
-  color: #8f5536;
-}
-.highlight .se {
-  color: #8f5536;
-}
-.highlight .nn {
-  color: #f4bf75;
-}
-.highlight .nc {
-  color: #f4bf75;
-}
-.highlight .no {
-  color: #f4bf75;
-}
-.highlight .na {
-  color: #6a9fb5;
-}
-.highlight .m, .highlight .mb, .highlight .mf, .highlight .mh, .highlight .mi, .highlight .il, .highlight .mo, .highlight .mx {
-  color: #90a959;
-}
-.highlight .ss {
-  color: #90a959;
+
+/* Ensure post tags (on post tail) also look consistent but not too bulky */
+.post-tag {
+  line-height: 1.2rem !important;
+  padding: 2px 6px !important;
 }

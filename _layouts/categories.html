@@ -1,0 +1,305 @@
+---
+layout: page
+# Categories with statistics dashboard
+---
+
+{% include lang.html %}
+
+{% assign HEAD_PREFIX = 'h_' %}
+{% assign LIST_PREFIX = 'l_' %}
+
+{% assign group_index = 0 %}
+
+{% assign sort_categories = site.categories | sort %}
+
+<!-- Statistics Summary -->
+{% assign total_posts = site.posts | size %}
+{% assign total_categories = site.categories | size %}
+
+{% assign max_category_name = '' %}
+{% assign max_category_count = 0 %}
+{% for category in site.categories %}
+  {% assign cat_size = category[1] | size %}
+  {% if cat_size > max_category_count %}
+    {% assign max_category_count = cat_size %}
+    {% assign max_category_name = category[0] %}
+  {% endif %}
+{% endfor %}
+
+<div class="stats-summary mb-4">
+  <div class="row text-center">
+    <div class="col-4">
+      <div class="stat-item">
+        <span class="stat-number">{{ total_posts }}</span>
+        <span class="stat-label">Posts</span>
+      </div>
+    </div>
+    <div class="col-4">
+      <div class="stat-item">
+        <span class="stat-number">{{ total_categories }}</span>
+        <span class="stat-label">Categories</span>
+      </div>
+    </div>
+    <div class="col-4">
+      <div class="stat-item">
+        <span class="stat-number">{{ max_category_count }}</span>
+        <span class="stat-label">{{ max_category_name }}</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Category Word Cloud -->
+<div id="word-cloud" class="mb-4"></div>
+
+<script id="category-data" type="application/json">
+[
+  {% for category in site.categories %}
+    {% assign cat_name = category[0] %}
+    {% assign cat_size = category[1] | size %}
+    {"text": "{{ cat_name }}", "size": {{ cat_size }}}{% unless forloop.last %},{% endunless %}
+  {% endfor %}
+]
+</script>
+
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/d3-cloud@1.2.7/build/d3.layout.cloud.min.js"></script>
+<script>
+(function() {
+  const data = JSON.parse(document.getElementById('category-data').textContent);
+  const container = document.getElementById('word-cloud');
+  const width = container.offsetWidth || 600;
+  const height = 320;
+  const padding = 60;
+
+  const maxSize = Math.max(...data.map(d => d.size));
+  const minSize = Math.min(...data.map(d => d.size));
+
+  const fontScale = d3.scaleLog()
+    .domain([Math.max(1, minSize), maxSize])
+    .range([12, 42]);
+
+  const colors = ['#4f46e5', '#06b6d4', '#10b981', '#f59e0b', '#ec4899', '#8b5cf6', '#3b82f6', '#14b8a6', '#ef4444', '#84cc16'];
+  const color = d3.scaleOrdinal(colors);
+
+  const layout = d3.layout.cloud()
+    .size([width - padding * 2, height - padding * 2])
+    .words(data.map(d => ({ text: d.text, size: fontScale(d.size), count: d.size })))
+    .padding(4)
+    .rotate(() => 0)
+    .font('sans-serif')
+    .fontSize(d => d.size)
+    .on('end', draw);
+
+  layout.start();
+
+  function draw(words) {
+    const svg = d3.select('#word-cloud')
+      .append('svg')
+      .attr('viewBox', `0 0 ${width} ${height}`)
+      .attr('preserveAspectRatio', 'xMidYMid meet')
+      .style('width', '100%')
+      .style('height', 'auto')
+      .append('g')
+      .attr('transform', `translate(${width/2},${height/2})`);
+
+    svg.selectAll('text')
+      .data(words)
+      .enter().append('text')
+      .style('font-size', d => d.size + 'px')
+      .style('font-family', 'sans-serif')
+      .style('font-weight', d => d.size > 30 ? '700' : '500')
+      .style('fill', (d, i) => color(i))
+      .style('cursor', 'pointer')
+      .attr('text-anchor', 'middle')
+      .attr('transform', d => `translate(${d.x},${d.y})rotate(${d.rotate})`)
+      .text(d => d.text)
+      .on('click', (e, d) => {
+        window.location.href = '/categories/' + encodeURIComponent(d.text.toLowerCase()) + '/';
+      })
+      .append('title')
+      .text(d => `${d.text}: ${d.count} posts`);
+  }
+})();
+</script>
+
+<style>
+.stats-summary {
+  background: #f8fafc;
+  border-radius: 0.75rem;
+  padding: 0.75rem;
+  border: 1px solid #e0e0e0;
+}
+
+[data-mode="dark"] .stats-summary {
+  background: var(--card-bg);
+  border-color: var(--card-border-color);
+}
+.stat-item {
+  display: flex;
+  flex-direction: column;
+}
+.stat-number {
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: var(--heading-color);
+}
+.stat-label {
+  font-size: 0.8rem;
+  color: var(--text-muted-color);
+  margin-top: 0.25rem;
+}
+#word-cloud {
+  background: #f8fafc;
+  border-radius: 0.75rem;
+  padding: 1rem;
+  border: 1px solid #e0e0e0;
+  min-height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+[data-mode="dark"] #word-cloud {
+  background: var(--card-bg);
+  border-color: var(--card-border-color);
+}
+#word-cloud svg {
+  display: block;
+  max-width: 100%;
+}
+#word-cloud text {
+  transition: opacity 0.2s ease;
+}
+#word-cloud text:hover {
+  opacity: 0.7;
+}
+
+
+</style>
+
+{% for category in sort_categories %}
+  {% assign category_name = category | first %}
+  {% assign posts_of_category = category | last %}
+  {% assign first_post = posts_of_category | first %}
+
+  {% if category_name == first_post.categories[0] %}
+    {% assign sub_categories = '' | split: '' %}
+
+    {% for post in posts_of_category %}
+      {% assign second_category = post.categories[1] %}
+      {% if second_category %}
+        {% unless sub_categories contains second_category %}
+          {% assign sub_categories = sub_categories | push: second_category %}
+        {% endunless %}
+      {% endif %}
+    {% endfor %}
+
+    {% assign sub_categories = sub_categories | sort %}
+    {% assign sub_categories_size = sub_categories | size %}
+
+    <div class="card categories">
+      <!-- top-category -->
+      <div
+        id="{{ HEAD_PREFIX }}{{ group_index }}"
+        class="card-header d-flex justify-content-between hide-border-bottom"
+      >
+        <span class="ms-2">
+          <i class="far fa-folder{% if sub_categories_size > 0 %}-open{% endif %} fa-fw"></i>
+
+          {% capture _category_url %}/categories/{{ category_name | slugify | url_encode }}/{% endcapture %}
+          <a href="{{ _category_url | relative_url }}" class="mx-2">{{ category_name }}</a>
+
+          <!-- content count -->
+          {% assign top_posts_size = site.categories[category_name] | size %}
+          <span class="text-muted small font-weight-light">
+            {% if sub_categories_size > 0 %}
+              {{ sub_categories_size }}
+              {% if sub_categories_size > 1 %}
+                {{
+                  site.data.locales[lang].categories.category_measure.plural
+                  | default: site.data.locales[lang].categories.category_measure
+                }}
+              {% else %}
+                {{
+                  site.data.locales[lang].categories.category_measure.singular
+                  | default: site.data.locales[lang].categories.category_measure
+                }}
+              {% endif -%}
+              ,
+            {% endif %}
+
+            {{ top_posts_size }}
+
+            {% if top_posts_size > 1 %}
+              {{
+                site.data.locales[lang].categories.post_measure.plural
+                | default: site.data.locales[lang].categories.post_measure
+              }}
+            {% else %}
+              {{
+                site.data.locales[lang].categories.post_measure.singular
+                | default: site.data.locales[lang].categories.post_measure
+              }}
+            {% endif %}
+          </span>
+        </span>
+
+        <!-- arrow -->
+        {% if sub_categories_size > 0 %}
+          <a
+            href="#{{ LIST_PREFIX }}{{ group_index }}"
+            data-bs-toggle="collapse"
+            aria-expanded="true"
+            aria-label="{{ HEAD_PREFIX }}{{ group_index }}-trigger"
+            class="category-trigger hide-border-bottom"
+          >
+            <i class="fas fa-fw fa-angle-down"></i>
+          </a>
+        {% else %}
+          <span data-bs-toggle="collapse" class="category-trigger hide-border-bottom disabled">
+            <i class="fas fa-fw fa-angle-right"></i>
+          </span>
+        {% endif %}
+      </div>
+      <!-- .card-header -->
+
+      <!-- Sub-categories -->
+      {% if sub_categories_size > 0 %}
+        <div id="{{ LIST_PREFIX }}{{ group_index }}" class="collapse show" aria-expanded="true">
+          <ul class="list-group">
+            {% for sub_category in sub_categories %}
+              <li class="list-group-item">
+                <i class="far fa-folder fa-fw"></i>
+
+                {% capture _sub_ctg_url %}/categories/{{ sub_category | slugify | url_encode }}/{% endcapture %}
+                <a href="{{ _sub_ctg_url | relative_url }}" class="mx-2">{{ sub_category }}</a>
+
+                {% assign posts_size = site.categories[sub_category] | size %}
+                <span class="text-muted small font-weight-light">
+                  {{ posts_size }}
+
+                  {% if posts_size > 1 %}
+                    {{
+                      site.data.locales[lang].categories.post_measure.plural
+                      | default: site.data.locales[lang].categories.post_measure
+                    }}
+                  {% else %}
+                    {{
+                      site.data.locales[lang].categories.post_measure.singular
+                      | default: site.data.locales[lang].categories.post_measure
+                    }}
+                  {% endif %}
+                </span>
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+      {% endif %}
+    </div>
+    <!-- .card -->
+
+    {% assign group_index = group_index | plus: 1 %}
+  {% endif %}
+{% endfor %}

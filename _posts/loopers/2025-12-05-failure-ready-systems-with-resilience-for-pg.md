@@ -279,18 +279,18 @@ Timeout까지 가지 않았지만 "비정상적으로 느린" 호출도 장애�
 
 #### 최종 설정값 정리
 
-| 설정                                    | 기본값        | 내 설정            |
-| --------------------------------------- | ------------- | ------------------ |
-| `slidingWindowType`                     | `COUNT_BASED` | `TIME_BASED`       |
-| `slidingWindowSize`                     | 100           | 30초               |
-| `failureRateThreshold`                  | 50%           | 30%                |
-| `slowCallDurationThreshold`             | 60초          | 6초                |
-| `slowCallRateThreshold`                 | 100%          | 1.3%               |
-| `waitDurationInOpenState`               | 60초          | 5초                |
-| `minimumNumberOfCalls`                  | 100           | 10                 |
-| `permittedNumberOfCallsInHalfOpenState` | 10            | 3                  |
-| `recordExceptions`                      | 비어있음      | 5xx, 429           |
-| `ignoreExceptions`                      | 비어있음      | 400, 401, 403, 404 |
+| 설정                                  | 기본값      | 내 설정            |
+| ------------------------------------- | ----------- | ------------------ |
+| slidingWindowType                     | COUNT_BASED | TIME_BASED         |
+| slidingWindowSize                     | 100         | 30초               |
+| failureRateThreshold                  | 50%         | 30%                |
+| slowCallDurationThreshold             | 60초        | 6초                |
+| slowCallRateThreshold                 | 100%        | 1.3%               |
+| waitDurationInOpenState               | 60초        | 5초                |
+| minimumNumberOfCalls                  | 100         | 10                 |
+| permittedNumberOfCallsInHalfOpenState | 10          | 3                  |
+| recordExceptions                      | 비어있음    | 5xx, 429           |
+| ignoreExceptions                      | 비어있음    | 400, 401, 403, 404 |
 
 > **`recordExceptions` vs `ignoreExceptions`**
 >

@@ -1,0 +1,131 @@
+---
+layout: page
+# The Archives of posts.
+---
+
+{% include lang.html %}
+
+{% assign df_strftime_m = site.data.locales[lang].df.archives.strftime | default: '/ %m' %}
+{% assign df_dayjs_m = site.data.locales[lang].df.archives.dayjs | default: '/ MM' %}
+
+{% assign total_posts = site.posts | size %}
+{% assign first_post = site.posts | last %}
+{% assign last_post = site.posts | first %}
+{% assign first_year = first_post.date | date: '%Y' | plus: 0 %}
+{% assign current_year = 'now' | date: '%Y' | plus: 0 %}
+{% assign years_count = current_year | minus: first_year | plus: 1 %}
+
+<div class="stats-summary mb-4">
+  <div class="row text-center">
+    <div class="col-4">
+      <div class="stat-item">
+        <span class="stat-number">{{ total_posts }}</span>
+        <span class="stat-label">Posts</span>
+      </div>
+    </div>
+    <div class="col-4">
+      <div class="stat-item">
+        <span class="stat-number">{{ first_year }}</span>
+        <span class="stat-label">Since</span>
+      </div>
+    </div>
+    <div class="col-4">
+      <div class="stat-item">
+        <span class="stat-number">{{ years_count }}</span>
+        <span class="stat-label">Years</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="archives" class="pl-xl-3">
+  {% for post in site.posts %}
+    {% assign cur_year = post.date | date: '%Y' %}
+
+    {% if cur_year != last_year %}
+      {% unless forloop.first %}</ul>{% endunless %}
+
+      {% comment %} Count posts for this year {% endcomment %}
+      {% assign year_count = 0 %}
+      {% for p in site.posts %}
+        {% assign p_year = p.date | date: '%Y' %}
+        {% if p_year == cur_year %}
+          {% assign year_count = year_count | plus: 1 %}
+        {% endif %}
+      {% endfor %}
+
+      <div class="year-row">
+        <time class="year lead">{{ cur_year }}</time>
+        <span class="year-line"></span>
+        <span class="year-post-count">{{ year_count }}</span>
+      </div>
+      {{ '<ul class="list-unstyled">' }}
+
+      {% assign last_year = cur_year %}
+    {% endif %}
+
+    <li>
+      {% assign ts = post.date | date: '%s' %}
+      <span class="date day" data-ts="{{ ts }}" data-df="DD">{{ post.date | date: '%d' }}</span>
+      <span class="date month small text-muted ms-1" data-ts="{{ ts }}" data-df="{{ df_dayjs_m }}">
+        {{ post.date | date: df_strftime_m }}
+      </span>
+      <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+    </li>
+
+    {% if forloop.last %}</ul>{% endif %}
+  {% endfor %}
+</div>
+
+<style>
+.stats-summary {
+  background: #f8fafc;
+  border-radius: 0.75rem;
+  padding: 0.75rem;
+  border: 1px solid #e0e0e0;
+}
+
+[data-mode="dark"] .stats-summary {
+  background: var(--card-bg);
+  border-color: var(--card-border-color);
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.stat-number {
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: var(--heading-color);
+}
+
+.stat-label {
+  font-size: 0.8rem;
+  color: var(--text-muted-color);
+  margin-top: 0.25rem;
+}
+
+.year-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.year-row .year {
+  flex-shrink: 0;
+}
+
+.year-line {
+  flex-grow: 1;
+  height: 1px;
+  background: var(--border-color, #3a3a3a);
+}
+
+.year-post-count {
+  flex-shrink: 0;
+  font-size: 0.85rem;
+  color: var(--text-muted-color, #868686);
+}
+</style>
