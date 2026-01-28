@@ -1,0 +1,253 @@
+---
+layout: page
+# Tags by Quarter
+---
+
+{% include lang.html %}
+
+{% assign total_posts = site.posts | size %}
+{% assign total_tags = site.tags | size %}
+
+{% assign max_tag_name = '' %}
+{% assign max_tag_count = 0 %}
+{% for tag in site.tags %}
+  {% assign tag_size = tag[1] | size %}
+  {% if tag_size > max_tag_count %}
+    {% assign max_tag_count = tag_size %}
+    {% assign max_tag_name = tag[0] %}
+  {% endif %}
+{% endfor %}
+
+<!-- Statistics Summary -->
+<div class="stats-summary mb-4">
+  <div class="row text-center">
+    <div class="col-4">
+      <div class="stat-item">
+        <span class="stat-number">{{ total_posts }}</span>
+        <span class="stat-label">Posts</span>
+      </div>
+    </div>
+    <div class="col-4">
+      <div class="stat-item">
+        <span class="stat-number">{{ total_tags }}</span>
+        <span class="stat-label">Tags</span>
+      </div>
+    </div>
+    <div class="col-4">
+      <div class="stat-item">
+        <span class="stat-number">{{ max_tag_count }}</span>
+        <span class="stat-label">{{ max_tag_name }}</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Quarter Strips -->
+<div id="quarter-strips" class="quarter-container"></div>
+
+<!-- Post Data -->
+<script id="posts-data" type="application/json">
+[
+  {% for post in site.posts %}
+    {
+      "year": {{ post.date | date: '%Y' }},
+      "quarter": {{ post.date | date: '%-m' | minus: 1 | divided_by: 3 | plus: 1 }},
+      "tags": {{ post.tags | jsonify }}
+    }{% unless forloop.last %},{% endunless %}
+  {% endfor %}
+]
+</script>
+
+<!-- Tag URLs -->
+<script id="tag-urls" type="application/json">
+{
+  {% for tag in site.tags %}
+    {{ tag[0] | jsonify }}: "{{ tag[0] | slugify | url_encode | prepend: '/tags/' | append: '/' | relative_url }}"{% unless forloop.last %},{% endunless %}
+  {% endfor %}
+}
+</script>
+
+<script>
+(function() {
+  const posts = JSON.parse(document.getElementById('posts-data').textContent);
+  const tagUrls = JSON.parse(document.getElementById('tag-urls').textContent);
+
+  function drawQuarterStrips() {
+    const container = document.getElementById('quarter-strips');
+
+    // Group posts by quarter
+    const quarterData = {};
+    posts.forEach(post => {
+      const key = `${post.year}-Q${post.quarter}`;
+      if (!quarterData[key]) {
+        quarterData[key] = { tags: {}, postCount: 0 };
+      }
+      quarterData[key].postCount++;
+      post.tags.forEach(tag => {
+        if (!quarterData[key].tags[tag]) {
+          quarterData[key].tags[tag] = 0;
+        }
+        quarterData[key].tags[tag]++;
+      });
+    });
+
+    // Sort quarters (newest first)
+    const sortedQuarters = Object.keys(quarterData).sort().reverse();
+
+    const colors = ['#4f46e5', '#06b6d4', '#10b981', '#f59e0b', '#ec4899', '#8b5cf6', '#3b82f6', '#14b8a6', '#ef4444', '#84cc16'];
+
+    let html = '';
+    sortedQuarters.forEach(quarter => {
+      const data = quarterData[quarter];
+      // Sort tags by count in this quarter
+      const sortedTags = Object.entries(data.tags)
+        .sort((a, b) => b[1] - a[1])
+        .slice(0, 8); // Top 8 tags per quarter
+
+      const [year, q] = quarter.split('-');
+
+      html += `
+        <div class="quarter-strip">
+          <div class="quarter-header">
+            <span class="quarter-label">${year} ${q}</span>
+            <span class="quarter-count">${data.postCount} posts</span>
+          </div>
+          <div class="quarter-tags">
+            ${sortedTags.map(([tag, count], i) => `
+              <a href="${tagUrls[tag] || '#'}" class="quarter-tag" style="--tag-color: ${colors[i % colors.length]}">
+                <span class="tag-dot"></span>
+                <span class="tag-text">${tag}</span>
+                <span class="tag-num">${count}</span>
+              </a>
+            `).join('')}
+          </div>
+        </div>
+      `;
+    });
+
+    container.innerHTML = html;
+  }
+
+  document.addEventListener('DOMContentLoaded', drawQuarterStrips);
+})();
+</script>
+
+<style>
+.stats-summary {
+  background: var(--card-bg);
+  border-radius: 0.75rem;
+  padding: 0.75rem;
+  border: 1px solid var(--card-border-color);
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.stat-number {
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: var(--heading-color);
+}
+
+.stat-label {
+  font-size: 0.8rem;
+  color: var(--text-muted-color);
+  margin-top: 0.25rem;
+}
+
+.quarter-container {
+  background: var(--card-bg);
+  border-radius: 0.75rem;
+  padding: 1rem;
+  border: 1px solid var(--card-border-color);
+}
+
+.quarter-strip {
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--card-border-color);
+}
+
+.quarter-strip:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.quarter-strip:first-child {
+  padding-top: 0;
+}
+
+.quarter-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.quarter-label {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--heading-color);
+}
+
+.quarter-count {
+  font-size: 0.8rem;
+  color: var(--text-muted-color);
+}
+
+.quarter-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.quarter-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.375rem 0.625rem;
+  background: var(--main-bg);
+  border-radius: 1rem;
+  text-decoration: none;
+  color: var(--text-color);
+  font-size: 0.85rem;
+  transition: all 0.15s ease;
+  border: 1px solid transparent;
+}
+
+.quarter-tag:hover {
+  border-color: var(--tag-color);
+  color: var(--tag-color);
+}
+
+.quarter-tag .tag-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--tag-color);
+}
+
+.quarter-tag .tag-text {
+  max-width: 120px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.quarter-tag .tag-num {
+  font-size: 0.75rem;
+  color: var(--text-muted-color);
+  margin-left: 0.125rem;
+}
+
+@media (max-width: 768px) {
+  .stat-number {
+    font-size: 1.5rem;
+  }
+
+  .quarter-tag .tag-text {
+    max-width: 80px;
+  }
+}
+</style>
