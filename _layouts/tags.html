@@ -106,23 +106,23 @@ layout: page
 
       const [year, q] = quarter.split('-');
 
-      html += `
-        <div class="quarter-strip">
-          <div class="quarter-header">
-            <span class="quarter-label">${year} ${q}</span>
-            <span class="quarter-count">${data.postCount} posts</span>
-          </div>
-          <div class="quarter-tags">
-            ${sortedTags.map(([tag, count], i) => `
-              <a href="${tagUrls[tag] || '#'}" class="quarter-tag" style="--tag-color: ${colors[i % colors.length]}">
-                <span class="tag-dot"></span>
-                <span class="tag-text">${tag}</span>
-                <span class="tag-num">${count}</span>
-              </a>
-            `).join('')}
-          </div>
-        </div>
-      `;
+      var tagsHtml = sortedTags.map(function(item, i) {
+        var tag = item[0];
+        var count = item[1];
+        return '<a href="' + (tagUrls[tag] || '#') + '" class="quarter-tag" style="--tag-color: ' + colors[i % colors.length] + '">' +
+          '<span class="tag-dot"></span>' +
+          '<span class="tag-text">' + tag + '</span>' +
+          '<span class="tag-num">' + count + '</span>' +
+          '</a>';
+      }).join('');
+
+      html += '<div class="quarter-strip">' +
+        '<div class="quarter-header">' +
+        '<span class="quarter-label">' + year + ' ' + q + '</span>' +
+        '<span class="quarter-count">' + data.postCount + ' posts</span>' +
+        '</div>' +
+        '<div class="quarter-tags">' + tagsHtml + '</div>' +
+        '</div>';
     });
 
     container.innerHTML = html;
