@@ -2,7 +2,7 @@
 title: "멀티보드 자유게시판 상세 보기: 첨부파일 및 댓글 기능 구현"
 description: "Spring Boot와 Vue.js를 활용한 자유게시판 상세 보기 기능, 첨부파일 업로드/다운로드, 댓글 작성/삭제 구현 방법"
 categories: project multiboard
-tags: [multiboard, 자유게시판, 첨부파일, 댓글기능, spring, Vue, 파일업로드, 권한관리, 예외처리]
+tags: [multiboard, 자유게시판, 첨부파일, 댓글기능, Spring, Vue, 파일업로드, 권한관리, 예외처리]
 
 ---
 

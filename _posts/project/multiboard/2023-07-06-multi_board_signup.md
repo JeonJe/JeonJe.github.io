@@ -2,7 +2,7 @@
 title: "멀티보드 회원가입 기능 구현: 유효성 검증과 예외 처리"
 description: "Spring Boot와 Vue.js를 활용한 회원가입 기능 구현, 사용자 입력 유효성 검증, 전역 예외 처리 방법과 데이터베이스 설계"
 categories: project multiboard
-tags: [multiboard, signup, 회원가입, spring, Vue, 유효성검증, 예외처리, 데이터베이스, 보안, 비밀번호해싱]
+tags: [multiboard, signup, 회원가입, Spring, Vue, 유효성검증, 예외처리, 데이터베이스, 보안, 비밀번호해싱]
 
 ---
 

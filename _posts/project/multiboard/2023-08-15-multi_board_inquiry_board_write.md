@@ -2,7 +2,7 @@
 title: "멀티보드 문의게시판 CRUD 구현: 비밀글 설정과 비밀번호 해싱"
 description: "Spring Boot와 Vue.js를 활용한 문의게시판 게시글 작성, 수정, 삭제 기능과 비밀글 설정, 비밀번호 해싱 처리 구현 방법"
 categories: project multiboard
-tags: [multiboard, 문의게시판, CRUD, 비밀글, 비밀번호해싱, spring, Vue, SHA-256, 권한관리, 예외처리]
+tags: [multiboard, 문의게시판, CRUD, 비밀글, 비밀번호해싱, Spring, Vue, SHA-256, 권한관리, 예외처리]
 
 ---
 

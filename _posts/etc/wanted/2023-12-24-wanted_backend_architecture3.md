@@ -1,8 +1,8 @@
 ---
 title: "대규모 서비스를 위한 백엔드 확장 전략 (2): MSA와 데이터 샤딩"
 description: "메시지 큐를 활용한 비동기 통신, 이벤트 기반 마이크로서비스 아키텍처(MSA), 다양한 커뮤니케이션 패턴, 데이터베이스 샤딩, 처리율 제한 알고리즘"
-categories: architecture
-tags: [wanted, architecture, MSA, 마이크로서비스, 메시지큐, 이벤트드리븐, 데이터샤딩, 처리율제한, 토큰버킷, DDD, 바운디드컨텍스트]
+categories: Architecture
+tags: [wanted, Architecture, MSA, 마이크로서비스, 메시지큐, 이벤트드리븐, 데이터샤딩, 처리율제한, 토큰버킷, DDD, 바운디드컨텍스트]
 ---
 
 > 원티드 프리온보딩 백엔드 챌린지 아키텍쳐 설계을 정리한 내용입니다.

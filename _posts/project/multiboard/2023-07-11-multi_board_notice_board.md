@@ -2,7 +2,7 @@
 title: "멀티보드 공지사항 기능 구현: 리스트 조회와 상세 보기"
 description: "Spring Boot와 Vue.js를 활용한 공지사항 게시판 구현, 검색 조건 컴포넌트, 페이지네이션, 카테고리 관리 방법"
 categories: project multiboard
-tags: [multiboard, 공지사항, spring, Vue, 페이지네이션, 검색기능, 컴포넌트재사용, 카테고리관리]
+tags: [multiboard, 공지사항, Spring, Vue, 페이지네이션, 검색기능, 컴포넌트재사용, 카테고리관리]
 
 ---
 

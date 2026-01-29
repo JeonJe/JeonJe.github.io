@@ -2,7 +2,7 @@
 title: "멀티보드 갤러리게시판 상세 보기: 이미지 슬라이더 구현"
 description: "Spring Boot와 Vue.js를 활용한 갤러리게시판 상세 보기 기능, vueper-slides 라이브러리를 활용한 이미지 슬라이더 구현 방법"
 categories: project multiboard
-tags: [multiboard, 갤러리게시판, 이미지슬라이더, spring, Vue, vueper-slides, 권한관리, 이미지처리]
+tags: [multiboard, 갤러리게시판, 이미지슬라이더, Spring, Vue, vueper-slides, 권한관리, 이미지처리]
 
 ---
 

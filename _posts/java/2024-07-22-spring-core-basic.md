@@ -2,7 +2,7 @@
 title: "스프링 핵심 원리: IoC, DI, 컴포넌트 스캔, 빈 생명주기"
 description: "객체 지향 프로그래밍의 SOLID 원칙, 스프링 컨테이너와 빈 관리, 의존관계 주입 방법, 싱글톤 패턴, 컴포넌트 스캔, 빈 스코프에 대한 이해"
 categories: spring 원리
-tags: [spring, IoC, DI, 스프링컨테이너, 싱글톤, 컴포넌트스캔, 빈생명주기, SOLID, 의존관계주입, 빈스코프]
+tags: [Spring, IoC, DI, 스프링컨테이너, 싱글톤, 컴포넌트스캔, 빈생명주기, SOLID, 의존관계주입, 빈스코프]
 ---
 
 >   [김영한님의 스프링 핵심 원리 기본편](https://www.inflearn.com/course/%EC%8A%A4%ED%94%84%EB%A7%81-%ED%95%B5%EC%8B%AC-%EC%9B%90%EB%A6%AC-%EA%B8%B0%EB%B3%B8%ED%8E%B8)에서 학습한 내용을 정리한 글입니다.

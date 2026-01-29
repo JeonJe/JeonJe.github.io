@@ -2,7 +2,7 @@
 title: "Point 객체 도입으로 가독성 높이기: 사다리 게임 리팩토링 사례"
 description: "사다리 게임 구현 과정에서 Point 객체 도입, 책임 분리, 응집도 향상을 통한 객체지향 원칙 적용과 코드 품질 개선 경험"
 categories: 글또 객체지향설계
-tags: [객체지향, TDD, 클린 코드, java, 리팩토링, 책임 분리, 응집도, 캡슐화, Point 객체, 가독성]
+tags: [객체지향, TDD, 클린 코드, Java, 리팩토링, 책임 분리, 응집도, 캡슐화, Point 객체, 가독성]
 series: nextstep-tdd
 series_order: 3
 toc: true

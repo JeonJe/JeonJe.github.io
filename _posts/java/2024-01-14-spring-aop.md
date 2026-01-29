@@ -1,8 +1,8 @@
 ---
 title: "Spring AOP 완벽 이해: 개념부터 실전 활용까지"
 description: "Spring AOP의 핵심 개념, 프록시 기반 동작 원리, 포인트컷 표현식, 어드바이스 유형 및 실무 활용 사례 정리"
-categories: java spring
-tags: [spring, aop, 관점지향프로그래밍, 프록시, 포인트컷, 어드바이스, 조인포인트, 애스펙트, 트랜잭션관리, 로깅]
+categories: Java spring
+tags: [Spring, aop, 관점지향프로그래밍, 프록시, 포인트컷, 어드바이스, 조인포인트, 애스펙트, 트랜잭션관리, 로깅]
 ---
 
 ## Spring AOP

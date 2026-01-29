@@ -2,7 +2,7 @@
 title: "MySQL 트랜잭션과 잠금 메커니즘 완벽 이해하기"
 description: "Real MySQL 8.0 학습 내용 - 트랜잭션의 개념부터 다양한 잠금 유형(글로벌, 테이블, 네임드, 메타데이터 락)과 격리 수준까지 상세 정리"
 categories: database
-tags: [database, MySQL, transaction, InnoDB, 트랜잭션, 잠금, 격리수준, ACID]
+tags: [database, MySQL, Transaction, InnoDB, 트랜잭션, 잠금, 격리수준, ACID]
 
 ---
 

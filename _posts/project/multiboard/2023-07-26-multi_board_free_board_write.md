@@ -2,7 +2,7 @@
 title: "멀티보드 자유게시판 CRUD 구현: 게시글 등록/수정/삭제 기능"
 description: "Spring Boot와 Vue.js를 활용한 자유게시판 게시글 작성, 수정, 삭제 기능 구현 방법과 첨부파일 처리"
 categories: project multiboard
-tags: [multiboard, 자유게시판, CRUD, spring, Vue, 첨부파일, 유효성검증, 권한관리, 예외처리]
+tags: [multiboard, 자유게시판, CRUD, Spring, Vue, 첨부파일, 유효성검증, 권한관리, 예외처리]
 
 ---
 

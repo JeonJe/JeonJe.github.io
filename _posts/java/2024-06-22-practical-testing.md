@@ -1,8 +1,8 @@
 ---
 title: "실용적인 테스트 코드 작성법: 스프링 애플리케이션 테스트 전략"
 description: "스프링 애플리케이션에서 효과적인 테스트 코드 작성 방법, 계층별 테스트 전략, 테스트 픽스처 관리, 테스트 가독성 향상 기법"
-categories: java 테스트
-tags: [java, spring, 테스트코드, 단위테스트, 통합테스트, 테스트전략, 테스트픽스처, 가독성, 유지보수성, 테스트설계]
+categories: Java 테스트
+tags: [Java, Spring, 테스트코드, 단위테스트, 통합테스트, 테스트전략, 테스트픽스처, 가독성, 유지보수성, 테스트설계]
 ---
 
 > 박우빈님의 [Practical Testing: 실용적인 테스트 가이드](https://www.inflearn.com/course/practical-testing-%EC%8B%A4%EC%9A%A9%EC%A0%81%EC%9D%B8-%ED%85%8C%EC%8A%A4%ED%8A%B8-%EA%B0%80%EC%9D%B4%EB%93%9C) 를 정리한 내용입니다.

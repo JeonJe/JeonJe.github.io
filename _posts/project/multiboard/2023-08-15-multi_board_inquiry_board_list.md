@@ -2,7 +2,7 @@
 title: "멀티보드 문의게시판 목록 구현: 비밀글 처리와 답변 상태 표시"
 description: "Spring Boot와 Vue.js를 활용한 문의게시판 목록 구현, 비밀글 비밀번호 검증, 답변 상태 표시 기능 구현 방법"
 categories: project multiboard
-tags: [multiboard, 문의게시판, 비밀글, 비밀번호검증, spring, Vue, 모달창, 답변상태표시, 권한관리]
+tags: [multiboard, 문의게시판, 비밀글, 비밀번호검증, Spring, Vue, 모달창, 답변상태표시, 권한관리]
 ---
 
 >프로젝트 코드는 포스팅 이후에도 계속 개선 중입니다. 

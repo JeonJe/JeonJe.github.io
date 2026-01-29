@@ -1,8 +1,8 @@
 ---
 title: "Spring MVC 요청 처리 과정: Filter, Dispatcher Servlet, Interceptor 이해"
 description: "Spring MVC 요청 생명주기에서 Filter, Dispatcher Servlet, Interceptor의 역할과 차이점, 구현 방법 및 활용 방식 정리"
-categories: java spring
-tags: [spring, filter, dispatcher-servlet, interceptor, spring-mvc, 요청처리, 웹개발, 스프링구조, 미들웨어]
+categories: Java spring
+tags: [Spring, filter, dispatcher-servlet, interceptor, spring-mvc, 요청처리, 웹개발, 스프링구조, 미들웨어]
 
 ---
 

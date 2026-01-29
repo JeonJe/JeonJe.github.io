@@ -1,8 +1,8 @@
 ---
 title: "Spring Local Cache 구현: 성능 최적화와 메모리 관리"
 description: "Spring 애플리케이션에서 로컬 캐시를 구현하여 반복적인 데이터베이스 조회를 줄이고 성능을 최적화하는 방법과 메모리 관리 전략"
-categories: java spring
-tags: [spring, cache, 로컬캐시, 성능최적화, 메모리관리, ConcurrentHashMap, 캐시전략, TTL, 캐시무효화]
+categories: Java spring
+tags: [Spring, cache, 로컬캐시, 성능최적화, 메모리관리, ConcurrentHashMap, 캐시전략, TTL, 캐시무효화]
 ---
 
 # 캐시의 필요성

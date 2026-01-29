@@ -1,8 +1,8 @@
 ---
 title: "Spring 테스트 코드 작성 가이드: 단위 테스트부터 통합 테스트까지"
 description: "Spring 애플리케이션에서 효과적인 테스트 코드 작성 방법, JUnit5와 Mockito를 활용한 단위 테스트, 통합 테스트 전략 및 모범 사례"
-categories: java 테스트
-tags: [spring, 테스트코드, junit5, mockito, 단위테스트, 통합테스트, TDD, 테스트전략, 모킹, 스프링테스트]
+categories: Java 테스트
+tags: [Spring, 테스트코드, junit5, mockito, 단위테스트, 통합테스트, TDD, 테스트전략, 모킹, 스프링테스트]
 ---
 
 

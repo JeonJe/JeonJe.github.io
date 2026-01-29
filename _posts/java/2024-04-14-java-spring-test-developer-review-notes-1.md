@@ -1,8 +1,8 @@
 ---
 title: "자바/스프링 테스트 개발자 리뷰 노트 1: 단위 테스트와 통합 테스트 전략"
 description: "자바와 스프링 환경에서 효과적인 테스트 코드 작성 방법, 단위 테스트와 통합 테스트 전략, 테스트 더블 활용 및 실무 적용 사례"
-categories: java 테스트
-tags: [java, spring, 테스트코드, 단위테스트, 통합테스트, mockito, junit, 테스트전략, 테스트더블, TDD]
+categories: Java 테스트
+tags: [Java, Spring, 테스트코드, 단위테스트, 통합테스트, mockito, junit, 테스트전략, 테스트더블, TDD]
 ---
 
 

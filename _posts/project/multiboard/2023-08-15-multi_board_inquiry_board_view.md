@@ -2,7 +2,7 @@
 title: "멀티보드 문의게시판 상세 보기: 관리자 답변 표시 기능 구현"
 description: "Spring Boot와 Vue.js를 활용한 문의게시판 상세 보기 기능, 관리자 답변 표시 및 처리 방법 구현"
 categories: project multiboard
-tags: [multiboard, 문의게시판, 관리자답변, spring, Vue, 답변처리, 권한관리, 데이터연동]
+tags: [multiboard, 문의게시판, 관리자답변, Spring, Vue, 답변처리, 권한관리, 데이터연동]
 ---
 
 > 관리자 페이지는 현재 미구성된 상태입니다. 따라서 아래 관리자 답변은 데이터베이스에 직접 쿼리를 작성하여 넣은 값입니다.

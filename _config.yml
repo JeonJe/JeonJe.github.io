@@ -212,4 +212,4 @@ plugins:
   - jekyll-seo-tag
   - jekyll-sitemap
   - jekyll-archives
-  - jekyll-feed
+  # jekyll-feed 비활성화 (Chirpy 테마의 assets/feed.xml과 충돌)

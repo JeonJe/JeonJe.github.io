@@ -2,7 +2,7 @@
 title: "멀티보드 자유게시판 목록 구현: JWT 인증과 검색 기능"
 description: "Spring Boot와 Vue.js를 활용한 자유게시판 목록 구현, JWT 토큰 기반 사용자 인증, 검색 조건 필터링 기능"
 categories: project multiboard
-tags: [multiboard, 자유게시판, jwt, 인증, spring, Vue, 검색기능, 페이지네이션, 권한관리]
+tags: [multiboard, 자유게시판, jwt, 인증, Spring, Vue, 검색기능, 페이지네이션, 권한관리]
 
 ---
 
