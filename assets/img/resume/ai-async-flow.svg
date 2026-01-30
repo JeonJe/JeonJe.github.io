@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="10 5 320 440">
+  <style>
+    .title { font: 600 13px 'Roboto', sans-serif; fill: #444; letter-spacing: 0.5px; }
+    .label { font: 500 11px 'Roboto', sans-serif; fill: #555; }
+    .box-before { fill: #fff; stroke: #e0e0e0; stroke-width: 1.5; rx: 6; }
+    .box-after { fill: #fff; stroke: #e0e0e0; stroke-width: 1.5; rx: 6; }
+    .node { fill: #f8f9fa; stroke: #ccc; stroke-width: 1.5; rx: 4; }
+    .node-problem { fill: #f5f5f5; stroke: #999; stroke-width: 2; rx: 4; }
+    .node-solution { fill: #f0f0f0; stroke: #666; stroke-width: 2; rx: 4; }
+    .arrow { stroke: #888; stroke-width: 2; fill: none; }
+    .badge-problem { fill: #999; rx: 4; }
+    .badge-success { fill: #555; rx: 4; }
+    .badge-text { font: 600 10px 'Roboto', sans-serif; fill: #fff; }
+    .note { font: 400 10px 'Roboto', sans-serif; fill: #888; }
+  </style>
+
+  <!-- Before Section -->
+  <rect x="20" y="15" width="300" height="150" class="box-before"/>
+  <text x="170" y="38" text-anchor="middle" class="title">BEFORE: 동기</text>
+
+  <!-- Sync flow: 요청 → 블로킹 → 응답 -->
+  <rect x="40" y="80" width="60" height="35" class="node-problem"/>
+  <text x="70" y="102" text-anchor="middle" class="label">요청</text>
+
+  <path d="M 105 97 L 130 97" class="arrow"/>
+  <polygon points="125,93 135,97 125,101" fill="#888"/>
+
+  <rect x="135" y="80" width="60" height="35" class="node-problem"/>
+  <text x="165" y="102" text-anchor="middle" class="label">블로킹</text>
+
+  <path d="M 200 97 L 225 97" class="arrow"/>
+  <polygon points="220,93 230,97 220,101" fill="#888"/>
+
+  <rect x="230" y="80" width="60" height="35" class="node-problem"/>
+  <text x="260" y="102" text-anchor="middle" class="label">응답</text>
+
+  <!-- Arrow Down -->
+  <line x1="170" y1="190" x2="170" y2="255" stroke="#bbb" stroke-width="2" stroke-dasharray="4,4"/>
+  <polygon points="164,250 170,265 176,250" fill="#bbb"/>
+
+  <!-- After Section -->
+  <rect x="20" y="275" width="300" height="155" class="box-after"/>
+  <text x="170" y="298" text-anchor="middle" class="title">AFTER: 비동기</text>
+
+  <!-- Async flow: 요청 → 작업ID → 즉시응답 -->
+  <rect x="35" y="315" width="55" height="35" class="node-solution"/>
+  <text x="62" y="337" text-anchor="middle" class="label">요청</text>
+
+  <path d="M 95 332 L 125 332" class="arrow"/>
+  <polygon points="120,328 130,332 120,336" fill="#888"/>
+
+  <rect x="130" y="315" width="65" height="35" class="node-solution"/>
+  <text x="162" y="337" text-anchor="middle" class="label">작업ID</text>
+
+  <path d="M 200 332 L 230 332" class="arrow"/>
+  <polygon points="225,328 235,332 225,336" fill="#888"/>
+
+  <rect x="235" y="315" width="70" height="35" class="node-solution"/>
+  <text x="270" y="337" text-anchor="middle" class="label">즉시응답</text>
+
+  <text x="170" y="365" text-anchor="middle" class="note">메인 스레드</text>
+
+  <!-- Background -->
+  <rect x="90" y="375" width="55" height="22" class="node"/>
+  <text x="117" y="390" text-anchor="middle" style="font: 400 9px 'Roboto', sans-serif; fill: #666;">AI 처리</text>
+
+  <path d="M 148 386 L 168 386" class="arrow" stroke-dasharray="3,3"/>
+  <polygon points="165,383 172,386 165,389" fill="#888"/>
+
+  <rect x="175" y="375" width="50" height="22" class="node"/>
+  <text x="200" y="390" text-anchor="middle" style="font: 400 9px 'Roboto', sans-serif; fill: #666;">알림</text>
+
+  <text x="170" y="410" text-anchor="middle" class="note">백그라운드 스레드</text>
+</svg>

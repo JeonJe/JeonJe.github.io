@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="10 5 320 510">
+  <style>
+    .title { font: 600 13px 'Roboto', sans-serif; fill: #444; letter-spacing: 0.5px; }
+    .label { font: 500 11px 'Roboto', sans-serif; fill: #555; }
+    .box-before { fill: #fff; stroke: #e0e0e0; stroke-width: 1.5; rx: 6; }
+    .box-after { fill: #fff; stroke: #e0e0e0; stroke-width: 1.5; rx: 6; }
+    .node { fill: #f8f9fa; stroke: #ccc; stroke-width: 1.5; rx: 4; }
+    .node-problem { fill: #f5f5f5; stroke: #999; stroke-width: 2; rx: 4; }
+    .node-solution { fill: #f0f0f0; stroke: #666; stroke-width: 2; rx: 4; }
+    .arrow { stroke: #888; stroke-width: 2; fill: none; }
+    .badge-problem { fill: #999; rx: 4; }
+    .badge-success { fill: #555; rx: 4; }
+    .badge-text { font: 600 10px 'Roboto', sans-serif; fill: #fff; }
+    .note { font: 400 10px 'Roboto', sans-serif; fill: #888; }
+  </style>
+
+  <!-- Before Section -->
+  <rect x="20" y="15" width="300" height="170" class="box-before"/>
+  <text x="170" y="38" text-anchor="middle" class="title">BEFORE: 강결합</text>
+
+  <!-- Before: 예약1,2,3 → 담당자 (N:1) -->
+  <rect x="55" y="50" width="55" height="28" class="node-problem"/>
+  <text x="82" y="68" text-anchor="middle" class="label">예약1</text>
+
+  <rect x="55" y="85" width="55" height="28" class="node-problem"/>
+  <text x="82" y="103" text-anchor="middle" class="label">예약2</text>
+
+  <rect x="55" y="120" width="55" height="28" class="node-problem"/>
+  <text x="82" y="138" text-anchor="middle" class="label">예약3</text>
+
+  <!-- 화살표들 -->
+  <path d="M 115 64 L 195 95" class="arrow"/>
+  <path d="M 115 99 L 195 99" class="arrow"/>
+  <path d="M 115 134 L 195 103" class="arrow"/>
+  <polygon points="190,92 200,95 190,98" fill="#888"/>
+  <polygon points="190,95 200,99 190,103" fill="#888"/>
+  <polygon points="190,100 200,103 190,106" fill="#888"/>
+
+  <rect x="200" y="75" width="70" height="48" class="node-problem"/>
+  <text x="235" y="104" text-anchor="middle" class="label">담당자</text>
+
+
+
+  <!-- Arrow Down -->
+  <line x1="170" y1="190" x2="170" y2="255" stroke="#bbb" stroke-width="2" stroke-dasharray="4,4"/>
+  <polygon points="164,250 170,265 176,250" fill="#bbb"/>
+
+  <!-- After Section -->
+  <rect x="20" y="275" width="300" height="200" class="box-after"/>
+  <text x="170" y="298" text-anchor="middle" class="title">AFTER: 느슨한 결합</text>
+
+  <!-- After: 예약1,2,3 → 진료공간 → 담당자1,2 (느슨한 연결) -->
+  <rect x="35" y="335" width="50" height="28" class="node-solution"/>
+  <text x="60" y="353" text-anchor="middle" class="label">예약1</text>
+
+  <rect x="35" y="370" width="50" height="28" class="node-solution"/>
+  <text x="60" y="388" text-anchor="middle" class="label">예약2</text>
+
+  <rect x="35" y="405" width="50" height="28" class="node-solution"/>
+  <text x="60" y="423" text-anchor="middle" class="label">예약3</text>
+
+  <!-- 예약 → 진료공간 화살표 -->
+  <path d="M 90 349 L 130 375" class="arrow"/>
+  <path d="M 90 384 L 130 384" class="arrow"/>
+  <path d="M 90 419 L 130 393" class="arrow"/>
+  <polygon points="125,372 135,375 125,378" fill="#888"/>
+  <polygon points="125,380 135,384 125,388" fill="#888"/>
+  <polygon points="125,390 135,393 125,396" fill="#888"/>
+
+  <rect x="135" y="360" width="70" height="48" class="node-solution"/>
+  <text x="170" y="389" text-anchor="middle" class="label">진료공간</text>
+
+  <!-- 진료공간 ↔ 담당자 느슨한 연결 (점선) -->
+  <path d="M 210 375 L 240 355" class="arrow" stroke-dasharray="4,3"/>
+  <path d="M 210 393 L 240 413" class="arrow" stroke-dasharray="4,3"/>
+
+  <rect x="245" y="335" width="55" height="28" class="node-solution"/>
+  <text x="272" y="353" text-anchor="middle" class="label">담당자1</text>
+
+  <rect x="245" y="405" width="55" height="28" class="node-solution"/>
+  <text x="272" y="423" text-anchor="middle" class="label">담당자2</text>
+
+
+</svg>
