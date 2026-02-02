@@ -15,7 +15,6 @@ permalink: /resume/
 
 // TODO:
 // 1. 혈압관리 프로젝트 추가 검토 (데드락 프로젝트 대체 가능성)
-// 2. 대외활동 문구 개선 (현재 너무 구림)
 
 const resumeData = {
   // 기본 정보
@@ -32,9 +31,12 @@ const resumeData = {
   // 소개
   intro: {
     paragraphs: [
-      "비효율 개선과 서비스 신뢰도를 높히고, 변화가 필요할 땐 빠르게 실행합니다.",
-      "보안 시스템 운영 경험을 통해 안정성의 중요성을 배웠습니다. 문제를 먼저 발견해 개선하고, 장애에 강한 구조를 만드는 태도로 이어졌습니다.",
-      "운영부터 개발로 영역을 확장시켰고 더 나아가 기획까지 참여하여 서비스의 문제 해결에 집중하고 있습니다."
+      "비효율 개선과 서비스 신뢰도를 높이고, 변화가 필요할 땐 빠르게 실행합니다.",
+      "의사와 강하게 결합된 예약 구조를 개선하여 건별 예약 수정을 1회로 줄여 병원 운영의 효율성을 높이고, 이중 예약을 방지하기 위해 시스템 제약 조건을 비교·분석하고 적용한 결과 이중 예약 0건을 달성하였습니다. ",
+      "병원 통계·상세 수가 불일치하여 데이터를 신뢰할 수 없는 문제는 통계 집계 기준을 하나로 합쳐 데이터 불일치 문의를 0건으로 감소시켰고, 조회 속도를 1초에서 100ms로 개선하여 사용성을 향상시켰습니다 ",
+      "데드락이 발생하는 레거시 코드를 데드락 예방뿐만 아니라, 트랜잭션 처리시간 감소, 테스트 가능한 코드 구조로 개선하였습니다.",
+      "시스템 안정성을 중요시하는 보안 담당자의 경험은 문제가 발생하기 전에 개선하고, 장애에 강한 구조를 만드는 태도로 이어졌습니다.",
+      "운영부터 개발로 영역을 확장시켰고, 지금은 한 발짝 더 나아가 기획에도 참여하여 병원과 환자의 관점을 고려한 서비스를 만들어가고 있습니다."
     ]
   },
 
@@ -45,10 +47,10 @@ const resumeData = {
       role: "백엔드 개발자",
       period: "23.09 ~ 재직중 (2년 5개월)",
       achievements: [
-        "비대면 진료 플랫폼 '모비닥' 운영. 환자 앱(예약·혈압 기록) 및 병원 클라이언트(예약·진료·통계) 개발 및 운영",
+        "비대면 진료 플랫폼 '모비닥' 운영 (MAU 4천, 월 진료 9천건, 200개 병원). 환자 앱 및 병원 클라이언트 개발",
         "진료 공간 기반 예약 시스템 개편 및 이중 예약 방지를 위한 Redis 분산락 도입",
         "병원 통계 요약/상세 조회 불일치 구조 개선 및 AI 분석 사이드 패널 기능 개발",
-        "레거시 저장 프로시저를 애플리케이션 로직으로 전환하여 구조 및 성능 개선"
+        "데드락 발생 & 비효율적인 레거시 저장 프로시저를 애플리케이션 로직으로 전환하여 구조 및 성능 개선"
       ]
     },
     {
@@ -67,7 +69,7 @@ const resumeData = {
       period: "20.04 ~ 21.09 (1년 6개월)",
       achievements: [
         "신세계그룹의 IT 서비스 전문 기업, 그룹사 공용 보안 시스템 운영 및 개선 담당",
-        "재택근무 급증 대응 SSL-VPN 정책 자동화 개선 프로젝트 PM (매출 1억)",
+        "재택근무 급증 대응 SSL-VPN(2천+ 유저) 정책 자동화 개선 프로젝트 PM (매출 1억)",
         "SSL-VPN IDC 간 이중화 작업으로 IDC 장애·마비 시에도 무중단 원격근무 환경 확보 기여"
       ]
     }
@@ -104,9 +106,37 @@ const resumeData = {
       image: "/assets/img/resume/reservation-before-after.svg",
       imageCaption: "",
       overview: "진료 공간 기반 예약 시스템 개편 및 동시성 제어 도입",
-      team: "백엔드 단독 수행, 프론트엔드 개발자 2명 협업<br>",
-      tasks: "기존 예약은 사람(의사/직원)에 묶인 구조로, 담당자 변경 시 예약을 건별로 수동 변경 <br>도수치료실, 물리치료실 같은 공간 기반 예약이 필요할 때는 '가짜 직원 계정'을 만들어 임시 처리하는 불편함 발생<br>동시 예약 요청 시 동시성 제어 부재로 이중 예약 간헐적 발생",
-      solutions: "<strong>1. 신규 도메인 설계</strong><br>• PM/실무자 협업으로 '진료 공간' 도메인 정의, DB 스키마 설계<br>• 진료과목 등 상위 개념은 너무 추상적, 진료실/물리치료실/기기는 병원 운영에서 거의 변경되지 않아 적절한 추상화 레벨로 판단<br><br><strong>2. 예약 로직 리팩토링</strong><br>• 기존) 템플릿 메서드 구조에서 하위 클래스가 상위 메서드를 호출하는 꼬인 의존 관계<br>• 선택) 클라이언트/예약자 타입별 동적 변경 부분을 전략으로 분리 → 의존성 단방향 정리, 테스트 용이<br><br><strong>3. 동시성 제어 - Redis 분산락 선택 이유</strong><br>• <strong>대안 1) 비관적 락</strong>: 예약 슬롯을 실시간 계산하는 구조라 락을 걸 테이블 부재<br>• <strong>대안 2) 낙관적 락</strong>: 버전 필드 적용 테이블 부재, 예약 시간 일부 겹침 케이스 대응 어려움<br>• <strong>선택) Redis 분산락</strong>: 비즈니스 로직 변경 없이 도입 가능, 기존 Redis 인프라 활용<br>• Redis 장애 시 서비스 유지를 위해 이중 요청 허용 결정 및 즉시 대응을 위한 Slack 알림 추가",
+      team: "백엔드 단독 수행, 프론트엔드 개발자 2명 협업",
+      tasks: [
+        "기존 예약은 사람(의사/직원)에 묶인 구조로, 담당자 변경 시 예약을 건별로 수동 변경",
+        "도수치료실, 물리치료실 같은 공간 기반 예약이 필요할 때는 '가짜 직원 계정'을 만들어 임시 처리하는 불편함 발생",
+        "동시 예약 요청 시 동시성 제어 부재로 이중 예약 간헐적 발생"
+      ],
+      solutions: [
+        {
+          title: "1. 신규 도메인 설계",
+          items: [
+            "PM/실무자 협업으로 '진료 공간' 도메인 정의, DB 스키마 설계",
+            "진료과목 등 상위 개념은 너무 추상적, 진료실/물리치료실/기기는 병원 운영에서 거의 변경되지 않아 적절한 추상화 레벨로 판단"
+          ]
+        },
+        {
+          title: "2. 예약 로직 리팩토링",
+          items: [
+            "기존) 템플릿 메서드 구조에서 하위 클래스가 상위 메서드를 호출하는 꼬인 의존 관계",
+            "선택) 클라이언트/예약자 타입별 동적 변경 부분을 전략으로 분리 → 의존성 단방향 정리, 테스트 용이"
+          ]
+        },
+        {
+          title: "3. 동시성 제어 - Redis 분산락 선택 이유",
+          items: [
+            "<strong>대안 1) 비관적 락</strong>: 예약 슬롯을 실시간 계산하는 구조라 락을 걸 테이블 부재",
+            "<strong>대안 2) 낙관적 락</strong>: 버전 필드 적용 테이블 부재, 예약 시간 일부 겹침 케이스 대응 어려움",
+            "<strong>선택) Redis 분산락</strong>: 비즈니스 로직 변경 없이 도입 가능, 기존 Redis 인프라 활용",
+            "Redis 장애 시, 서비스 연속성을 위해 이중 예약 요청 허용 결정 및 즉시 대응을 위한 Slack 알림 추가"
+          ]
+        }
+      ],
       results: [
         "진료 공간 도메인 도입으로 담당자 변경 시 예약 건별 수동 작업을 <mark>1회</mark>로 효율화",
         "공간 기반 예약 확대로 서비스 범위 확장, 진료 공간별 진료건수/신규/재방문 통계로 운영 효율 분석 가능",
@@ -126,9 +156,35 @@ const resumeData = {
       image: "/assets/img/resume/ai-async-flow.svg",
       imageCaption: "",
       overview: "병원 통계 수치 불일치 구조 개선 및 AI 분석 사이드 패널 개발",
-      team: "백엔드 & 프론트엔드 단독 수행<br>",
-      tasks: "진료 테이블과 통계용 테이블(1시간마다 동기화)에 동일한 집계 기준이 각각 구현, 불일치로 고객 문의 발생<br>AI 분석 응답 수 초~수십 초 대기로 스레드 풀 고갈, 요청 몰릴 때 서버 응답 지연 발생 가능",
-      solutions: "<strong>1. 통계 수치 불일치 해결 - 집계 구조 통합</strong><br>• 대안) 두 쿼리의 집계 기준 동기화 유지 → 변경 시마다 두 곳 수정 필요, 불일치 재발 위험<br>• 선택) 통계 테이블이 조회 책임, 상세 조회는 통계에서 추출한 ID 기반으로만 조회하여 일관성 보장<br><br><strong>2. AI 분석 비동기 전환 - 점진적 개선</strong><br>• <strong>1차) 비동기 스레드 분리</strong>: 메인 스레드 점유 시간 단축, 하지만 클라이언트는 여전히 수 분 대기<br>• <strong>2차) 논블로킹 응답</strong>: 요청 시 작업 ID만 즉시 반환, 완료 시 웹소켓 알림<br>• 웹소켓은 기존 사용 중인 패턴 활용, 메시지 누락 대비하여 DB 조회로 보완<br><br><strong>3. 외부 AI 시스템 장애 대비</strong><br>• 기존) 장애 시에도 외부 요청 계속 발생, 타임아웃까지 대기 필요<br>• 선택) Circuit Breaker 도입하여 장애 시 즉시 실패 처리, 사용자가 요청 상태 바로 인지 가능",
+      team: "백엔드 & 프론트엔드 단독 수행",
+      tasks: [
+        "진료 테이블과 통계용 테이블(1시간마다 동기화)에 동일한 집계 기준이 각각 구현, 불일치로 고객 문의 발생",
+        "AI 분석 응답 수 초~수십 초 대기로 스레드 풀 고갈, 요청 몰릴 때 서버 응답 지연 발생 가능"
+      ],
+      solutions: [
+        {
+          title: "1. 통계 수치 불일치 해결 - 집계 구조 통합",
+          items: [
+            "대안) 두 쿼리의 집계 기준 동기화 유지 → 변경 시마다 두 곳 수정 필요, 불일치 재발 위험",
+            "선택) 통계 테이블이 조회 책임, 상세 조회는 통계에서 추출한 ID 기반으로만 조회하여 일관성 보장"
+          ]
+        },
+        {
+          title: "2. AI 분석 비동기 전환 - 점진적 개선",
+          items: [
+            "<strong>1차) 비동기 스레드 분리</strong>: 메인 스레드 점유 시간 단축, 하지만 클라이언트는 여전히 수 분 대기",
+            "<strong>2차) 논블로킹 응답</strong>: 요청 시 작업 ID만 즉시 반환, 완료 시 웹소켓 알림",
+            "웹소켓은 기존 사용 중인 패턴 활용, 웹소켓 메시지 누락 대비하여 DB 조회로 보완"
+          ]
+        },
+        {
+          title: "3. 외부 AI 시스템 장애 대비",
+          items: [
+            "기존) 장애 시에도 외부 요청 계속 발생, 타임아웃까지 대기 필요",
+            "선택) Circuit Breaker 도입하여 장애 시 즉시 실패 처리, 사용자가 요청 상태 바로 인지 가능"
+          ]
+        }
+      ],
       results: [
         "집계 구조 통합으로 통계 수치 불일치 해결하여 고객 통계 불일치 문의 <mark>0건</mark> 및 조회 속도 개선 (<mark>1s → 100ms</mark>)",
         "집계 구조 통합(2곳 → 1곳)으로 유지보수/트러블슈팅 비용 감소",
@@ -148,8 +204,32 @@ const resumeData = {
       image: "/assets/img/resume/deadlock-flow.svg",
       imageCaption: "",
       team: "백엔드 단독 수행",
-      tasks: "환자 앱 로그인 후 실행되는 마케팅 동의 이력 업데이트 중 데드락 발생으로 최신 데이터 계산 실패",
-      solutions: "<strong>1. 데드락 원인 분석</strong><br>• 스토어드 프로시저 내 GROUP BY 정렬 조건 누락에 따른 Lock 경합 원인 파악<br><br><strong>2. 대안 비교 및 선택</strong><br>• 대안 1) 정렬 순서 지정: ORDER BY 추가로 빠른 적용 가능하나 성능/유지보수/테스트 문제 미해결<br>• 대안 2) 트랜잭션 범위 축소: @Transactional 제거로 간단하나 일관성 감소<br>• 선택) 순서보장 및 애플리케이션 로직 전환: 일관성 유지 + 성능/유지보수성/테스트 용이성 좋음<br><br><strong>3. 쿼리 성능 최적화</strong><br>• 전체 마케팅 이력 스캔 → 대상 환자 이력만 조회로 전환<br>• 한 건씩 처리 → 일괄 처리로 전환하여 DB I/O 효율화",
+      tasks: [
+        "환자 앱 로그인 후 실행되는 마케팅 동의 이력 업데이트 중 데드락 발생으로 최신 데이터 계산 실패"
+      ],
+      solutions: [
+        {
+          title: "1. 데드락 원인 분석",
+          items: [
+            "스토어드 프로시저 내 GROUP BY 정렬 조건 누락에 따른 Lock 경합 원인 파악"
+          ]
+        },
+        {
+          title: "2. 대안 비교 및 선택",
+          items: [
+            "대안 1) 정렬 순서 지정: ORDER BY 추가로 빠른 적용 가능하나 성능/유지보수/테스트 문제 미해결",
+            "대안 2) 트랜잭션 범위 축소: @Transactional 제거로 간단하나 일관성 감소",
+            "선택) 순서보장 및 애플리케이션 로직 전환: 일관성 유지 + 성능/유지보수성/테스트 용이성 좋음"
+          ]
+        },
+        {
+          title: "3. 쿼리 성능 최적화",
+          items: [
+            "전체 마케팅 이력 스캔 → 대상 환자 이력만 조회로 전환",
+            "한 건씩 처리 → 일괄 처리로 전환하여 DB I/O 효율화"
+          ]
+        }
+      ],
       results: [
         "마케팅 동의 이력 계산 시 데드락 발생 <mark>0건</mark>으로 서비스 안정성 향상",
         "프로시저 → 애플리케이션 전환으로 트랜잭션 처리 시간 <mark>85% 단축 (1.4s → 0.2s)</mark>",
@@ -164,7 +244,7 @@ const resumeData = {
       name: "크래프톤 정글 - 팀 프로젝트 멘토",
       category: "멘토링",
       role: "멘토",
-      period: "25.06 ~ 25.07 (8기)<br>25.12 ~ 26.01 (11기)",
+      period: "25.06 ~ 25.07 (8기, 6명)<br>25.12 ~ 26.01 (11기, 7명)",
       achievements: [
         "MVP 기능 우선순위 조율 및 AI 활용 가이드로 팀 개발 속도 향상",
         "<a href='https://jeonje.github.io/posts/jungle-mentoring_review/' target='_blank'>멘토링 회고</a>"
@@ -174,7 +254,7 @@ const resumeData = {
       name: "글또 10기 - 개발자 글쓰기 커뮤니티",
       category: "스터디",
       role: "",
-      period: "24.10 ~ 25.03",
+      period: "24.10 ~ 25.03 (600+명)",
       achievements: [
         "문제 해결 경험 중심 글 11편 작성, <a href='https://jeonje.github.io/posts/geultto-mysql-deadlock-improvement/' target='_blank'>데드락 개선기</a> 큐레이션 선정",
         "<a href='https://jeonje.github.io/posts/geultto-review/' target='_blank'>글또 활동 회고</a>"
@@ -187,7 +267,7 @@ const resumeData = {
       period: "22.10 ~ 23.03",
       achievements: [
         "크래프톤 주관 소프트웨어 개발자 양성 합숙 교육 프로그램",
-        "WebRTC 기반 실시간 1:1 퍼즐 게임 개발"
+        "WebRTC 기반 실시간 1:1 퍼즐 게임 개발 (5인, 6주)"
       ]
     }
   ],
@@ -293,13 +373,13 @@ function renderResume(data) {
             ${project.links ? `<p>${project.links.map(link => `<a href="${link.url}" target="_blank" rel="noopener">${link.name}</a>`).join('<br>')}</p>` : ''}
             ${project.image ? `
               <figure class="project-media">
-                <img src="${project.image}" alt="${project.title}" loading="lazy">
+                <img src="${project.image}" alt="${project.title}" loading="eager">
                 ${project.imageCaption ? `<figcaption>${project.imageCaption}</figcaption>` : ''}
               </figure>
             ` : ''}
             ${project.image2 ? `
               <figure class="project-media">
-                <img src="${project.image2}" alt="${project.title}" loading="lazy">
+                <img src="${project.image2}" alt="${project.title}" loading="eager">
                 ${project.imageCaption2 ? `<figcaption>${project.imageCaption2}</figcaption>` : ''}
               </figure>
             ` : ''}
@@ -307,11 +387,13 @@ function renderResume(data) {
           <div class="content">
             <p><strong>프로젝트 개요</strong><br>${project.overview}</p>
             <p><strong>팀 구성 및 역할</strong><br>${project.team}</p>
-            <p><strong>문제</strong><br>
-            ${Array.isArray(project.tasks)
-            ? `<ul>${project.tasks.map(task => `<li>${task}</li>`).join('')}</ul>`
-            : project.tasks}
-            <p><strong>문제 해결 과정</strong><br>${project.solutions}</p>
+            <p><strong>문제</strong></p>
+            <ul>${project.tasks.map(task => `<li>${task}</li>`).join('')}</ul>
+            <p><strong>문제 해결 과정</strong></p>
+            ${project.solutions.map(sol => `
+              <p style="margin-bottom: 0.3rem;"><strong>${sol.title}</strong></p>
+              <ul style="margin-top: 0.3rem;">${sol.items.map(item => `<li>${item}</li>`).join('')}</ul>
+            `).join('')}
             <p><strong>성과</strong><br>
             <ul>
               ${project.results.map(result => `<li>${result}</li>`).join('')}
