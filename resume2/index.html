@@ -1875,7 +1875,7 @@
     <section id="projects">
       <h3 class="section-title">주요 프로젝트</h3>
       ${data.projects.map((project, idx) => `
-        <article class="project-card signature-project${project.mode === 'compact' ? ' compact-project' : ''}">
+        <article class="project-card signature-project${project.mode === 'compact' ? ' compact-project keep-together' : ''}">
           ${idx === 0 ? renderProjectSticker(data.sectionGuide?.signatureProject) : ''}
           ${idx === firstCompactProjectIndex ? renderProjectSticker(data.sectionGuide?.supportingProjects) : ''}
 				          <div class="project-overview keep-together">
@@ -2000,7 +2000,7 @@
     </section>
 
     <!-- 기타 -->
-    <section id="etc">
+    <section id="etc" style="break-inside: avoid;">
       <h3 class="section-title">기타</h3>
       ${renderSectionSticker(data.sectionGuide?.etc)}
       ${data.etc.map(group => `
