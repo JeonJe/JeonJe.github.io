@@ -1,0 +1,2642 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이력서 - Product Engineering</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* ========== 데이터 기반 이력서 스타일 ========== */
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background: #f5f5f5;
+            font-family: "Roboto", "Helvetica Neue", Arial, sans-serif;
+            overflow-x: auto;
+        }
+
+        .resume {
+            --details-width: 250px;
+            --a4-page-width: 210mm;
+            --a4-page-height: 297mm;
+            --a4-margin-x: 10mm;
+            --a4-margin-y: 11mm;
+            --memo-outside-width: 360px;
+            --memo-outside-gap: 28px;
+            color: #333;
+            line-height: 1.6;
+            text-align: left;
+            width: min(var(--a4-page-width), calc(100vw - 24px));
+            max-width: var(--a4-page-width);
+            min-height: var(--a4-page-height);
+            margin: 12px auto;
+            padding: var(--a4-margin-y) var(--a4-margin-x);
+            background: #fff;
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            position: relative;
+            isolation: isolate;
+            overflow: visible;
+        }
+
+        .resume > * {
+            position: relative;
+            z-index: 2;
+        }
+
+        .page-guides {
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .page-guide {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: min(100%, var(--a4-page-width));
+            height: var(--a4-page-height);
+            border: 1px solid rgba(97, 112, 138, 0.38);
+            border-radius: 4px;
+        }
+
+        .page-guide::after {
+            content: "";
+            position: absolute;
+            left: var(--a4-margin-x);
+            right: var(--a4-margin-x);
+            top: var(--a4-margin-y);
+            bottom: var(--a4-margin-y);
+
+            border-radius: 2px;
+        }
+
+        .resume a {
+            color: #477dca;
+            text-decoration: none;
+            transition: color 150ms ease;
+        }
+
+        .resume a:hover,
+        .resume a:focus {
+            color: #355e98;
+        }
+
+        .resume h1,
+        .resume h2,
+        .resume h3,
+        .resume h4 {
+            font-weight: 300;
+            margin: 0 0 0.6rem;
+        }
+
+        .resume h1 {
+            font-size: 2.45rem;
+            font-weight: 500;
+            line-height: 1.06;
+        }
+
+        .resume h2 {
+            font-size: 1.5rem;
+        }
+
+        .resume h3.section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0.8rem 0 0.7rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.45rem;
+        }
+        .resume h3.section-title::before,
+        .resume h3.section-title::after {
+            content: "";
+            flex: 1;
+            border-top: 1px solid #d8dee8;
+            opacity: 0.9;
+        }
+
+        .resume h4 {
+            font-size: 1.2rem;
+            font-weight: 500;
+        }
+
+        .meta-period {
+            font-size: 0.72em;
+            color: #8a91a3;
+            font-weight: 400;
+            display: inline-block;
+            white-space: normal;
+            word-break: keep-all;
+        }
+
+        .company-name {
+            font-weight: 700;
+            color: #1f2430;
+        }
+
+        .intro-divider {
+            border-top: 1px solid #d8dee8;
+            padding-top: 0.34rem;
+            margin-top: 0.22rem;
+        }
+
+        .resume .intro-divider p {
+            font-size: 0.875rem;
+        }
+
+        .resume p,
+        .resume ul {
+            font-size: 0.875rem;
+            margin: 0 0 0.9rem;
+            overflow-wrap: break-word;
+            word-break: keep-all;
+        }
+
+        .resume li {
+            overflow-wrap: break-word;
+            word-break: keep-all;
+        }
+
+        .resume ul {
+            padding-left: 1.2rem;
+        }
+
+        .resume mark {
+            padding: 2px 4px;
+            font-size: 0.95em;
+            color: #fff;
+            background-color: #333;
+            border-radius: 3px;
+        }
+
+        .resume-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 0.95rem;
+            margin-top: 0.2rem;
+            margin-bottom: 0;
+            padding-bottom: 0;
+            position: relative;
+        }
+
+        .header-left {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            min-width: 0;
+        }
+
+        .header-text {
+            flex: 1;
+            position: static;
+            min-width: 0;
+        }
+
+        .header-name-line {
+            display: flex;
+            align-items: baseline;
+            gap: 0.5rem;
+            flex-wrap: nowrap;
+            min-width: 0;
+        }
+
+        .header-name-line h1 {
+            margin: 0;
+            flex: 0 0 auto;
+        }
+
+        .character-line {
+            margin: 0 0 0.14rem;
+            font-size: 0.74rem;
+            line-height: 1.16;
+            font-weight: 500;
+            color: #596174;
+            flex: 1 1 auto;
+            min-width: 0;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .character-note {
+            margin: 0;
+            font-size: 0.68rem;
+            line-height: 1.34;
+            letter-spacing: -0.01em;
+            color: #616a7f;
+            position: absolute;
+            left: calc(100% + var(--memo-outside-gap));
+            right: auto;
+            top: 0.12rem;
+            width: var(--memo-outside-width);
+            max-width: var(--memo-outside-width);
+            padding: 0.22rem 0.38rem;
+            background: rgba(255, 247, 194, 0.58);
+            border: 1px solid rgba(231, 217, 143, 0.64);
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+            transform: rotate(-1deg);
+            z-index: 4;
+        }
+
+        .header-right {
+            text-align: right;
+            font-size: 0.8rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.06rem;
+        }
+
+        .header-right p {
+            margin: 0;
+            line-height: 1.2;
+            color: #555;
+        }
+
+        .header-links {
+            display: flex;
+            justify-content: flex-end;
+            gap: 0.55rem;
+            margin-top: 0.08rem;
+        }
+
+        .header-links a {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #477dca;
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: all 150ms ease;
+        }
+
+        .header-links a:hover {
+            color: #355e98;
+            border-bottom-color: #355e98;
+        }
+
+        .icon-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 26px;
+            height: 26px;
+            border: 1px solid rgba(0, 0, 0, 0.12);
+            border-radius: 7px;
+            background: #fff;
+            color: #333;
+        }
+
+        .icon-link:hover {
+            border-color: rgba(0, 0, 0, 0.22);
+            background: #fafafa;
+        }
+
+        .icon-link svg {
+            width: 15px;
+            height: 15px;
+            display: block;
+            fill: currentColor;
+        }
+
+        .icon-link img {
+            width: 15px;
+            height: 15px;
+            display: block;
+            object-fit: cover;
+            border-radius: 4px;
+        }
+
+        .about-tools {
+            position: fixed;
+            right: 1rem;
+            bottom: 1rem;
+            z-index: 1050;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 0.6rem;
+        }
+
+        .print-btn {
+            appearance: none;
+            border: 1px solid #ddd;
+            background: #fff;
+            color: #333;
+            border-radius: 999px;
+            padding: 0.65rem 1.2rem;
+            font-size: 0.9rem;
+            line-height: 1;
+            cursor: pointer;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+            transition: all 150ms ease;
+        }
+
+        .print-btn:hover,
+        .print-btn:focus {
+            box-shadow: 0 10px 22px rgba(0, 0, 0, 0.15);
+            transform: translateY(-1px);
+        }
+
+        body.print-preview {
+            background: #fff;
+        }
+
+        body.print-preview .page-guides,
+        body.print-preview .character-note,
+        body.print-preview .section-character-sticker,
+        body.print-preview #projects .project-guide-sticker {
+            display: none !important;
+        }
+
+        body.print-preview .resume {
+            box-shadow: none;
+            border-radius: 0;
+        }
+
+        .layout {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 2.2rem;
+        }
+
+        /* 기술 역량 섹션만 간격 축소 */
+        #skills > .section-title {
+            font-size: 1.32rem;
+        }
+        #skills .layout {
+            margin-bottom: 0.3rem;
+        }
+        #skills .skill-item-section {
+            padding: 0.2rem 0;
+        }
+        #skills .skill-item-section .skills-layout {
+            gap: 1.15rem;
+            align-items: center;
+            margin-bottom: 0.18rem;
+        }
+        #skills .skill-item-section .skills-layout:last-of-type {
+            margin-bottom: 0;
+        }
+        #skills .skills-lines {
+            text-align: left;
+        }
+        #skills .skills-layout .details {
+            display: flex;
+            align-items: center;
+            gap: 0.34rem;
+        }
+        #skills .skill-item-section .skills-layout:not(.skills-rest-row) .details::after {
+            content: "";
+            flex: 1 1 auto;
+            min-width: 14px;
+            border-bottom: 1px dotted #c7cfde;
+            transform: translateY(0.04rem);
+            opacity: 0.95;
+        }
+        #skills .skills-lines p {
+            margin: 0;
+            line-height: 1.45;
+        }
+        #skills .skills-rest-row {
+            margin-top: 0.12rem;
+            margin-bottom: 0;
+        }
+        #skills .skills-rest-row .details h4 {
+            margin: 0;
+            font-size: 1rem;
+            font-weight: 700;
+            color: #333;
+            line-height: 1.2;
+        }
+        #skills .skills-stack-line {
+            margin: 0;
+            font-size: 0.875rem;
+            color: #333;
+            line-height: 1.45;
+        }
+        .etc-sub {
+            display: block;
+            margin-top: 0.12rem;
+            font-size: 0.78rem;
+            color: #999;
+            line-height: 1.35;
+        }
+
+        /* 기타 섹션(자격증/수상) 그룹 간격 축소 */
+        #etc .layout {
+            gap: 1.15rem;
+            margin-bottom: 0.5rem;
+        }
+        #etc .layout:last-of-type {
+            margin-bottom: 0;
+        }
+
+        /* 대외활동/기타 섹션 간격 압축 */
+        #activities > .section-title,
+        #etc > .section-title {
+            font-size: 1.32rem;
+            margin: 0.5rem 0 0.45rem;
+        }
+        #activities .activity-item-section {
+            padding: 0.1rem 0;
+        }
+        #activities .activity-item-section .activity-layout {
+            gap: 0.85rem;
+        }
+        #activities .details h4,
+        #etc .details h4 {
+            font-size: 0.92rem;
+            line-height: 1.25;
+        }
+        #activities .activity-org {
+            font-size: 0.78rem;
+            margin: 0 0 0.02rem;
+        }
+        #activities .activity-period {
+            font-size: 0.7rem;
+        }
+        #activities .activity-summary {
+            font-size: 0.84rem;
+            line-height: 1.38;
+        }
+        #etc .layout {
+            gap: 0.85rem;
+            margin-bottom: 0.2rem;
+        }
+
+        /* 프로젝트는 상단 요약(1~2줄) + 본문 전체폭 구조 */
+        #projects .project-card {
+            background: transparent;
+            border-radius: 0;
+            position: relative;
+            padding-bottom: 1rem;
+            margin-bottom: 0;
+        }
+
+        #projects .project-card + .project-card {
+            margin-top: 0.95rem;
+            padding-top: 0.95rem;
+            border-top: 1px dashed #cfd8e6;
+        }
+
+        #projects .project-card:last-child {
+            padding-bottom: 0;
+            margin-bottom: 0;
+        }
+
+        #projects .project-card.compact-project {
+            padding-bottom: 0.72rem;
+            margin-bottom: 0.5rem;
+        }
+
+        #projects .project-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 0.45rem;
+            flex-wrap: wrap;
+            margin-bottom: 0.08rem;
+        }
+
+        #projects .project-title {
+            font-size: 1.08rem;
+            margin: 0;
+            line-height: 1.25;
+            font-weight: 700;
+            color: #1f2430;
+            flex: 1 1 65%;
+            min-width: 0;
+        }
+
+        #projects .project-side-info {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 0;
+            flex: 0 1 auto;
+            margin-left: auto;
+            margin-top: 0;
+            width: fit-content;
+            max-width: 40%;
+            min-width: 0;
+        }
+
+        #projects .project-side-meta {
+            margin: 0;
+            font-size: 0.74rem;
+            line-height: 1.14;
+            color: #8a92a5;
+            font-weight: 500;
+            white-space: normal;
+            text-align: right;
+            max-width: 100%;
+            overflow-wrap: anywhere;
+            word-break: break-word;
+        }
+
+        #projects .project-meta-line {
+            margin: 0 0 0.14rem;
+            font-size: 0.84rem;
+            line-height: 1.34;
+            color: #596174;
+        }
+
+        #projects .project-subtitle-line {
+            margin-bottom: 0.04rem;
+        }
+
+        #projects .project-meta-line .project-subtitle {
+            color: #2c3342;
+            font-weight: 600;
+        }
+
+        #projects .project-stack-line {
+            margin: 0 0 0.52rem;
+            font-size: 0.73rem;
+            line-height: 1.24;
+            color: #8790a5;
+            font-weight: 500;
+            letter-spacing: 0.005em;
+        }
+
+        #projects .project-content {
+            font-size: 0.93rem;
+            line-height: 1.5;
+            color: #2f3440;
+        }
+
+        #projects .project-overview {
+            margin-bottom: 0.56rem;
+        }
+
+        #projects .project-block {
+            margin-bottom: 0.68rem;
+        }
+
+        #projects .project-block:last-child {
+            margin-bottom: 0;
+        }
+
+        #projects .project-block + .project-block {
+            padding-top: 0.2rem;
+            border-top: 1px dotted #e7ebf2;
+        }
+
+        #projects .project-block-label {
+            margin: 0 0 0.16rem;
+            font-size: 0.98rem;
+            line-height: 1.25;
+            font-weight: 700;
+            color: #1f2430;
+            letter-spacing: -0.01em;
+        }
+
+        #projects .project-subhead {
+            margin: 0;
+            font-size: 0.88rem;
+            line-height: 1.28;
+            font-weight: 600;
+            color: #3f485a;
+        }
+
+        #projects .project-solution-item {
+            padding: 0.12rem 0 0.16rem;
+        }
+
+        #projects .project-solution-item + .project-solution-item {
+            margin-top: 0.2rem;
+            border-top: 1px dashed #eceff5;
+        }
+
+        #projects .project-line {
+            margin: 0 0 0.12rem;
+            line-height: 1.5;
+        }
+
+        #projects .project-content p {
+            margin-bottom: 0.38rem;
+            line-height: 1.35;
+        }
+
+        #projects .project-content p.project-block-label {
+            margin: 0 0 0.16rem;
+            line-height: 1.25;
+        }
+
+        #projects .project-content p.project-subhead {
+            margin: 0 0 0.12rem;
+            line-height: 1.28;
+        }
+
+        #projects .project-content p.project-line {
+            margin: 0 0 0.12rem;
+            line-height: 1.5;
+        }
+
+        #projects .project-content ul {
+            margin: 0 0 0.42rem;
+            padding-left: 1.02rem;
+        }
+
+        #projects .project-content li {
+            margin-bottom: 0.08rem;
+            line-height: 1.26;
+        }
+
+        #projects .project-compact-lines {
+            margin: 0;
+            font-size: 0.89rem;
+            line-height: 1.52;
+            color: #2f3440;
+        }
+
+        #projects .project-guide-sticker {
+            position: absolute;
+            top: 0;
+            left: calc(100% + var(--memo-outside-gap));
+            right: auto;
+            margin: 0;
+            width: var(--memo-outside-width);
+            max-width: var(--memo-outside-width);
+            padding: 0.28rem 0.45rem;
+            font-size: 0.66rem;
+            line-height: 1.34;
+            color: #626b80;
+            letter-spacing: -0.01em;
+            background: rgba(255, 247, 194, 0.5);
+            border: 1px solid rgba(231, 217, 143, 0.58);
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+            transform: rotate(-1deg);
+            z-index: 3;
+        }
+
+        .details {
+            flex: 0 0 var(--details-width);
+            min-width: 0;
+            text-align: left;
+            overflow-wrap: anywhere;
+            word-break: normal;
+        }
+
+        .details p {
+            margin-bottom: 0.35rem;
+            font-weight: 300;
+            font-size: 0.95rem;
+            line-height: 1.45;
+        }
+
+        .content {
+            flex: 1;
+            min-width: 0;
+            overflow-wrap: anywhere;
+            word-break: normal;
+        }
+
+        #experience .layout {
+            gap: 1.2rem;
+            margin-bottom: 0.4rem;
+            padding-bottom: 0.25rem;
+            border-bottom: none;
+        }
+
+        #experience .layout:last-of-type {
+            border-bottom: none;
+        }
+
+        #experience .details h4 {
+            font-size: 1.02rem;
+            line-height: 1.2;
+            white-space: normal;
+            overflow-wrap: anywhere;
+            word-break: normal;
+        }
+
+        #experience .details p {
+            margin-bottom: 0.16rem;
+            line-height: 1.25;
+        }
+
+        #experience .details .experience-role-wrap {
+            margin-bottom: 0.08rem;
+            line-height: 1.2;
+        }
+
+        #experience .details .experience-role-main {
+            display: block;
+            font-size: 0.88rem;
+            font-weight: 500;
+            color: #333;
+        }
+
+        #experience .details .experience-role-sub {
+            display: block;
+            margin-top: 0.06rem;
+            font-size: 0.73rem;
+            color: #888;
+            font-weight: 400;
+            line-height: 1.25;
+            letter-spacing: -0.01em;
+        }
+
+        #experience .content ul {
+            margin: 0 0 0.42rem;
+            padding-left: 1.1em;
+            list-style: none;
+            word-break: keep-all;
+            overflow-wrap: break-word;
+        }
+
+        #experience .content li {
+            position: relative;
+            margin-bottom: 0.25rem;
+            padding-left: 0.2em;
+            font-size: 0.82rem;
+            line-height: 1.35;
+            letter-spacing: -0.01em;
+            word-break: keep-all;
+        }
+
+        #experience .content li::before {
+            content: '•';
+            position: absolute;
+            left: -1.1em;
+            color: #888;
+        }
+
+        /* 프로젝트 섹션 내 소제목(프로젝트 개요/역할 등)만 살짝 강조 */
+        .content p strong {
+            font-size: 1.1em;
+            font-weight: 600;
+        }
+
+
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            flex-shrink: 0;
+            background-size: cover;
+            background-position: center 25%;
+            background-repeat: no-repeat;
+            border-radius: 50%;
+            border: 2px solid #ddd;
+            background-color: #f0f0f0;
+        }
+
+        .project-media {
+            margin: 0.8rem 0 0 0;
+            width: 100%;
+        }
+
+        .project-media img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .project-media figcaption {
+            font-size: 0.85rem;
+            color: #666;
+            margin-top: 0.35rem;
+        }
+
+        /* 섹션별 details 폭 조정 */
+        #experience .details { flex: 0 0 188px; }
+        #skills .details     { flex: 0 0 184px; }
+        #skills .details h4  { margin: 0; font-size: 1rem; font-weight: 700; line-height: 1.2; white-space: nowrap; flex: 0 0 auto; }
+        #activities .details { flex: 0 0 184px; }
+        #etc .details        { flex: 0 0 184px; }
+
+        #experience .meta-period {
+            font-size: 0.78em;
+        }
+        #activities .activity-org {
+            margin: 0 0 0.12rem;
+            font-size: 0.84rem;
+            color: #5c6475;
+            font-weight: 500;
+        }
+        #activities .activity-period {
+            margin: 0;
+            font-size: 0.75rem;
+            color: #8a91a3;
+            line-height: 1.35;
+        }
+        #activities .activity-summary {
+            margin: 0;
+            line-height: 1.48;
+        }
+        #activities .activity-item-section {
+            padding: 0.42rem 0;
+        }
+        #activities .activity-item-section:first-of-type {
+            padding-top: 0;
+        }
+        #activities .activity-item-section:last-of-type {
+            padding-bottom: 0;
+        }
+        #activities .activity-item-section .activity-layout {
+            gap: 1.15rem;
+            margin-bottom: 0;
+        }
+        #activities .activity-layout {
+            break-inside: avoid;
+            page-break-inside: avoid;
+        }
+
+        .keep-together {
+            break-inside: avoid;
+            page-break-inside: avoid;
+        }
+
+        .section-note {
+            font-size: 0.95rem;
+            color: #666;
+            font-style: italic;
+        }
+        .section-character-note {
+            margin: 0;
+            font-size: 0.66rem;
+            line-height: 1.34;
+            color: #626b80;
+            letter-spacing: -0.01em;
+        }
+        #experience,
+        #activities,
+        #etc {
+            position: relative;
+        }
+        .section-character-sticker {
+            position: absolute;
+            top: 0.2rem;
+            left: calc(100% + var(--memo-outside-gap));
+            right: auto;
+            margin: 0;
+            width: var(--memo-outside-width);
+            max-width: var(--memo-outside-width);
+            padding: 0.28rem 0.45rem;
+            font-size: 0.66rem;
+            line-height: 1.34;
+            color: #626b80;
+            letter-spacing: -0.01em;
+            background: rgba(255, 247, 194, 0.56);
+            border: 1px solid rgba(231, 217, 143, 0.64);
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+            transform: rotate(-1deg);
+            z-index: 3;
+        }
+
+        @media (max-width: 768px) {
+            .resume-header {
+                flex-direction: column;
+                text-align: center;
+                gap: 0.6rem;
+                margin-bottom: 1rem;
+            }
+
+            .header-right {
+                text-align: center;
+            }
+
+            .header-links {
+                justify-content: center;
+            }
+
+            .header-name-line {
+                flex-direction: column;
+                align-items: center;
+                gap: 0.16rem;
+            }
+
+            .character-line {
+                margin: 0;
+                font-size: 0.8rem;
+                white-space: normal;
+                overflow: visible;
+                text-overflow: clip;
+            }
+
+            .layout {
+                flex-direction: column;
+            }
+
+            .details {
+                text-align: center;
+            }
+            #skills .details {
+                flex: 0 0 auto;
+                width: 100%;
+                display: block;
+            }
+            #skills .skill-item-section .skills-layout:not(.skills-rest-row) .details::after {
+                content: none;
+            }
+            .character-note {
+                display: none;
+            }
+            .section-character-sticker,
+            #projects .project-guide-sticker {
+                display: none;
+            }
+
+            .page-guides {
+                display: none;
+            }
+        }
+
+        @media print {
+            @page {
+                size: A4;
+                margin: 0;
+            }
+
+            html,
+            body {
+                background: #fff !important;
+                margin: 0 !important;
+                padding: 0 !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            .about-tools,
+            .print-btn,
+            .page-guides,
+            .character-note,
+            .section-character-sticker,
+            #projects .project-guide-sticker {
+                display: none !important;
+            }
+
+            /* 화면 미리보기와 출력 폭을 동일하게 고정 */
+            .resume {
+                width: var(--a4-page-width) !important;
+                max-width: var(--a4-page-width) !important;
+                margin: 0 auto !important;
+            }
+
+            #projects .project-next-page,
+            .page-start {
+                page-break-before: always;
+                break-before: page;
+                margin-top: 0 !important;
+            }
+
+            .resume a[href]::after {
+                content: none !important;
+            }
+        }
+        /* ========== 스티커 피드백 시스템 (fb-*) ========== */
+
+        #fb-layer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            min-height: 100vh;
+            pointer-events: none;
+            z-index: 100;
+        }
+
+        .fb-sticker {
+            position: absolute;
+            width: 220px;
+            min-height: 80px;
+            border-radius: 3px;
+            box-shadow: 2px 3px 12px rgba(0,0,0,0.18);
+            font-family: 'Roboto', sans-serif;
+            font-size: 0.82rem;
+            line-height: 1.45;
+            pointer-events: auto;
+            transition: opacity 0.15s ease, box-shadow 0.15s ease;
+            cursor: grab;
+            touch-action: none;
+            z-index: 101;
+        }
+
+        .fb-sticker.fb-dragging {
+            box-shadow: 4px 6px 20px rgba(0,0,0,0.28);
+            opacity: 0.85 !important;
+            z-index: 200;
+            cursor: grabbing;
+        }
+
+        .fb-sticker-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 5px 8px;
+            cursor: grab;
+            border-bottom: 1px solid rgba(0,0,0,0.08);
+            font-size: 0.72rem;
+            font-weight: 500;
+            user-select: none;
+            gap: 4px;
+        }
+
+        .fb-sticker-header .fb-nick {
+            flex: 1;
+            min-width: 0;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            color: rgba(0,0,0,0.65);
+        }
+
+        .fb-sticker-header .fb-time {
+            font-size: 0.65rem;
+            color: rgba(0,0,0,0.4);
+            white-space: nowrap;
+        }
+
+        .fb-sticker-header .fb-actions {
+            display: flex;
+            gap: 2px;
+        }
+
+        .fb-sticker-header .fb-actions button {
+            appearance: none;
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            font-size: 0.75rem;
+            padding: 1px 3px;
+            border-radius: 3px;
+            line-height: 1;
+            opacity: 0.5;
+            transition: opacity 0.1s;
+        }
+
+        .fb-sticker-header .fb-actions button:hover {
+            opacity: 1;
+            background: rgba(0,0,0,0.06);
+        }
+
+        .fb-sticker-body {
+            padding: 6px 8px;
+            white-space: pre-wrap;
+            word-break: break-word;
+            color: rgba(0,0,0,0.78);
+            max-height: 200px;
+            overflow-y: auto;
+        }
+
+        .fb-sticker-replies {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.25s ease;
+            border-top: 1px solid rgba(0,0,0,0.06);
+        }
+
+        .fb-sticker-replies.fb-open {
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .fb-sticker-reply {
+            padding: 4px 8px;
+            font-size: 0.72rem;
+            border-bottom: 1px solid rgba(0,0,0,0.04);
+            color: rgba(0,0,0,0.7);
+        }
+
+        .fb-sticker-reply .fb-reply-nick {
+            font-weight: 600;
+            margin-right: 4px;
+        }
+
+        .fb-sticker-reply-form {
+            display: none;
+            padding: 4px 8px 6px;
+            gap: 4px;
+        }
+
+        .fb-sticker-replies.fb-open + .fb-sticker-reply-form {
+            display: flex;
+        }
+
+        .fb-sticker-reply-form input.fb-reply-nick {
+            width: 60px;
+            flex: none;
+            font-size: 0.72rem;
+            padding: 3px 6px;
+            border: 1px solid rgba(0,0,0,0.15);
+            border-radius: 3px;
+            outline: none;
+        }
+
+        .fb-sticker-reply-form input.fb-reply-content {
+            flex: 1;
+            font-size: 0.72rem;
+            padding: 3px 6px;
+            border: 1px solid rgba(0,0,0,0.15);
+            border-radius: 3px;
+            outline: none;
+        }
+
+        .fb-sticker-reply-form button {
+            appearance: none;
+            border: 1px solid rgba(0,0,0,0.15);
+            background: #fff;
+            border-radius: 3px;
+            font-size: 0.7rem;
+            padding: 3px 8px;
+            cursor: pointer;
+        }
+
+        .fb-opacity-slider {
+            position: absolute;
+            bottom: -20px;
+            left: 8px;
+            right: 8px;
+            opacity: 0;
+            transition: opacity 0.15s;
+        }
+
+        .fb-sticker:hover .fb-opacity-slider {
+            opacity: 1;
+        }
+
+        .fb-opacity-slider input[type="range"] {
+            width: 100%;
+            height: 12px;
+            cursor: pointer;
+        }
+
+        /* 6색 테마 */
+        .fb-sticker-yellow  { background: #fff9c4; border-left: 3px solid #f9a825; }
+        .fb-sticker-blue    { background: #e3f2fd; border-left: 3px solid #1976d2; }
+        .fb-sticker-pink    { background: #fce4ec; border-left: 3px solid #c2185b; }
+        .fb-sticker-green   { background: #e8f5e9; border-left: 3px solid #388e3c; }
+        .fb-sticker-purple  { background: #f3e5f5; border-left: 3px solid #7b1fa2; }
+        .fb-sticker-orange  { background: #fff3e0; border-left: 3px solid #e65100; }
+
+        /* 생성 모달 */
+        .fb-create-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.3);
+            z-index: 1100;
+        }
+
+        .fb-create-overlay.fb-visible { display: block; }
+
+        .fb-create-dialog {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #fff;
+            border-radius: 12px;
+            padding: 20px;
+            width: 340px;
+            max-width: 90vw;
+            box-shadow: 0 12px 40px rgba(0,0,0,0.2);
+            z-index: 1101;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .fb-create-dialog.fb-visible { display: block; }
+
+        .fb-create-dialog h3 {
+            margin: 0 0 12px;
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        .fb-create-dialog label {
+            display: block;
+            font-size: 0.78rem;
+            font-weight: 500;
+            margin-bottom: 4px;
+            color: #555;
+        }
+
+        .fb-create-dialog input,
+        .fb-create-dialog textarea {
+            width: 100%;
+            font-size: 0.85rem;
+            padding: 6px 8px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+            font-family: inherit;
+            outline: none;
+        }
+
+        .fb-create-dialog textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        .fb-create-dialog .fb-color-picker {
+            display: flex;
+            gap: 6px;
+            margin-bottom: 12px;
+        }
+
+        .fb-create-dialog .fb-color-swatch {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            border: 2px solid transparent;
+            cursor: pointer;
+            transition: border-color 0.1s, transform 0.1s;
+        }
+
+        .fb-create-dialog .fb-color-swatch:hover { transform: scale(1.15); }
+        .fb-create-dialog .fb-color-swatch.fb-selected { border-color: #333; transform: scale(1.15); }
+
+        .fb-create-dialog .fb-dialog-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 8px;
+        }
+
+        .fb-create-dialog .fb-dialog-actions button {
+            appearance: none;
+            border: 1px solid #ddd;
+            background: #fff;
+            border-radius: 6px;
+            padding: 6px 16px;
+            font-size: 0.82rem;
+            cursor: pointer;
+            font-family: inherit;
+        }
+
+        .fb-create-dialog .fb-dialog-actions button.fb-primary {
+            background: #333;
+            color: #fff;
+            border-color: #333;
+        }
+
+        /* 숨긴 스티커 패널 */
+        .fb-hidden-panel {
+            display: none;
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 280px;
+            height: 100vh;
+            background: #fff;
+            box-shadow: -4px 0 20px rgba(0,0,0,0.12);
+            z-index: 1050;
+            overflow-y: auto;
+            padding: 16px;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .fb-hidden-panel.fb-visible { display: block; }
+
+        .fb-hidden-panel h3 {
+            margin: 0 0 12px;
+            font-size: 0.95rem;
+            font-weight: 600;
+        }
+
+        .fb-hidden-panel .fb-hidden-item {
+            padding: 8px;
+            margin-bottom: 6px;
+            border-radius: 6px;
+            font-size: 0.78rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 8px;
+        }
+
+        .fb-hidden-panel .fb-hidden-item .fb-hidden-text {
+            flex: 1;
+            min-width: 0;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .fb-hidden-panel .fb-hidden-item button {
+            appearance: none;
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            font-size: 0.75rem;
+            padding: 2px 4px;
+            border-radius: 3px;
+            flex-shrink: 0;
+        }
+
+        .fb-hidden-panel .fb-hidden-item button:hover {
+            background: rgba(0,0,0,0.06);
+        }
+
+        /* 툴바 버튼 */
+        .fb-toolbar-btn {
+            appearance: none;
+            border: 1px solid #ddd;
+            background: #fff;
+            color: #333;
+            border-radius: 999px;
+            width: 42px;
+            height: 42px;
+            padding: 0;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            line-height: 1;
+            cursor: pointer;
+            box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+            transition: all 150ms ease;
+            position: relative;
+        }
+
+        .fb-toolbar-btn:hover {
+            box-shadow: 0 10px 22px rgba(0,0,0,0.15);
+            transform: translateY(-1px);
+        }
+
+        .fb-toolbar-btn:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+
+        .fb-badge {
+            position: absolute;
+            top: -4px;
+            right: -4px;
+            background: #e53935;
+            color: #fff;
+            font-size: 0.6rem;
+            font-weight: 700;
+            min-width: 16px;
+            height: 16px;
+            border-radius: 999px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 0 3px;
+            line-height: 1;
+        }
+
+        .fb-badge.fb-has-count { display: flex; }
+
+        /* fb 모바일 숨김 */
+        @media (max-width: 768px) {
+            #fb-layer, .fb-toolbar-btn, .fb-create-overlay, .fb-create-dialog, .fb-hidden-panel, .fb-badge {
+                display: none !important;
+            }
+        }
+
+        /* fb 프린트 미리보기 숨김 */
+        body.print-preview #fb-layer,
+        body.print-preview .fb-toolbar-btn,
+        body.print-preview .fb-create-overlay,
+        body.print-preview .fb-create-dialog,
+        body.print-preview .fb-hidden-panel {
+            display: none !important;
+        }
+
+        /* fb 프린트 숨김 */
+        @media print {
+            #fb-layer, .fb-toolbar-btn, .fb-create-overlay, .fb-create-dialog, .fb-hidden-panel, .fb-badge {
+                display: none !important;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="about-tools">
+    <button class="fb-toolbar-btn" id="fb-toggle" title="스티커 표시/숨김">👁</button>
+    <button class="fb-toolbar-btn" id="fb-add" title="새 스티커">➕</button>
+    <button class="fb-toolbar-btn" id="fb-hidden-list" title="숨긴 스티커">🗂<span class="fb-badge" id="fb-badge"></span></button>
+</div>
+
+<section class="resume" id="resume-content">
+    <!-- 이 부분은 JavaScript로 자동 생성됩니다 -->
+</section>
+
+<script src="resume-data.js"></script>
+<script>
+    // ========================================
+    // 📝 이력서 데이터 단일 소스: 같은 폴더의 resume-data.js 파일만 수정하세요.
+    // ========================================
+
+    let resumeData = null;
+    const dataPath = './resume-data.js';
+
+    // JS 전역 데이터 로드 (file:// 지원)
+    function loadResumeData() {
+        if (window.RESUME_DATA) {
+            resumeData = window.RESUME_DATA;
+            renderResume(resumeData);
+            return;
+        }
+
+        const hint = 'resume-data.js 로드에 실패했습니다. 파일 경로와 스크립트 로드 순서를 확인해 주세요.';
+        console.error('Error loading resume data from window.RESUME_DATA');
+
+        document.getElementById('resume-content').innerHTML = `
+            <p style="text-align: center; padding: 2rem; color: #999;">
+                resume-data.js 파일을 찾을 수 없습니다.<br>
+                <span style="font-size:0.9em;">경로: <code>${dataPath}</code></span><br>
+                <span style="font-size:0.9em;">${hint}</span>
+            </p>
+        `;
+    }
+
+    // ========================================
+    // 🚫 아래 코드는 수정하지 마세요
+    // ========================================
+
+    function getGuideInnerHorizontalBounds(resume) {
+        const pxPerMm = 96 / 25.4;
+        const resumeStyles = window.getComputedStyle(resume);
+        const innerOffsetMm = parseFloat(resumeStyles.getPropertyValue('--a4-margin-x')) || 0;
+        const innerOffsetPx = innerOffsetMm * pxPerMm;
+        const rect = resume.getBoundingClientRect();
+
+        return {
+            left: rect.left + innerOffsetPx,
+            right: rect.right - innerOffsetPx
+        };
+    }
+
+    function collectHorizontalFitTargets(resume) {
+        const selector = [
+            '.resume-header h1',
+            '.resume-header p',
+            '.character-note',
+            '#projects .project-title',
+            '#projects .project-side-meta',
+            '#projects .project-meta-line',
+            '#projects .project-subhead',
+            '#projects .project-line',
+            '#projects .project-compact-lines',
+            '#projects .project-block-label',
+            '#experience .details h4',
+            '#experience .experience-role-wrap',
+            '#experience .content li',
+            '#activities .details h4',
+            '#activities .activity-org',
+            '#activities .activity-period',
+            '#activities .activity-summary',
+            '#etc .details h4',
+            '#etc .content p',
+            '.section-character-note'
+        ].join(', ');
+
+        return [...resume.querySelectorAll(selector)].filter((el) => {
+            if (el.closest('.page-guides')) return false;
+            if (el.classList.contains('character-line')) return false;
+            return el.offsetWidth > 0 && el.offsetHeight > 0;
+        });
+    }
+
+    function applyHorizontalGuideFit(resume) {
+        const targets = collectHorizontalFitTargets(resume);
+        if (!targets.length) return;
+
+        const bounds = getGuideInnerHorizontalBounds(resume);
+        const tolerancePx = 0.8;
+        const maxPasses = 14;
+
+        targets.forEach((el) => {
+            const computed = window.getComputedStyle(el);
+            if (!el.dataset.fitBaseFontSizePx) {
+                const baseFont = parseFloat(computed.fontSize);
+                if (Number.isFinite(baseFont) && baseFont > 0) {
+                    el.dataset.fitBaseFontSizePx = String(baseFont);
+                }
+            }
+
+            const baseFont = parseFloat(el.dataset.fitBaseFontSizePx || '0');
+            if (baseFont > 0) {
+                el.style.fontSize = `${baseFont}px`;
+            } else {
+                el.style.removeProperty('font-size');
+            }
+
+            el.style.removeProperty('letter-spacing');
+            el.style.removeProperty('line-height');
+            el.style.whiteSpace = 'normal';
+            el.style.overflowWrap = 'anywhere';
+            el.style.wordBreak = 'break-word';
+            el.style.maxWidth = '100%';
+        });
+
+        for (let pass = 0; pass < maxPasses; pass += 1) {
+            let overflowCount = 0;
+
+            targets.forEach((el) => {
+                const rect = el.getBoundingClientRect();
+                if (!rect.width || !rect.height) return;
+
+                const overflowRight = rect.right - bounds.right;
+                const overflowLeft = bounds.left - rect.left;
+                if (overflowRight <= tolerancePx && overflowLeft <= tolerancePx) {
+                    return;
+                }
+
+                overflowCount += 1;
+
+                const baseFont = parseFloat(el.dataset.fitBaseFontSizePx || '0');
+                const currentFont = parseFloat(window.getComputedStyle(el).fontSize) || baseFont;
+                const minFont = baseFont > 0 ? Math.max(10, baseFont * 0.88) : 10;
+
+                if (currentFont > minFont + 0.05) {
+                    const nextFont = Math.max(minFont, currentFont - 0.35);
+                    el.style.fontSize = `${nextFont.toFixed(2)}px`;
+                    return;
+                }
+
+                // 마지막 보정: 글자 간격/행간을 소폭 줄여 경계 안으로 수렴시킨다.
+                el.style.letterSpacing = '-0.01em';
+                el.style.lineHeight = '1.2';
+            });
+
+            if (overflowCount === 0) {
+                break;
+            }
+        }
+    }
+
+    function updateA4Guides() {
+        const resume = document.getElementById('resume-content');
+        const guideLayer = resume?.querySelector('.page-guides');
+        if (!resume || !guideLayer) return;
+
+        function getResumeRelativeTop(el) {
+            let currentTop = 0;
+            let node = el;
+            while (node && node !== resume) {
+                currentTop += node.offsetTop;
+                node = node.offsetParent;
+            }
+            return currentTop;
+        }
+
+        function getBaseMarginTop(el) {
+            if (!el.dataset.baseMarginTopPx) {
+                const computed = window.getComputedStyle(el);
+                const base = parseFloat(computed.marginTop) || 0;
+                el.dataset.baseMarginTopPx = String(base);
+            }
+            return parseFloat(el.dataset.baseMarginTopPx) || 0;
+        }
+
+        function setExtraMarginTop(el, extraPx) {
+            const base = getBaseMarginTop(el);
+            const next = Math.max(0, base + extraPx);
+            el.style.marginTop = `${next}px`;
+        }
+
+        const forcedPageStarts = [...resume.querySelectorAll('.manual-page-start')];
+        const keepTogetherBlocks = [...resume.querySelectorAll('.keep-together')];
+        const autoFlowBlocksRaw = [...resume.querySelectorAll(
+            '#projects .project-head, #projects .project-meta-line, #projects .project-subhead, #projects .project-block-label, #projects .project-line, #projects .project-compact-lines, #projects .project-media, #experience .layout, #experience .details h4, #experience .experience-role-wrap, #experience .content li, #activities .details h4, #activities .activity-org, #activities .activity-period, #activities .activity-summary, #etc .layout, #etc .details h4, #etc .content p'
+        )];
+        const autoFlowBlocks = autoFlowBlocksRaw.filter((el) => {
+            // 가이드 스티커/장식 요소는 자동 이동 대상에서 제외
+            if (el.matches('.section-character-note, .project-guide-sticker')) return false;
+            // keep-together 내부 하위 텍스트는 개별 이동하지 않고, 상위 블록 단위로만 이동한다.
+            if (el.closest('.keep-together') && !el.matches('.keep-together')) return false;
+            return true;
+        });
+        const marginManagedElements = [...new Set([...forcedPageStarts, ...keepTogetherBlocks, ...autoFlowBlocks])];
+        marginManagedElements.forEach((el) => setExtraMarginTop(el, 0));
+
+        if (window.matchMedia('(max-width: 768px)').matches) {
+            guideLayer.innerHTML = '';
+            return;
+        }
+
+        applyHorizontalGuideFit(resume);
+
+        const pxPerMm = 96 / 25.4;
+        const pageHeightPx = 297 * pxPerMm;
+        const resumeStyles = window.getComputedStyle(resume);
+        const innerTopOffsetMm = parseFloat(resumeStyles.getPropertyValue('--a4-margin-y')) || 0;
+        const innerTopOffsetPx = innerTopOffsetMm * pxPerMm;
+        const innerBottomOffsetPx = innerTopOffsetPx;
+        const innerPageHeightPx = pageHeightPx - innerTopOffsetPx - innerBottomOffsetPx;
+        // 페이지 이동 후 텍스트가 점선 경계에 붙어 보이지 않도록 약간 안쪽으로 밀어준다.
+        const pageStartBufferPx = Math.round(pxPerMm * 1.2);
+
+        forcedPageStarts.forEach((el) => {
+            const currentTop = getResumeRelativeTop(el);
+
+            const pageIndex = Math.floor(currentTop / pageHeightPx);
+            const pageInnerStart = pageIndex * pageHeightPx + innerTopOffsetPx;
+
+            // If within margin zone or just barely past inner start (font-shift tolerance),
+            // align to this page's inner start. Otherwise push to next page.
+            let targetTop;
+            if (currentTop < pageInnerStart + innerTopOffsetPx) {
+                targetTop = pageInnerStart + pageStartBufferPx;
+            } else {
+                targetTop = (pageIndex + 1) * pageHeightPx + innerTopOffsetPx + pageStartBufferPx;
+            }
+
+            const delta = targetTop - currentTop;
+            if (delta > 0 && delta < pageHeightPx) {
+                setExtraMarginTop(el, Math.ceil(delta));
+            }
+        });
+
+        keepTogetherBlocks.forEach((el) => {
+            const currentTop = getResumeRelativeTop(el);
+            const blockHeight = el.offsetHeight;
+            if (!blockHeight || blockHeight >= innerPageHeightPx * 0.95) {
+                return;
+            }
+
+            const pageIndex = Math.floor(currentTop / pageHeightPx);
+            const pageInnerStart = pageIndex * pageHeightPx + innerTopOffsetPx + pageStartBufferPx;
+            const pageInnerEnd = (pageIndex + 1) * pageHeightPx - innerBottomOffsetPx;
+            const blockBottom = currentTop + blockHeight;
+
+            if (currentTop < pageInnerStart) {
+                const delta = pageInnerStart - currentTop;
+                if (delta > 0 && delta < pageHeightPx) {
+                    setExtraMarginTop(el, Math.ceil(delta));
+                }
+                return;
+            }
+
+            if (blockBottom > pageInnerEnd) {
+                const targetTop = (pageIndex + 1) * pageHeightPx + innerTopOffsetPx + pageStartBufferPx;
+                const delta = targetTop - currentTop;
+                if (delta > 0 && delta < pageHeightPx) {
+                    setExtraMarginTop(el, Math.ceil(delta));
+                }
+            }
+        });
+
+        const orderedBlocks = [...autoFlowBlocks].sort(
+            (a, b) => getResumeRelativeTop(a) - getResumeRelativeTop(b)
+        );
+
+        orderedBlocks.forEach((el) => {
+            const currentTop = getResumeRelativeTop(el);
+            const blockHeight = el.offsetHeight;
+            if (!blockHeight || blockHeight >= innerPageHeightPx * 0.92) {
+                return;
+            }
+
+            const pageIndex = Math.floor(currentTop / pageHeightPx);
+            const pageInnerStart = pageIndex * pageHeightPx + innerTopOffsetPx + pageStartBufferPx;
+            const pageInnerEnd = (pageIndex + 1) * pageHeightPx - innerBottomOffsetPx;
+            const blockBottom = currentTop + blockHeight;
+            const startsInTopMarginZone = currentTop < pageInnerStart;
+            const startsInBottomMarginZone = currentTop >= pageInnerEnd;
+            const crossesBoundary = currentTop < pageInnerEnd && blockBottom > pageInnerEnd;
+
+            if (startsInTopMarginZone) {
+                const delta = pageInnerStart - currentTop;
+                if (delta > 0 && delta < pageHeightPx) {
+                    setExtraMarginTop(el, Math.ceil(delta));
+                }
+                return;
+            }
+
+            if (startsInBottomMarginZone) {
+                const targetTop = (pageIndex + 1) * pageHeightPx + innerTopOffsetPx + pageStartBufferPx;
+                const delta = targetTop - currentTop;
+                if (delta > 0 && delta < pageHeightPx) {
+                    setExtraMarginTop(el, Math.ceil(delta));
+                }
+                return;
+            }
+
+            if (!crossesBoundary) {
+                return;
+            }
+
+            const targetTop = (pageIndex + 1) * pageHeightPx + innerTopOffsetPx + pageStartBufferPx;
+            const delta = targetTop - currentTop;
+            if (delta > 0 && delta < pageHeightPx) {
+                setExtraMarginTop(el, Math.ceil(delta));
+            }
+        });
+
+        const totalHeight = resume.scrollHeight;
+        const pageCount = Math.max(1, Math.ceil(totalHeight / pageHeightPx));
+
+        guideLayer.innerHTML = '';
+        for (let i = 0; i < pageCount; i += 1) {
+            const guide = document.createElement('div');
+            guide.className = 'page-guide';
+            guide.style.top = `calc(${i} * var(--a4-page-height))`;
+            guideLayer.appendChild(guide);
+        }
+    }
+
+    let guideResizeTimer = null;
+    function scheduleA4Guides() {
+        if (guideResizeTimer) {
+            clearTimeout(guideResizeTimer);
+        }
+        guideResizeTimer = setTimeout(updateA4Guides, 80);
+    }
+
+    window.addEventListener('resize', scheduleA4Guides);
+
+    function renderResume(data) {
+        const resume = document.getElementById('resume-content');
+        const characterRaw = (data.character || data.role || "").trim();
+        const memoMatch = characterRaw.match(/\(수정 메모:\s*([^)]+)\)/);
+        const characterLine = memoMatch ? characterRaw.replace(memoMatch[0], "").trim() : characterRaw;
+        const characterNote = memoMatch ? memoMatch[1].trim() : "";
+        const firstCompactProjectIndex = (data.projects || []).findIndex(project => project.mode === 'compact');
+
+        function iconMarkup(linkName) {
+            const key = (linkName || "").toLowerCase();
+            if (key.includes("github")) {
+                return `
+                  <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                    <path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.21.68-.48v-1.69c-2.78.61-3.37-1.34-3.37-1.34-.45-1.15-1.1-1.46-1.1-1.46-.9-.62.07-.6.07-.6 1 .07 1.52 1.03 1.52 1.03.88 1.51 2.31 1.07 2.88.82.09-.64.35-1.07.63-1.32-2.22-.25-4.56-1.11-4.56-4.95 0-1.09.39-1.99 1.03-2.69-.1-.26-.45-1.28.1-2.66 0 0 .84-.27 2.75 1.03a9.57 9.57 0 0 1 5 0c1.91-1.3 2.75-1.03 2.75-1.03.55 1.38.2 2.4.1 2.66.64.7 1.03 1.6 1.03 2.69 0 3.85-2.34 4.7-4.57 4.95.36.31.67.92.67 1.85v2.74c0 .27.18.58.69.48A10 10 0 0 0 12 2z"/>
+                  </svg>
+                `;
+            }
+
+            if (key.includes("blog")) {
+                return `
+                  <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                    <path d="M3 17.25V21h3.75l11.06-11.06-3.75-3.75L3 17.25zm2.92 2.33H5v-.92l9.06-9.06.92.92L5.92 19.58zM20.71 7.04a1 1 0 0 0 0-1.41l-2.34-2.34a1 1 0 0 0-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/>
+                  </svg>
+                `;
+            }
+
+            return `<span>${linkName ? linkName.charAt(0).toUpperCase() : "L"}</span>`;
+        }
+
+        function renderHeaderLinks(links) {
+            return (links || []).map(link => `
+                <a class="icon-link" href="${link.url}" target="_blank" rel="noopener" aria-label="${link.name}" title="${link.name}">
+                  ${iconMarkup(link.name)}
+                </a>
+            `).join('');
+        }
+
+        function renderSectionCharacter() { return ""; }
+        function renderSectionSticker() { return ""; }
+        function renderProjectSticker() { return ""; }
+
+        function formatSolutionTitle(title) {
+            const raw = (title || "").trim();
+            if (!raw) return "";
+            return raw.replace(/^\s*(\d+)\.\s*/, '$1 - ').replace('도메인으로 재정의', '도메인 재정의');
+        }
+
+        function renderExperienceRole(exp) {
+            const roleText = (exp?.role || "").trim();
+            const [main, ...rest] = roleText.split("|");
+            const primary = (main || "").trim();
+            const secondaryFromRole = rest.join("|").trim();
+            const responsibility = (exp?.companyIntro || secondaryFromRole || "").trim();
+            if (!primary && !responsibility) return "";
+
+            return `
+                <div class="experience-role-wrap">
+                    ${primary ? `<div class="experience-role-main">${primary}</div>` : ''}
+                    ${responsibility ? `<div class="experience-role-sub">${responsibility}</div>` : ''}
+                </div>
+            `;
+        }
+
+        let html = `
+    <div class="page-guides" aria-hidden="true"></div>
+    <header class="resume-header">
+      <div class="header-left">
+        ${data.profileImage ? `<div class="profile-img" style="background-image: url('${data.profileImage}')"></div>` : ''}
+        <div class="header-text">
+          <div class="header-name-line">
+            <h1>${data.name}</h1>
+            ${characterLine ? `<p class="character-line">${characterLine}</p>` : ''}
+          </div>
+        </div>
+      </div>
+      <div class="header-right">
+        <p>${data.email}</p>
+        <p>${data.phone}</p>
+        <div class="header-links">
+          ${renderHeaderLinks(data.links)}
+        </div>
+      </div>
+    </header>
+
+    <!-- 소개 -->
+    <section>
+      <div class="intro-divider" style="max-width: 100%;">
+        ${data.intro.paragraphs.map(p => `<p>${p}</p>`).join('')}
+      </div>
+    </section>
+
+    <!-- 실무 경력 -->
+    <section id="experience">
+      <h3 class="section-title">경력</h3>
+      ${renderSectionSticker(data.sectionGuide?.experience)}
+      ${data.experience.map(exp => `
+        <div class="layout">
+          <div class="details">
+            <h4><span class="company-name">${exp.company}</span>${exp.period ? ` <span class="meta-period">| ${exp.period}</span>` : ''}</h4>
+            ${renderExperienceRole(exp)}
+          </div>
+          <div class="content">
+            <ul>
+              ${exp.achievements.map(a => `<li>${a}</li>`).join('')}
+            </ul>
+          </div>
+        </div>
+      `).join('')}
+    </section>
+
+    <!-- 주요 프로젝트 -->
+    <section id="projects">
+      <h3 class="section-title">주요 프로젝트</h3>
+      ${data.projects.map((project, idx) => `
+        <article class="project-card signature-project${project.mode === 'compact' ? ' compact-project' : ''}">
+          ${idx === 0 ? renderProjectSticker(data.sectionGuide?.signatureProject) : ''}
+          ${idx === firstCompactProjectIndex ? renderProjectSticker(data.sectionGuide?.supportingProjects) : ''}
+				          <div class="project-overview keep-together">
+			            <div class="project-head">
+			              <h4 class="project-title">${project.title}</h4>
+			              ${(project.period || project.company) ? `
+			                <div class="project-side-info">
+			                  <p class="project-side-meta">
+			                    ${project.company ? `${project.company}` : ''}
+			                    ${project.period ? `${project.company ? ' · ' : ''}${project.period}` : ''}
+			                  </p>
+			                </div>
+			              ` : ''}
+			            </div>
+			            ${project.subtitle ? `<p class="project-meta-line project-subtitle-line"><span class="project-subtitle">${project.subtitle}</span></p>` : ''}
+			            ${project.stack ? `<p class="project-meta-line project-stack-line">${project.stack}</p>` : ''}
+			          </div>
+          ${project.image ? `
+            <figure class="project-media">
+              <img src="${project.image}" alt="${project.title}" loading="eager">
+              ${project.imageCaption ? `<figcaption>${project.imageCaption}</figcaption>` : ''}
+            </figure>
+          ` : ''}
+          ${project.image2 && idx !== 0 ? `
+            <figure class="project-media">
+              <img src="${project.image2}" alt="${project.title}" loading="eager">
+              ${project.imageCaption2 ? `<figcaption>${project.imageCaption2}</figcaption>` : ''}
+            </figure>
+          ` : ''}
+          <div class="project-content">
+            ${project.mode === 'compact' ? `
+              <p class="project-compact-lines">${(project.compactSummary || []).join('<br>')}</p>
+            ` : `
+	              <div class="project-block keep-together">
+	                <p class="project-block-label">문제</p>
+	                <p class="project-line">${(project.tasks || []).join(' · ')}</p>
+	              </div>
+              <div class="project-block">
+                <p class="project-block-label">해결 과정</p>
+                ${(project.solutions || []).map(sol => `
+                  <div class="project-solution-item keep-together">
+                    <p class="project-subhead">${formatSolutionTitle(sol.title)}</p>
+                    ${(sol.items || []).map(item => `<p class="project-line">${item}</p>`).join('')}
+                  </div>
+                `).join('')}
+              </div>
+              <div class="project-block keep-together">
+                <p class="project-block-label">결과</p>
+                ${(project.results || []).map(result => `<p class="project-line">${result}</p>`).join('')}
+              </div>
+              ${project.retrospective ? `
+                <div class="project-block keep-together">
+                  <p class="project-block-label">회고</p>
+                  <p class="project-line">${project.retrospective.join(' ')}</p>
+                </div>
+              ` : project.links ? `
+                <div class="project-block keep-together">
+                  <p class="project-block-label">회고</p>
+                  ${project.links.map(link => `<p class="project-line"><a href="${link.url}" target="_blank" rel="noopener">${link.name}</a></p>`).join('')}
+                </div>
+              ` : ''}
+            `}
+          </div>
+        </article>
+      `).join('')}
+    </section>
+
+    <!-- 기술 역량 -->
+    <section id="skills">
+      <h3 class="section-title">기술 역량</h3>
+      ${renderSectionSticker(data.sectionGuide?.skills)}
+      ${data.skills.map(skill => `
+        <section class="skill-item-section keep-together">
+          ${(skill.items || []).map(item => {
+            const raw = String(item || '');
+            const matched = raw.match(/^<b>([^<]+)<\/b>\s*·\s*(.*)$/);
+            const tech = matched ? matched[1] : raw.replace(/<[^>]*>/g, '').trim();
+            const achievement = matched ? matched[2] : raw;
+            return `
+              <div class="layout skills-layout">
+                <div class="details">
+                  <h4>${tech}</h4>
+                </div>
+                <div class="content skills-lines">
+                  <p>${achievement}</p>
+                </div>
+              </div>
+            `;
+          }).join('')}
+          ${skill.category ? `
+            <div class="layout skills-layout skills-rest-row">
+              <div class="details">
+                <h4>기타</h4>
+              </div>
+              <div class="content skills-lines">
+                <p class="skills-stack-line">${skill.category}</p>
+              </div>
+            </div>
+          ` : ''}
+        </section>
+      `).join('')}
+    </section>
+
+    <!-- 대외활동 -->
+    <section id="activities">
+      <h3 class="section-title">대외활동</h3>
+      ${renderSectionSticker(data.sectionGuide?.activities)}
+      ${data.activities.map(activity => `
+        <section class="activity-item-section keep-together">
+          <div class="layout activity-layout">
+            <div class="details">
+              <h4>${activity.name}</h4>
+              ${(activity.org || activity.role) ? `<p class="activity-org">${activity.org || activity.role}</p>` : ''}
+              <p class="activity-period">${activity.period}</p>
+            </div>
+            <div class="content">
+              <p class="activity-summary">${(activity.achievements || []).join(' ')}</p>
+            </div>
+          </div>
+        </section>
+      `).join('')}
+    </section>
+
+    <!-- 기타 -->
+    <section id="etc">
+      <h3 class="section-title">기타</h3>
+      ${renderSectionSticker(data.sectionGuide?.etc)}
+      ${data.etc.map(group => `
+        <div class="layout">
+          <div class="details">
+            <h4>${group.category}</h4>
+          </div>
+          <div class="content">
+            ${group.category === '자격증'
+              ? `<p style="margin: 0;">${group.items.map(item => typeof item === 'string' ? item : item.name).join(' · ')}</p>`
+              : group.items.map(item =>
+                  typeof item === 'string'
+                    ? `<p style="margin: 0;">${item}</p>`
+                    : `<p style="margin: 0;">${item.name}</p>`
+                ).join('')}
+          </div>
+        </div>
+      `).join('')}
+    </section>
+  `;
+
+        resume.innerHTML = html;
+        updateA4Guides();
+        requestAnimationFrame(updateA4Guides);
+        document.fonts.ready.then(() => {
+            updateA4Guides();
+            if (window.FeedbackApp) FeedbackApp.init();
+        });
+
+        const images = resume.querySelectorAll('img');
+        images.forEach(img => {
+            img.addEventListener('load', scheduleA4Guides, { once: true });
+        });
+    }
+
+    // 페이지 로드 시 데이터 로드 및 렌더링
+    document.addEventListener('DOMContentLoaded', () => {
+        loadResumeData();
+    });
+</script>
+
+<!-- 스티커 피드백 오버레이 -->
+<div id="fb-layer"></div>
+
+<!-- 생성 모달 -->
+<div class="fb-create-overlay" id="fb-create-overlay"></div>
+<div class="fb-create-dialog" id="fb-create-dialog">
+    <h3>새 스티커</h3>
+    <label for="fb-nick-input">닉네임</label>
+    <input type="text" id="fb-nick-input" maxlength="20" placeholder="이름을 입력하세요">
+    <label for="fb-content-input">내용</label>
+    <textarea id="fb-content-input" maxlength="500" placeholder="피드백을 작성하세요..."></textarea>
+    <label>색상</label>
+    <div class="fb-color-picker">
+        <div class="fb-color-swatch fb-selected" data-color="yellow" style="background:#fff9c4"></div>
+        <div class="fb-color-swatch" data-color="blue" style="background:#e3f2fd"></div>
+        <div class="fb-color-swatch" data-color="pink" style="background:#fce4ec"></div>
+        <div class="fb-color-swatch" data-color="green" style="background:#e8f5e9"></div>
+        <div class="fb-color-swatch" data-color="purple" style="background:#f3e5f5"></div>
+        <div class="fb-color-swatch" data-color="orange" style="background:#fff3e0"></div>
+    </div>
+    <div class="fb-dialog-actions">
+        <button id="fb-create-cancel">취소</button>
+        <button id="fb-create-submit" class="fb-primary">붙이기</button>
+    </div>
+</div>
+
+<!-- 숨긴 스티커 패널 -->
+<div class="fb-hidden-panel" id="fb-hidden-panel">
+    <h3>숨긴 스티커</h3>
+    <div class="fb-hidden-list"></div>
+</div>
+
+<!-- Firebase SDK -->
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+
+<script>
+// ========== 스티커 피드백 시스템 ==========
+window.FeedbackApp = (function() {
+    'use strict';
+
+    // ===== 설정 =====
+    const FIREBASE_CONFIG = {
+        apiKey: "AIzaSyCk9iLDQ1VUlTkHsvHWq7CJdDVxKC536VY",
+        authDomain: "my-side-14f3d.firebaseapp.com",
+        projectId: "my-side-14f3d",
+        storageBucket: "my-side-14f3d.firebasestorage.app",
+        messagingSenderId: "401231871561",
+        appId: "1:401231871561:web:35b974d7f1863897e64998"
+    };
+    const VARIANT_NAME = 'product-engineering';
+    const COLLECTION = 'resume-feedback-' + VARIANT_NAME;
+    const DELETE_PASSWORD = 'wow';
+
+    let db = null;
+    const stickersMap = new Map();
+    let unsubStickers = null;
+    const replySubs = new Map();
+    let dragState = null;
+    const dragExpected = new Map();
+    const opacityExpected = new Map();
+    let allVisible = true;
+    let initialized = false;
+    let opacityTimer = null;
+
+    // ===== 유틸리티 =====
+    function escapeHtml(str) {
+        const div = document.createElement('div');
+        div.textContent = str;
+        return div.innerHTML;
+    }
+
+    function getAuthorToken() {
+        let token = localStorage.getItem('fb-author-token');
+        if (!token) {
+            token = crypto.randomUUID ? crypto.randomUUID() : (Date.now().toString(36) + Math.random().toString(36).slice(2));
+            localStorage.setItem('fb-author-token', token);
+        }
+        return token;
+    }
+
+    function getSavedNickname() {
+        return localStorage.getItem('fb-nickname') || '';
+    }
+
+    function saveNickname(name) {
+        localStorage.setItem('fb-nickname', name);
+    }
+
+    function getResumeEl() {
+        return document.querySelector('.resume');
+    }
+
+    function getResumeRect() {
+        const el = getResumeEl();
+        return el ? el.getBoundingClientRect() : null;
+    }
+
+    function toRatioCoords(pageLeft, pageTop) {
+        const rect = getResumeRect();
+        if (!rect) return { rx: 0.5, ry: 0.1 };
+        const resumePageLeft = rect.left + window.scrollX;
+        const resumePageTop = rect.top + window.scrollY;
+        return {
+            rx: (pageLeft - resumePageLeft) / rect.width,
+            ry: (pageTop - resumePageTop) / rect.height
+        };
+    }
+
+    function toScreenCoords(rx, ry) {
+        const rect = getResumeRect();
+        if (!rect) return { left: 0, top: 0 };
+        return {
+            left: rect.left + window.scrollX + rx * rect.width,
+            top: rect.top + window.scrollY + ry * rect.height
+        };
+    }
+
+    function formatTime(ts) {
+        if (!ts) return '';
+        const d = ts.toDate ? ts.toDate() : new Date(ts);
+        const m = d.getMonth() + 1;
+        const day = d.getDate();
+        const h = d.getHours();
+        const min = String(d.getMinutes()).padStart(2, '0');
+        return m + '/' + day + ' ' + h + ':' + min;
+    }
+
+    function throttle(fn, ms) {
+        let last = 0;
+        return function() {
+            const now = Date.now();
+            if (now - last >= ms) {
+                last = now;
+                fn.apply(this, arguments);
+            }
+        };
+    }
+
+    // ===== Firebase 초기화 =====
+    function initFirebase() {
+        try {
+            if (FIREBASE_CONFIG.apiKey === 'YOUR_API_KEY') {
+                console.warn('[FeedbackApp] Firebase 설정이 필요합니다. FIREBASE_CONFIG을 교체하세요.');
+                disableToolbar();
+                return false;
+            }
+            firebase.initializeApp(FIREBASE_CONFIG);
+            db = firebase.firestore();
+            return true;
+        } catch (e) {
+            console.error('[FeedbackApp] Firebase 초기화 실패:', e);
+            disableToolbar();
+            return false;
+        }
+    }
+
+    function disableToolbar() {
+        document.querySelectorAll('.fb-toolbar-btn').forEach(function(btn) {
+            btn.disabled = true;
+            btn.title += ' (Firebase 미연결)';
+        });
+    }
+
+    // ===== 스티커 렌더링 =====
+    function renderSticker(id, data) {
+        const existing = stickersMap.get(id);
+        if (existing && existing.el) {
+            // 드래그 중인 스티커는 위치 업데이트 건너뛰기
+            if (dragState && dragState.id === id) {
+                // 드래그 진행 중 — 건너뛰기
+            } else if (dragExpected.has(id)) {
+                // 드래그 후 서버 확인 대기 중
+                var exp = dragExpected.get(id);
+                if (Math.abs(data.rx - exp.rx) < 0.001 && Math.abs(data.ry - exp.ry) < 0.001) {
+                    // 서버가 새 위치를 확인함 — 가드 해제
+                    dragExpected.delete(id);
+                }
+                // 확인 전이든 후든 위치 업데이트 건너뛰기 (이미 올바른 위치)
+            } else {
+                updateStickerPosition(existing.el, data.rx, data.ry);
+            }
+            // opacity 가드: 로컬 변경 후 서버 확인 전까지 덮어쓰기 방지
+            if (opacityExpected.has(id)) {
+                var expOp = opacityExpected.get(id);
+                if (Math.abs((data.opacity || 0.92) - expOp) < 0.02) {
+                    opacityExpected.delete(id);
+                }
+            } else {
+                existing.el.style.opacity = data.opacity != null ? data.opacity : 0.92;
+            }
+            existing.el.style.display = data.hidden ? 'none' : '';
+            existing.data = data;
+            return;
+        }
+
+        var el = document.createElement('div');
+        el.className = 'fb-sticker fb-sticker-' + (data.color || 'yellow');
+        el.dataset.id = id;
+        el.style.opacity = data.opacity != null ? data.opacity : 0.92;
+        if (data.hidden) el.style.display = 'none';
+
+        el.innerHTML =
+            '<div class="fb-sticker-header">' +
+                '<span class="fb-nick">' + escapeHtml(data.nickname || '익명') + '</span>' +
+                '<span class="fb-time">' + formatTime(data.createdAt) + '</span>' +
+                '<span class="fb-actions">' +
+                    '<button class="fb-reply-toggle" title="답글">💬 <span class="fb-reply-count">0</span></button>' +
+                    '<button class="fb-hide-btn" title="숨기기">👁</button>' +
+                    '<button class="fb-delete-btn" title="삭제(비밀번호)">🗑</button>' +
+                '</span>' +
+            '</div>' +
+            '<div class="fb-sticker-body">' + escapeHtml(data.content || '') + '</div>' +
+            '<div class="fb-sticker-replies" data-sticker-id="' + id + '"></div>' +
+            '<div class="fb-sticker-reply-form">' +
+                '<input type="text" class="fb-reply-nick" placeholder="닉네임" maxlength="20" value="' + escapeHtml(getSavedNickname()) + '">' +
+                '<input type="text" class="fb-reply-content" placeholder="답글..." maxlength="300">' +
+                '<button class="fb-reply-submit">↩</button>' +
+            '</div>' +
+            '<div class="fb-opacity-slider">' +
+                '<input type="range" min="30" max="100" value="' + Math.round((data.opacity != null ? data.opacity : 0.92) * 100) + '">' +
+            '</div>';
+
+        // 드래그 이벤트 (스티커 전체에서 드래그 가능)
+        el.addEventListener('mousedown', function(e) { startDrag(e, el, id); });
+        el.addEventListener('touchstart', function(e) { startDrag(e, el, id); }, { passive: false });
+
+        // 답글 토글
+        el.querySelector('.fb-reply-toggle').addEventListener('click', function() {
+            var replies = el.querySelector('.fb-sticker-replies');
+            var form = el.querySelector('.fb-sticker-reply-form');
+            var isOpen = replies.classList.toggle('fb-open');
+            form.classList.toggle('fb-visible', isOpen);
+            if (isOpen && !replySubs.has(id)) {
+                subscribeReplies(id, replies, el.querySelector('.fb-reply-count'));
+            }
+        });
+
+        // 숨기기
+        el.querySelector('.fb-hide-btn').addEventListener('click', function() { toggleHidden(id, true); });
+
+        // 삭제
+        var deleteBtn = el.querySelector('.fb-delete-btn');
+        if (deleteBtn) {
+            deleteBtn.addEventListener('click', function() { deleteSticker(id); });
+        }
+
+        // 투명도
+        el.querySelector('.fb-opacity-slider input').addEventListener('input', function(e) {
+            var val = parseInt(e.target.value) / 100;
+            el.style.opacity = val;
+            opacityExpected.set(id, val);
+            clearTimeout(opacityTimer);
+            opacityTimer = setTimeout(function() { updateOpacity(id, val); }, 300);
+        });
+
+        // 답글 제출
+        var replyNickInput = el.querySelector('.fb-reply-nick');
+        var replyContentInput = el.querySelector('.fb-reply-content');
+        var replyBtn = el.querySelector('.fb-reply-submit');
+        function submitReply() {
+            var nick = replyNickInput.value.trim().slice(0, 20);
+            var content = replyContentInput.value.trim();
+            if (!content) return;
+            if (nick) saveNickname(nick);
+            createReply(id, { nickname: nick || '익명', content: content });
+            replyContentInput.value = '';
+        }
+        replyBtn.addEventListener('click', submitReply);
+        replyContentInput.addEventListener('keydown', function(e) { if (e.key === 'Enter') submitReply(); });
+
+        document.getElementById('fb-layer').appendChild(el);
+        updateStickerPosition(el, data.rx, data.ry);
+        stickersMap.set(id, { data: data, el: el });
+    }
+
+    function updateStickerPosition(el, rx, ry) {
+        var pos = toScreenCoords(rx, ry);
+        el.style.left = pos.left + 'px';
+        el.style.top = pos.top + 'px';
+    }
+
+    function removeSticker(id) {
+        var entry = stickersMap.get(id);
+        if (entry && entry.el) entry.el.remove();
+        stickersMap.delete(id);
+        if (replySubs.has(id)) {
+            replySubs.get(id)();
+            replySubs.delete(id);
+        }
+    }
+
+    // ===== Firestore 연동 =====
+    function subscribeStickers() {
+        if (!db) return;
+        unsubStickers = db.collection(COLLECTION).orderBy('createdAt', 'asc').onSnapshot(function(snap) {
+            var current = new Set();
+            snap.forEach(function(doc) {
+                current.add(doc.id);
+                renderSticker(doc.id, doc.data());
+            });
+            for (var entry of stickersMap) {
+                if (!current.has(entry[0])) removeSticker(entry[0]);
+            }
+            updateHiddenPanel();
+            updateBadge();
+        }, function(err) {
+            console.error('[FeedbackApp] 스티커 구독 에러:', err);
+        });
+    }
+
+    function createStickerDoc(data) {
+        if (!db) { console.error('[FeedbackApp] DB 미초기화'); return; }
+        db.collection(COLLECTION).add({
+            nickname: data.nickname,
+            content: data.content,
+            color: data.color || 'yellow',
+            opacity: 0.92,
+            rx: data.rx != null ? data.rx : 0.5,
+            ry: data.ry != null ? data.ry : 0.1,
+            hidden: false,
+            authorToken: getAuthorToken(),
+            createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+            updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+        }).then(function(ref) {
+            console.log('[FeedbackApp] 스티커 생성:', ref.id);
+        }).catch(function(err) {
+            console.error('[FeedbackApp] 스티커 생성 실패:', err);
+            alert('스티커 생성 실패: ' + err.message + '\n\nFirestore 보안 규칙을 확인하세요.');
+        });
+    }
+
+    function deleteSticker(id) {
+        if (!db) return;
+        var password = prompt('삭제 비밀번호를 입력하세요');
+        if (password === null) return;
+        if (password !== DELETE_PASSWORD) {
+            alert('비밀번호가 다릅니다.');
+            return;
+        }
+        if (!confirm('이 스티커를 삭제하시겠습니까?')) return;
+        db.collection(COLLECTION).doc(id).delete().catch(function(err) {
+            console.error('[FeedbackApp] 삭제 실패:', err);
+            alert('삭제 실패: ' + err.message);
+        });
+    }
+
+    function updatePosition(id, rx, ry) {
+        if (!db) return;
+        db.collection(COLLECTION).doc(id).update({
+            rx: rx, ry: ry,
+            updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+        });
+    }
+
+    function updateOpacity(id, val) {
+        if (!db) return;
+        db.collection(COLLECTION).doc(id).update({
+            opacity: val,
+            updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+        });
+    }
+
+    function toggleHidden(id, hidden) {
+        if (!db) return;
+        db.collection(COLLECTION).doc(id).update({
+            hidden: hidden,
+            updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+        });
+    }
+
+    // ===== 답글 =====
+    function subscribeReplies(stickerId, container, countEl) {
+        if (!db) return;
+        var unsub = db.collection(COLLECTION).doc(stickerId).collection('replies')
+            .orderBy('createdAt', 'asc')
+            .onSnapshot(function(snap) {
+                container.innerHTML = '';
+                var count = 0;
+                snap.forEach(function(doc) {
+                    count++;
+                    var r = doc.data();
+                    var div = document.createElement('div');
+                    div.className = 'fb-sticker-reply';
+                    div.innerHTML = '<span class="fb-reply-nick">' + escapeHtml(r.nickname || '익명') + '</span>' + escapeHtml(r.content || '');
+                    container.appendChild(div);
+                });
+                if (countEl) countEl.textContent = count;
+            });
+        replySubs.set(stickerId, unsub);
+    }
+
+    function createReply(stickerId, data) {
+        if (!db) return;
+        db.collection(COLLECTION).doc(stickerId).collection('replies').add({
+            nickname: data.nickname,
+            content: data.content,
+            authorToken: getAuthorToken(),
+            createdAt: firebase.firestore.FieldValue.serverTimestamp()
+        });
+    }
+
+    // ===== 드래그 =====
+    function startDrag(e, el, id) {
+        if (e.target.closest('.fb-actions, button, input, .fb-opacity-slider, .fb-sticker-reply-form')) return;
+        e.preventDefault();
+        var clientX = e.touches ? e.touches[0].clientX : e.clientX;
+        var clientY = e.touches ? e.touches[0].clientY : e.clientY;
+        var rect = el.getBoundingClientRect();
+        dragState = {
+            el: el,
+            id: id,
+            offsetX: clientX - rect.left,
+            offsetY: clientY - rect.top
+        };
+        el.classList.add('fb-dragging');
+        document.addEventListener('mousemove', onDrag);
+        document.addEventListener('mouseup', endDrag);
+        document.addEventListener('touchmove', onDrag, { passive: false });
+        document.addEventListener('touchend', endDrag);
+    }
+
+    function onDrag(e) {
+        if (!dragState) return;
+        e.preventDefault();
+        var clientX = e.touches ? e.touches[0].clientX : e.clientX;
+        var clientY = e.touches ? e.touches[0].clientY : e.clientY;
+        var left = clientX - dragState.offsetX + window.scrollX;
+        var top = clientY - dragState.offsetY + window.scrollY;
+        dragState.el.style.left = left + 'px';
+        dragState.el.style.top = top + 'px';
+    }
+
+    function endDrag() {
+        if (!dragState) return;
+        var el = dragState.el;
+        var id = dragState.id;
+        el.classList.remove('fb-dragging');
+        var left = parseFloat(el.style.left);
+        var top = parseFloat(el.style.top);
+        var coords = toRatioCoords(left, top);
+        dragExpected.set(id, { rx: coords.rx, ry: coords.ry });
+        updatePosition(id, coords.rx, coords.ry);
+        document.removeEventListener('mousemove', onDrag);
+        document.removeEventListener('mouseup', endDrag);
+        document.removeEventListener('touchmove', onDrag);
+        document.removeEventListener('touchend', endDrag);
+        dragState = null;
+    }
+
+    // ===== UI 제어 =====
+    function repositionAll() {
+        stickersMap.forEach(function(entry) {
+            if (entry.data && entry.el) {
+                updateStickerPosition(entry.el, entry.data.rx, entry.data.ry);
+            }
+        });
+    }
+
+    function toggleAll() {
+        allVisible = !allVisible;
+        var layer = document.getElementById('fb-layer');
+        layer.style.display = allVisible ? '' : 'none';
+        var btn = document.getElementById('fb-toggle');
+        btn.textContent = allVisible ? '👁' : '🙈';
+        btn.style.opacity = allVisible ? '1' : '0.5';
+    }
+
+    function updateHiddenPanel() {
+        var list = document.querySelector('#fb-hidden-panel .fb-hidden-list');
+        if (!list) return;
+        list.innerHTML = '';
+        stickersMap.forEach(function(entry, id) {
+            if (entry.data && entry.data.hidden) {
+                var item = document.createElement('div');
+                item.className = 'fb-hidden-item fb-sticker-' + (entry.data.color || 'yellow');
+                item.innerHTML =
+                    '<span class="fb-hidden-text">' + escapeHtml(entry.data.nickname || '익명') + ': ' + escapeHtml(entry.data.content || '') + '</span>' +
+                    '<button title="복원">👁</button>';
+                item.querySelector('button').addEventListener('click', function() { toggleHidden(id, false); });
+                list.appendChild(item);
+            }
+        });
+    }
+
+    function updateBadge() {
+        var count = 0;
+        stickersMap.forEach(function(entry) {
+            if (entry.data && entry.data.hidden) count++;
+        });
+        var badge = document.getElementById('fb-badge');
+        if (badge) {
+            badge.textContent = count;
+            badge.classList.toggle('fb-has-count', count > 0);
+        }
+    }
+
+    // ===== 생성 모달 =====
+    function openCreate() {
+        document.getElementById('fb-create-overlay').classList.add('fb-visible');
+        document.getElementById('fb-create-dialog').classList.add('fb-visible');
+        var nickInput = document.getElementById('fb-nick-input');
+        nickInput.value = getSavedNickname();
+        document.getElementById('fb-content-input').value = '';
+        document.getElementById('fb-content-input').focus();
+        selectColor('yellow');
+    }
+
+    function closeCreate() {
+        document.getElementById('fb-create-overlay').classList.remove('fb-visible');
+        document.getElementById('fb-create-dialog').classList.remove('fb-visible');
+    }
+
+    function selectColor(color) {
+        document.querySelectorAll('.fb-color-swatch').forEach(function(sw) {
+            sw.classList.toggle('fb-selected', sw.dataset.color === color);
+        });
+    }
+
+    function submitCreate() {
+        var nickname = document.getElementById('fb-nick-input').value.trim().slice(0, 20);
+        var content = document.getElementById('fb-content-input').value.trim().slice(0, 500);
+        if (!nickname || !content) {
+            alert('닉네임과 내용을 모두 입력해주세요.');
+            return;
+        }
+        var selectedSwatch = document.querySelector('.fb-color-swatch.fb-selected');
+        var color = selectedSwatch ? selectedSwatch.dataset.color : 'yellow';
+        saveNickname(nickname);
+        var rx = 0.05 + Math.random() * 0.5;
+        var ry = 0.02 + Math.random() * 0.3;
+        createStickerDoc({ nickname: nickname, content: content, color: color, rx: rx, ry: ry });
+        closeCreate();
+    }
+
+    function toggleHiddenPanel() {
+        document.getElementById('fb-hidden-panel').classList.toggle('fb-visible');
+    }
+
+    // ===== 초기화 =====
+    function init() {
+        if (initialized) return;
+        initialized = true;
+
+        if (!initFirebase()) return;
+
+        // 툴바 이벤트
+        document.getElementById('fb-toggle').addEventListener('click', toggleAll);
+        document.getElementById('fb-add').addEventListener('click', openCreate);
+        document.getElementById('fb-hidden-list').addEventListener('click', toggleHiddenPanel);
+
+        // 모달 이벤트
+        document.getElementById('fb-create-overlay').addEventListener('click', closeCreate);
+        document.getElementById('fb-create-cancel').addEventListener('click', closeCreate);
+        document.getElementById('fb-create-submit').addEventListener('click', submitCreate);
+
+        // 색상 스워치
+        document.querySelectorAll('.fb-color-swatch').forEach(function(sw) {
+            sw.addEventListener('click', function() { selectColor(sw.dataset.color); });
+        });
+
+        // Escape 키
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeCreate();
+                document.getElementById('fb-hidden-panel').classList.remove('fb-visible');
+            }
+        });
+
+        // 숨긴 스티커 패널 외부 클릭 닫기
+        document.addEventListener('click', function(e) {
+            var panel = document.getElementById('fb-hidden-panel');
+            var btn = document.getElementById('fb-hidden-list');
+            if (panel.classList.contains('fb-visible') && !panel.contains(e.target) && !btn.contains(e.target)) {
+                panel.classList.remove('fb-visible');
+            }
+        });
+
+        // 리사이즈 대응
+        var throttledReposition = throttle(function() { repositionAll(); }, 100);
+        var ro = new ResizeObserver(throttledReposition);
+        ro.observe(getResumeEl());
+        window.addEventListener('resize', throttledReposition);
+
+        // 실시간 구독
+        subscribeStickers();
+    }
+
+    return {
+        init: init,
+        toggleHidden: toggleHidden,
+        repositionAll: repositionAll
+    };
+})();
+</script>
+
+</body>
+</html>
