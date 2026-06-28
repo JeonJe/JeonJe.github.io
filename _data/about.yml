@@ -11,6 +11,10 @@ timeline:
         - "함께"
         - "성장루프"
       posts:
+        - month: "6월"
+          title: "나는 AI를 어떻게 쓰고 있을까?"
+          summary: "AI와 함께 일하는 방식 정리"
+          href: "/posts/how-i-use-ai/"
         - month: "1월"
           title: "루프팩 백엔드 2기 회고"
           href: "/posts/loopers-backend-2nd-review/"
