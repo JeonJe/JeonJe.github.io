@@ -57,14 +57,16 @@ AI는 이 두 가지 성향을 없애지 않았다. 오히려 더 자주, 더 �
 
 ```mermaid
 %%{init: {"theme": "base", "themeVariables": {"background": "#ffffff", "mainBkg": "#ffffff", "primaryColor": "#ffffff", "primaryBorderColor": "#94a3b8", "primaryTextColor": "#111827", "lineColor": "#64748b", "clusterBkg": "#ffffff", "clusterBorder": "#cbd5e1"}}}%%
-flowchart LR
+flowchart TB
     P["문제 발생"]
 
-    subgraph Guess["추측으로 접근하면"]
+    subgraph Guess["추측으로 접근하면 · 지양"]
+        direction TB
         Bad["왜 안 돼?"] --> BadOut["그럴듯한 원인 후보<br/>검증 근거 약함"]
     end
 
     subgraph Verify["검증 가능한 방식으로 바꾸면"]
+        direction TB
         Good["무엇을 확인할까?"] --> Tools["SQL · Elasticsearch · 로그<br/>Playwright · 대시보드"]
         Tools --> Evidence["데이터 조회<br/>화면 재현<br/>로그 비교"]
         Evidence --> Candidate["원인 후보 좁히기"]
@@ -73,7 +75,6 @@ flowchart LR
 
     P --> Bad
     P --> Good
-    BadOut -. "지양" .-> Good
 
     classDef default fill:#ffffff,stroke:#94a3b8,color:#111827;
     classDef focus fill:#eff6ff,stroke:#2563eb,color:#111827;
@@ -95,25 +96,28 @@ flowchart LR
 
 ```mermaid
 %%{init: {"theme": "base", "themeVariables": {"background": "#ffffff", "mainBkg": "#ffffff", "primaryColor": "#ffffff", "primaryBorderColor": "#94a3b8", "primaryTextColor": "#111827", "lineColor": "#64748b", "clusterBkg": "#ffffff", "clusterBorder": "#cbd5e1"}}}%%
-flowchart LR
+flowchart TB
     subgraph Human["사람이 먼저 정하는 것"]
+        direction LR
         A["티켓 해석"] --> B["요구사항 / 배경"]
         B --> C["설계와 PLAN"]
         C --> D["검증 기준"]
     end
 
     subgraph AI["AI가 실행하는 것"]
+        direction LR
         E["구현"] --> F["변경 요약"]
     end
 
     subgraph Gate["닫기 전에 확인하는 것"]
+        direction LR
         G["도구 기반 검증"] --> H["리뷰"]
         H --> I["MR"]
     end
 
-    D --> E
-    F --> G
-    H -. "누락 / 리스크 발견" .-> C
+    Human --> AI
+    AI --> Gate
+    Human <-. "누락 / 리스크 발견" .- Gate
 
     classDef default fill:#ffffff,stroke:#94a3b8,color:#111827;
     classDef human fill:#ecfeff,stroke:#0891b2,color:#111827;
@@ -159,7 +163,7 @@ AI는 이 부분을 많이 도와줬다.
 
 ```mermaid
 %%{init: {"theme": "base", "themeVariables": {"background": "#ffffff", "mainBkg": "#ffffff", "primaryColor": "#ffffff", "primaryBorderColor": "#94a3b8", "primaryTextColor": "#111827", "lineColor": "#64748b", "clusterBkg": "#ffffff", "clusterBorder": "#cbd5e1"}}}%%
-flowchart LR
+flowchart TB
     A["복습 리마인드"] --> B["오늘 due 개념"]
     B --> C["주관식 회상"]
     C --> D{"결과 기록"}
