@@ -168,7 +168,6 @@ ORDER BY score DESC LIMIT 100;
 상품 10만개, 7일치 데이터(70만 row), 동시 요청 100명일 때 MV가 있을 때와 없을 때를 비교해보자.
 
 ```mermaid
-%%{init: {'theme': 'base', 'themeVariables': {'primaryColor': '#e8f4f8', 'primaryTextColor': '#333', 'primaryBorderColor': '#5c9ead', 'lineColor': '#5c9ead', 'secondaryColor': '#fff5f5', 'tertiaryColor': '#f0fff0'}}}%%
 flowchart TB
     subgraph WITHOUT["MV 없을 때"]
         direction LR
@@ -182,8 +181,10 @@ flowchart TB
 
     WITHOUT ~~~ WITH
 
-    style WITHOUT fill:#fff5f5,stroke:#e57373
-    style WITH fill:#e8f5e9,stroke:#81c784
+    classDef slow stroke-dasharray:4 3;
+    class A1,B1,C1,D1 slow;
+    classDef fast stroke-width:3px;
+    class A2,B2,C2,D2,E2,F2 fast;
 ```
 
 MV 없이 매 요청마다 집계하면 7천만 row를 스캔해야 하지만, MV를 사용하면 1만 row만 스캔하면 된다. DB 부하가 약 7000배 감소한다.

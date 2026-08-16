@@ -69,9 +69,8 @@ flowchart LR
   P3 -->|Push| K1
   C1 -.->|Pull| K1
 
-  style PRODUCER fill:#E8F5E9,stroke:#4CAF50
-  style KAFKA fill:#FFF3E0,stroke:#FF9800
-  style CONSUMER fill:#E3F2FD,stroke:#2196F3
+  classDef broker stroke-width:3px;
+  class K1 broker;
 ```
 
 ## Broker (Kafka)

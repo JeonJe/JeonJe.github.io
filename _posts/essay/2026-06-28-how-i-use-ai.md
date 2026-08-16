@@ -56,7 +56,6 @@ AI는 이 두 가지 성향을 없애지 않았다. 오히려 더 자주, 더 �
 예전에는 트러블슈팅을 할 때 사람이 직접 로그를 훑고, SQL을 실행하고, 대시보드를 보며 원인을 좁혀갔다. 지금은 AI에게 단순히 “왜 안 돼?”라고 묻지 않는다. 대신 SQL, Elasticsearch, 브라우저 자동화, 로그, 대시보드 같은 관측 도구를 함께 쥐어준다.
 
 ```mermaid
-%%{init: {"theme": "base", "themeVariables": {"background": "#ffffff", "mainBkg": "#ffffff", "primaryColor": "#ffffff", "primaryBorderColor": "#94a3b8", "primaryTextColor": "#111827", "lineColor": "#64748b", "clusterBkg": "#ffffff", "clusterBorder": "#cbd5e1"}}}%%
 flowchart TB
     P["문제 발생"]
 
@@ -76,11 +75,8 @@ flowchart TB
     P --> Bad
     P --> Good
 
-    classDef default fill:#ffffff,stroke:#94a3b8,color:#111827;
-    classDef focus fill:#eff6ff,stroke:#2563eb,color:#111827;
+    classDef focus stroke-width:3px;
     class Good,Tools,Evidence,Candidate,Decision focus;
-    style Guess fill:#ffffff,stroke:#cbd5e1,color:#111827
-    style Verify fill:#ffffff,stroke:#94a3b8,color:#111827
 ```
 
 그러면 AI는 추측만 하는 것이 아니라 데이터를 조회하고, 화면을 재현하고, 로그를 비교하면서 원인을 좁혀갈 수 있다. 나 역시 AI가 말한 결론을 그대로 믿기보다, 어떤 데이터에서 나온 판단인지 확인한다. 이 방식은 내가 원래 하던 검증 과정을 더 빠르게 반복하게 해줬다.
@@ -95,7 +91,6 @@ flowchart TB
 티켓을 바로 코드로 바꾸게 하지 않고, 먼저 요구사항과 배경을 정리하고, 설계와 계획을 나눈 뒤, 구현과 리뷰로 이어지는 개발 하네스를 만들었다. AI에게 코드를 빠르게 만들게 하는 것보다, 어디까지 바꿀지와 무엇으로 확인할지를 먼저 정하는 것이 더 중요하다고 느꼈기 때문이다.
 
 ```mermaid
-%%{init: {"theme": "base", "themeVariables": {"background": "#ffffff", "mainBkg": "#ffffff", "primaryColor": "#ffffff", "primaryBorderColor": "#94a3b8", "primaryTextColor": "#111827", "lineColor": "#64748b", "clusterBkg": "#ffffff", "clusterBorder": "#cbd5e1"}}}%%
 flowchart TB
     subgraph Human["사람이 먼저 정하는 것"]
         direction LR
@@ -119,16 +114,8 @@ flowchart TB
     AI --> Gate
     Human <-. "누락 / 리스크 발견" .- Gate
 
-    classDef default fill:#ffffff,stroke:#94a3b8,color:#111827;
-    classDef human fill:#ecfeff,stroke:#0891b2,color:#111827;
-    classDef ai fill:#f8fafc,stroke:#64748b,color:#111827;
-    classDef gate fill:#f0fdf4,stroke:#16a34a,color:#111827;
-    class A,B,C,D human;
-    class E,F ai;
+    classDef gate stroke-width:3px;
     class G,H,I gate;
-    style Human fill:#ffffff,stroke:#cbd5e1,color:#111827
-    style AI fill:#ffffff,stroke:#cbd5e1,color:#111827
-    style Gate fill:#ffffff,stroke:#cbd5e1,color:#111827
 ```
 
 이런 흐름은 내가 원래 좋아하던 “만지작거리며 개선하는 습관”을 더 강하게 만들었다. 반복되는 트러블슈팅은 커맨드로 만들고, 자주 보는 로그는 더 잘 볼 수 있게 정리하고, 흩어진 지식은 AI가 참고할 수 있는 문서나 위키 형태로 남기게 되었다.
@@ -162,7 +149,6 @@ AI는 이 부분을 많이 도와줬다.
 나는 한 번 이해했다고 생각한 내용을 오래 붙잡는 데 약하다. 시간이 지나면 분명 배웠던 내용인데 설명이 흐려지는 경우가 많았다. 그래서 복습 알림을 받고, 그날 다시 볼 개념을 꺼내 주관식으로 떠올리는 구조를 만들었다.
 
 ```mermaid
-%%{init: {"theme": "base", "themeVariables": {"background": "#ffffff", "mainBkg": "#ffffff", "primaryColor": "#ffffff", "primaryBorderColor": "#94a3b8", "primaryTextColor": "#111827", "lineColor": "#64748b", "clusterBkg": "#ffffff", "clusterBorder": "#cbd5e1"}}}%%
 flowchart TB
     A["복습 리마인드"] --> B["오늘 due 개념"]
     B --> C["주관식 회상"]
@@ -179,10 +165,7 @@ flowchart TB
 
     D --> I["반복 약점 메모"]
 
-    classDef default fill:#ffffff,stroke:#94a3b8,color:#111827;
-    classDef recall fill:#eff6ff,stroke:#2563eb,color:#111827;
-    classDef weak fill:#fff7ed,stroke:#f97316,color:#111827;
-    class A,B,C,D recall;
+    classDef weak stroke-width:3px,stroke-dasharray:4 3;
     class F,G,I weak;
 ```
 
