@@ -69,7 +69,7 @@ JWT 구조는 세가지 구성요소인 `Header`, `Payload`, `Signature`가 dot(
 
 <br/>
 위에서 살펴본 header, playload, signatur의 각 base64-URL을 합치면 JWT가 되는 것입니다.
-![image](https://github.com/JeonJe/Multi_Board/assets/43032391/a971308b-4649-43bb-ad3d-e3b380025863)
+![image](https://github.com/JeonJe/multi-board/assets/43032391/a971308b-4649-43bb-ad3d-e3b380025863)
 
 ---
 ### 왜 JWT를 사용할까?
@@ -412,7 +412,7 @@ JWT 개념과 내용을 학습하였으니 프로젝트의 로그인 with JWT �
 
 ---
 ###  실행화면
-![image](https://github.com/JeonJe/Multi_Board/assets/43032391/a38bcf62-1899-46f9-bf4c-a086d808cb2c)
+![image](https://github.com/JeonJe/multi-board/assets/43032391/a38bcf62-1899-46f9-bf4c-a086d808cb2c)
 
 아이디와 비밀번호를 입력할 수 있는 폼과 로그인 버튼, 회원가입창으로 돌아갈 수 있는 버튼, 현재 JWT토큰이 유효한지 확인하는 테스트용도의 버튼이 있습니다.
 
@@ -577,19 +577,19 @@ Repository & Mapper 에서는 사용자가 입력한 아이디와 비밀번호�
 
 ---
 ### 로그인 실행 결과
-![image](https://github.com/JeonJe/Multi_Board/assets/43032391/370b3c89-27bf-4a1e-9f5e-32669a300948)
+![image](https://github.com/JeonJe/multi-board/assets/43032391/370b3c89-27bf-4a1e-9f5e-32669a300948)
 <br/>
 올바른 아이디와 패스워드를 입력할 경우 응답에 JWT토큰이 포함됩니다.
 
-![image](https://github.com/JeonJe/Multi_Board/assets/43032391/2e11746f-fa8f-4237-aeab-5856eec99568)
+![image](https://github.com/JeonJe/multi-board/assets/43032391/2e11746f-fa8f-4237-aeab-5856eec99568)
 <br/>
 올바르지 않은 아이디와 패스워드를 입력할 경우입니다.
 
-![image](https://github.com/JeonJe/Multi_Board/assets/43032391/91110c28-fd45-4423-9ce6-f0172a1f652f)
+![image](https://github.com/JeonJe/multi-board/assets/43032391/91110c28-fd45-4423-9ce6-f0172a1f652f)
 <br/>
 로그인 성공 시 크롬 개발자도구로 Local Storage에 담긴 jwt 토큰을 확인할 수 있습니다.
 
-![image](https://github.com/JeonJe/Multi_Board/assets/43032391/3af3c81a-91f7-40bd-a392-db69d7c644e9)
+![image](https://github.com/JeonJe/multi-board/assets/43032391/3af3c81a-91f7-40bd-a392-db69d7c644e9)
 <br/>
 jwt토큰확인 버튼을 누르면 Local Storage에 담긴 jwt 토큰이 유효한지 확인할 수 있습니다.
 

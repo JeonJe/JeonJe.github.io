@@ -10,7 +10,7 @@ tags: [multiboard, 문의게시판, 관리자답변, Spring, Vue, 답변처리, 
 ##  문의 게시판 보기
 ### 화면
 
-<img width="1305" alt="image" src="https://github.com/JeonJe/Multi_Board/assets/43032391/f8e2ac88-d833-45cd-8fd0-32459b03a92b">
+<img width="1305" alt="image" src="https://github.com/JeonJe/multi-board/assets/43032391/f8e2ac88-d833-45cd-8fd0-32459b03a92b">
 
 문의게시판은 답변은 자유게시판과 댓글한 구조로 되어 있습니다.
 

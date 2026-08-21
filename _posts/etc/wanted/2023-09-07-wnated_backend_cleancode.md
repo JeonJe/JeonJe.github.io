@@ -64,7 +64,7 @@ addr라는 접두어를 붙이면 String addrFirstName, String addrLastName라�
 또한, 함수는 위에서 아래로 이야기 처럼 읽혀야 좋습니다.
 
 한 함수 다음에는 추상화 수준이 한 단계씩 낮아져야 합니다.
-![image](https://github.com/JeonJe/Free_Board/assets/43032391/6a60ea22-13f7-4a3a-b58c-0f9485626139)
+![image](https://github.com/JeonJe/free-board/assets/43032391/6a60ea22-13f7-4a3a-b58c-0f9485626139)
 
 
 ### 2.함수의 인수 종류와 개수

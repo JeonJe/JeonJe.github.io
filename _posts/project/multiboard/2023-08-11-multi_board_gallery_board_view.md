@@ -10,7 +10,7 @@ tags: [multiboard, 갤러리게시판, 이미지슬라이더, Spring, Vue, vuepe
 ##  갤러리 게시글 보기
 ### 화면
 
-![image](https://github.com/JeonJe/Multi_Board/assets/43032391/39894f79-8705-46dd-8b27-e321d077ccee)
+![image](https://github.com/JeonJe/multi-board/assets/43032391/39894f79-8705-46dd-8b27-e321d077ccee)
 
 갤러리 게시판 상세보기 화면입니다.
 

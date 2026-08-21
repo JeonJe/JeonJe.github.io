@@ -7,18 +7,18 @@ tags: [multiboard, 문의게시판, 비밀글, 비밀번호검증, Spring, Vue, 
 
 >프로젝트 코드는 포스팅 이후에도 계속 개선 중입니다. 
 >포스팅은 게시판 구현이 어떤 흐름으로 가는지 참고하는 용으로 보시면 좋을 것 같습니다. 
->프로젝트 코드 : **[링크](https://github.com/JeonJe/Multi_Board)**
+>프로젝트 코드 : **[링크](https://github.com/JeonJe/multi-board)**
 
 ##  문의 게시판 가져오기
 
 ### 화면
-<img width="1312" alt="image" src="https://github.com/JeonJe/Multi_Board/assets/43032391/b7cc30b9-2519-490a-948d-cb550bc107fe">
+<img width="1312" alt="image" src="https://github.com/JeonJe/multi-board/assets/43032391/b7cc30b9-2519-490a-948d-cb550bc107fe">
 다른 게시판 조회 페이지와 문의 게시판 조회 페이지가 다른 점은 목록에 있습니다. 
 관리자 답변이 달린 문의 게시글은 제목에 `(답변완료)`가 나타납니다. 
 만약 사용자가 해당 게시글에 4자리 이상의 비밀번호를 설정하였다면 제목 옆에 `자물쇠 모양` 아이콘이 나타납니다.
 
 ---
-<img width="1324" alt="image" src="https://github.com/JeonJe/Multi_Board/assets/43032391/41c195ca-34a2-4341-8a15-b4007a94b76b">
+<img width="1324" alt="image" src="https://github.com/JeonJe/multi-board/assets/43032391/41c195ca-34a2-4341-8a15-b4007a94b76b">
 비밀글 제목을 클릭하면 해당 게시글의 비밀번호를 넣을 수 있는 모달 창이 나타납니다.
 
 ```javascript

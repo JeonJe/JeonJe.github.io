@@ -31,7 +31,7 @@ tags: [wanted, Docker, 컨테이너, 가상화, 도커컴포즈, 쿠버네티스
 가상화 기술 중 하나로 하이퍼 바이저가 있습니다. 이를 컨테이너와 비교하여 컨테이너 가상화 기술이 어떤 점이 뛰어난 지 살펴보겠습니다.
 
 ### 가상 머신 VS 컨테이너
-![image](https://github.com/JeonJe/Free_Board/assets/43032391/09703500-cea1-4396-ab8c-6f5bf49e8a75)
+![image](https://github.com/JeonJe/free-board/assets/43032391/09703500-cea1-4396-ab8c-6f5bf49e8a75)
 
 
 `하이퍼바이저`는 가상 머신(가상 환경)을 실행하는 소프트웨어 입니다. 각 가상 머신은 독립적인 운영체제와 커널을 가지기 때문에 머신 간 격리 수준이 높습니다. 즉, `더 높은 보안 수준`을 가질 수 있습니다. 하지만 `많은 리소스`가 필요합니다.
@@ -42,7 +42,7 @@ tags: [wanted, Docker, 컨테이너, 가상화, 도커컴포즈, 쿠버네티스
 
 ### 도커 아키텍쳐
 다음으로는 도커가 어떻게 동작하는지를 살펴보겠습니다.
-![image](https://github.com/JeonJe/Free_Board/assets/43032391/0b20ccf5-241f-49bc-afe1-ffbf2e013918)
+![image](https://github.com/JeonJe/free-board/assets/43032391/0b20ccf5-241f-49bc-afe1-ffbf2e013918)
 
 ### 도커 클라이언트
 도커 클라이언트는 도커 명령어를 도커 데몬으로 전달하여 상호 작용을 합니다.
@@ -63,7 +63,7 @@ tags: [wanted, Docker, 컨테이너, 가상화, 도커컴포즈, 쿠버네티스
 도커 레지스트리에서 docker pull로 도커 이미지를 가져오고 docker run명령어를 통해 컨테이너를 실행시킵니다.
 
 ### 도커 네트워크 
-![image](https://github.com/JeonJe/Free_Board/assets/43032391/a636cb67-72c3-485a-a3f0-3e4bea758c68)
+![image](https://github.com/JeonJe/free-board/assets/43032391/a636cb67-72c3-485a-a3f0-3e4bea758c68)
 컨테이너 안 웹 서버는 호스트와 독립적인 환경이기 때문에 `별도의 포트번호와 파일시스템`을 갖습니다. 
 
 따라서 호스트에서 컨테이너로 `포트포워딩`을 해줘야합니다.
@@ -80,10 +80,10 @@ docker network ls
 
 
 ### 컨테이너 라이프 싸이클
-![image](https://github.com/JeonJe/Free_Board/assets/43032391/10f89fa8-fab0-4eaf-9e69-cad50aa77cd3)
+![image](https://github.com/JeonJe/free-board/assets/43032391/10f89fa8-fab0-4eaf-9e69-cad50aa77cd3)
 
 ### 도커 파일 
-![image](https://github.com/JeonJe/Free_Board/assets/43032391/39e892a9-db89-45c2-8ad6-89c39c0c160b)
+![image](https://github.com/JeonJe/free-board/assets/43032391/39e892a9-db89-45c2-8ad6-89c39c0c160b)
 도커 컨테이너 이미지를 생성하는 데 사용되는 텍스트 기반 설정 파일입니다. 
 
 도커 파일 내에 컨테이너 안에 들어갈 애플리케이션 및 환경 설정, 종속성, 실행 명령 등을 작성할 수 있습니다. 이 파일을 기반으로 도커 엔진이 자동으로 이미지를 빌드하고 생성할 수 있습니다.
@@ -191,7 +191,7 @@ up : 도커 컴포즈 파일로, 컨테이너를 생성하기
 ### ECS(Amazon Elastic Container Service)
 ECS 서비스 종류를 살펴보겠습니다.
 
-![image](https://github.com/JeonJe/Free_Board/assets/43032391/8dbcbc02-2efb-4ba8-aacf-51a6112e774a)
+![image](https://github.com/JeonJe/free-board/assets/43032391/8dbcbc02-2efb-4ba8-aacf-51a6112e774a)
 
 **EC2**
 - 컨테이너가 운영되는 자원이 AWS EC2인 유형입니다.
@@ -210,7 +210,7 @@ ECS 서비스 종류를 살펴보겠습니다.
 - AWS콘솔에서 관리합니다.
 
 ### ECS 구성
-![image](https://github.com/JeonJe/Free_Board/assets/43032391/78c4fde6-46cf-4649-a1e2-f86e0a578064)
+![image](https://github.com/JeonJe/free-board/assets/43032391/78c4fde6-46cf-4649-a1e2-f86e0a578064)
 
 **Task Definition**
 - ECS에서 컨테이너를 실행하기 위한 `블루프린트` 또는 `레시피` 입니다.

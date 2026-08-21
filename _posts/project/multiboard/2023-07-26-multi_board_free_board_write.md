@@ -12,7 +12,7 @@ tags: [multiboard, 자유게시판, CRUD, Spring, Vue, 첨부파일, 유효성�
 
 ### 화면
 **자유게시글 등록 화면**
-![image](https://github.com/JeonJe/Multi_Board/assets/43032391/cd6da150-b4f6-484c-bc00-1e5bf2041d84)
+![image](https://github.com/JeonJe/multi-board/assets/43032391/cd6da150-b4f6-484c-bc00-1e5bf2041d84)
 자유게시글 등록화면입니다.
 
 분류는 자유게시판 데이터베이스에서 카테고리 목록을 가져와 드롭다운으로 보여줍니다. 
@@ -21,7 +21,7 @@ tags: [multiboard, 자유게시판, CRUD, Spring, Vue, 첨부파일, 유효성�
 
 ---
 **자유 게시글 수정 & 삭제  화면**
-![image](https://github.com/JeonJe/Multi_Board/assets/43032391/b112c59c-2440-46f9-8b5d-d5f2e6cbd902)
+![image](https://github.com/JeonJe/multi-board/assets/43032391/b112c59c-2440-46f9-8b5d-d5f2e6cbd902)
 자유게시글 수정페이지 화면입니다. 
 
 자유게시글 작성자와 JWT 유저ID가 동일하다면 기존 게시글 정보가 불러와지고 해당 정보를 수정할 수 있습니다. 기존 첨부파일은 삭제하거나 다운로드 할 수 있습니다.

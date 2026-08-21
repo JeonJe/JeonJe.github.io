@@ -10,13 +10,13 @@ tags: [multiboard, 갤러리게시판, CRUD, 이미지업로드, 썸네일생성
 ##  갤러리 게시글 등록/수정/삭제
 
 ### 화면
-![image](https://github.com/JeonJe/Multi_Board/assets/43032391/75495b4e-b2f9-4627-b593-328df0336f2d)
+![image](https://github.com/JeonJe/multi-board/assets/43032391/75495b4e-b2f9-4627-b593-328df0336f2d)
 게시글 등록 화면입니다.
 
 게시글에 첨부된 이미지 중 1번째 이미지는 게시글 리스트에서 나타나는 썸네일로 활용됩니다.
 
 ---
-![image](https://github.com/JeonJe/Multi_Board/assets/43032391/491d8c75-8818-48b8-b41f-9a1d06386bbf)
+![image](https://github.com/JeonJe/multi-board/assets/43032391/491d8c75-8818-48b8-b41f-9a1d06386bbf)
 게시글 수정화면입니다.
 
 수정 시 썸네일로 사용되는 1번째 이미지가 삭제처리되면 1) 기존 이미지 중 우선순위가 가장 높은(번호로 가장 낮은) 이미지가 썸네일이 됩니다. 썸네일로 대체될 기존 이미지가 없다면, 새로 첨부하는 이미지의 1번째 이미지가 다시 새로운 썸네일이 됩니다.

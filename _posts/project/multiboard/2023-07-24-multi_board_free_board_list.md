@@ -8,13 +8,13 @@ tags: [multiboard, 자유게시판, jwt, 인증, Spring, Vue, 검색기능, 페�
 
 > 프로젝트 코드는 포스팅 이후에도 계속 개선 중입니다. 
 > 포스팅은 게시판 구현이 어떤 흐름으로 가는지 참고하는 용으로 보시면 좋을 것 같습니다. 
-> 프로젝트 코드 : **[링크](https://github.com/JeonJe/Multi_Board)**
+> 프로젝트 코드 : **[링크](https://github.com/JeonJe/multi-board)**
 
 
 ## 자유게시판 가져오기
 
 ### 화면
-<img width="1289" alt="image" src="https://github.com/JeonJe/Free_Board/assets/43032391/0c14af39-2daa-4e32-8a02-70d732599c58">
+<img width="1289" alt="image" src="https://github.com/JeonJe/free-board/assets/43032391/0c14af39-2daa-4e32-8a02-70d732599c58">
 
 
 자유게시판 조회 페이지는 공지사항 조회 페이지와 동일하게 1) 검색 조건 입력 부분, 2) 리스트 부분, 3)페이지네이션 부분으로 나누어져 있습니다.

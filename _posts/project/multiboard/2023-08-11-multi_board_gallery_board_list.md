@@ -8,14 +8,14 @@ tags: [multiboard, 갤러리게시판, 썸네일, Spring, Vue, 이미지처리, 
 
 > 프로젝트 코드는 포스팅 이후에도 계속 개선 중입니다. 
 > 포스팅은 게시판 구현이 어떤 흐름으로 가는지 참고하는 용으로 보시면 좋을 것 같습니다. 
-> 프로젝트 코드 : **[링크](https://github.com/JeonJe/Multi_Board)**
+> 프로젝트 코드 : **[링크](https://github.com/JeonJe/multi-board)**
 
 
 
 ## 갤러리 게시판 가져오기
 
 ### 화면
-![image](https://github.com/JeonJe/Multi_Board/assets/43032391/a55b2896-83e4-4edd-a3b3-f79bf9b8a3a3)
+![image](https://github.com/JeonJe/multi-board/assets/43032391/a55b2896-83e4-4edd-a3b3-f79bf9b8a3a3)
 
 갤러리 게시판 조회 페이지는 공지사항, 자유게시판과 동일하게 1) 검색 조건 입력 부분, 2) 리스트 부분, 3)페이지네이션 부분으로 나누어져 있습니다.
 또한, 자유게시판과 동일하게 사용자가 로그인 한 상태라면 우측에 갤러리게시판에 글을 쓸 수 있는 `글 등록` 버튼이 나타납니다.

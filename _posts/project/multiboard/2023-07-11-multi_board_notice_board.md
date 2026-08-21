@@ -11,7 +11,7 @@ tags: [multiboard, 공지사항, Spring, Vue, 페이지네이션, 검색기능, 
 ## 공지사항 리스트
 
 ### 화면
-![image](https://github.com/JeonJe/Multi_Board/assets/43032391/d6192576-17fc-45dd-a522-ae23f7b56cc0)<br/>
+![image](https://github.com/JeonJe/multi-board/assets/43032391/d6192576-17fc-45dd-a522-ae23f7b56cc0)<br/>
 
 공지사항 리스트 페이지는 크게 3가지 부분으로 나누어져 있습니다.
 1. 상단에는 게시글 검색 조건을 입력할 수 있는 `SearchForm` 컴포넌트입니다.
@@ -229,7 +229,7 @@ updatePagination(page) {
 컴포넌트에서 props로 `1) 현재 페이지 번호`와 `검색조건을 만족하는 게시글 수`를 `현재 페이지크기`로 나눈 `2) 총 페이지 수` 를 전달받고, 컴포넌트로부터 `clickPagination` `emit`을 수신할 때 `updatePagination`를 호출합니다.
 
 
-![페이지네이션](https://github.com/JeonJe/Multi_Board/assets/43032391/87920dbf-bdf4-484f-89e4-6c5623c8e811)
+![페이지네이션](https://github.com/JeonJe/multi-board/assets/43032391/87920dbf-bdf4-484f-89e4-6c5623c8e811)
 
 ```javascript
 
@@ -603,24 +603,24 @@ public interface BoardRepository {
 ---
 ### 결과
 
-![카테고리 검색](https://github.com/JeonJe/Multi_Board/assets/43032391/267233c2-8cdc-4361-9314-aef16b5471b4)<br/>
+![카테고리 검색](https://github.com/JeonJe/multi-board/assets/43032391/267233c2-8cdc-4361-9314-aef16b5471b4)<br/>
 공지사항의 카테고리 목록을 가져오고, `B`라는 카테고리를 선택하여 검색한 결과화면입니다.
 알림으로 `체크된 공지`를 2개는 항상 리스트에 나타나고, 1개의 B카테고리가 검색되어 나타난 것을 확인할 수 있습니다.
 
 
-![검색조건](https://github.com/JeonJe/Multi_Board/assets/43032391/fccb9a49-144f-4415-9a09-e9513cb26d30)<br/>
+![검색조건](https://github.com/JeonJe/multi-board/assets/43032391/fccb9a49-144f-4415-9a09-e9513cb26d30)<br/>
 20개씩보기, 등록일시로 오름차순 정렬한 결과 화면입니다.
 공지 게시글이 선택한 조건대로 정렬되어 나타나는 것을 확인할 수 있습니다.
 
 
-![페이지네이션](https://github.com/JeonJe/Multi_Board/assets/43032391/bf08e8d2-1f81-4501-aa4e-553b323854f9)<br/>
+![페이지네이션](https://github.com/JeonJe/multi-board/assets/43032391/bf08e8d2-1f81-4501-aa4e-553b323854f9)<br/>
 페이지네이션 번호를 클릭하여 페이지네이션도 잘 동작하는 것을 확인합니다.
 
 
 ---
 ## 공지 게시글 상세보기 
 ### 화면
-![image](https://github.com/JeonJe/Multi_Board/assets/43032391/428a1b0f-10d0-4bd5-be19-4fadbef2d2d6)<br/>
+![image](https://github.com/JeonJe/multi-board/assets/43032391/428a1b0f-10d0-4bd5-be19-4fadbef2d2d6)<br/>
 
 공지사항 제목을 눌렀을 때 공지사항 상세 페이지로 이동한 화면입니다.
 

@@ -10,13 +10,13 @@ tags: [multiboard, 문의게시판, CRUD, 비밀글, 비밀번호해싱, Spring,
 ##  문의 게시판 등록/수정/삭제
 
 ### 화면
-<img width="1350" alt="image" src="https://github.com/JeonJe/Multi_Board/assets/43032391/7fba0a15-b73d-4db9-bec0-245700e21039">
+<img width="1350" alt="image" src="https://github.com/JeonJe/multi-board/assets/43032391/7fba0a15-b73d-4db9-bec0-245700e21039">
 문의 게시글 등록 화면입니다.
 
 비밀글 체크박스에 체크 후 비밀번호를 입력하여 문의 게시글을 등록하면 비밀글로 설정됩니다.
 
 ---
-<img width="1310" alt="image" src="https://github.com/JeonJe/Multi_Board/assets/43032391/818647ee-fac8-445a-87ea-41d4cf0d9505">
+<img width="1310" alt="image" src="https://github.com/JeonJe/multi-board/assets/43032391/818647ee-fac8-445a-87ea-41d4cf0d9505">
 
 게시글 수정 화면입니다.
 

@@ -40,11 +40,11 @@ public void updateFreeBoardInfo(String userId, BoardDTO boardDTO) throws Excepti
 먼저 데이터베이스 변경이 필요합니다.
 
  사용자, 관리자 테이블에 `sequence id` 컬럼을 추가하였습니다.
-<img width="567" alt="image" src="https://github.com/JeonJe/Free_Board/assets/43032391/f540cf58-36c1-42b6-a08d-cc874c99796a">
+<img width="567" alt="image" src="https://github.com/JeonJe/free-board/assets/43032391/f540cf58-36c1-42b6-a08d-cc874c99796a">
 
 각 테이블에서 작성자 정보를 `user_id VARCHAR(255)`에 저장하고 있었습니다. 이를 테이블에 따라 `user_seq_id INT(11)` 또는 `admin_seq_id INT(11)`을 사용하도록 변경하였습니다.
-<img width="478" alt="image" src="https://github.com/JeonJe/Free_Board/assets/43032391/fcdb1206-03dd-4b30-8a00-803f3451ceff">
-<img width="913" alt="image" src="https://github.com/JeonJe/Free_Board/assets/43032391/4a48d98b-2d57-42c7-a4b5-ed474ff7b093">
+<img width="478" alt="image" src="https://github.com/JeonJe/free-board/assets/43032391/fcdb1206-03dd-4b30-8a00-803f3451ceff">
+<img width="913" alt="image" src="https://github.com/JeonJe/free-board/assets/43032391/4a48d98b-2d57-42c7-a4b5-ed474ff7b093">
 
 
 ```java

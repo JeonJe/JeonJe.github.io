@@ -9,7 +9,7 @@ tags: [Spring, filter, dispatcher-servlet, interceptor, spring-mvc, 요청처리
 ## Spring MVC Request LifeCycle
 Spring MVC Request LifeCycle에서 Filter, Dispatcher Servlet, Interceptor의 개념과 차이점에 살펴보겠습니다.
 
-<img width="493" alt="image" src="https://github.com/JeonJe/Free_Board/assets/43032391/5db9d363-98c6-4701-91c2-7e89b2fd894b">
+<img width="493" alt="image" src="https://github.com/JeonJe/free-board/assets/43032391/5db9d363-98c6-4701-91c2-7e89b2fd894b">
 
 
 
@@ -298,7 +298,7 @@ Dispatcher Servlet은 이미지, HTML, Javascript 등 정적파일에 대한 요
 
 ### Dispatcher Servlet 동작과정 
 
-![image](https://github.com/JeonJe/Free_Board/assets/43032391/b985dd69-0ac7-4c1c-a2c1-707743b1a1ab)
+![image](https://github.com/JeonJe/free-board/assets/43032391/b985dd69-0ac7-4c1c-a2c1-707743b1a1ab)
 
 동작과정을 요약하자면 아래처럼 표현할 수 있습니다.
 

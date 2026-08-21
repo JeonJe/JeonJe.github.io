@@ -10,12 +10,12 @@ tags: [multiboard, signup, 회원가입, Spring, Vue, 유효성검증, 예외처
 
 
 이제 지난번에 설계한 ERD을 토대로 테이블을 생성하고 기능 구현을 진행해보겠습니다.
-![multiboard v1](https://github.com/JeonJe/Free_Board/assets/43032391/b7b20347-b954-41d2-827e-520ad07c2b8a)
+![multiboard v1](https://github.com/JeonJe/free-board/assets/43032391/b7b20347-b954-41d2-827e-520ad07c2b8a)
 
 
 ## 회웝가입 
 ### 클라이언트 화면 
-![image](https://github.com/JeonJe/Multi_Board/assets/43032391/4abd7a54-f3cb-49cc-90a3-50707db42880)
+![image](https://github.com/JeonJe/multi-board/assets/43032391/4abd7a54-f3cb-49cc-90a3-50707db42880)
 
 회원가입 화면은 간단하게 아이디, 패스워드, 패스워드 확인, 이름을 작성할 수 있는 `폼`과 중복확인, 회원가입, 취소 `버튼`이 있습니다.
 화면 스타일은 모든 기능 구현을 완료한 뒤 진행하겠습니다.
@@ -244,10 +244,10 @@ SQL 쿼리는 `userId와` 일치하는 `user_id` 컬럼을 가진 데이터를 `
 
 ---
 ### 중복확인버튼 실행화면
-![SCR-20230704-ppzv](https://github.com/JeonJe/Multi_Board/assets/43032391/41dce838-0fbf-4edf-a44b-7b56c1c57d7c)
+![SCR-20230704-ppzv](https://github.com/JeonJe/multi-board/assets/43032391/41dce838-0fbf-4edf-a44b-7b56c1c57d7c)
 <br/>데이터베이스에 이미 존재하는 아이디는 위와 같은 안내메시지가 나타납니다.
 
-![SCR-20230704-pqbp](https://github.com/JeonJe/Multi_Board/assets/43032391/177af305-f26e-4bc5-bc22-30e6795450e4)
+![SCR-20230704-pqbp](https://github.com/JeonJe/multi-board/assets/43032391/177af305-f26e-4bc5-bc22-30e6795450e4)
 <br/>버튼 클릭 시 데이터베이스에 존재하지 않는 아이디는 위와 같은 안내메시지가 나타납니다.
 
 
@@ -498,15 +498,15 @@ Repository와 Mapper는 간단하게 작성하였습니다.
 
 ---
 ### 회원가입 결과
-![image](https://github.com/JeonJe/Multi_Board/assets/43032391/1493faf3-ce5c-4154-9e6a-f3d14fa54c2b)
+![image](https://github.com/JeonJe/multi-board/assets/43032391/1493faf3-ce5c-4154-9e6a-f3d14fa54c2b)
 <br/>
 중복 아이디 미존재 + 유효성검증 성공 시 정상적으로 회원가입이 됩니다. data에는 jwt 토큰이 만들어져 담겨옵니다.
 
-![image](https://github.com/JeonJe/Multi_Board/assets/43032391/d6ed3730-2ebc-40d6-b97e-d77859cd2add)
+![image](https://github.com/JeonJe/multi-board/assets/43032391/d6ed3730-2ebc-40d6-b97e-d77859cd2add)
 <br/>
 만약 중복된 아이디가 존재한다면 위와 같은 형태로 에러메시지를 반환합니다.
 
-![image](https://github.com/JeonJe/Multi_Board/assets/43032391/2104ad82-3555-44fd-a657-b60ca7e721f2)
+![image](https://github.com/JeonJe/multi-board/assets/43032391/2104ad82-3555-44fd-a657-b60ca7e721f2)
 <br/>
 만약 유효성 검증에 실패한다면 위와 같은 형태로 에러메시지를 반환합니다.
 
@@ -539,7 +539,7 @@ mysql.server restart
 ---
 ### Vue.js `.env` 사용
 
-![SCR-20230704-otwr](https://github.com/JeonJe/Multi_Board/assets/43032391/2e04d898-f860-4eef-9322-ca477bc2399a)
+![SCR-20230704-otwr](https://github.com/JeonJe/multi-board/assets/43032391/2e04d898-f860-4eef-9322-ca477bc2399a)
 
 `URL` 관리의 효율성을 위해 위 이미지처럼 `.env`에서 URL을 가져오는 방식으로 사용하고 있습니다. 그러나 `process.env."이름"` 으로 URL을 사용하려고 하면
 `undefined`가 발생하였습니다.

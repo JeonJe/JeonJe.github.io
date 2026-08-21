@@ -7,7 +7,7 @@ tags: [multiboard, 프로젝트완료, 대시보드, 개선계획, 리팩토링,
 
 ## 대시보드 
 
-![image](https://github.com/JeonJe/Multi_Board/assets/43032391/ab8d7574-369b-4a06-9cfd-6a7f321c7e9c)
+![image](https://github.com/JeonJe/multi-board/assets/43032391/ab8d7574-369b-4a06-9cfd-6a7f321c7e9c)
 
 앞서 구현한 게시판들의 최근 게시글들을 모아서 볼 수 있는 대시보드 화면입니다. 저는 각 게시판의 가장 최근 게시글 5개를 대시보드에 모아 보여줄 수 있도록 화면을 구성하였습니다. 이 부분은 앞서 배운 내용을 활용하여 다양하게 구현하면 되겠습니다.
 

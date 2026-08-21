@@ -10,7 +10,7 @@ tags: [multiboard, 자유게시판, 첨부파일, 댓글기능, Spring, Vue, 파
 ##  자유 게시글 보기
 
 ### 화면
-![image](https://github.com/JeonJe/Multi_Board/assets/43032391/c81a1347-a3ff-45df-86c2-bec17cf67332)
+![image](https://github.com/JeonJe/multi-board/assets/43032391/c81a1347-a3ff-45df-86c2-bec17cf67332)
 
 자유 게시글 상세보기에서도 사용자 로그인 여부를 확인합니다.
 로그인 후 `유효한 JWT`을 가지고 있다면, 댓글을 등록할 수 있는 `입력 폼`과 `버튼`이 나타납니다. 
