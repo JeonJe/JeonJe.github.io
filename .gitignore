@@ -22,3 +22,6 @@ package-lock.json
 
 # AI Code Assistant
 CLAUDE.md
+
+# Claude 로컬 설정과 규칙 (공개 레포에 내보내지 않음)
+.claude/

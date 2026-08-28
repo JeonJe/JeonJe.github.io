@@ -1,1 +1,0 @@
-/Users/green/.claude/project-rules/docs/blog-writing-style.md
