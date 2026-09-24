@@ -66,18 +66,5 @@ order: 1
 {% endfor %}
 </div>
 
-<h2>{{ site.data.about.writing_style.title }}</h2>
-<p class="section-note">{{ site.data.about.writing_style.note }}</p>
-
-<div class="writing-style-section">
-<div class="style-cards">
-  {% for card in site.data.about.writing_style.cards %}
-  <div class="style-card">
-    <div class="style-title">{{ card.title }}</div>
-    <div class="style-desc">{{ card.description }}</div>
-  </div>
-  {% endfor %}
-</div>
-</div>
 
 </div>
